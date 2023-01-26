@@ -184,7 +184,7 @@ GIT
 
 GIT
   remote: https://github.com/dipartimentofunzionepubblica/decidim-module-privacy
-  revision: 5d766ef07f0f679d7aa7d2b7ed99beb7e03ed033
+  revision: dbfda79e8f2a679ec5a5a52abefe36d488c54777
   branch: main
   specs:
     decidim-privacy (0.25.2)
@@ -194,7 +194,7 @@ GIT
 
 GIT
   remote: https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie
-  revision: d44f70f6c7cf5ee16d6de2d45cc7699fe68856f0
+  revision: 1c8e059c352d20f19cdf8e5c7d3b3fe21012a14f
   branch: main
   specs:
     decidim-spid-cie (0.25.2)
@@ -897,4 +897,4 @@ RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.2.18
+   2.4.5

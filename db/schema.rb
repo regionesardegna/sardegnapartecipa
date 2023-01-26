@@ -380,18 +380,6 @@ ActiveRecord::Schema.define(version: 2022_11_21_165739) do
     t.index ["decidim_scope_id"], name: "index_decidim_budgets_projects_on_decidim_scope_id"
   end
 
-  create_table "decidim_calendar_external_events", force: :cascade do |t|
-    t.jsonb "title", null: false
-    t.datetime "start_at", null: false
-    t.datetime "end_at", null: false
-    t.string "url"
-    t.integer "decidim_author_id", null: false
-    t.string "decidim_author_type"
-    t.integer "decidim_organization_id", null: false
-    t.index ["decidim_author_id"], name: "decidim_calendar_external_event_author"
-    t.index ["decidim_organization_id"], name: "decidim_calendar_external_event_organization"
-  end
-
   create_table "decidim_categories", id: :serial, force: :cascade do |t|
     t.jsonb "name", null: false
     t.jsonb "description", null: false
@@ -653,15 +641,6 @@ ActiveRecord::Schema.define(version: 2022_11_21_165739) do
     t.jsonb "content", null: false
     t.index ["organization_id"], name: "index_decidim_contextual_help_sections_on_organization_id"
     t.index ["section_id"], name: "index_decidim_contextual_help_sections_on_section_id"
-  end
-
-  create_table "decidim_continuity_badge_statuses", force: :cascade do |t|
-    t.integer "current_streak", default: 0, null: false
-    t.integer "integer", default: 0, null: false
-    t.date "last_session_at", null: false
-    t.string "subject_type", null: false
-    t.bigint "subject_id", null: false
-    t.index ["subject_type", "subject_id"], name: "decidim_continuity_statuses_subject"
   end
 
   create_table "decidim_debates_debates", id: :serial, force: :cascade do |t|
