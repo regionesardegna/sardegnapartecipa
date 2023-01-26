@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  compile: true
+  compile: false
   # Compile test packs to decidim decidim-packs folder
 
   # Reference: https://webpack.js.org/configuration/dev-server/

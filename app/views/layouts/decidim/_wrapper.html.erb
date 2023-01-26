@@ -1,0 +1,81 @@
+<%#
+Copyright (C) 2023 Sardegna IT
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+Modificato per integrare i link Accedi e Registrati dentro la top_header
+%>
+<%
+if respond_to?(:current_component) && current_component && can_be_managed?(current_component)
+  edit_link(
+    manage_component_path(current_component),
+    :read,
+    :component,
+    component: current_component,
+    current_participatory_space: current_participatory_space
+  )
+end
+%>
+
+<div class="off-canvas-wrapper">
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <div class="off-canvas position-right hide-for-large" data-position="right"
+         id="offCanvas" data-off-canvas>
+      <!-- Close button -->
+      <button class="close-button"
+              aria-label="<%= t("layouts.decidim.header.close_menu") %>" type="button"
+              data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <!-- Menu -->
+      <div class="hide-for-medium" data-set="nav-holder"></div>
+      <div class="hide-for-medium usermenu-off-canvas-holder"
+           data-set="nav-login-holder"></div>
+      <div class="hide-for-medium mt-s ml-s mr-s search-off-canvas-holder"
+           data-set="nav-search-holder"></div>
+    </div>
+    <div class="off-canvas-content" data-off-canvas-content>
+      <div class="footer-separator">
+        <!--separates the footer from the rest of the page,
+             creates a sticky footer-->
+        <!-- Topbar -->
+        <div class="title-bar">
+          <%= link_to t("skip_button", scope: "decidim.accessibility"), url_for(anchor: "content"), class: "skip" %>
+          <% if current_organization.official_img_header.attached? %>
+              <%= link_to  current_organization.official_url, class: "logo-cityhall" do %>
+                <%= image_pack_tag  current_organization.attached_uploader(:official_img_header).path, alt: current_organization.name %>
+              <% end %>
+            <% end %>
+          <div class="row column topbar">
+            <div class="logo-wrapper">
+              <%= render partial: "layouts/decidim/logo", locals: { organization: current_organization } %>
+            </div>
+            <%= render partial: "layouts/decidim/language_chooser" %>
+            <div class="hide-for-medium topbar__menu">
+              <button type="button" data-toggle="offCanvas" aria-label="<%= t("layouts.decidim.header.navigation") %>">
+                <%= icon "menu", aria_label: t("layouts.decidim.header.navigation"), role: "img" %>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="show-for-medium" data-set="nav-holder">
+          <div class="navbar js-append">
+            <div class="row column main-nav">
+              <%= main_menu.render %><%= render partial: "layouts/decidim/topbar_search" %>
+            </div>
+		  </div>
+        </div>
+        <main id="content">
+          <%= display_flash_messages %>
+          <%= yield %>
+        </main>
+      </div>
+      <%= render partial: "layouts/decidim/main_footer" %>
+      <%= render partial: "layouts/decidim/mini_footer" %>
+    </div>
+  </div>
+</div>
