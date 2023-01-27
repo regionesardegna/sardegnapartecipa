@@ -79,13 +79,7 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
 }
 
 a img + .external-link-indicator {
-   position: absolute;
-   top: -25px;
-   right: -15px;
-   background-color: $par-medium-blue;
-   padding: .2em;
-   width: .9rem;
-   height: .9rem;
+   display:none;
 }
 
 //NAVBAR
@@ -678,7 +672,6 @@ $datetime-bg: var(--primary);
 //FOOTER
 
 .main-footer__badge > img:nth-child(1){
-  color: #fff;
   height: 65px;
   display: inline-block;
   padding-left: 0px;
@@ -742,15 +735,6 @@ $datetime-bg: var(--primary);
   }
 }
 
-@media (min-width: 768px){
-  .col-md-3 {
-	 -webkit-box-flex: 0;
-	 -ms-flex: 0 0 25%;
-	 flex: 0 0 25%;
-	 max-width: 25%;
-  }
-}
-
 @media (max-width: 39.99875em){
   .col-sm-6 {
 	 -webkit-box-flex: 0;
@@ -760,27 +744,31 @@ $datetime-bg: var(--primary);
   }
 }
 
-.footer_sarit{
+.footer_sar_it{
 	display:flex;
 	margin-top: 30px;
 }
 
-.footer_logo_rs{
+.footer_logo{
 	margin-top: 10px;
 	margin-bottom: 10px;
 	float:left;
 	width:160px;
 }
 
-.footer_logo_partecipa{
-	margin-top: 10px;
-	margin-bottom: 10px;
-	float:right;
-	width:160px;
+.logo_partecipa{
+	float:right !important;
+	padding-top: 15px;
 }
 
 .footer_text{
 	font-size: 12px;
+}
+
+.cookie-warning {
+	background: $par-medium-blue;
+	padding: .5em 1em;
+	text-align: center;
 }
 
 //FIX CONTRAST

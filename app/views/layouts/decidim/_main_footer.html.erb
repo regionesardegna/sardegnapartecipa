@@ -17,8 +17,8 @@ Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
     <% end %>
   <% end %>
   </div>
-  <div class="row footer_sarit">
-	  <div class="col-lg-3 col-md-3 col-sm-6" style="padding-left:0 !important">
+  <div class="row footer_sar_it">
+	  <div class="col-lg-3 col-sm-6 first-col" style="padding-left:0 !important">
 		<h4 class="footer_header">Menu</h4>
 			<div class="footer_text">
 				<p>Voce</p>
@@ -27,32 +27,38 @@ Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
 				<p>Voce</p>
 			</div>							
 	  </div>
-	  <div class="col-lg-3 col-md-3 col-sm-6">
+	  <div class="col-lg-3 col-sm-6">
 		<h4 class="footer_header">Contatti</h4>
 			<div class="footer_text">
 				<p>Voce</p>
 				<p>Voce</p>
 			</div>
 	  </div>
-	  <div class="col-lg-3 col-md-3 col-sm-6">
+	  <div class="col-lg-3 col-sm-6">
 		<h4 class="footer_header">Seguici</h4>
 			<div class="footer_text">
 				<p>Voce</p>
 			</div>
 	  </div>
   </div>
-<div class="row">
-	<div class="footer_logo_rs">
-		<a rel="RAS"
-		 href="https://www.regione.sardegna.it/"
-		 target="_blank">
-		 <%= image_pack_tag("media/images/logo_ras_trasp_white.png", alt: "Logo Regione Autonoma della Sardegna" ) %></a>
+  <div class="row">
+	<div>
+		<%= image_pack_tag("media/images/ue.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo logo_ue" ) %>
 	 </div>
-	<div class="footer_logo_partecipa">
+	<div>
+		<%= image_pack_tag("media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo logo_ri") %>
+	</div>
+	<div>
+		<%= image_pack_tag("media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo logo_ras" ) %>
+	</div>
+	<div>
+		<%= image_pack_tag("media/images/por.svg", alt: "Logo POR", class: "footer_logo logo_por" ) %>
+	</div>
+	<div>
 		<a rel="partecipa"
 		 href="https://github.com/dipartimentofunzionepubblica/partecipa"
 		 target="_blank">
-		 <%= image_pack_tag("media/images/medium_logo_nuova_proposta_white.png", alt: "Logo ParteciPa" ) %></a>
-	 </div>
-	 <%= render partial: "layouts/decidim/social_media_links" %>
+		 <%= image_pack_tag("media/images/logo_partecipa.png", alt: "Logo ParteciPa", class: "footer_logo logo_partecipa" ) %></a>
+	</div>
+	<%= render partial: "layouts/decidim/social_media_links" %>
 </div>
