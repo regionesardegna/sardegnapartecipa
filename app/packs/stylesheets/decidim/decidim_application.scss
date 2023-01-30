@@ -124,11 +124,13 @@ a img + .external-link-indicator {
 .topbar__user__login a{
 	color: white;
 	line-height: 40px;
+	text-transform: uppercase;
 }
 
 .topbar__user__login a:hover{
 	color: white;
 	line-height: 40px;
+	text-transform: uppercase;
 }
 
 .topbar__dropmenu > ul > li > a {
@@ -599,7 +601,7 @@ $datetime-bg: var(--primary);
 }
 
 @media print, screen and (max-width: 40em){
-	.process-header__inner{
+	.process-header__inner_inner{
 		height: 100%;
 		background: $par-white;
 		align-items: bottom;
@@ -613,7 +615,7 @@ $datetime-bg: var(--primary);
 }
 
 @media print, screen and (min-width: 40em){
-	.process-header__inner{
+	.process-header__inner_inner{
 		height: 80%;
 		background: $par-white;
 		align-items: bottom;
@@ -657,15 +659,14 @@ $datetime-bg: var(--primary);
 
 .process-header__phase, .process-phase {
 	background: $light-gray;
-	padding: 1rem;
-	margin: 1rem 0;
+	margin-top:10px;
 	border-radius: 4px;
 }
 
 .heading-small {
     font-size: 1.2rem;
     font-weight: 600;
-	margin-top: 5px;
+	margin-top: 10px;
 	margin-bottom: 0;
 }
 
@@ -774,6 +775,7 @@ $datetime-bg: var(--primary);
 
 .footer_text{
 	font-size: 12px;
+	padding-top: 15px;
 }
 
 .cookie-warning {
