@@ -1,0 +1,46 @@
+<%#
+Copyright (C) 2023 Sardegna IT
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+Modificato per rimuovere partial cookie_warning, integrato nel footer di Sardegna IT
+%>
+<% add_decidim_meta_tags({
+  description: strip_tags(translated_attribute(current_organization.description)),
+  title: current_organization.name,
+  url: request.original_url,
+  twitter_handler: current_organization.twitter_handler,
+  image_url: Decidim::ContentBlock.published.find_by(
+    organization: current_organization,
+    scope_name: :homepage,
+    manifest_name: :hero
+  ).try(:images_container).try(:attached_uploader, :background_image).try(:path)
+}) %>
+
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>" class="no-js">
+  <head>
+    <title><%= decidim_page_title %></title>
+    <%= render partial: "layouts/decidim/head" %>
+    <%= render partial: "layouts/decidim/js_configuration" %>
+  </head>
+
+  <body>
+    <%= render partial: "layouts/decidim/impersonation_warning" %>
+    <%= render partial: "layouts/decidim/omnipresent_banner" %>
+    <%= render partial: "layouts/decidim/timeout_modal" %>
+
+    <%= render "layouts/decidim/wrapper" do %>
+      <%= yield %>
+    <% end %>
+
+    <%= render partial: "decidim/shared/confirm_modal" %>
+    <%= render partial: "decidim/shared/login_modal" unless current_user %>
+    <%= render partial: "decidim/shared/authorization_modal" %>
+    <%= render partial: "layouts/decidim/cors" if Decidim.cors_enabled %>
+  </body>
+</html>

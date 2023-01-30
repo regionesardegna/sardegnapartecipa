@@ -11,48 +11,69 @@ Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
 %>
 <div class="main-footer">
   <div class="row">
-  <% if current_organization.official_img_footer.attached? %>
-    <%= link_to current_organization.official_url, class: "main-footer__badge" do %>
-      <%= image_pack_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name %>
-    <% end %>
-  <% end %>
+	  <% if current_organization.official_img_footer.attached? %>
+		<%= link_to current_organization.official_url, class: "main-footer__badge" do %>
+		  <%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name %>
+		<% end %>
+	  <% end %>
   </div>
   <div class="row footer_sar_it">
-	  <div class="col-lg-3 col-sm-6 first-col" style="padding-left:0 !important">
+	  <div class="col-lg-3 col-sm-6 first-col">
 		<h4 class="footer_header">Menu</h4>
 			<div class="footer_text">
-				<p>Voce</p>
-				<p>Voce</p>
-				<p>Voce</p>
-				<p>Voce</p>
+				<p>Sezione 01</p>
+				<p>Sezione 02</p>
+				<p>Sezione 03</p>
+				<p>Sezione 04</p>
+				<p>Sezione 05</p>
+				<p>Sezione 06</p>
+				<p>Sezione 07</p>
 			</div>							
+	  </div>
+	  <div class="col-lg-3 col-sm-6">
+		<h4 class="footer_header">Sede</h4>
+			<div class="footer_text">
+				<p>Struttura di riferimento</p>
+				<p>Viale ABCD, 12345 - 09123 Cagliari</p>
+				<p>Persona di riferimento (es Assessore) Nome Cognome</p>
+				<p>Telefono 070 123456 - Fax 070123456</p>
+				<p>Email indirizzoemail@regione.sardegna.it</p>
+				<p>&nbsp;</p>
+				<p>Servizio</p>
+				<p>Viale ABCD, 12345 - 09123 Cagliari</p>
+				<p>Persona di riferimento (es Assessore) Nome Cognome</p>
+				<p>Telefono 070 123456 - Fax 070123456</p>
+				<p>Email indirizzoemail@regione.sardegna.it</p>
+			</div>
 	  </div>
 	  <div class="col-lg-3 col-sm-6">
 		<h4 class="footer_header">Contatti</h4>
 			<div class="footer_text">
-				<p>Voce</p>
-				<p>Voce</p>
+				<p>E' disponibile un servizio di supporto utenti</p>
+				<p>che risponde all'indirizzo</p>
+				<p>indirizzoemail@regione.sardegna.it e al numero di</p>
+				<p>telefono 070 123456789</p>
+				<p>il servizio è operativo dal lunedì al venerdì</p>
+				<p>dalle ore 8.00 alle ore 19.00</p>
 			</div>
 	  </div>
-	  <div class="col-lg-3 col-sm-6">
-		<h4 class="footer_header">Seguici</h4>
-			<div class="footer_text">
-				<p>Voce</p>
-			</div>
+	  <div class="col-lg-3 col-sm-6 last-col">
+		<h4 class="footer_header">Seguici su</h4>
+		<%= render partial: "layouts/decidim/social_media_links" %>
 	  </div>
   </div>
   <div class="row">
 	<div>
-		<%= image_pack_tag("media/images/ue.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo logo_ue" ) %>
+		<%= image_pack_tag("media/images/ue.svg", alt: "Logo Unione Europea", class: "footer_logo logo_ue", 'aria-label': "Logo Unione Europea" ) %>
 	 </div>
 	<div>
-		<%= image_pack_tag("media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo logo_ri") %>
+		<%= image_pack_tag("media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo logo_ri", 'aria-label': "Logo Repubblica Italiana") %>
 	</div>
 	<div>
-		<%= image_pack_tag("media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo logo_ras" ) %>
+		<%= image_pack_tag("media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo logo_ras", 'aria-label': "Logo Regione Autonoma della Sardegna") %>
 	</div>
 	<div>
-		<%= image_pack_tag("media/images/por.svg", alt: "Logo POR", class: "footer_logo logo_por" ) %>
+		<%= image_pack_tag("media/images/por.svg", alt: "Logo POR", class: "footer_logo logo_por", 'aria-label': "Logo POR") %>
 	</div>
 	<div>
 		<a rel="partecipa"
@@ -60,5 +81,4 @@ Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
 		 target="_blank">
 		 <%= image_pack_tag("media/images/logo_partecipa.png", alt: "Logo ParteciPa", class: "footer_logo logo_partecipa" ) %></a>
 	</div>
-	<%= render partial: "layouts/decidim/social_media_links" %>
 </div>

@@ -672,9 +672,20 @@ $datetime-bg: var(--primary);
 //FOOTER
 
 .main-footer__badge > img:nth-child(1){
-  height: 65px;
+  position: relative;
   display: inline-block;
   padding-left: 0px;
+}
+
+@media print, screen and (min-width: 64em){
+	.main-footer__badge {
+		position: relative;
+	}
+}
+
+.main-footer__badge {
+  display: block;
+  width: 280px;
 }
 
 .main-footer {
@@ -769,6 +780,14 @@ $datetime-bg: var(--primary);
 	background: $par-medium-blue;
 	padding: .5em 1em;
 	text-align: center;
+}
+
+.first-col{
+	padding-left:0 !important
+}
+
+.last-col{
+	padding-right:0 !important
 }
 
 //FIX CONTRAST
