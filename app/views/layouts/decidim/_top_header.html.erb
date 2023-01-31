@@ -15,9 +15,10 @@ Integrato header di Sardegna IT
    <div>
      <div class="row clearfix">
        <div class="top_header margin">
-			
-         <a class="institutional_link" href="http://www.regione.sardegna.it" title="Regione Autonoma della Sardegna"><%= image_pack_tag("media/images/ras_gonfalone-2021.svg", alt: "SardegnaMondo" ) %></a>
-         <a class="institutional_link" aria-label="Collegamento a sito esterno - Sito della Regione Sardegna - nuova finestra" title="Regione Autonoma della Sardegna" href="http://www.regione.sardegna.it" target="_blank">Regione Autonoma della Sardegna</a>
+         <a class="institutional_link" href="http://www.regione.sardegna.it" aria-label="Collegamento a sito esterno - Sito della Regione Sardegna - nuova finestra" title="Regione Autonoma della Sardegna" target="_blank">
+			<%= image_pack_tag("media/images/ras_gonfalone-2021.svg", alt: "SardegnaMondo" ) %>
+			Regione Autonoma della Sardegna
+		 </a>
 		   <div class="login_container">
            <!-- accedi -->
 	         <% if current_user %>
