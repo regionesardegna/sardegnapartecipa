@@ -802,7 +802,23 @@ $datetime-bg: var(--primary);
 .back-to-top-img{
 	width: 80px;
 	height: 80px;
-	color: $par-medium-blue;
+    color: $par-medium-blue;
+}
+
+.footer-social{
+	display: inline-flex;
+}
+
+.footer-social__icon .icon {
+	width: 24px;
+	height: 24px;
+	float:left;
+}
+
+.footer-social li {
+	display: inline-flex;
+	padding-left: 1rem;
+}
 
 //FIX CONTRAST
 
