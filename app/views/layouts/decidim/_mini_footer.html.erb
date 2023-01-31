@@ -32,5 +32,19 @@ Modificato per integrarsi nel footer secondo indicazioni Sardegna IT
 	  
     </div>
   </div>
-  <%= render partial: "layouts/decidim/cookie_warning" %>
 </div>
+<%= render partial: "layouts/decidim/cookie_warning" %>
+<a href="#top">
+    <div id="back-to-top">
+		<%= image_pack_tag("media/images/back-to-top.svg", class: "back-to-top-img") %>
+    </div>
+</a>
+<script>
+	window.addEventListener("scroll",function(){
+		if(window.pageYOffset > 300) {
+			document.getElementById("back-to-top").style.display="block";
+		} else {
+			document.getElementById("back-to-top").style.display="none";
+		}
+	});
+</script>

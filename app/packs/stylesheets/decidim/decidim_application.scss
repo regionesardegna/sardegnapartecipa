@@ -286,8 +286,7 @@ div.main-nav > div:nth-child(2){
     position: absolute;
     top: 0.4rem; 
     left: 0.7rem;
-    transform: none;
-								
+    transform: none;	
     opacity: 1;
   }
 				 
@@ -791,6 +790,19 @@ $datetime-bg: var(--primary);
 .last-col{
 	padding-right:0 !important
 }
+
+#back-to-top{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	display: none;
+	padding:10px;
+}
+
+.back-to-top-img{
+	width: 80px;
+	height: 80px;
+	color: $par-medium-blue;
 
 //FIX CONTRAST
 
