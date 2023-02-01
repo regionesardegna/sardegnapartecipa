@@ -232,8 +232,16 @@ div.main-nav > div:nth-child(2){
 	  margin-top: 8px;
       outline-color: var(--highlight-alternative);
     }
+	
+	&:focus::placeholder{
+	  color: $par-deep-red;
+	}
   }
-
+   
+  input::placeholder{
+	color: $par-deep-red;
+  }
+  
   .input-group-button{
     position: relative;
     height: 1px; // Fix for Safari and Firefox
@@ -267,6 +275,7 @@ div.main-nav > div:nth-child(2){
 
   &:not(:focus-within){
     button{
+	  color: $par-deep-red;
       background-color: $par-white;
       color: rgba(white, .5);
 	  height: 2rem; //matches input group button height
@@ -275,6 +284,7 @@ div.main-nav > div:nth-child(2){
   
   &:focus{
     button{
+	  color: $par-deep-red;
       background-color: $par-medium-blue;
       color: rgba(white, .5);
 	  height: 2rem; //matches input group button height
@@ -800,11 +810,24 @@ $datetime-bg: var(--primary);
 	margin-bottom: 10px;
 	float:left;
 	width:160px;
+	height:95px;
 }
 
-.logo_partecipa{
-	float:right !important;
-	padding-top: 15px;
+@media (min-width: 40em){
+	.logo_partecipa{
+		float:right !important;
+		padding-top: 25px;
+		height: auto !important;
+	}
+}
+
+@media (max-width: 39.99875em){
+	.logo_partecipa {
+		float: left !important;
+		padding-top: 20px;
+		height: auto !important;
+		padding-bottom: 20px;
+	}
 }
 
 .footer_text{
@@ -856,11 +879,10 @@ $datetime-bg: var(--primary);
 	padding-left: 1rem;
 }
 
-.cookie-warning__action .button, .cookie-warning__action {
+.cookie-bar__button {
+    background: $par-deep-red;
     margin: 0.5em 0;
-	
 }
-
 
 //FIX CONTRAST
 
