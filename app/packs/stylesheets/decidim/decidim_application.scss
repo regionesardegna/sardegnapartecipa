@@ -7,6 +7,8 @@
 // By default this is empty.
 
 @import "variables";
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,600);
+
 
 //GENERAL
 
@@ -110,6 +112,7 @@ a img + .external-link-indicator {
 		background: white;
 		color: #fff;
 		height:120px;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
@@ -118,6 +121,7 @@ a img + .external-link-indicator {
 	  display: inline-block;
 	  padding-right: 0.1rem;
 	  margin-left: 2rem;
+	  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
@@ -125,42 +129,51 @@ a img + .external-link-indicator {
 	color: white;
 	line-height: 40px;
 	text-transform: uppercase;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__user__login a:hover{
 	color: white;
 	line-height: 40px;
 	text-transform: uppercase;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__dropmenu > ul > li > a {
   color: white;
+  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__admin__link a{
   color: white; 
+  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__admin__link a:hover{
   color: white;
+  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__edit__link a{
   display:none;
+  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__edit__link a:hover{
   display:none;
+  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__user__logged {
   text-align: right;
+  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .main-nav__link a {
     display: block;
     padding: 1em 2em;
     color: white;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .main-nav__link a:hover {
@@ -168,6 +181,7 @@ a img + .external-link-indicator {
     padding: 1em 2em;
     color: white;
     text-decoration: underline;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .dropdown.menu > li.is-active > a {
@@ -224,6 +238,7 @@ div.main-nav > div:nth-child(2){
     border-radius: 4px 0 0 4px;
     transition: .3s all;
     height: 2rem; //matches input group button height
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 
     &:focus{
       color: $par-deep-red;
@@ -355,6 +370,7 @@ div.main-nav > div:nth-child(2){
 		margin-top:10px;
 		line-height: 40px;
 		color: #fff !important;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
@@ -364,6 +380,7 @@ div.main-nav > div:nth-child(2){
 		line-height: 40px;
 		color: #fff !important;
 		margin-left:20px;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
@@ -372,10 +389,13 @@ div.main-nav > div:nth-child(2){
   padding-bottom:5px;
 }
 
+.topbar__menu{
+  float: left;
+}
+
 .topbar__menu button {
-  width: 0.99em;
-  height: 0.99em;
   color: $par-medium-blue;
+ 
 }
 
 //BUTTON
@@ -716,6 +736,7 @@ $datetime-bg: var(--primary);
 		padding: 1rem 0;
 		min-height: 76px;
 		color: $par-white;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
@@ -728,6 +749,7 @@ $datetime-bg: var(--primary);
 		color: $par-white;
 		padding-left: 20px;
 		padding-right: 20px;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
@@ -755,6 +777,7 @@ $datetime-bg: var(--primary);
 	  line-height: 1em;
 	  text-transform: uppercase;
 	  vertical-align: middle;
+	  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 @media (min-width: 40em){
