@@ -319,7 +319,7 @@ div.main-nav > div:nth-child(2){
 				 
 }
 
-.icon--menu{
+.icon icon--menu{
 	display:block;
 	width: 60px;
 	heìght: 60px;
@@ -719,12 +719,6 @@ $datetime-bg: var(--primary);
     font-weight: 600;
 	margin-top: 10px;
 	margin-bottom: 0;
-}
-
-.icon{
-    width: 1.5em;
-    height: 1.5em;
-    fill: currentColor;
 }
 
 .position-right.is-transition-push {
