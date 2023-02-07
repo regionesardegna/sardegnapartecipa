@@ -226,6 +226,11 @@ div.main-nav > div:nth-child(2){
 	margin-right: 0;
 }
 
+.topbar-search-container{
+	float:right;
+	margin-left: auto;
+}
+
 .topbar__search{
   position: relative;
   max-width: 220px; // Safari fix
@@ -407,6 +412,24 @@ div.main-nav > div:nth-child(2){
   margin-top: 30px;
   width: 30px !important;
   height: 30px !important;
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:1000;
+  transition: all .4s ease;
+}
+
+.menu-bar-logo{
+  position: relative;
+  display: none;
+  padding-left: 0px;
+  padding-right: 50px;
+  height: 60px;
+  float:left;
+  transition: all .4s ease;
 }
 
 //BUTTON

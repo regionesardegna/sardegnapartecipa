@@ -45,4 +45,20 @@ Modificato per integrarsi nel footer secondo indicazioni Sardegna IT
 			document.getElementById("back-to-top").style.display="none";
 		}
 	});
+</script>	
+<script>
+	window.addEventListener("scroll",function(){
+		let stickyHeader = document.getElementById("sticky-header");
+		let sticky = stickyHeader.offsetTop;
+		
+		if(window.pageYOffset > sticky) {
+			stickyHeader.classList.add("sticky-header");
+			document.getElementById("menu-bar-logo").style.display="block";
+			document.getElementById("title-bar").style.display="none";
+		} else {
+			stickyHeader.classList.remove("sticky-header");
+			document.getElementById("menu-bar-logo").style.display="none";
+			document.getElementById("title-bar").style.display="block";
+		}
+	});
 </script>

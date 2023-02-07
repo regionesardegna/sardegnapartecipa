@@ -39,36 +39,40 @@ end
            data-set="nav-search-holder"></div>
     </div>
     <div class="off-canvas-content" data-off-canvas-content>
-      <div class="footer-separator">
+      <div id="sticky-header" class="footer-separator">
         <!--separates the footer from the rest of the page,
              creates a sticky footer-->
         <!-- Topbar -->
-        <div class="title-bar">
-          <%= link_to t("skip_button", scope: "decidim.accessibility"), url_for(anchor: "content"), class: "skip" %>
-          <% if current_organization.official_img_header.attached? %>
-              <%= link_to  current_organization.official_url, class: "logo-cityhall" do %>
-                <%= image_tag current_organization.attached_uploader(:official_img_header).path, alt: current_organization.name %>
-              <% end %>
-            <% end %>
-          <div class="row column topbar">
-            <div class="logo-wrapper">
-              <%= render partial: "layouts/decidim/logo", locals: { organization: current_organization } %>
-            </div>
-            <%= render partial: "layouts/decidim/language_chooser" %>
-            <div class="hide-for-medium topbar__menu">
-              <button type="button" data-toggle="offCanvas" aria-label="<%= t("layouts.decidim.header.navigation") %>">
-                <%= icon "menu", aria_label: t("layouts.decidim.header.navigation"), role: "img" %>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="show-for-medium" data-set="nav-holder">
-          <div class="navbar js-append">
-            <div class="row column main-nav">
-              <%= main_menu.render %><%= render partial: "layouts/decidim/topbar_search" %>
-            </div>
-		  </div>
-        </div>
+		<div>
+			<%= render partial: 'layouts/decidim/top_header' %>
+			<div class="title-bar" id="title-bar">
+				<%= link_to t("skip_button", scope: "decidim.accessibility"), url_for(anchor: "content"), class: "skip" %>
+					<% if current_organization.official_img_header.attached? %>
+						<%= link_to  current_organization.official_url, class: "logo-cityhall" do %>
+						<%= image_tag current_organization.attached_uploader(:official_img_header).path, alt: current_organization.name %>
+					<% end %>
+				<% end %>
+				<div class="row column topbar">
+					<div class="logo-wrapper">
+						<%= render partial: "layouts/decidim/logo", locals: { organization: current_organization } %>
+					</div>
+					<%= render partial: "layouts/decidim/language_chooser" %>
+					<div class="hide-for-medium topbar__menu">
+						<button type="button" data-toggle="offCanvas" aria-label="<%= t("layouts.decidim.header.navigation") %>">
+							<%= icon "menu", aria_label: t("layouts.decidim.header.navigation"), role: "img" %>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="show-for-medium" data-set="nav-holder" id="menu-bar">
+				<div class="navbar js-append">
+					<div class="row column main-nav">
+						<%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, id: "menu-bar-logo", class: "menu-bar-logo" %>
+						<%= main_menu.render %><%= render partial: "layouts/decidim/topbar_search"%>
+					</div>
+				</div>
+			</div>
+		</div>
         <main id="content">
           <%= display_flash_messages %>
           <%= yield %>
