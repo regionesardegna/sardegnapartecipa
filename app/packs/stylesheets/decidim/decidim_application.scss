@@ -410,18 +410,25 @@ div.main-nav > div:nth-child(2){
 		margin-top:10px;
 		line-height: 40px;
 		color: #fff !important;
-		margin-left:20px;
+		margin-left: 20px;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
-
-.login_container{
-	float: right;
-	padding-bottom: 5px;
-	margin-right: 20px;
+@media print, screen and (min-width: 40em){
+	.login_container{
+		float: right;
+		padding-bottom: 5px;
+	}
 }
 
+@media print, screen and (max-width: 39.99875em){
+	.login_container{
+		float: right;
+		padding-bottom: 5px;
+		margin-right: 20px;
+	}
+}
 
 .topbar__menu {
   margin-right: 0.1rem;
@@ -448,14 +455,22 @@ div.main-nav > div:nth-child(2){
   transition: all .4s ease;
 }
 
-.menu-bar-logo{
-  position: relative;
-  display: none;
-  padding-left: 0;
-  padding-right: 0;
-  width: 270px;
-  float:left;
-  transition: all .4s ease;
+@media print, screen and (min-width: 40em){
+	.menu-bar-logo{
+	  position: relative;
+	  display: none;
+	  padding-left: 0;
+	  padding-right: 0;
+	  width: 270px;
+	  float:left;
+	  transition: all .4s ease;
+	}
+}
+
+@media print, screen and (max-width: 39.99875em){
+	.menu-bar-logo{
+	  display: none;
+	}
 }
 
 //BUTTON
