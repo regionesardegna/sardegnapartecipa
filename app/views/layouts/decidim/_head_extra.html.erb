@@ -17,20 +17,23 @@ The `header_snippets` organization field will render *after* this file.
 Just copy your own version of the file under: `app/views/layouts/decidim/_head_extra.html.erb`
 
 %>
-
+<a name="top"></a>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src='https://www.googletagmanager.com/gtag/js?id=<%=ENV["GOOGLE_ANALYTICS_ID"]%>'></script>
 <script>
+  /*
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', '<%=ENV["GOOGLE_ANALYTICS_ID"]%>');
+  */
 </script>
 
 <!-- Matomo -->
 <script type="text/javascript">
+  /*
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(['trackPageView']);
@@ -42,6 +45,7 @@ Just copy your own version of the file under: `app/views/layouts/decidim/_head_e
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
+  */
 </script>
 <!-- End Matomo Code -->
 
