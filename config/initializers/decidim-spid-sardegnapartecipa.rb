@@ -106,17 +106,17 @@ Decidim::Spid.configure do |config|
 
   # Per aggiungere più AssertionConsumerService
    config.consumer_services = [
-     { 'Location' => 'https://partecipa.gov.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
-     { 'Location' => 'https://partecipa.formez.org/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
-     { 'Location' => 'https://www.ripam.cloud/api/spid/login', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
+     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
+     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
+     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
    ]
   
   # Per aggiungere più SingleLogoutService
   # ResponseLocation opzionale
    config.logout_services = [
-     { 'Location' => 'https://partecipa.gov.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://partecipa.gov.it' },
-     { 'Location' => 'https://partecipa.formez.org/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://partecipa.formez.org' },
-     { 'Location' => 'https://www.ripam.cloud/api/spid/logout', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' }
+     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://sardegnapartecipa.regione.sardegna.it' },
+     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://demo.sardegnapartecipa.regione.sardegna' },
+     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' }
    ]
   
   # Per customizzare il path del metadata
@@ -138,24 +138,8 @@ Decidim::Spid.configure do |config|
   config.attribute_service_names = [ "Decidim", "Step One Authentication" ]
   config.attribute_services = [
      [
-       { name: "spidCode" },
-       { name: "email" }
-     ],
-	 [
-       { name: "name" },
-       { name: "familyName" },
        { name: "fiscalNumber" },
-       { name: "spidCode" },
-       { name: "email" },
-       { name: "gender" },
-       { name: "dateOfBirth" },
-       { name: "placeOfBirth" },
-       { name: "registeredOffice" },
-       { name: "ivaCode" },
-       { name: "idCard" },
-       { name: "mobilePhone" },
-       { name: "address" },
-       { name: "digitalAddress" }
+       { name: "email" }
      ]
    ]
 end
