@@ -96,15 +96,22 @@ a img + .external-link-indicator {
 	.logo-wrapper img {
 		max-height: 85px;
 		v-align:middle;
-
 	}
 }
 
-@media print, screen and (max-width: 39.99875em){
+@media print, screen and (max-width: 20em) and (max-width: 39.99875em){
 	.logo-wrapper img {
 		max-height: 65px;
 		v-align:middle;
 		padding-left: 50px;
+	}
+}
+
+@media print, screen and (max-width: 19.99875em){
+	.logo-wrapper img {
+		max-height: 55px;
+		v-align:middle;
+		padding-left: 30px;
 	}
 }
 
@@ -120,9 +127,10 @@ a img + .external-link-indicator {
 
 @media print, screen and (max-width: 39.99875em){
 	.topbar__user {
+	  padding-left:0;
+	  padding-right:0;
 	  float: right;
 	  display: inline-block;
-	  padding-right: 0.1rem;
 	  margin-left:0;
 	  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
@@ -130,8 +138,6 @@ a img + .external-link-indicator {
 
 @media print, screen and (max-width: 39.99875em){
 	.topbar__user__login a{
-		
-		padding-left: 0.5rem;
 		color: white;
 		line-height: 40px;
 		text-transform: uppercase;
@@ -139,8 +145,6 @@ a img + .external-link-indicator {
 	}
 
 	.topbar__user__login a:hover{
-		
-		padding-left: 0.5rem;
 		color: white;
 		line-height: 40px;
 		text-transform: uppercase;
@@ -227,12 +231,16 @@ a img + .external-link-indicator {
 	width: 100%;
 }
 
+.logo-cityhall{
+	position: relative;
+	margin-left: auto;
+	margin-top: 15px;
+	margin-right: 0;
+}
 
 @media print, screen and (min-width: 40em){
 	.logo-cityhall img {
 	  height: 70px !important;
-	  margin-right: 90px;
-	  margin-top: -15px;
 	}
 }
 
@@ -388,7 +396,6 @@ div.main-nav > div:nth-child(2){
 }
 
 .top-header{
-  
   color: #fff;
   height: 40px;
   display: flex;
@@ -407,18 +414,31 @@ div.main-nav > div:nth-child(2){
 	.institutional_link, .institutional_link:hover {
 		line-height: 40px;
 		color: #fff !important;
+		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
-@media print, screen and (max-width: 39.99875em){
+@media print, screen and (min-width: 20em) and (max-width: 39.99875em){
 	.institutional_link, .institutional_link:hover {
 		line-height: 40px;
 		color: #fff !important;
-		//margin-left: 10px;
+		font-size: 90%;
+		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
+
+@media print, screen and (max-width: 19.99875em){
+	.institutional_link, .institutional_link:hover {
+		line-height: 40px;
+		color: #fff !important;
+		font-size: 70%;
+		margin-right: auto;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	}
+}
+
 
 @media print, screen and (min-width: 40em){
 	.login_container{
@@ -445,11 +465,22 @@ div.main-nav > div:nth-child(2){
   color: $par-medium-blue;
 }
 
-.topbar__menu > button > svg{
-  margin-top: 30px;
-  width: 30px !important;
-  height: 30px !important;
+@media print, screen and (max-width: 19.99875em){
+	.topbar__menu > button > svg{
+		margin-top: 32px;
+		width: 20px !important;
+		height: 20px !important;
+	}
 }
+
+@media print, screen and (min-width: 20em) and (max-width: 39.99875em){
+	.topbar__menu > button > svg{
+		margin-top: 30px;
+		width: 30px !important;
+		height: 30px !important;
+	}
+}
+
 
 .sticky-header {
   position: fixed;
