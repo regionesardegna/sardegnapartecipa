@@ -99,7 +99,7 @@ a img + .external-link-indicator {
 	}
 }
 
-@media print, screen and (max-width: 20em) and (max-width: 39.99875em){
+@media print, screen and (min-width: 20em) and (max-width: 39.99875em){
 	.logo-wrapper img {
 		max-height: 65px;
 		v-align:middle;
@@ -234,13 +234,13 @@ a img + .external-link-indicator {
 .logo-cityhall{
 	position: relative;
 	margin-left: auto;
-	margin-top: 15px;
+	margin-top: 10px;
 	margin-right: 0;
 }
 
 @media print, screen and (min-width: 40em){
 	.logo-cityhall img {
-	  height: 70px !important;
+	  height: 80px !important;
 	}
 }
 
@@ -496,6 +496,7 @@ div.main-nav > div:nth-child(2){
 	  display: none;
 	  padding-left: 0;
 	  padding-right: 0;
+	  margin-right: 80px;
 	  width: 200px;
 	  float:left;
 	  transition: all .4s ease;
@@ -503,6 +504,10 @@ div.main-nav > div:nth-child(2){
 }
 
 @media print, screen and (max-width: 39.99875em){
+	.menu-bar-logo-container{
+	  display: none;
+	}
+	
 	.menu-bar-logo{
 	  display: none;
 	}
@@ -527,7 +532,6 @@ div.main-nav > div:nth-child(2){
     -webkit-appearance: none;
     border: 1px solid transparent;
     border-radius: 4px;
-    transition: background-color 0.25s ease-out, color 0.25s ease-out;
     font-size: 1rem;
     line-height: 1;
     text-align: center;
@@ -539,8 +543,6 @@ div.main-nav > div:nth-child(2){
 
 .button:hover, .button:focus, .button.secondary:hover, .button.secondary:focus {
     background-color: $par-medium-blue;
-    -webkit-filter: brightness(130%);
-    filter: brightness(130%);
 }
 
 .button.hollow {
@@ -591,6 +593,15 @@ div.main-nav > div:nth-child(2){
     color: $par-medium-blue;
     display: inline-block;
 }
+
+.inline-filters button.secondary[data-toggle], a.secondary, abbr.secondary, acronym.secondary, b.secondary, bdo.secondary, big.secondary, br.secondary, button.secondary, cite.secondary, code.secondary, dfn.secondary, em.secondary, i.secondary, img.secondary, input.secondary, kbd.secondary, label.secondary, map.secondary, object.secondary, q.secondary, samp.secondary, script.secondary, select.secondary, small.secondary, span.secondary, strong.secondary, sub.secondary, sup.secondary, textarea.secondary, time.secondary, tt.secondary, var.secondary {
+    color: $par-medium-blue;;
+}
+
+.button--icon.hollow.secondary .icon-wrap, .button--icon.secondary.meeting-polls__button {
+  border-right: 1px solid $par-deep-red;
+}
+
 
 //CARDS
 
@@ -750,16 +761,16 @@ $datetime-bg: var(--primary);
 @media print, screen and (min-width: 40em){
 	.process-header__container {
 		display: flex;
-		align:bottom;
 	}
 }
 
 @media print, screen and (max-width: 39.99875em){
 	.process-header__container {
 		display: flex;
-		align:bottom;
+		justify-content: center;
 		margin:0;
 		padding:0;
+		position: relative;
 	}
 }
 
@@ -776,24 +787,28 @@ $datetime-bg: var(--primary);
 
 @media print, screen and (max-width: 39.99875em){
 	.process-header__inner_inner{
-		height: 65%;
-		width: 100%;
+		height: auto;
+		min-height: 65%;
+		width: 50%;
 		background: $par-white;
 		align-items: bottom;
 		position: relative;
 		display: flex;
 		justify-content: start;
 		align-self: flex-end;
-		border-top-left-radius : 24px;
-		border-top-right-radius : 24px;
+		border-top-left-radius : 12px;
+		border-top-right-radius : 12px;
 		margin-top: 95px;
 		flex: auto;
+		border: solid 1px green;
+		flex-direction: column;
 	}
 }
 
 @media print, screen and (min-width: 40em){
 	.process-header__inner_inner{
-		height: 55%;
+		height: auto;
+		min-height: 55%;
 		background: $par-white;
 		align-items: bottom;
 		position: relative;
@@ -826,7 +841,7 @@ $datetime-bg: var(--primary);
 		margin-top: 0;
 		min-width: 230px;
 		min-height: 90px;
-		font-size: 90%;
+		//font-size: 90%;
 	}
 }
 
@@ -840,14 +855,17 @@ $datetime-bg: var(--primary);
 @media print, screen and (max-width: 39.99875em){
 	.process-header__info {
 		padding: 0;
-		border: solid 2px pink;
 		width: auto !important;
+        height: fit-content;
+		flex-direction: column;
 	}
 }
 
 .process-header {
-  background-image: linear-gradient(to right, rgba(26, 24, 29, 0.8) 50%, var(--primary) 50%);
   height: 250px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 @media print, screen and (min-width: 40em){
@@ -857,7 +875,6 @@ $datetime-bg: var(--primary);
 		padding: 0.4rem;
 		margin-top: 1rem;
 		margin-right: 0px;
-		margin-bottom: 1.5rem;
 		margin-left: 0px;
 	}
 }
@@ -868,9 +885,9 @@ $datetime-bg: var(--primary);
 		padding: 0.4rem;
 		margin-top: 0.5rem;
 		margin-right: 0px;
-		margin-bottom: 2rem;
 		margin-left: 0px;
-		float: right;
+		float: left;
+		width: 100%;
 	}
 }
 @media print, screen and (min-width: 40em){
@@ -894,6 +911,15 @@ $datetime-bg: var(--primary);
 		font-weight: 600;
 		margin-top: 5px;
 		margin-bottom: 0;
+	}
+}
+
+@media print, screen and (max-width: 39.99875em){
+	.column, .columns {
+		/* padding-right: 0.625rem; */
+		/* padding-left: 0.625rem; */
+		width: 100%;
+		float: left;
 	}
 }
 
@@ -974,7 +1000,7 @@ div.main__footer__nav{
     background: $par-deep-red;
 }
 
-.mini-footer a, .main-footer a {
+.mini-footer a, .mini-footer a:focus, .mini-footer a:hover, .main-footer a, .main-footer a:focus, .main-footer a:hover {
 	color: $par-white; 
 }
 
@@ -1070,7 +1096,7 @@ div.main__footer__nav{
 }
 
 .cookie-warning {
-	background: $par-medium-blue;
+	background: #505050; //Attenzione modificare con colore palette
 	padding: .5em 1em;
 	text-align: center;
 }
@@ -1092,9 +1118,8 @@ div.main__footer__nav{
 }
 
 .back-to-top-img{
-	width: 80px;
-	height: 80px;
-    color: $par-medium-blue;
+	width: 55px;
+	height: 55px;
 }
 
 .footer-social{
@@ -1125,6 +1150,12 @@ div.main__footer__nav{
 }
 
 //FIX CONTRAST
+
+.hero-heading {
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  text-shadow: 8px 8px 8px black;
+}
 
 .phase-current {
     font-weight: normal;

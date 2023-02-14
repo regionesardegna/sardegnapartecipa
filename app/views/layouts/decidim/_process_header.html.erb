@@ -9,14 +9,11 @@ You should have received a copy of the GNU Affero General Public License along w
 
 Modificato per integrare la parte relativa al sottotitolo del processo
 %>
-<div class="process-header" style="">
+<div class="process-header" style="background-image:url('<%= current_participatory_space.attached_uploader(:banner_image).path %>');">
   <div class="process-header__inner">
-    <div class="row column process-header__main"
-        style="background-image:url('<%= current_participatory_space.attached_uploader(:banner_image).path %>');">
-    </div>
     <div class="process-header__container row collapse column">
 		<div class="process-header__inner_inner">
-		  <div class="columns mediumlarge-8 process-header__info">
+		  <div class="columns process-header__info">
 			<div>
 				<div class="process-header__subtitle">
 					<h2 class="heading-small">
