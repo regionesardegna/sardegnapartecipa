@@ -102,15 +102,13 @@ a img + .external-link-indicator {
 @media print, screen and (min-width: 20em) and (max-width: 39.99875em){
 	.logo-wrapper img {
 		max-height: 65px;
-		v-align:middle;
-		padding-left: 50px;
+		padding-left: 40px;
 	}
 }
 
 @media print, screen and (max-width: 19.99875em){
 	.logo-wrapper img {
 		max-height: 55px;
-		v-align:middle;
 		padding-left: 30px;
 	}
 }
@@ -419,21 +417,21 @@ div.main-nav > div:nth-child(2){
 	}
 }
 
-@media print, screen and (min-width: 20em) and (max-width: 39.99875em){
+@media print, screen and (min-width: 25em) and (max-width: 39.99875em){
 	.institutional_link, .institutional_link:hover {
 		line-height: 40px;
 		color: #fff !important;
-		font-size: 90%;
+		font-size: 80%;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
-@media print, screen and (max-width: 19.99875em){
+@media print, screen and (max-width: 24.99875em){
 	.institutional_link, .institutional_link:hover {
 		line-height: 40px;
 		color: #fff !important;
-		font-size: 70%;
+		font-size: 60%;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
@@ -465,19 +463,19 @@ div.main-nav > div:nth-child(2){
   color: $par-medium-blue;
 }
 
-@media print, screen and (max-width: 19.99875em){
+@media print, screen and (max-width: 24.99875em){
 	.topbar__menu > button > svg{
-		margin-top: 32px;
+		margin-top: 38px;
 		width: 20px !important;
 		height: 20px !important;
 	}
 }
 
-@media print, screen and (min-width: 20em) and (max-width: 39.99875em){
+@media print, screen and (min-width: 25em) and (max-width: 39.99875em){
 	.topbar__menu > button > svg{
 		margin-top: 30px;
-		width: 30px !important;
-		height: 30px !important;
+		width: 25px !important;
+		height: 25px !important;
 	}
 }
 
@@ -690,13 +688,13 @@ $datetime-bg: var(--primary);
 //HERO
 
 .hero::after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-	background-color: transparent;
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(26, 24, 29, 0.6);
 }
 
 .subhero {
@@ -712,13 +710,17 @@ $datetime-bg: var(--primary);
 
 // PROCESS HEADER
 
-
-.process-header {
-    background-image: linear-gradient(to right, rgba(26, 24, 29, 0.8) 50%, var(--primary) 50%);
-    background-image: linear-gradient(to right, rgba(26, 24, 29, 0.8) 50%, var(--primary) 50%);
-    height: 250px;
+@media print, screen and (min-width: 40em){
+	.process-header {
+		height: 250px;
+	}
 }
 
+@media print, screen and (max-width: 39.99875em){
+	.process-header {
+		min-height: 550px;
+	}
+}
 
 .process-header__main::after {
     content: "";
@@ -788,19 +790,14 @@ $datetime-bg: var(--primary);
 @media print, screen and (max-width: 39.99875em){
 	.process-header__inner_inner{
 		height: auto;
-		min-height: 65%;
-		width: 50%;
 		background: $par-white;
-		align-items: bottom;
 		position: relative;
 		display: flex;
 		justify-content: start;
 		align-self: flex-end;
 		border-top-left-radius : 12px;
 		border-top-right-radius : 12px;
-		margin-top: 95px;
 		flex: auto;
-		border: solid 1px green;
 		flex-direction: column;
 	}
 }
@@ -818,7 +815,6 @@ $datetime-bg: var(--primary);
 		border-top-left-radius : 24px;
 		border-top-right-radius : 24px;
 		padding-left: 0.5rem;
-		margin-top: 95px;
 		flex: auto;
 	}
 }
@@ -841,7 +837,6 @@ $datetime-bg: var(--primary);
 		margin-top: 0;
 		min-width: 230px;
 		min-height: 90px;
-		//font-size: 90%;
 	}
 }
 
@@ -1096,7 +1091,7 @@ div.main__footer__nav{
 }
 
 .cookie-warning {
-	background: #505050; //Attenzione modificare con colore palette
+	background: par-dark-grey;
 	padding: .5em 1em;
 	text-align: center;
 }
