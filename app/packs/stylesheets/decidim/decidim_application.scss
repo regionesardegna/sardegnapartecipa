@@ -25,12 +25,6 @@ a {
 	font-weight: 600;
 }
 
-.cookie-warning {
-    background: $par-white;
-    padding: .5em 1em;
-    text-align: center;
-}
-
 .main-nav {
 	display: flex;
     align-items: center;
@@ -494,7 +488,6 @@ div.main-nav > div:nth-child(2){
 	  display: none;
 	  padding-left: 0;
 	  padding-right: 0;
-	  margin-right: 80px;
 	  width: 200px;
 	  float:left;
 	  transition: all .4s ease;
@@ -1091,7 +1084,7 @@ div.main__footer__nav{
 }
 
 .cookie-warning {
-	background: par-dark-grey;
+	background: $par-dark-grey;
 	padding: .5em 1em;
 	text-align: center;
 }
@@ -1106,7 +1099,7 @@ div.main__footer__nav{
 
 #back-to-top{
 	position: fixed;
-	bottom: 0px;
+	bottom: 50px;
 	right: 0px;
 	display: none;
 	padding:10px;
