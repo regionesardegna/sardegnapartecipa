@@ -189,6 +189,8 @@ a img + .external-link-indicator {
 .topbar__user__logged {
   text-align: right;
   font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+  display: block;
+  padding: 0;
 }
 
 .main-nav__link a {
@@ -415,9 +417,23 @@ div.main-nav > div:nth-child(2){
 	.institutional_link, .institutional_link:hover {
 		line-height: 40px;
 		color: #fff !important;
-		font-size: 80%;
+		font-size: 0%;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	}
+	
+	.topbar__user__logged {
+		text-align: right;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+		display: block;
+		padding: 0;
+		font-size: 80%;
+		v-align: meddle;
+	}
+	
+	.dropdown.menu > li.is-dropdown-submenu-parent > a {
+		position: relative;
+		padding-right:0;
 	}
 }
 
@@ -425,9 +441,23 @@ div.main-nav > div:nth-child(2){
 	.institutional_link, .institutional_link:hover {
 		line-height: 40px;
 		color: #fff !important;
-		font-size: 60%;
+		font-size: 0%;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	}
+	
+	.topbar__user__logged {
+		text-align: right;
+		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+		display: block;
+		padding: 0;
+		font-size: 80%;
+		v-align: meddle;
+	}
+	
+	.dropdown.menu > li.is-dropdown-submenu-parent > a {
+		position: relative;
+		padding-right:0;
 	}
 }
 
@@ -843,7 +873,7 @@ $datetime-bg: var(--primary);
 @media print, screen and (max-width: 39.99875em){
 	.process-header__info {
 		padding: 0;
-		width: auto !important;
+		width: 100% !important;
         height: fit-content;
 		flex-direction: column;
 	}
