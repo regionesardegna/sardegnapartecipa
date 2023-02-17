@@ -114,9 +114,9 @@ Decidim::Spid.configure do |config|
   # Per aggiungere più SingleLogoutService
   # ResponseLocation opzionale
    config.logout_services = [
-     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://sardegnapartecipa.regione.sardegna.it' },
-     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://demo.sardegnapartecipa.regione.sardegna' },
-     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' }
+     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT', 'ResponseLocation' => 'https://sardegnapartecipa.regione.sardegna.it' },
+     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT', 'ResponseLocation' => 'https://demo.sardegnapartecipa.regione.sardegna' },
+     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' }
    ]
   
   # Per customizzare il path del metadata

@@ -89,21 +89,18 @@ a img + .external-link-indicator {
 @media print, screen and (min-width: 40em){
 	.logo-wrapper img {
 		max-height: 85px;
-		v-align:middle;
 	}
 }
 
-@media print, screen and (min-width: 20em) and (max-width: 39.99875em){
+@media print, screen and (min-width: 25em) and (max-width: 39.99875em){
 	.logo-wrapper img {
 		max-height: 65px;
-		padding-left: 40px;
 	}
 }
 
-@media print, screen and (max-width: 19.99875em){
+@media print, screen and (max-width: 24.99875em){
 	.logo-wrapper img {
 		max-height: 55px;
-		padding-left: 30px;
 	}
 }
 
@@ -114,6 +111,18 @@ a img + .external-link-indicator {
 		color: #fff;
 		height:120px;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	}
+}
+
+@media print, screen and (max-width: 39.99875em){
+	.topbar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.topbar > div.logo-wrapper {
+		flex: none;
 	}
 }
 
@@ -131,14 +140,18 @@ a img + .external-link-indicator {
 @media print, screen and (max-width: 39.99875em){
 	.topbar__user__login a{
 		color: white;
-		line-height: 40px;
+		//line-height: 40px;
+		font-size: 12px;
+		font-weight: 600;
 		text-transform: uppercase;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 
 	.topbar__user__login a:hover{
 		color: white;
-		line-height: 40px;
+		//line-height: 40px;
+		font-size: 12px;
+		font-weight: 600;
 		text-transform: uppercase;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
@@ -147,19 +160,37 @@ a img + .external-link-indicator {
 @media print, screen and (min-width: 40em){
 	.topbar__user__login a{	
 		color: white;
-		line-height: 40px;
+		//line-height: 40px;
 		text-transform: uppercase;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 
 	.topbar__user__login a:hover{
 		color: white;
-		line-height: 40px;
+		//line-height: 40px;
 		text-transform: uppercase;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 }
 
+.topbar__dropmenu {
+  margin-left:0;
+}
+
+@media print, screen and (max-width: 39.99875em){
+	.topbar__notifications, .topbar__conversations {
+		margin-right: 0;
+		vertical-align: -4px;
+	}
+}
+
+@media print, screen and (max-width: 39.99875em){
+	.menu a, .menu .button, .menu .meeting-polls__button {
+		text-decoration: none;
+		display: block;
+		line-height: 1;
+	}
+}
 
 .topbar__dropmenu > ul > li > a {
   color: white;
@@ -238,9 +269,16 @@ a img + .external-link-indicator {
 	}
 }
 
-.img-gonfalone{
-	width: 35px;
-	height: 35px;
+@media print, screen and (min-width: 40em){
+	.img-gonfalone{
+		height: 28px;
+	}
+}
+
+@media print, screen and (max-width: 39.99875em){
+	.img-gonfalone{
+		height: 28px;
+	}
 }
 
 @media print, screen and (max-width: 39.99875em){
@@ -249,6 +287,9 @@ a img + .external-link-indicator {
 	}
 }
 
+.img-user-icon{
+	height: 24px;
+}
 
 /*
 Sposta la Searchbar a destra
@@ -389,24 +430,35 @@ div.main-nav > div:nth-child(2){
   background-color: $par-medium-blue;
 }
 
-.top-header{
-  color: #fff;
-  height: 40px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+@media print, screen and (min-width: 40em){
+	.top-header{
+	  color: #fff;
+	  height: 28px;
+	  line-height: 28px;
+	  display: flex;
+	  width: 100%;
+	  justify-content: space-between;
+	  flex-direction: row;
+	  align-items: center;
+	}
 }
 
-.preheader img {
-  height: 32px;
-  max-height: 32px;
-  padding: 0;
-  line-height: 40px;
+@media print, screen and (max-width: 39.99875em){
+	.top-header{
+	  color: #fff;
+	  height: 40px;
+	  display: flex;
+	  width: 100%;
+	  justify-content: space-between;
+	  flex-direction: row;
+	  align-items: center;
+	}
 }
 
 @media print, screen and (min-width: 40em){
-	.institutional_link, .institutional_link:hover {
-		line-height: 40px;
+	.institutional-link, .institutional-link:hover {
+		font-size: 14px;
+		font-weight: 600;
 		color: #fff !important;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -414,10 +466,10 @@ div.main-nav > div:nth-child(2){
 }
 
 @media print, screen and (min-width: 25em) and (max-width: 39.99875em){
-	.institutional_link, .institutional_link:hover {
-		line-height: 40px;
+	.institutional-link, .institutional-link:hover {
 		color: #fff !important;
-		font-size: 0%;
+		font-size: 12px;
+		font-weight: 600;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
@@ -427,8 +479,7 @@ div.main-nav > div:nth-child(2){
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 		display: block;
 		padding: 0;
-		font-size: 80%;
-		v-align: meddle;
+		font-size: 12px;
 	}
 	
 	.dropdown.menu > li.is-dropdown-submenu-parent > a {
@@ -438,10 +489,10 @@ div.main-nav > div:nth-child(2){
 }
 
 @media print, screen and (max-width: 24.99875em){
-	.institutional_link, .institutional_link:hover {
-		line-height: 40px;
+	.institutional-link, .institutional-link:hover {
 		color: #fff !important;
-		font-size: 0%;
+		font-size: 12px;
+		font-weight: 600;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
@@ -451,7 +502,7 @@ div.main-nav > div:nth-child(2){
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 		display: block;
 		padding: 0;
-		font-size: 80%;
+		font-size: 12px;
 		v-align: meddle;
 	}
 	
@@ -465,14 +516,18 @@ div.main-nav > div:nth-child(2){
 @media print, screen and (min-width: 40em){
 	.login_container{
 		margin-left: auto;
+		font-size: 16px;
+		font-weight: bold;
 	}
 }
 
 @media print, screen and (max-width: 39.99875em){
 	.login_container{
-		float: right;
-		padding-bottom: 5px;
-		margin-right: 20px;
+		float: none;
+		padding: 0;
+		margin: 0;
+		font-size: 12px;
+		font-weight: bold;
 	}
 }
 
@@ -508,7 +563,7 @@ div.main-nav > div:nth-child(2){
   position: fixed;
   top: 0;
   width: 100%;
-  z-index:1000;
+  z-index: 1000;
   transition: all .4s ease;
 }
 
@@ -934,8 +989,6 @@ $datetime-bg: var(--primary);
 
 @media print, screen and (max-width: 39.99875em){
 	.column, .columns {
-		/* padding-right: 0.625rem; */
-		/* padding-left: 0.625rem; */
 		width: 100%;
 		float: left;
 	}
@@ -1048,7 +1101,6 @@ div.main__footer__nav{
 	 padding-left: 0 !important;
   }
 }
-
 
 @media (min-width: 40em){
   .col-lg-3 {

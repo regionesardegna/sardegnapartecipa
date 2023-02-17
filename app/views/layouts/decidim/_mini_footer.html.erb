@@ -56,10 +56,29 @@ Modificato per integrarsi nel footer secondo indicazioni Sardegna IT
 				stickyHeader.classList.add("sticky-header");
 				document.getElementById("menu-bar-logo").style.display="block";
 				document.getElementById("title-bar").style.display="none";
+				document.getElementById("img-user-icon").style.display="none";
+				document.getElementById("institutional-link").style.fontSize = "12px";
+				document.getElementById("img-gonfalone").setAttribute("style","height:24px");
 			} else {
 				stickyHeader.classList.remove("sticky-header");
 				document.getElementById("menu-bar-logo").style.display="none";
 				document.getElementById("title-bar").style.display="block";
+				document.getElementById("img-user-icon").style.display="inline-block";
+				document.getElementById("institutional-link").style.fontSize = "14px";
+				document.getElementById("img-gonfalone").setAttribute("style","height:28px");
+			}
+		}else{
+			if(window.pageYOffset > sticky){
+				stickyHeader.classList.add("sticky-header");
+				document.getElementById("top-header").setAttribute("style","height:28px");
+				document.getElementById("img-user-icon").style.display="none";
+				document.getElementById("img-gonfalone").setAttribute("style","height:24px");
+				
+			} else {
+				stickyHeader.classList.remove("sticky-header");
+				document.getElementById("top-header").setAttribute("style","height:40px");
+				document.getElementById("img-user-icon").style.display="inline-block";
+				document.getElementById("img-gonfalone").setAttribute("style","height:28px");
 			}
 		}
 	});

@@ -11,9 +11,9 @@ Integrato header di Sardegna IT
 %>
 <!-- Fascia Appartenenza -->
 <div class="blue">
-	<div class="top-header row column">
-		<a class="institutional_link" href="http://www.regione.sardegna.it" aria-label="Collegamento a sito esterno - Sito della Regione Sardegna - nuova finestra" title="Regione Autonoma della Sardegna" target="_blank">
-			<%= image_pack_tag("media/images/ras_gonfalone-2021.svg", alt: "SardegnaMondo", class: "img-gonfalone") %>
+	<div class="top-header row column" id="top-header">
+		<a class="institutional-link" id="institutional-link" href="http://www.regione.sardegna.it" aria-label="Collegamento a sito esterno - Sito della Regione Sardegna - nuova finestra" title="Regione Autonoma della Sardegna" target="_blank">
+			<%= image_pack_tag("media/images/ras_gonfalone-2021.svg", alt: "SardegnaMondo", class: "img-gonfalone", id: "img-gonfalone") %>
 			Regione Autonoma della Sardegna
 		</a>
 		<div class="login_container">
@@ -51,7 +51,10 @@ Integrato header di Sardegna IT
 						<% if current_organization.sign_up_enabled? %>
 							<%= link_to t("layouts.decidim.header.sign_up"), decidim.new_user_registration_path, class: "sign-up-link" %>
 						<% end %>
-						<%= link_to t("layouts.decidim.header.sign_in"), decidim.new_user_session_path, class: "sign-in-link" %>
+						<%= link_to decidim.new_user_session_path, class: "sign-in-link" do %>
+							<%= t("layouts.decidim.header.sign_in") %>
+							<%= image_pack_tag("media/images/icon-login.svg", alt: "User", class: "img-user-icon", id: "img-user-icon") %>
+						<% end %>
 					</div>
 				</div>
 			<% end %>
