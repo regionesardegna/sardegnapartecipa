@@ -204,6 +204,14 @@ GIT
       ruby-saml (~> 1.14.0)
 
 GIT
+  remote: https://github.com/kapusons/decidim-module-proposal_moderation
+  revision: 1fe071091007fb65812022463e9a2b5252e7868b
+  specs:
+    decidim-proposal_moderation (0.25.2)
+      decidim-core (= 0.25.2)
+      deface (= 1.9.0)
+
+GIT
   remote: https://github.com/mainio/decidim-module-term_customizer
   revision: 1d20451c56b7809cf0d509bbb4d0ac63d4791c8c
   branch: release/0.25-stable
@@ -872,6 +880,7 @@ DEPENDENCIES
   decidim-decidim_awesome
   decidim-dev!
   decidim-privacy!
+  decidim-proposal_moderation!
   decidim-spid-cie!
   decidim-templates!
   decidim-term_customizer!

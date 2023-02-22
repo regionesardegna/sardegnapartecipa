@@ -135,7 +135,7 @@ Decidim::Spid.configure do |config|
   # In caso di più AttributeConsumingService
   # Attenzione: l'ordinamento è fondamentale per associare il giusto nome agli attributi specificati in seguito.
   # Obbligatorio email.
-  config.attribute_service_names = [ "Decidim", "Step One Authentication" ]
+  config.attribute_service_names = ["Decidim"]
   config.attribute_services = [
      [
        { name: "fiscalNumber" },
@@ -143,3 +143,60 @@ Decidim::Spid.configure do |config|
      ]
    ]
 end
+=begin
+Decidim::Spid::Settings::Sso.class_eval do
+	  private
+
+	  def self.saml_bindings
+		{
+		  redirect: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT'
+		}
+	  end
+end
+
+if RUBY_VERSION < '1.9'
+  require 'uuid'
+else
+  require 'securerandom'
+end
+
+require "openssl"
+
+module OneLogin
+  module RubySaml
+
+    # SAML2 Auxiliary class
+    
+    class Utils
+      @@uuid_generator = UUID.new if RUBY_VERSION < '1.9'
+      
+      BINDINGS.dup
+
+      BINDINGS = { :post => "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST".dup.freeze,
+                   :redirect => "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT".dup.freeze }.freeze
+      DSIG.dup
+	  DSIG = "http://www.w3.org/2000/09/xmldsig#".freeze
+      XENC.dup
+	  XENC = "http://www.w3.org/2001/04/xmlenc#".freeze
+      DURATION_FORMAT.dup
+	  DURATION_FORMAT = %r(^
+        (-?)P                       # 1: Duration sign
+        (?:
+          (?:(\d+)Y)?               # 2: Years
+          (?:(\d+)M)?               # 3: Months
+          (?:(\d+)D)?               # 4: Days
+          (?:T
+            (?:(\d+)H)?             # 5: Hours
+            (?:(\d+)M)?             # 6: Minutes
+            (?:(\d+(?:[.,]\d+)?)S)? # 7: Seconds
+          )?
+          |
+          (\d+)W                    # 8: Weeks
+        )
+      $)x.freeze
+      UUID_PREFIX = '_'
+	
+    end
+  end
+end
+=end
