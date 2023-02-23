@@ -78,6 +78,12 @@ a img + .external-link-indicator {
    display:none;
 }
 
+.link {
+    cursor: pointer;
+    color: $par-medium-blue;
+    font-weight: 600;
+}
+
 //NAVBAR
 
 @media screen and (max-width: 39.99875em){
