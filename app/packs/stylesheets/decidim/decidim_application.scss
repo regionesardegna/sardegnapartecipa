@@ -108,7 +108,7 @@ a img + .external-link-indicator {
 @media print, screen and (min-width: 40em){
 	.title-bar {
 		padding: 1rem 0.5rem;
-		background: white;
+		background: $par-white;
 		color: #fff;
 		height:120px;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -140,7 +140,7 @@ a img + .external-link-indicator {
 
 @media print, screen and (max-width: 39.99875em){
 	.topbar__user__login a{
-		color: white;
+		color: $par-white;
 		font-size: 12px;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -148,7 +148,7 @@ a img + .external-link-indicator {
 	}
 
 	.topbar__user__login a:hover{
-		color: white;
+		color: $par-white;
 		font-size: 12px;
 		font-weight: 600;
 		text-transform: uppercase;
@@ -158,13 +158,13 @@ a img + .external-link-indicator {
 
 @media print, screen and (min-width: 40em){
 	.topbar__user__login a{	
-		color: white;
+		color: $par-white;
 		text-transform: uppercase;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 
 	.topbar__user__login a:hover{
-		color: white;
+		color: $par-white;
 		text-transform: uppercase;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
@@ -190,7 +190,7 @@ a img + .external-link-indicator {
 }
 
 .topbar__dropmenu > ul > li > a {
-  color: white;
+  color: $par-white;
   font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
@@ -200,13 +200,13 @@ a img + .external-link-indicator {
 
 .topbar__admin__link a{
   margin-top: 5px;
-  color: white; 
+  color: $par-white; 
   font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__admin__link a:hover{
   margin-top: 5px;
-  color: white;
+  color: $par-white;
   font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
@@ -230,14 +230,14 @@ a img + .external-link-indicator {
 .main-nav__link a {
     display: block;
     padding: 1em 2em;
-    color: white;
+    color: $par-white;
 	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .main-nav__link a:hover {
     display: block;
     padding: 1em 2em;
-    color: white;
+    color: $par-white;
     text-decoration: underline;
 	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
@@ -249,7 +249,7 @@ a img + .external-link-indicator {
 
 .title-bar {
     padding: 1rem 0.5rem;
-    background: white;
+    background: $par-white;
     color: #fff;
 }
 
@@ -676,7 +676,7 @@ div.main-nav > div:nth-child(2){
 }
 
 .inline-filters button.secondary[data-toggle], a.secondary, abbr.secondary, acronym.secondary, b.secondary, bdo.secondary, big.secondary, br.secondary, button.secondary, cite.secondary, code.secondary, dfn.secondary, em.secondary, i.secondary, img.secondary, input.secondary, kbd.secondary, label.secondary, map.secondary, object.secondary, q.secondary, samp.secondary, script.secondary, select.secondary, small.secondary, span.secondary, strong.secondary, sub.secondary, sup.secondary, textarea.secondary, time.secondary, tt.secondary, var.secondary {
-    color: $par-medium-blue;;
+    color: $par-white;
 }
 
 .button--icon.hollow.secondary .icon-wrap, .button--icon.secondary.meeting-polls__button {
@@ -796,12 +796,14 @@ $datetime-bg: var(--primary);
 @media print, screen and (min-width: 40em){
 	.process-header {
 		height: 250px;
+		background-repeat: no-repeat;
 	}
 }
 
 @media print, screen and (max-width: 39.99875em){
 	.process-header {
 		min-height: 550px;
+		background-repeat: no-repeat;
 	}
 }
 
@@ -1328,8 +1330,8 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h4 small, .h4 sma
     text-transform: capitalize;
 }
 
-a.muted, abbr.muted, acronym.muted, b.muted, bdo.muted, big.muted, br.muted, button.muted, cite.muted, code.muted, dfn.muted, em.muted, i.muted, img.muted, input.muted, kbd.muted, label.muted, map.muted, object.muted, q.muted, samp.muted, script.muted, select.muted, .inline-filters button.muted[data-toggle], small.muted, span.muted, strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.muted {
-    color: $par-dark-grey;
+a.button.muted, a.muted, abbr.muted, acronym.muted, b.muted, bdo.muted, big.muted, br.muted, button.muted, cite.muted, code.muted, dfn.muted, em.muted, i.muted, img.muted, input.muted, kbd.muted, label.muted, map.muted, object.muted, q.muted, samp.muted, script.muted, select.muted, .inline-filters button.muted[data-toggle], small.muted, span.muted, strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.muted {
+    color: white;
 }
 
 //SOCIAL LOGIN
