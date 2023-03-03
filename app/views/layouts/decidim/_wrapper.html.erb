@@ -51,7 +51,7 @@ end
 						<%= link_to t("skip_button", scope: "decidim.accessibility"), url_for(anchor: "content"), class: "skip" %>
 						<% if current_organization.official_img_header.attached? %>
 							<%= link_to  current_organization.official_url, class: "logo-cityhall" do %>
-								<%= image_tag current_organization.attached_uploader(:official_img_header).path, alt: current_organization.name %>
+								<%= image_tag current_organization.attached_uploader(:official_img_header).path, alt: "Gonfalone Sardegna", 'aria-label': "Gonfalone Sardegna",  role: "img" %>
 							<% end %>
 						<% end %>
 					</div>
@@ -66,7 +66,7 @@ end
 			<div class="show-for-medium" data-set="nav-holder" id="menu-bar">
 				<div class="navbar js-append">
 					<div class="row column main-nav">
-						<a href="/"><%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, id: "menu-bar-logo", class: "menu-bar-logo" %></a>
+						<a href="/"><%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, 'aria-label': current_organization.name, id: "menu-bar-logo", class: "menu-bar-logo", role: "img" %></a>
 						<%= main_menu.render %><%= render partial: "layouts/decidim/topbar_search"%>
 					</div>
 				</div>

@@ -33,9 +33,9 @@ Modificato per integrarsi nel footer secondo indicazioni Sardegna IT
 </div>
 <%= render partial: "layouts/decidim/cookie_warning" %>
 <a href="#top">
-    <div id="back-to-top">
-		<%= image_pack_tag("media/images/back-to-top.svg", class: "back-to-top-img") %>
-    </div>
+    <div id="back-to-top">		
+        <%= external_icon "media/images/back-to-top.svg", class: "back-to-top-img", alt: "Torna su", 'aria-label': "Torna su", role: "img" %>    
+	</div>
 </a>
 <script>
 	window.addEventListener("scroll",function(){

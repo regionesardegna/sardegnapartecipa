@@ -13,7 +13,7 @@ Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
   <div class="row">
 	  <% if current_organization.official_img_footer.attached? %>
 		<%= link_to current_organization.official_url, class: "main-footer__badge" do %>
-		  <%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name %>
+		  <%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, 'aria-label': current_organization.name, role: "img" %>
 		<% end %>
 	  <% end %>
   </div>
@@ -55,21 +55,21 @@ Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
   </div>
   <div class="row">
 	<div>
-		<%= image_pack_tag("media/images/ue.svg", alt: "Logo Unione Europea", class: "footer_logo logo_ue", 'aria-label': "Logo Unione Europea" ) %>
+		<%= external_icon "media/images/ue.svg", alt: "Logo Unione Europea", class: "footer_logo", 'aria-label': "Logo Unione Europea", role: "img" %>
 	 </div>
 	<div>
-		<%= image_pack_tag("media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo logo_ri", 'aria-label': "Logo Repubblica Italiana") %>
+		<%= external_icon "media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo", 'aria-label': "Logo Repubblica Italiana", role: "img" %>
 	</div>
 	<div>
-		<%= image_pack_tag("media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo logo_ras", 'aria-label': "Logo Regione Autonoma della Sardegna") %>
+		<%= external_icon "media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo", 'aria-label': "Logo Regione Autonoma della Sardegna", role: "img" %>
 	</div>
 	<div>
-		<%= image_pack_tag("media/images/por.svg", alt: "Logo POR", class: "footer_logo logo_por", 'aria-label': "Logo POR") %>
+		<%= external_icon "media/images/por.svg", alt: "Logo POR FESR", class: "footer_logo", 'aria-label': "Logo POR", role: "img" %>
 	</div>
 	<div>
 		<a rel="partecipa"
 		 href="https://github.com/dipartimentofunzionepubblica/partecipa"
 		 target="_blank">
-		 <%= image_pack_tag("media/images/logo_partecipa.png", alt: "Logo ParteciPa", class: "footer_logo logo_partecipa" ) %></a>
+		 <%= image_pack_tag("media/images/logo_partecipa.png", alt: "Logo ParteciPa", 'aria-label': "Logo ParteciPa", class: "footer_logo logo_partecipa", role: "img") %></a>
 	</div>
 </div>
