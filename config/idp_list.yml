@@ -5,6 +5,11 @@ development:
       validate_cert: false
       entityName: demo
       logo: spid-idp-dummy.svg
+    demo2:
+      metadata_url: 'https://demo.spid.gov.it/validator/metadata.xml'
+      validate_cert: false
+      entityName: demo
+      logo: spid-idp-dummy.svg
 staging:
   spid:
     demo:

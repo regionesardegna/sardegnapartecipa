@@ -1,9 +1,14 @@
-# Copyright (C) 2022 Formez PA
+# Copyright (C) 2023 Sardegna IT
+#
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Crea il metadata SP 
 
 # frozen_string_literal: true
+
+require "#{Rails.root}/lib/decidim/spid/validations.rb"
 
 Decidim::Spid.configure do |config|
   # Definisce il nome del tenant. Solo lettere minuscole e underscores sono permessi.
@@ -40,10 +45,10 @@ Decidim::Spid.configure do |config|
   ]
 
   # Percorso relativo alla root dell'app della chiave privata
-  config.private_key_path = "lib/.keys/private_key.pem"
+  config.private_key_path = "lib/.keys/private_key_prod.pem"
 
   # Percorso relativo alla root dell"app del certificato
-  config.certificate_path = "lib/.keys/certificate.pem"
+  config.certificate_path = "lib/.keys/certificate_prod.pem"
 
   # Percorso relativo alla root dell'app del nuovo certificato
   config.new_certificate_path = nil
@@ -52,7 +57,7 @@ Decidim::Spid.configure do |config|
   config.sha = ENV['SPID_SIGNATURE_METHOD']
 
   # Attribute to match user
-  config.uid_attribute = :spidCode
+  config.uid_attribute = :fiscalNumber
 
   # Il livello SPID richiesto dall'app
   config.spid_level = ENV['SPID_LEVEL'].to_i
@@ -106,17 +111,17 @@ Decidim::Spid.configure do |config|
 
   # Per aggiungere più AssertionConsumerService
    config.consumer_services = [
-     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
-     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
-     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
+     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT' },
+     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT' },
+     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT' },
    ]
   
   # Per aggiungere più SingleLogoutService
   # ResponseLocation opzionale
    config.logout_services = [
-     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT', 'ResponseLocation' => 'https://sardegnapartecipa.regione.sardegna.it' },
-     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT', 'ResponseLocation' => 'https://demo.sardegnapartecipa.regione.sardegna' },
-     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' }
+     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://sardegnapartecipa.regione.sardegna.it' },
+     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://demo.sardegnapartecipa.regione.sardegna' },
+     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' }
    ]
   
   # Per customizzare il path del metadata
@@ -138,12 +143,16 @@ Decidim::Spid.configure do |config|
   config.attribute_service_names = ["Decidim"]
   config.attribute_services = [
      [
-       { name: "fiscalNumber" },
+       { name: "fiscalNumber", is_required: "true" },
        { name: "email" }
      ]
    ]
 end
-=begin
+
+#
+# Modifiche per Matchare il binding urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT originariamente scritto minuscolo
+#
+
 Decidim::Spid::Settings::Sso.class_eval do
 	  private
 
@@ -199,4 +208,3 @@ module OneLogin
     end
   end
 end
-=end

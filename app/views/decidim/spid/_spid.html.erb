@@ -1,0 +1,38 @@
+<%
+  # Copyright (C) 2022 Formez PA
+  # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+  # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+  # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+  # Partial con il button SPID, modificato per customizzare il bottone Entra con Spid in modo che porti unicamente al AM
+%>
+
+<%
+  available_values = [:s, :m, :l, :xl]
+  size = :m if local_assigns[:size].nil? || !available_values.include?(local_assigns[:size])
+  url = local_assigns[:url].present? ? local_assigns[:url] : decidim.spid_login_path(sso: { idp: 'idp_key' })
+  method = local_assigns[:method].present? ? local_assigns[:method] : :get
+  origin = local_assigns[:origin].present? ? local_assigns[:origin] : ''
+%>
+<div class="spid-selector-container">
+  <div class="spid-selector">
+	<div style="height:auto;">
+		<%= button_to url, :method => :post, :class => "italia-it-button italia-it-button-size-#{size} button-spid", params: {"[sso]idp" => Decidim::Spid::Idp.all.first[0], "[sso]origin" => origin} do %>
+			<span class="italia-it-button-icon">
+				<%= image_pack_tag 'media/images/spid-ico-circle-bb.svg', onerror: "this.src='spid-ico-circle-bb.png'; this.onerror=null;", alt: "Spid Login" %>
+			</span>
+			<span class="italia-it-button-text">  Accedi  </span>
+		<% end %>
+	</div>
+  </div>
+</div>
+
+  <style>
+    body .off-canvas-wrapper {
+        overflow-y: auto;
+        background-color: #1a181d;
+    }
+    body .off-canvas-wrapper-inner {
+        background-color: #fafafa;
+    }
+  </style>

@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-login</title>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="MUSTHEAD-E-HEADER" transform="translate(-792.000000, -7.000000)" stroke="#FFFFFF">
-            <g id="Navigazione/360/masthead/normal_accedi" transform="translate(482.000000, -2.000000)">
-                <g id="icon-login" transform="translate(311.000000, 10.000000)">
+        <g id="MUSTHEAD-E-HEADER" stroke="#FFFFFF">
+            <g id="Navigazione/360/masthead/normal_accedi">
+                <g id="icon-login">
                     <circle id="Oval" cx="10" cy="10" r="10"></circle>
                     <path d="M9.84859864,12.3333333 C12.8542332,12.3333333 15.0463283,13.9778578 16.424884,17.2669067 C14.8082947,19.0889689 12.6161995,20 9.84859864,20 C7.08099773,20 4.88890262,19.0889689 3.27231332,17.2669067 C4.65086899,13.9778578 6.84296409,12.3333333 9.84859864,12.3333333 Z M10,4 C12.209139,4 14,5.790861 14,8 C14,10.209139 12.209139,12 10,12 C7.790861,12 6,10.209139 6,8 C6,5.790861 7.790861,4 10,4 Z" id="Combined-Shape" stroke-linecap="square" stroke-linejoin="round"></path>
                 </g>

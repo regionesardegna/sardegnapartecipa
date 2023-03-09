@@ -48,7 +48,7 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
     box-shadow: inset 4px 0 0 $par-medium-blue;
 }
 
-.callout.success {
+.callout.success, .callout.secondary{
     border-color: #e8e8e8;
     border-left: 7px solid var(--success);
     border-top: 3px solid var(--success);
@@ -291,7 +291,8 @@ a img + .external-link-indicator {
 }
 
 .img-user-icon{
-	height: 24px;
+	height: 24px !important;
+	width: 24px !important;
 }
 
 /*
@@ -1364,6 +1365,16 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
 
 .spid-idp-label{
   box-sizing: initial;
+}
+
+.italia-it-button-text{
+  padding: .95em 1em .85em;
+  padding-top: 0.95em;
+  padding-right: 2em;
+  padding-bottom: 0.85em;
+  padding-left: 2em;
+  font-size: 1.15em;
+  text-align: center;
 }
 
 //ASSEMBLIES
