@@ -1072,14 +1072,20 @@ it:
         extended:
           debates: Dibattiti
           debates_explanation: Dibattere e discutere, condividere le tue opinioni e arricchire gli argomenti pertinenti.
+          what_are_participatory_processes: Che cosa sono i processi partecipativi? 
+          what_are_participatory_processes_explanation: Sono percorsi strutturati di apertura e coinvolgimento promossi dalla P.A. allo scopo di raccogliere, anche attraverso modalità telematiche, il punto di vista dei soggetti interessati nella formazione delle decisioni pubbliche.
           how_to_participate: Come posso partecipare ad un processo?
           meetings: Incontri
           meetings_explanation: Scopri dove e quando puoi partecipare a incontri pubblici.
           more_info: Maggiori informazioni
-          proposals: proposte
-          proposals_explanation: Fare proposte, sostenere quelle esistenti e promuovere le modifiche che vuoi vedere.
+          proposals: Proposte
+          proposals_explanation: Fare, sostenere o suggerire modifiche alle proposte per i temi in consultazione.
           surveys: Sondaggi
-          surveys_explanation: TESTO ESPLICATIVO
+          surveys_explanation: Rispondere alle domande poste su un determinato argomento.
+          participatory_text: Testi
+          participatory_text_explanation: Consultare, commentare e suggerire modifiche a documenti in consultazione.
+          blog: Blog
+          blog_explanation: Discutere, condividere opinioni  e informazioni sulla consultazione.
         footer_sub_hero:
           footer_sub_hero_body: Costruiamo una società più aperta, trasparente e collaborativa.<br /> Unisciti, participa e decidi.
           footer_sub_hero_headline: Benvenuto sulla piattaforma partecipativa di %{organization}.
