@@ -110,7 +110,7 @@ module Decidim
         name_qualifier = extract_value('/p:Response/a:Assertion//a:NameID/@NameQualifier').to_s
 
         return true if name_id.present? && format_id.present? && name_qualifier.present? &&
-          format_id == "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+          (format_id == "urn:oasis:names:tc:SAML:2.0:nameid-format:transient" || format_id == "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified")
 
         append_error("Assertion NameID deve essere presente e conforme")
         false
