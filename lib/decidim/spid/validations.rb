@@ -164,7 +164,8 @@ module Decidim
       end
 
       def check_attributes_presence
-        return true if @response.attributes.attributes.all? { |k, v| v.present? }
+        return true
+		#return true if @response.attributes.attributes.all? { |k, v| v.present? }
 
         append_error("AttributeStatement AttributeStatement non specificato")
         false
