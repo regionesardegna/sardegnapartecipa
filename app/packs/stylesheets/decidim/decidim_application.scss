@@ -139,7 +139,7 @@ a img + .external-link-indicator {
 }
 
 @media print, screen and (max-width: 39.99875em){
-	.topbar__user__login a{
+	.topbar__user__login a, button{
 		color: $par-white;
 		font-size: 12px;
 		font-weight: 600;
@@ -147,7 +147,7 @@ a img + .external-link-indicator {
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
 
-	.topbar__user__login a:hover{
+	.topbar__user__login a:hover, button:hover{
 		color: $par-white;
 		font-size: 12px;
 		font-weight: 600;
@@ -536,6 +536,15 @@ div.main-nav > div:nth-child(2){
 		display: flex;
 	}
 }
+
+.sign-in-link{
+	text-transform: uppercase;
+	color: white;
+	display: inline-block;
+	font-family: Titillium Web,Helvetica Neue,Helvetica,Arial,sans-serif;
+	cursor: pointer;
+}
+
 
 .topbar__menu {
   margin-right: 0.1rem;
