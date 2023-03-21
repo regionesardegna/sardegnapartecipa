@@ -45,10 +45,10 @@ Decidim::Spid.configure do |config|
   ]
 
   # Percorso relativo alla root dell'app della chiave privata
-  config.private_key_path = "lib/.keys/private_key_prod.pem"
+  config.private_key_path = "lib/.keys/private_key.pem"
 
   # Percorso relativo alla root dell"app del certificato
-  config.certificate_path = "lib/.keys/certificate_prod.pem"
+  config.certificate_path = "lib/.keys/certificate.pem"
 
   # Percorso relativo alla root dell'app del nuovo certificato
   config.new_certificate_path = nil
@@ -111,9 +111,9 @@ Decidim::Spid.configure do |config|
 
   # Per aggiungere più AssertionConsumerService
    config.consumer_services = [
-     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT' },
-     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT' },
-     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT' },
+     { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
+     { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
+     { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
    ]
   
   # Per aggiungere più SingleLogoutService
