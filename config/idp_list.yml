@@ -15,7 +15,7 @@ staging:
 production:
   spid:
     demo:
-      metadata_url: 'https://login-demo.regione.sardegna.it/access-manager/saml/metadata?entityid=accessmanager.regione.sardegna.it'
+      metadata_url: 'https://login.regione.sardegna.it/saml/metadata?entityid=accessmanager.regione.sardegna.it'
       validate_cert: false
       entityName: demo
       logo: spid-idp-dummy.svg
