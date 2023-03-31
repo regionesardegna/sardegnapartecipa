@@ -6,7 +6,6 @@
 
   # Partial con il button SPID, modificato per customizzare il bottone Entra con Spid in modo che porti unicamente al AM
 %>
-
 <%
   available_values = [:s, :m, :l, :xl]
   size = :m if local_assigns[:size].nil? || !available_values.include?(local_assigns[:size])

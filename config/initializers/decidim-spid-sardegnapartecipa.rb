@@ -45,10 +45,10 @@ Decidim::Spid.configure do |config|
   ]
 
   # Percorso relativo alla root dell'app della chiave privata
-  config.private_key_path = "lib/.keys/private_key.pem"
+  config.private_key_path = "lib/.keys/private_key_demo.pem"
 
   # Percorso relativo alla root dell"app del certificato
-  config.certificate_path = "lib/.keys/certificate.pem"
+  config.certificate_path = "lib/.keys/certificate_demo.pem"
 
   # Percorso relativo alla root dell'app del nuovo certificato
   config.new_certificate_path = nil

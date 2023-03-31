@@ -117,5 +117,5 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.default_url_options = { host: Rails.application.secrets.host, protocol: Rails.application.secrets.protocol }
   config.action_mailer.asset_host = Rails.application.secrets.protocol + '://' + Rails.application.secrets.host
-
+  config.action_view.raise_on_missing_translations = false
 end
