@@ -1,6 +1,6 @@
 // This is a file that can be overridden by the application in order to override styles
 // Notice that this file is included at the very end of the stylesheets packs to have
-// more priority
+// more priorityF
 //
 // To override CSS variables or Foundation settings use _decidim-settings.scss
 //
@@ -312,6 +312,92 @@ div.main-nav > div:nth-child(2){
 .topbar__search{
   position: relative;
   max-width: 220px; // Safari fix
+
+  input{
+    color: $par-black;
+    border-color: transparent;
+    box-shadow: none;
+    background: $par-white;
+    margin-top: 8px;
+    display: inline-block;
+    border-radius: 4px 0 0 4px;
+    transition: .3s all;
+    height: 2.5rem; //matches input group button height
+
+    &:focus{
+      color: $par-black;
+      box-shadow: none;
+      background: $par-white;
+	  margin-top: 8px;
+      outline-color: var(--highlight-alternative);
+    }
+  }
+
+  .input-group-button{
+    position: relative;
+    height: 1px; // Fix for Safari and Firefox
+    vertical-align: top;
+  }
+
+  // Fix for Safari and Firefox
+  .button-wrapper{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  button{
+    border-radius: 0 4 4 0;
+	width: 40px;
+  }
+
+  form:first-child{
+    display: inline-flex;
+  }
+
+  .input-group{
+    margin-bottom: 0;
+  }
+
+  &:not(:focus-within){
+    button{
+      background-color: $par-medium-blue;
+      color: rgba(white, .5);
+    }
+  }
+
+  &:focus-within{
+    input{
+      background-color: light-gray;
+      color: $par-black;
+      border: 0;
+
+      &::placeholder{
+        color: dark-medium-gray;
+      }
+    }
+  }
+  
+  svg{
+    color: $par-white;
+    position: absolute;
+    top: 0.8rem; 
+    left: 0.7rem;
+    transform: none;
+								
+    opacity: 1;
+  }				 
+}
+
+
+/* VERSIONE SARDEGNA IT
+.topbar__search{
+  position: relative;
+  max-width: 220px; // Safari fix
   
   input{
     color: $par-deep-red;
@@ -335,6 +421,13 @@ div.main-nav > div:nth-child(2){
 	
 	&:focus::placeholder{
 	  color: $par-deep-red;
+	}
+	
+	&:not(:focus-within){
+		button{
+			background-color: $par-medium-blue;
+			color: rgba(white, .5);
+		}
 	}
   }
    
@@ -398,10 +491,9 @@ div.main-nav > div:nth-child(2){
     left: 0.7rem;
     transform: none;	
     opacity: 1;
-  }
-				 
+  }				 
 }
-
+*/
 .main-nav__link--active a {
     box-shadow: inset 0 4px 0 0 white;
     border-top: 2px solid $par-deep-red;
@@ -693,6 +785,14 @@ div.main-nav > div:nth-child(2){
   border-right: 1px solid $par-deep-red;
 }
 
+a.secondary, abbr.secondary, acronym.secondary, b.secondary, bdo.secondary, big.secondary, br.secondary, button.secondary, cite.secondary, code.secondary, dfn.secondary, em.secondary, i.secondary, img.secondary, input.secondary, kbd.secondary, label.secondary, map.secondary, object.secondary, q.secondary, samp.secondary, script.secondary, select.secondary, .inline-filters button.secondary[data-toggle], small.secondary, span.secondary, strong.secondary, sub.secondary, sup.secondary, textarea.secondary, time.secondary, tt.secondary, var.secondary {
+  color: $par-medium-blue;
+}
+
+span.muted{
+  font-weight: bold;
+  color: $par-medium-blue;
+}
 
 //CARDS
 
@@ -770,6 +870,11 @@ $datetime-bg: var(--primary);
   border-top: 10px solid $light-gray;
   border-radius: 10px;
   overflow: visible;
+}
+
+.author-data .author__name {
+  color: $par-dark-grey;
+  margin-bottom: 0;
 }
 
 //HELPER CONTAINER
@@ -1339,8 +1444,7 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h4 small, .h4 sma
     text-transform: capitalize;
 }
 
-a.button.muted, a.muted, abbr.muted, acronym.muted, b.muted, bdo.muted, big.muted, br.muted, button.muted, cite.muted, code.muted, dfn.muted, em.muted, i.muted, img.muted, input.muted, kbd.muted, label.muted, map.muted, object.muted, q.muted, samp.muted, script.muted, select.muted, .inline-filters button.muted[data-toggle], small.muted, 
-//span.muted, 
+a.button.muted, a.muted, abbr.muted, acronym.muted, b.muted, bdo.muted, big.muted, br.muted, button.muted, cite.muted, code.muted, dfn.muted, em.muted, i.muted, img.muted, input.muted, kbd.muted, label.muted, map.muted, object.muted, q.muted, samp.muted, script.muted, select.muted, .inline-filters button.muted[data-toggle], small.muted,  
 strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.muted {
     color: white;
 }
