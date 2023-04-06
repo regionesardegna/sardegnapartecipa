@@ -79,6 +79,20 @@ a img + .external-link-indicator {
     font-weight: 600;
 }
 
+.filters__section--general.no-results .section-title {
+	color: $par-dark-grey;
+	text-decoration: none;
+}
+
+.mini-title {
+  color: $par-dark-grey;;
+  font-size: .9rem;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
 //NAVBAR
 
 @media screen and (max-width: 39.99875em){
@@ -393,44 +407,6 @@ div.main-nav > div:nth-child(2){
   }				 
 }
 
-
-/* VERSIONE SARDEGNA IT
-.topbar__search{
-  position: relative;
-  max-width: 220px; // Safari fix
-  
-  input{
-    color: $par-deep-red;
-    border-color: $par-white;
-    box-shadow: none;
-    background: $par-white;
-    margin-top: 8px;
-    display: inline-block;
-    border-radius: 4px 0 0 4px;
-    transition: .3s all;
-    height: 2rem; //matches input group button height
-	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
-
-    &:focus{
-      color: $par-deep-red;
-      box-shadow: none;
-      background: $par-white;
-	  margin-top: 8px;
-      outline-color: var(--highlight-alternative);
-    }
-	
-	&:focus::placeholder{
-	  color: $par-deep-red;
-	}
-	
-	&:not(:focus-within){
-		button{
-			background-color: $par-medium-blue;
-			color: rgba(white, .5);
-		}
-	}
-  }
-   
   input::placeholder{
 	color: $par-deep-red;
   }
