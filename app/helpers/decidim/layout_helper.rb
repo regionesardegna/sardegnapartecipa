@@ -85,8 +85,6 @@ module Decidim
     def external_icon(path, options = {})
       options = options.with_indifferent_access
 	  classes = _icon_classes(options) + ["external-icon"]
-	  Rails.logger.info "=>>options=#{options.inspect}"
-	  Rails.logger.info "=>>classes=#{classes.inspect}"
       if path.split(".").last == "svg"
         attributes = { class: classes.join(" ") }.merge(options)
         asset = File.read(application_path(path))
