@@ -205,7 +205,8 @@ GIT
 
 GIT
   remote: https://github.com/kapusons/decidim-module-proposal_moderation
-  revision: d8c31fcdfee52071d64f947bb57f85f295f28c0b
+  revision: 61131bdd58c003bb75f8c819923e70c0323a8620
+  branch: main
   specs:
     decidim-proposal_moderation (0.25.2)
       decidim-core (= 0.25.2)
