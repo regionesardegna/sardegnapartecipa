@@ -1,6 +1,6 @@
 // This is a file that can be overridden by the application in order to override styles
 // Notice that this file is included at the very end of the stylesheets packs to have
-// more priorityF
+// more priority
 //
 // To override CSS variables or Foundation settings use _decidim-settings.scss
 //
@@ -44,7 +44,7 @@ profile-tabs.tabs .tabs-title a:focus, #profile-tabs.tabs .tabs-title a[aria-sel
 }
 
 title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
-    color: #599aa6;
+    color: $par-medium-blue;
     box-shadow: inset 4px 0 0 $par-medium-blue;
 }
 
@@ -70,7 +70,7 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
 }
 
 a img + .external-link-indicator {
-   display:none;
+    display:none;
 }
 
 .link {
@@ -85,13 +85,24 @@ a img + .external-link-indicator {
 }
 
 .mini-title {
-  color: $par-dark-grey;;
-  font-size: .9rem;
-  letter-spacing: .01em;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 0;
+	color: $par-dark-grey;;
+	font-size: .9rem;
+	letter-spacing: .01em;
+	text-transform: uppercase;
+	font-weight: 600;
+	margin-bottom: 0;
 }
+
+.title-bar .skip {
+    left: -999px;
+    position: absolute;
+    top: auto;
+    width: 1px;
+    height: 25px !important;
+    overflow: hidden;
+    z-index: -999;
+    padding-top: 5px;
+}				  
 
 //NAVBAR
 
@@ -185,7 +196,7 @@ a img + .external-link-indicator {
 }
 
 .topbar__dropmenu {
-  margin-left:0;
+	margin-left:0;
 }
 
 @media print, screen and (max-width: 39.99875em){
@@ -204,8 +215,8 @@ a img + .external-link-indicator {
 }
 
 .topbar__dropmenu > ul > li > a {
-  color: $par-white;
-  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	color: $par-white;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .icon--comment-square{
@@ -213,32 +224,32 @@ a img + .external-link-indicator {
 }
 
 .topbar__admin__link a{
-  margin-top: 5px;
-  color: $par-white; 
-  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-top: 5px;
+	color: $par-white; 
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__admin__link a:hover{
-  margin-top: 5px;
-  color: $par-white;
-  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-top: 5px;
+	color: $par-white;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__edit__link a{
-  display:none;
-  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	display:none;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__edit__link a:hover{
-  display:none;
-  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	display:none;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .topbar__user__logged {
-  text-align: right;
-  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
-  display: block;
-  padding: 0;
+	text-align: right;
+	font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	display: block;
+	padding: 0;
 }
 
 .main-nav__link a {
@@ -328,7 +339,7 @@ div.main-nav > div:nth-child(2){
   max-width: 220px; // Safari fix
 
   input{
-    color: $par-black;
+    color: $par-deep-red;
     border-color: transparent;
     box-shadow: none;
     background: $par-white;
@@ -339,7 +350,7 @@ div.main-nav > div:nth-child(2){
     height: 2.5rem; //matches input group button height
 
     &:focus{
-      color: $par-black;
+      color: $par-deep-red;
       box-shadow: none;
       background: $par-white;
 	  margin-top: 8px;
@@ -347,6 +358,9 @@ div.main-nav > div:nth-child(2){
     }
   }
 
+  input::placeholder{
+	color: $par-deep-red;
+  }				 
   .input-group-button{
     position: relative;
     height: 1px; // Fix for Safari and Firefox
@@ -391,7 +405,7 @@ div.main-nav > div:nth-child(2){
       border: 0;
 
       &::placeholder{
-        color: dark-medium-gray;
+        color: $par-deep-red;
       }
     }
   }
@@ -407,69 +421,6 @@ div.main-nav > div:nth-child(2){
   }				 
 }
 
-  input::placeholder{
-	color: $par-deep-red;
-  }
-  
-  .input-group-button{
-    position: relative;
-    height: 1px; // Fix for Safari and Firefox
-    vertical-align: top;
-  }
-
-  // Fix for Safari and Firefox
-  .button-wrapper{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  button{
-    border-radius: 0 4 4 0;
-	width: 40px;
-	height: 2rem; //matches input group button height
-  }
-
-  form:first-child{
-    display: inline-flex;
-  }
-
-  .input-group{
-    margin-bottom: 0;
-  }
-
-  &:not(:focus-within){
-    button{
-	  color: $par-deep-red;
-      background-color: $par-white;
-      color: rgba(white, .5);
-	  height: 2rem; //matches input group button height
-    }
-  }
-  
-  &:focus{
-    button{
-	  color: $par-deep-red;
-      background-color: $par-medium-blue;
-      color: rgba(white, .5);
-	  height: 2rem; //matches input group button height
-    }
-  }
-  
-  svg{
-    color: $par-white;
-    position: absolute;
-    top: 0.4rem; 
-    left: 0.7rem;
-    transform: none;	
-    opacity: 1;
-  }				 
-}
-*/
 .main-nav__link--active a {
     box-shadow: inset 0 4px 0 0 white;
     border-top: 2px solid $par-deep-red;
@@ -534,6 +485,10 @@ div.main-nav > div:nth-child(2){
 		color: #fff !important;
 		margin-right: auto;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+	}
+	
+	.institutional-link:focus {
+		outline: dotted white 1px;
 	}
 }
 
@@ -611,18 +566,31 @@ div.main-nav > div:nth-child(2){
 	display: inline-block;
 	font-family: Titillium Web,Helvetica Neue,Helvetica,Arial,sans-serif;
 	cursor: pointer;
+    text-decoration: none !important;					  
 }
 
+.sign-in-link:hover{
+	text-transform: uppercase;
+	color: white;
+	display: inline-block;
+	font-family: Titillium Web,Helvetica Neue,Helvetica,Arial,sans-serif;
+	cursor: pointer;
+	text-decoration: underline !important;
+}
+
+.sign-in-link:focus{
+	outline: dotted white 1px;
+}
 
 .topbar__menu {
-  margin-right: 0.1rem;
-  position: absolute;
-  left: 20px;
-  display: block;
+    margin-right: 0.1rem;
+    position: absolute;
+    left: 20px;
+    display: block;
 }
 
 .topbar__menu button{
-  color: $par-medium-blue;
+    color: $par-medium-blue;
 }
 
 @media print, screen and (max-width: 24.99875em){
@@ -643,11 +611,11 @@ div.main-nav > div:nth-child(2){
 
 
 .sticky-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all .4s ease;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	transition: all .4s ease;
 }
 
 @media print, screen and (min-width: 40em){
@@ -673,8 +641,8 @@ div.main-nav > div:nth-child(2){
 }
 
 #menu-bar{
-  overflow: hidden;
-  width: 100%;
+	overflow: hidden;
+	width: 100%;
 }
 
 //BUTTON
@@ -758,16 +726,16 @@ div.main-nav > div:nth-child(2){
 }
 
 .button--icon.hollow.secondary .icon-wrap, .button--icon.secondary.meeting-polls__button {
-  border-right: 1px solid $par-deep-red;
+	border-right: 1px solid $par-deep-red;
 }
 
 a.secondary, abbr.secondary, acronym.secondary, b.secondary, bdo.secondary, big.secondary, br.secondary, button.secondary, cite.secondary, code.secondary, dfn.secondary, em.secondary, i.secondary, img.secondary, input.secondary, kbd.secondary, label.secondary, map.secondary, object.secondary, q.secondary, samp.secondary, script.secondary, select.secondary, .inline-filters button.secondary[data-toggle], small.secondary, span.secondary, strong.secondary, sub.secondary, sup.secondary, textarea.secondary, time.secondary, tt.secondary, var.secondary {
-  color: $par-medium-blue;
+	color: $par-medium-blue;
 }
 
 span.muted{
-  font-weight: bold;
-  color: $par-medium-blue;
+	font-weight: bold;
+	color: $par-medium-blue;
 }
 
 //CARDS
@@ -805,52 +773,52 @@ $datetime-bg: var(--primary);
 }
 
 .card-data__item__number{
-  display: block;
+	display: block;
     height: 36px;
 }
 
 .card__image{
-  width: 100%;
-  max-height: 10rem;
-  min-height: 5rem;
-  object-fit: cover;
+	width: 100%;
+	max-height: 10rem;
+	min-height: 5rem;
+	object-fit: cover;
 
-  &.card__image--smaller{
-    max-height: 5rem;
-  }
+	&.card__image--smaller{
+		max-height: 5rem;
+	}
 
-  &.card__image--larger{
-    max-height: 20rem;
-    min-height: 10rem;
-  }
+	&.card__image--larger{
+		max-height: 20rem;
+		min-height: 10rem;
+	}
 }
 
 .card__support__number{
-  line-height: 1;
-  font-weight: 600;
-  font-size: rem-calc(20);
-  color: $body-font-color;
+	line-height: 1;
+	font-weight: 600;
+	font-size: rem-calc(20);
+	color: $body-font-color;
 }
 
 .card__footer, .card__top {
-  background: #e7e7e7;
-  border-top: 1px solid $light-gray;
-  border-radius: 0 0 10px 10px;
-  clear: both;
+	background: #e7e7e7;
+	border-top: 1px solid $light-gray;
+	border-radius: 0 0 10px 10px;
+	clear: both;
 }
 
 .card--proposal, .card--process{
-  margin-bottom: 30px;
-  background: #fff;
-  border: 1px solid $light-gray;
-  border-top: 10px solid $light-gray;
-  border-radius: 10px;
-  overflow: visible;
+	margin-bottom: 30px;
+	background: #fff;
+	border: 1px solid $light-gray;
+	border-top: 10px solid $light-gray;
+	border-radius: 10px;
+	overflow: visible;
 }
 
 .author-data .author__name {
-  color: $par-dark-grey;
-  margin-bottom: 0;
+	color: $par-dark-grey;
+	margin-bottom: 0;
 }
 
 //HELPER CONTAINER
