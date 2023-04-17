@@ -3,8 +3,6 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
-# frozen_string_literal: true
-
 # Modificata per forzare l'inizio della sessione dalla homepage bypassando la pagina di login
 
 # frozen_string_literal: true
@@ -93,7 +91,7 @@ module Decidim
     end
 
     def user_has_no_permission_path
-      return decidim.root_path 
+      return decidim.root_path unless user_signed_in?
     end
 
     def permission_class_chain

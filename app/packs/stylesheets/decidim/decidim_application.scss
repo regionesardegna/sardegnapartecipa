@@ -49,20 +49,29 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
 }
 
 .callout.success, .callout.secondary{
-    border-color: #e8e8e8;
-    border-left: 7px solid var(--success);
+    border-color: --success;
+    border-left: 8px solid var(--success);
     border-top: 3px solid var(--success);
     border-bottom: 3px solid var(--success);
     border-right: 3px solid var(--success);
 }
 
 .callout.alert {
-    border-color: #e8e8e8;
+    border-color: --alert;
     border-left-color: rgb(232, 232, 232);
     border-left: 8px solid var(--alert);
     border-top: 3px solid var(--alert);
     border-bottom: 3px solid var(--alert);
     border-right: 3px solid var(--alert);
+}
+
+.callout.warning {
+    border-color: --warning;
+    border-left-color: rgb(232, 232, 232);
+    border-left: 8px solid var(--warning);
+    border-top: 3px solid var(--warning);
+    border-bottom: 3px solid var(--warning);
+    border-right: 3px solid var(--warning);
 }
 
 .section-heading::before {

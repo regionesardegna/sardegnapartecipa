@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-#
 #Copyright (C) 2023 Sardegna IT
 #
 #This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
@@ -11,6 +8,8 @@
 #
 #Modificato il metodo external_icon per integrare il title
 #
+
+# frozen_string_literal: true
 
 module Decidim
   # View helpers related to the layout.
