@@ -6,7 +6,7 @@
 # Viene forzato in fase di registrazione l'utente a conservare l'email proveniente da SPID
 # Aggiunto campo per la gestione omniauth in caso di errori di validazioni
 Deface::Override.new(virtual_path: "decidim/devise/omniauth_registrations/new",
-                     name: "disable-email-field",
+                     name: "disable-email-field-when-not-available",
                      replace: "erb:contains('f.email_field :email')") do
   '
 <%= f.email_field :email, readonly: session["decidim-spid.tenant"].present? && f.object.email.present? %>

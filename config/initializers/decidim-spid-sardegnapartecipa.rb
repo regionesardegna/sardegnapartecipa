@@ -9,6 +9,7 @@
 # frozen_string_literal: true
 
 require "#{Rails.root}/lib/decidim/spid/validations.rb"
+require "#{Rails.root}/app/overrides/decidim/devise/omniauth_registrations/new/new_override.rb"
 
 Decidim::Spid.configure do |config|
   # Definisce il nome del tenant. Solo lettere minuscole e underscores sono permessi.
@@ -45,10 +46,10 @@ Decidim::Spid.configure do |config|
   ]
 
   # Percorso relativo alla root dell'app della chiave privata
-  config.private_key_path = "lib/.keys/private_key_demo.pem"
+  config.private_key_path = "lib/.keys/private_key.pem"
 
   # Percorso relativo alla root dell"app del certificato
-  config.certificate_path = "lib/.keys/certificate_demo.pem"
+  config.certificate_path = "lib/.keys/certificate.pem"
 
   # Percorso relativo alla root dell'app del nuovo certificato
   config.new_certificate_path = nil

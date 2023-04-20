@@ -50,6 +50,7 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
 
 .callout.success, .callout.secondary{
     border-color: --success;
+	border-left-color: --success;
     border-left: 8px solid var(--success);
     border-top: 3px solid var(--success);
     border-bottom: 3px solid var(--success);
@@ -58,7 +59,7 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
 
 .callout.alert {
     border-color: --alert;
-    border-left-color: rgb(232, 232, 232);
+    border-left-color: --alert;
     border-left: 8px solid var(--alert);
     border-top: 3px solid var(--alert);
     border-bottom: 3px solid var(--alert);
@@ -67,7 +68,7 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
 
 .callout.warning {
     border-color: --warning;
-    border-left-color: rgb(232, 232, 232);
+    border-left-color: --warning;
     border-left: 8px solid var(--warning);
     border-top: 3px solid var(--warning);
     border-bottom: 3px solid var(--warning);
