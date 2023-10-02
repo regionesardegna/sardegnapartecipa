@@ -69,10 +69,10 @@ module Decidim
           form_params[:nickname] = params.dig(:user, :nickname) if params.dig(:user, :nickname).present?
           @form = form(OmniauthSpidRegistrationForm).from_params(form_params)
           @form.email ||= verified_e
-          verified_e ||= form_params.dig(:email)
+          #verified_e ||= form_params.dig(:email)
         end
 
-        # Controllo che non esisti un'altro account con la stessa email utilizzata con SPID
+        # Controllo che non esista un'altro account con la stessa email utilizzata con SPID
         # in quanto a fine processo all'utente viene aggiornata l'email e il tutto protrebbe essere invalido
         if invited_user.present? && form_params.dig(:raw_data, :info, :email).present? && invited_user.email != form_params.dig(:raw_data, :info, :email) &&
           current_organization.users.where(email: form_params.dig(:raw_data, :info, :email)).where.not(id: invited_user.id).present?
