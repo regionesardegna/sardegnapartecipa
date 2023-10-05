@@ -20,7 +20,7 @@ module Decidim
       def spid
         session["decidim-spid.signed_in"] = true
         session["decidim-spid.tenant"] = tenant.name
-
+				  
         authenticator.validate!
 
         if user_signed_in?
@@ -28,12 +28,13 @@ module Decidim
 
           # Aggiunge l'autorizzazione per l'utente
           return fail_authorize unless authorize_user(current_user)
-
+		  
           # Aggiorna le informazioni dell'utente
           authenticator.update_user!(current_user)
 
           Decidim::Spid::SpidJob.perform_later(current_user)
-          flash[:notice] = t("authorizations.create.success", scope: "decidim.spid.verification")
+		  
+		  flash[:notice] = t("authorizations.create.success", scope: "decidim.spid.verification")
           return redirect_to(stored_location_for(resource || :user) || decidim.root_path)
         end
 
@@ -47,13 +48,14 @@ module Decidim
       end
 
       def create
-        form_params = user_params_from_oauth_hash || params.require(:user).permit!
+		form_params = user_params_from_oauth_hash || params.require(:user).permit!
         form_params.merge!(params.require(:user).permit!) if params.dig(:user).present?
         origin = Base64.strict_decode64(session[:"#{session_prefix}sso_params"]["relay_state"]) rescue ''
 
         invitation_token = invitation_token(origin)
+		
         verified_e = verified_email
-
+		
         # nel caso la form di integrazione dati viene presentata
         invited_user = nil
         if invitation_token.present?
@@ -69,7 +71,7 @@ module Decidim
           form_params[:nickname] = params.dig(:user, :nickname) if params.dig(:user, :nickname).present?
           @form = form(OmniauthSpidRegistrationForm).from_params(form_params)
           @form.email ||= verified_e
-          #verified_e ||= form_params.dig(:email)
+          verified_e ||= form_params.dig(:email)
         end
 
         # Controllo che non esista un'altro account con la stessa email utilizzata con SPID
@@ -88,6 +90,7 @@ module Decidim
 
         CreateOmniauthSpidRegistration.call(@form, verified_e) do
           on(:ok) do |user|
+		    Rails.logger.info "=============================> create 8 #{user.confirmed_at}"
             # Se l'identità SPID è già utilizzata da un altro account
             if invited_user.present? && invited_user.email != user.email
               set_flash_message :alert, :failure, kind: "SPID", reason: t("decidim.devise.omniauth_registrations.create.email_already_exists")

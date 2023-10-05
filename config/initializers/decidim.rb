@@ -5,7 +5,7 @@ Decidim.configure do |config|
   config.application_name = "ParteciPa"
 
   # The email that will be used as sender in all emails from Decidim
-  config.mailer_sender = "noreply@formez.org"
+  config.mailer_sender = ENV["SMTP_USERNAME"]
 
   # Sets the list of available locales for the whole application.
   #

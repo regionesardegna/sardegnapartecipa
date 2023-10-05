@@ -27,6 +27,10 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+  
+  # Use the lowest log level to ensure availability of diagnostic information
+  # when problems arise.
+  config.log_level = :debug
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
@@ -52,5 +56,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
-  config.hosts << "dev-sardegnapartecipa.regione.sardegna"
+  # config.hosts << "dev-sardegnapartecipa.regione.sardegna"
+  config.hosts << "demo.sardegnapartecipa.regione.sardegna"
 end

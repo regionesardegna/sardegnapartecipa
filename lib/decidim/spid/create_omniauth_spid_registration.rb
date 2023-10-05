@@ -42,7 +42,7 @@ module Decidim
             file = URI.open(url)
             @user.avatar.attach(io: file, filename: filename)
           end
-          #@user.skip_confirmation! if verified_email
+          @user.skip_confirmation! if verified_email
         end
 
         @user.tos_agreement = "1"
