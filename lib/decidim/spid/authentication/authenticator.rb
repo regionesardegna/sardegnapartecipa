@@ -22,7 +22,7 @@ module Decidim
 
         def verified_email
           @verified_email ||= begin
-                                oauth_data[:info][:email]
+                                oauth_data[:info][:email].downcase
                               rescue
                                 nil
                               end
@@ -124,11 +124,14 @@ module Decidim
 
         def update_user!(user)
           user_changed = false
-          if verified_email.present? && (user.email != verified_email)
+          Rails.logger.info "===========================================> user email=#{user.email.downcase} verified_email=#{verified_email}"
+          if verified_email.present? && (user.email.downcase != verified_email)
+             
              user_changed = true
              user.email = verified_email
-			 user.confirmed_at = nil
+	     user.confirmed_at = nil
              #user.skip_reconfirmation!
+             Rails.logger.info "========================================> email modificata"
           end
           # user.newsletter_notifications_at = Time.zone.now if user_newsletter_subscription?(user)
           if user.valid?
