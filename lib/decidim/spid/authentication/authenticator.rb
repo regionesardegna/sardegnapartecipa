@@ -126,11 +126,10 @@ module Decidim
           user_changed = false
           Rails.logger.info "===========================================> user email=#{user.email.downcase} verified_email=#{verified_email}"
           if verified_email.present? && (user.email.downcase != verified_email)
-             
              user_changed = true
              user.email = verified_email
-	     user.confirmed_at = nil
-             #user.skip_reconfirmation!
+	         #user.confirmed_at = nil
+             user.skip_reconfirmation!
              Rails.logger.info "========================================> email modificata"
           end
           # user.newsletter_notifications_at = Time.zone.now if user_newsletter_subscription?(user)
