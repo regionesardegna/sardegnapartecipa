@@ -1,0 +1,36 @@
+<%#
+Copyright (C) 2022 Formez PA
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foun>
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICU>
+
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+Modificata per gestire l'eccezione creata sul log in caso di nickname assente
+%>
+
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title">
+      <%= t "decidim.admin.titles.admin_log" %>
+    </h2>
+  </div>
+  <div class="table-scroll">
+    <% if logs.any? %>
+      <ul class="logs table">
+<%# Aggiunto per gestire il caso di Uninitialized Constant%>
+    <% begin %>        
+        <% logs.each do |log| %>
+          <%= render_log(log) %>
+        <% end %>
+    <% rescue Exception => e
+    end %>
+      </ul>
+    <% else %>
+      <div class="logs table">
+        <p class="logs--no-logs"><%= t(".no_logs_yet") %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
