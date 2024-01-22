@@ -330,6 +330,11 @@ a img + .external-link-indicator {
 	width: 24px !important;
 }
 
+.sign-up-link{
+	display: none;
+}
+
+
 /*
 Sposta la Searchbar a destra
 */
@@ -1459,4 +1464,12 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
 
 #assemblies-chart {
   display: none;
+}
+
+.register__separator {
+   display: none;
+}
+
+.button-spid{
+   display: none;
 }
