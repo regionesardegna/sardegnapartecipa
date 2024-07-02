@@ -7,16 +7,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
-Integrato header di Sardegna IT
-%>
-
-<%
-  available_values = [:s, :m, :l, :xl]
-  size = :m if local_assigns[:size].nil? || !available_values.include?(local_assigns[:size])
-  sarid_prov = current_organization.enabled_omniauth_providers.dig(:spid, :tenant_name) 
-  url = decidim_spid.public_send("user_#{sarid_prov}_omniauth_authorize_url")
-  method = local_assigns[:method].present? ? local_assigns[:method] : :get
-  origin = local_assigns[:origin].present? ? local_assigns[:origin] : ''
+Integrato header di Sardegna IT, eliminato link a Registrati, rimane solo Accedi che a sua volta linka Registrati
 %>
 
 <!-- Fascia Appartenenza -->
@@ -59,11 +50,11 @@ Integrato header di Sardegna IT
 			<% else %>
 				<div class="topbar__user" data-set="nav-login-holder">
 					<div class="topbar__user__login js-append">
-						<% if current_organization.sign_up_enabled? %>
-							<%= link_to t("layouts.decidim.header.sign_up"), decidim.new_user_registration_path, class: "sign-up-link" %>
-						<% end %>
-						<%= button_to url, params: {"[sso]idp" => Decidim::Spid::Idp.all.first[0], "[sso]origin" => origin}, :method => :post, class: "sign-in-link" do %>	
-							<%= t("layouts.decidim.header.sign_in") %>
+						
+						<!-- Eliminato link a Registrati -->
+						
+						<%= link_to decidim.new_user_session_path, class: "sign-in-link" do %>
+						    <%= t("layouts.decidim.header.sign_in") %>
 							<%= image_pack_tag "media/images/icon-login.svg", alt: "User", 'aria-label': "User", class: "img-user-icon", id: "img-user-icon", role: "img" %>
 						<% end %>
 					</div>
