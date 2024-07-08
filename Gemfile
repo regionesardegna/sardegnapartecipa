@@ -22,7 +22,7 @@ gem 'rake'
 gem 'uglifier', '~> 4.1'
 gem 'decidim-spid-cie', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie', branch: 'main'
 gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'main'
-gem 'decidim-proposal_moderation', git: 'https://github.com/kapusons/decidim-module-proposal_moderation', branch: 'main'
+gem 'decidim-proposal_moderation', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-proposal_moderation', branch: 'main'
 gem 'deface'
 
 group :development, :test do

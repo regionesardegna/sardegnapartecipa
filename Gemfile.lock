@@ -186,6 +186,15 @@ GIT
       deface (= 1.9.0)
 
 GIT
+  remote: https://github.com/dipartimentofunzionepubblica/decidim-module-proposal_moderation
+  revision: 1bfec384dbfa213364fc55187e6c4785e7eea7f5
+  branch: main
+  specs:
+    decidim-proposal_moderation (0.25.2)
+      decidim-core (= 0.25.2)
+      deface (= 1.9.0)
+
+GIT
   remote: https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie
   revision: 087043959fbae650ade4e27080cb3e57e75c68ae
   branch: main
@@ -195,15 +204,6 @@ GIT
       deface (= 1.9.0)
       omniauth (>= 1.9)
       ruby-saml (~> 1.14.0)
-
-GIT
-  remote: https://github.com/kapusons/decidim-module-proposal_moderation
-  revision: 61131bdd58c003bb75f8c819923e70c0323a8620
-  branch: main
-  specs:
-    decidim-proposal_moderation (0.25.2)
-      decidim-core (= 0.25.2)
-      deface (= 1.9.0)
 
 GIT
   remote: https://github.com/mainio/decidim-module-term_customizer
