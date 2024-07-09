@@ -7,7 +7,7 @@ class FixReferenceForAllResources < ActiveRecord::Migration[5.1]
     models = ActiveRecord::Base.descendants.select { |c| c.included_modules.include?(Decidim::HasReference) }
 
     models.each do |model|
-      model.find_each(&:touch)
+      #model.find_each(&:touch)
     end
   end
 
