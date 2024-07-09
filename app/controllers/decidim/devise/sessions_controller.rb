@@ -19,6 +19,8 @@ module Decidim
 
       def destroy
         current_user.invalidate_all_sessions!
+        i = user.identities.find_by(uid: session["#{session_prefix}uid"]) rescue nil
+        Decidim::ActionLogger.log(:logout, current_user,  current_user, 1)
         if params[:translation_suffix].present?
           super { set_flash_message! :notice, params[:translation_suffix], { scope: "decidim.devise.sessions" } }
         else
@@ -30,8 +32,10 @@ module Decidim
         if user.present? && user.blocked?
           check_user_block_status(user)
         elsif first_login_and_not_authorized?(user) && !user.admin? && !pending_redirect?(user)
+          Decidim::ActionLogger.log(:login, user, user, 1)
           decidim_verifications.first_login_authorizations_path
         else
+          Decidim::ActionLogger.log(:login, user, user, 1)
           super
         end
       end
