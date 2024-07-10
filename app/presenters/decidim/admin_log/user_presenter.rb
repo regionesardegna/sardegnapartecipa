@@ -54,7 +54,6 @@ module Decidim
       def action_string
         case action
         when "grant_id_documents_offline_verification", "invite", "officialize", "remove_from_admin", "show_email", "unofficialize", "block", "unblock", "promote", "transfer", "registration", "login", "logout"
-          Rails.logger.info "=============================================> ACTION #{action} IP #{ip} i18n_params #{i18n_params}"
           "decidim.admin_log.user.#{action}"
         else
           super
