@@ -3,7 +3,8 @@
 
 class CreateDecidimAwesomeConfig < ActiveRecord::Migration[5.2]
   def change
-    create_table :decidim_awesome_config do |t|
+=begin
+     create_table :decidim_awesome_config do |t|
       t.jsonb :var
       t.jsonb :value
       t.integer :decidim_organization_id,
@@ -13,5 +14,6 @@ class CreateDecidimAwesomeConfig < ActiveRecord::Migration[5.2]
       t.timestamps
       t.index [:var, :decidim_organization_id], name: "index_decidim_awesome_organization_var", unique: true
     end
+=end
   end
 end

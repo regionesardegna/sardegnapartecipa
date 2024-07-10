@@ -2,6 +2,7 @@
 # This migration comes from decidim_decidim_awesome (originally 20200324230936)
 
 class CreateAwesomeEditorImages < ActiveRecord::Migration[5.2]
+=begin
   def change
     create_table :decidim_awesome_editor_images do |t|
       t.string :image
@@ -12,4 +13,5 @@ class CreateAwesomeEditorImages < ActiveRecord::Migration[5.2]
       t.timestamps
     end
   end
+=end
 end

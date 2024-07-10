@@ -39,9 +39,9 @@ it:
           label: Data a
     admin_log:
       identity:
-        logout: "%{user_name} ha effettuato il logout con il provider %{resource_name} %{space_name} e l'ip %{ip}"
-        login: "%{user_name}  ha effettuato il login con il provider %{resource_name} %{space_name} e l'ip %{ip}"
-        registration: "%{user_name} si è registrato con il provider %{resource_name} %{space_name} e l'ip %{ip}"
+        logout: "%{user_name} ha effettuato il logout con il provider %{resource_name} %{space_name}"
+        login: "%{user_name}  ha effettuato il login con il provider %{resource_name} %{space_name}"
+        registration: "%{user_name} si è registrato con il provider %{resource_name} %{space_name}"
       user:
         logout: "%{user_name} ha effettuato il logout con il form interno e l'ip %{ip}"
         login: "%{user_name} ha effettuato il login con il form interno e l'ip %{ip}"

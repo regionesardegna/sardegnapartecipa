@@ -5,36 +5,6 @@
 #
 # Modulo che permette il logging delle azioni di registrazione, login e logout relative all'utente che si autentica tramite il form di registrazione/autenticazione interno, anche allo scopo di tracciare l'IP
 
-=begin
-# frozen_string_literal: true
-
-module Decidim
-    module AdminLog
-      class UserPresenter < Decidim::Log::BasePresenter
-        private
-
-        def action_string
-          case action
-          when "registration", "login", "logout"
-            Rails.logger.info "=============================================> ACTION"
-            "decidim.admin_log.user.#{action}"
-          else
-            super
-          end
-        end
-
-        def i18n_labels_scope
-          "activemodel.attributes.user"
-        end
-
-        def user_presenter
-          @user_presenter ||= Decidim::UserPresenter.new(action_log.resource, h, action_log.extra["resource"])
-        end
-    end
-  end
-end
-=end
-
 # frozen_string_literal: true
 
 module Decidim
