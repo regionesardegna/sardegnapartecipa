@@ -3,7 +3,7 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
-# Modificata per forzare l'inizio della sessione dalla homepage bypassando la pagina di login
+# Modificata per eseguire il logging degli accessi con form interno e tracciare l'ip del client
 
 # frozen_string_literal: true
 
