@@ -56,8 +56,24 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.delivery_method = :letter_opener
+  #config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
-
+  
+  config.action_mailer.smtp_settings = {
+    address: Rails.application.secrets.smtp_address,
+    port: Rails.application.secrets.smtp_port,
+    authentication: Rails.application.secrets.smtp_authentication,
+    user_name: Rails.application.secrets.smtp_username,
+    password: Rails.application.secrets.smtp_password,
+    domain: Rails.application.secrets.smtp_domain,
+    enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
+    openssl_verify_mode: 'none',
+    ssl: true,
+    tls: true
+  }
+   
+  config.action_mailer.default_url_options = { host: Rails.application.secrets.host, protocol: Rails.application.secrets.protocol }
+  config.action_mailer.asset_host = Rails.application.secrets.protocol + '://' + Rails.application.secrets.host
+ 
   config.hosts << ENV['HOST']
 end
