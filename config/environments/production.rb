@@ -42,7 +42,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :error
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -120,6 +120,9 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  #Rails.logger.info "#{Rails.application.secrets.protocol} :// #{Rails.application.secrets.host}"
+
   config.action_mailer.default_url_options = { host: Rails.application.secrets.host, protocol: Rails.application.secrets.protocol }
   config.action_mailer.asset_host = Rails.application.secrets.protocol + '://' + Rails.application.secrets.host
   config.action_view.raise_on_missing_translations = false

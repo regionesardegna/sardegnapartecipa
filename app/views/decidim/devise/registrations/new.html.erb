@@ -20,12 +20,12 @@ Modificata per eliminare la possibilità di registrazione con sottoscrizione new
   <div class="row collapse">
     <div class="columns large-8 large-centered text-center page-title">
       <h1><%= t(".sign_up") %></h1>
+      <!--p-->
+        <!--%= t(".subtitle") %-->
+      <!--/p-->
       <p>
-        <%= t(".subtitle") %>
-      </p>
-      <p>
-        <%= t(".already_have_an_account?") %>
-        <%= link_to t(".sign_in"), new_user_session_path %>
+        <!--%= t(".already_have_an_account?") %-->
+        <!--%= link_to t(".sign_in"), new_user_session_path %-->
       </p>
     </div>
   </div>
@@ -36,10 +36,10 @@ Modificata per eliminare la possibilità di registrazione con sottoscrizione new
   
   <div class="row">
     <div class="columns large-6 medium-10 medium-centered">
-
       <%= decidim_form_for(@form, namespace: "registration", as: resource_name, url: registration_path(resource_name), html: { class: "register-form new_user", id: "register-form" }) do |f| %>
         <%= invisible_captcha %>
         <div class="card">
+          <div style="margin-top:5px;margin-bottom:5px;text-align:center;"><%= t("devise.registrations.new.register_here") %></div>
           <div class="card__content">
             <%= form_required_explanation %>
             <div class="user-person">

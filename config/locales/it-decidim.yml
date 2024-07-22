@@ -22,7 +22,7 @@ it:
       user:
         about: Di
         email: La tua email
-        name: Nome utente
+        name: Nome pubblico
         nickname: Nickname
         password: Password
         password_confirmation: Conferma la tua password
@@ -1391,8 +1391,8 @@ it:
       show:
         version_index: Versione %{index}
     welcome_notification:
-      default_body: <p>Ciao {{name}}, grazie per esserti iscritto a {{organization}} e benvenut*!</p><ul><li>Se vuoi avere una rapida idea di cosa puoi fare qui, dai un'occhiata alla sezione <a href="{{help_url}}">Aiuto</a>.</li><li>Una volta letto, riceverai il tuo primo badge. Ecco un <a href="{{badges_url}}">elenco di tutti i badge</a> che è possibile ottenere, partecipando a {{organization}}</li><li>Da ultimo, ma non meno importante, incontra altre persone, condividi con loro l'esperienza di essere impegnati e partecipare in {{organization}}. Fare proposte, commentare, discutere, pensare a come contribuire al bene comune, fornire argomenti per convincere, ascoltare e leggere per essere coinvolti, esprimere le proprie idee in modo concreto e diretto, rispondere con pazienza e decisione, difendere le proprie idee e mantenere una mente aperta, per supportare e condividere le idee degli altri.</li></ul>
-      default_subject: Grazie per esserti iscritto a {{organization}}!
+      default_body: <p>Ciao {{name}}, grazie per esserti iscritto a {{organization}} e benvenut*!</p><ul><li>Per farti un’idea su cosa potrai fare sul sito, consulta la sezione <a href="{{help_url}}">Aiuto</a>.</li><li>Partecipando attivamente alle consultazioni riceverai dei badge, dei riconoscimenti visivi per le azioni svolte all’interno della piattaforma. Ecco un <a href="{{badges_url}}">elenco di tutti i badge che è possibile ottenere</a> partecipando a {{organization}}</li><li>Da ultimo, ma non meno importante, incontra altre persone, condividi con loro l'esperienza di essere impegnati e partecipare in {{organization}}. Fare proposte, commentare, discutere, pensare a come contribuire al bene comune, fornire argomenti per convincere, ascoltare e leggere per essere coinvolti, esprimere le proprie idee in modo concreto e diretto, rispondere con pazienza e decisione, difendere le proprie idee e mantenere una mente aperta, per supportare e condividere le idee degli altri.</li><li>Puoi sempre consultare la sezione Note Legali – Termini e Condizioni di utilizzo, Privacy Policy e le Regole generali per la partecipazione</li></ul>
+      default_subject: Grazie per esserti registrato a {{organization}}!
     wizard_step_form:
       wizard_aside:
         back: Indietro
@@ -1435,8 +1435,8 @@ it:
       confirmation_instructions:
         action: Conferma il mio account
         greeting: Benvenuto %{recipient}!
-        instruction: 'Puoi confermare l''email del tuo account tramite il link sottostante:'
-        subject: Istruzioni di conferma
+        instruction: 'Per completare la registrazione alla piattaforma %{organization}, conferma la tua email tramite il seguente link'
+        subject: SardegnaParteciPA. Conferma l'email del tuo account
       email_changed:
         greeting: Ciao %{recipient}!
         message: Ti stiamo contattando per informarti che la tua email è stata modificata a %{email}.
@@ -1469,11 +1469,11 @@ it:
         subject: Password modificata
       reset_password_instructions:
         action: Cambia la mia password
-        greeting: Ciao %{recipient}!
-        instruction: Qualcuno ha richiesto un link per cambiare la tua password, e puoi farlo attraverso il link qui sotto.
+        greeting: Gentile %{recipient}!
+        instruction: Abbiamo ricevuto una richiesta per aggiornare la password del tuo account. Puoi farlo cliccando sul seguente link
         instruction_2: Se non lo hai richiesto, ignora questa email.
-        instruction_3: La tua password non cambierà fino a quando non accedi al link sopra e ne crei uno nuovo.
-        subject: Reimposta le istruzioni della password
+        instruction_3: La tua precedente password rimarrà invariata fino a quando non accederai al link sopra e ne creerai una nuova..
+        subject: SardegnaParteciPA. Istruzioni reset password account personale
       unlock_instructions:
         action: Sblocca il mio account
         greeting: Ciao %{recipient}!

@@ -139,3 +139,10 @@ it:
     failure:
       user:
         invalid_due_spid: Devi effettuare l'accesso tramite SPID o CIE
+    registrations:
+      new:
+        register_here: Registrati con email e password
+    sessions:
+      new:
+        access_here: Accedi con account interno
+    
