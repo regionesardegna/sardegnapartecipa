@@ -584,7 +584,7 @@ it:
           email_subject: Un aggiornamento a %{participatory_space_title}
           notification_title: Il componente %{resource_title} è ora attivo per <a href="%{resource_path}">%{participatory_space_title}</a>
       email_event:
-        email_greeting: Ciao %{user_name},
+        email_greeting: Gentile %{user_name},
         email_intro: 'C''è stato un aggiornamento a "%{resource_title}". Si può vedere da questa pagina:'
         email_outro: Hai ricevuto questa notifica perché stai seguendo "%{resource_title}". Puoi smettere di seguirlo cliccando sul link precedente.
         email_subject: Un aggiornamento per %{resource_title}
@@ -904,35 +904,35 @@ it:
       conversation_mailer:
         comanagers_new_conversation:
           admin_in_group: Hai ricevuto questo perché sei un amministratore di %{group}.
-          greeting: Ciao, %{recipient}!
+          greeting: Gentile %{recipient}!
           intro: "%{manager} ha iniziato una nuova conversazione a nome di %{group}. Clicca qui per vederla:"
           outro: Goditi decidim!
           subject: "%{manager} ha iniziato una nuova conversazione come %{group}"
         comanagers_new_message:
           admin_in_group: Hai ricevuto questo perché sei un amministratore di %{group}.
-          greeting: Ciao, %{recipient}!
+          greeting: Gentile %{recipient}!
           intro: "%{manager} ha postato nuovi messaggi in una conversazione a nome di %{group}. Clicca qui per vederli:"
           outro: Goditi decidim!
           subject: "%{manager} ha inviato nuovi messaggi come %{group}"
         new_conversation:
-          greeting: Ciao, %{recipient}!
+          greeting: Gentile %{recipient}!
           intro: "%{sender} ha avviato una nuova conversazione con te. Clicca qui per vederlo:"
           outro: Questa applicazione è stata realizzata con decidim!
           subject: "%{sender} ha iniziato una conversazione con te"
         new_group_conversation:
           admin_in_group: Hai ricevuto questo perché sei un amministratore di %{group}.
-          greeting: Ciao, %{recipient}!
+          greeting: Gentile %{recipient}!
           intro: "%{sender} ha iniziato una nuova conversazione con il gruppo %{group}. Clicca qui per vederla:"
           outro: Goditi decidim!
           subject: "%{sender} ha iniziato una conversazione con %{group}"
         new_group_message:
           admin_in_group: Hai ricevuto questo perché sei un amministratore di %{group}.
-          greeting: Ciao, %{recipient}!
+          greeting: Gentile %{recipient}!
           intro: "%{sender} ha postato nuovi messaggi in una conversazione con il gruppo %{group}. Clicca qui per vederlo:"
           outro: Goditi decidim!
           subject: "%{group} ha nuovi messaggi da %{sender}"
         new_message:
-          greeting: Ciao, %{recipient}!
+          greeting: Gentile %{recipient}!
           intro: "%{sender} ha pubblicato nuovi messaggi nella tua conversazione. Clicca qui per vederli:"
           outro: Questa applicazione è stata realizzata con decidim!
           subject: Hai nuovi messaggi da %{sender}
@@ -1166,7 +1166,7 @@ it:
         resend_email_confirmation_instructions: Rispedire le istruzioni per la conferma dell'email
     reported_mailer:
       hide:
-        hello: Ciao %{name},
+        hello: Gentile %{name},
         manage_moderations: Gestire le moderazioni
         report_html: <p>Il seguente <a href="%{url}">contenuto</a> è stato nascosto automaticamente.</p>
         subject: Un contenuto è stato cancellato automaticamente
@@ -1176,7 +1176,7 @@ it:
         content_original_language: Lingua originale del contenuto
         date: Segnalato il
         details: Dettagli
-        hello: Ciao %{name},
+        hello: Gentile %{name},
         id: ID
         participatory_space: Spazio partecipativo
         reason: Motivazione
@@ -1360,7 +1360,7 @@ it:
         body_1: L'utente %{user} è stato segnalato da %{token}
         body_2: 'Motivo: %{reason}'
         greetings: Salve,<br/>%{organization_name}<br/><a href="%{organization_url}">%{organization_url}</a>
-        hello: Ciao %{admin},
+        hello: Gentile %{admin},
         subject: Un nuovo utente è stato segnalato in %{organization_name}
     version:
       show:
@@ -1391,8 +1391,8 @@ it:
       show:
         version_index: Versione %{index}
     welcome_notification:
-      default_body: <p>Ciao {{name}}, grazie per esserti iscritto a {{organization}} e benvenut*!</p><ul><li>Per farti un’idea su cosa potrai fare sul sito, consulta la sezione <a href="{{help_url}}">Aiuto</a>.</li><li>Partecipando attivamente alle consultazioni riceverai dei badge, dei riconoscimenti visivi per le azioni svolte all’interno della piattaforma. Ecco un <a href="{{badges_url}}">elenco di tutti i badge che è possibile ottenere</a> partecipando a {{organization}}</li><li>Da ultimo, ma non meno importante, incontra altre persone, condividi con loro l'esperienza di essere impegnati e partecipare in {{organization}}. Fare proposte, commentare, discutere, pensare a come contribuire al bene comune, fornire argomenti per convincere, ascoltare e leggere per essere coinvolti, esprimere le proprie idee in modo concreto e diretto, rispondere con pazienza e decisione, difendere le proprie idee e mantenere una mente aperta, per supportare e condividere le idee degli altri.</li><li>Puoi sempre consultare la sezione Note Legali – Termini e Condizioni di utilizzo, Privacy Policy e le Regole generali per la partecipazione</li></ul>
-      default_subject: Grazie per esserti registrato a {{organization}}!
+      default_body: <p>Gentile {{name}}, grazie per aver effettuato la registrazione a {{organization}}!</p><ul><li>Per farti un’idea su cosa potrai fare sul sito, consulta la sezione <a href="{{help_url}}">Aiuto</a>.</li><li>Partecipando attivamente alle consultazioni riceverai dei badge, dei riconoscimenti visivi per le azioni svolte all’interno della piattaforma. Ecco un <a href="{{badges_url}}">elenco di tutti i badge che è possibile ottenere</a> partecipando a {{organization}}</li><li>Da ultimo, ma non meno importante, incontra altre persone, condividi con loro l'esperienza di essere impegnati e partecipare in {{organization}}. Fare proposte, commentare, discutere, pensare a come contribuire al bene comune, fornire argomenti per convincere, ascoltare e leggere per essere coinvolti, esprimere le proprie idee in modo concreto e diretto, rispondere con pazienza e decisione, difendere le proprie idee e mantenere una mente aperta, per supportare e condividere le idee degli altri.</li><li>Puoi sempre consultare la sezione Note Legali – Termini e Condizioni di utilizzo, Privacy Policy e le Regole generali per la partecipazione</li></ul>
+      default_subject: SardegnaParteciPA. Registrazione effettuata!
     wizard_step_form:
       wizard_aside:
         back: Indietro
@@ -1434,18 +1434,18 @@ it:
     mailer:
       confirmation_instructions:
         action: Conferma il mio account
-        greeting: Benvenuto %{recipient}!
-        instruction: 'Per completare la registrazione alla piattaforma %{organization}, conferma la tua email tramite il seguente link'
+        greeting: Gentile %{recipient}!
+        instruction: per completare la registrazione alla piattaforma %{organization}, conferma la tua email tramite il seguente link
         subject: SardegnaParteciPA. Conferma l'email del tuo account
       email_changed:
-        greeting: Ciao %{recipient}!
+        greeting: Gentile %{recipient}!
         message: Ti stiamo contattando per informarti che la tua email è stata modificata a %{email}.
         subject: Email cambiata
       invitation_instructions:
         accept: Accetta l'invito
         accept_until: Questo invito scade il %{due_date}.
         decline: Rifiuta l'invito
-        hello: Ciao %{email},
+        hello: Gentile %{email},
         ignore: |-
           Se non desideri accettare l'invito, ignora questa email.<br />
           Il tuo account non verrà creato fino a quando non accedi al link qui sopra e imposti il ​​tuo nickname e password.
@@ -1464,7 +1464,7 @@ it:
       organization_admin_invitation_instructions:
         subject: Sei stato invitato a gestire %{organization}
       password_change:
-        greeting: Ciao %{recipient}!
+        greeting: Gentile %{recipient}!
         message: Ti contattiamo per informarti che la tua password è stata modificata.
         subject: Password modificata
       reset_password_instructions:
@@ -1476,7 +1476,7 @@ it:
         subject: SardegnaParteciPA. Istruzioni reset password account personale
       unlock_instructions:
         action: Sblocca il mio account
-        greeting: Ciao %{recipient}!
+        greeting: Gentile %{recipient}!
         instruction: 'Clicca sul link sottostante per sbloccare il tuo account:'
         message: Il tuo account è stato bloccato a causa di una quantità eccessiva di tentativi di accesso non riusciti.
         subject: Sblocca le istruzioni

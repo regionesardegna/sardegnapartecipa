@@ -144,5 +144,5 @@ it:
         register_here: Registrati con email e password
     sessions:
       new:
-        access_here: Accedi con account interno
+        access_here: Accedi con email e password
     
