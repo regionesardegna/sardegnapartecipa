@@ -1435,7 +1435,7 @@ it:
       confirmation_instructions:
         action: Conferma il mio account
         greeting: Gentile %{recipient}!
-        instruction: per completare la registrazione alla piattaforma %{organization}, conferma la tua email tramite il seguente link
+        instruction: per completare la registrazione alla piattaforma SardegnaParteciPA, conferma la tua email tramite il seguente link:
         subject: SardegnaParteciPA. Conferma l'email del tuo account
       email_changed:
         greeting: Gentile %{recipient}!
