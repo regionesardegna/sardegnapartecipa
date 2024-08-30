@@ -1,29 +1,33 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby RUBY_VERSION
-DECIDIM_VERSION = 'release/0.25-stable'
+DECIDIM_VERSION = 'v0.26.10'
 gem 'rails', '6.0.4.1'
 
 gem 'bootsnap', '~> 1.4'
 gem 'daemons'
 gem 'decidim', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-decidim_awesome'
+gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'bump_to_0.26'
+gem 'decidim-spid-cie', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie', branch: 'bump_to_0.26'
+#gem 'decidim-proposal_moderation', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-proposal_moderation', branch: 'bump_to_0.26'
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
-gem 'decidim-term_customizer', branch: DECIDIM_VERSION, git: 'https://github.com/mainio/decidim-module-term_customizer'
+gem 'decidim-term_customizer', branch: 'release/0.26-stable', git: 'https://github.com/mainio/decidim-module-term_customizer'
+gem 'decidim-survey_results', git: 'https://github.com/CodiTramuntana/decidim-module-survey_results', branch: 'release/0.26-stable'
+gem 'deface'
 gem 'delayed_job_active_record'
-gem 'faker', '~> 2.14'
-gem 'foundation_rails_helper', git: 'https://github.com/sgruhier/foundation_rails_helper.git'
 gem 'figaro'
+gem 'foundation_rails_helper', git: 'https://github.com/sgruhier/foundation_rails_helper.git'
 gem 'pg'
 gem 'puma'
 gem 'rake'
 gem 'uglifier', '~> 4.1'
-gem 'decidim-spid-cie', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie', branch: 'main'
-gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'main'
-gem 'decidim-proposal_moderation', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-proposal_moderation', branch: 'main'
-gem 'deface'
+gem 'mini_portile2', '~> 2.8.2'
+gem 'wicked_pdf', '~> 2.1'
+gem 'wkhtmltopdf-binary'
+gem 'ffi', '< 1.17.0'
 
 group :development, :test do
   gem 'byebug', '~> 11.0', platform: :mri
@@ -31,18 +35,19 @@ group :development, :test do
   # Use latest simplecov from master until next version of simplecov is
   # released (greather than 0.18.5)
   # See https://github.com/decidim/decidim/issues/6230
-  gem 'simplecov', '~> 0.19.0'
   gem 'decidim-dev', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
+  gem 'simplecov', '~> 0.19.0'
 end
 
 group :development do
   gem 'letter_opener_web', '~> 1.3'
   gem 'listen', '~> 3.1'
   gem 'rubocop-faker'
-  gem 'spring', '~> 2.0'
-  gem 'spring-watcher-listen', '~> 2.0'
+  gem 'spring', '~> 4.0'
+  gem 'spring-watcher-listen', '~> 2.1'
   gem 'web-console', '4.0.4'
   gem 'xray-rails'
+  gem 'faker', :require => false
   gem 'active_record_query_trace'
   gem 'sql_tracker'
 end

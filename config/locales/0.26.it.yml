@@ -1,0 +1,15 @@
+it:
+ decidim:
+  accessibility:
+   front_page_link: LINK A FRONTPAGE
+  meetings:
+   meetings:
+    index:
+     see_all_withdrawn: VEDI TUTTI I RITIRATI
+    filters:
+     type_values:
+      hybrid: IBRIDO
+  pages:
+   home:
+    hero:
+     participate_title: PARTECIPA
