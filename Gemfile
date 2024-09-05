@@ -12,7 +12,7 @@ gem 'decidim', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-decidim_awesome'
 gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'bump_to_0.26'
 gem 'decidim-spid-cie', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie', branch: 'bump_to_0.26'
-#gem 'decidim-proposal_moderation', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-proposal_moderation', branch: 'bump_to_0.26'
+gem 'decidim-proposal_moderation', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-proposal_moderation', branch: 'bump_to_0.26'
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-term_customizer', branch: 'release/0.26-stable', git: 'https://github.com/mainio/decidim-module-term_customizer'
 gem 'decidim-survey_results', git: 'https://github.com/CodiTramuntana/decidim-module-survey_results', branch: 'release/0.26-stable'
