@@ -50,4 +50,5 @@ group :development do
   gem 'faker', :require => false
   gem 'active_record_query_trace'
   gem 'sql_tracker'
+  gem 'awesome_print'
 end
