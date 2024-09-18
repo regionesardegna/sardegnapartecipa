@@ -51,4 +51,8 @@ group :development do
   gem 'active_record_query_trace'
   gem 'sql_tracker'
   gem 'awesome_print'
+  gem 'pry'
+  gem 'pry-byebug' # Integrates pry with byebug
+  gem 'pry-doc' # Provide MRI Core documentation
+  gem 'pry-rails'
 end

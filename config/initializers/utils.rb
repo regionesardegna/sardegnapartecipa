@@ -19,9 +19,16 @@ Decidim::Spid::Utils.module_eval do
       end
 
       def sso_request(saml_response, options)
+	    Rails.logger.info "0 utils.sso_request ================================>"
+		Rails.logger.info "0.1 utils.sso_request ================================> saml_response=#{saml_response}"
+		Rails.logger.info "0.2 utils.sso_request ================================> session_prefix=#{session_prefix}"
+		Rails.logger.info "0.3 utils.sso_request ================================> options=#{options}"
         r = Decidim::Spid::SsoResponse.new(saml_response, session[:"#{session_prefix}sso_params"], options)
-        response = r.response
+        Rails.logger.info "1 utils.sso_request ================================> r=#{r.inspect}"
+		response = r.response
+		Rails.logger.info "2 utils.sso_request ================================> response=#{response.inspect}"
         valid = r.valid?
+		Rails.logger.info "3 utils.sso_request ================================> valid=#{valid}"
         if valid
           session[:"#{session_prefix}uid"] = response.attributes[options.uid_attribute] || response.name_id.try(:strip)
           session[:"#{session_prefix}index"] = r.session_index
@@ -30,7 +37,8 @@ Decidim::Spid::Utils.module_eval do
           msg = 'decidim.spid.sso_request.success'
         else
           matches = nil
-          if r.errors && r.errors.any?{ |a| matches = a.match(/The status code of the Response was not Success, was Responder => AuthnFailed -> ErrorCode nr(19|2[0-5])/) } && (error_code = matches.try(:[], 1)).present?
+          Rails.logger.info "4 utils.sso_request ================================> errors= #{r.errors.inspect}"
+		  if r.errors && r.errors.any?{ |a| matches = a.match(/The status code of the Response was not Success, was Responder => AuthnFailed -> ErrorCode nr(19|2[0-5])/) } && (error_code = matches.try(:[], 1)).present?
             msg = "decidim.spid.sso_request.failure_#{error_code}"
           else
             msg = 'decidim.spid.sso_request.failure'
