@@ -6,6 +6,7 @@
 # Modificata per prevedere il che siano passati in login e logout ulteriori pasametri
 # funzionali a far eseguire correttamente il logout su AM Sardegna IT
 
+
 Decidim::Spid::Utils.module_eval do
       def slo_saml(slo_params, options)
         logout_request = Decidim::Spid::SloRequest.new(slo_params,
@@ -20,13 +21,16 @@ Decidim::Spid::Utils.module_eval do
 
       def sso_request(saml_response, options)
 	    Rails.logger.info "0 utils.sso_request ================================>"
-		#Rails.logger.info "0.1 utils.sso_request ================================> saml_response=#{saml_response}"
-		#Rails.logger.info "0.2 utils.sso_request ================================> session_prefix=#{session_prefix}"
-		#Rails.logger.info "0.3 utils.sso_request ================================> options=#{options}"
+		Rails.logger.info "0.1 utils.sso_request ================================> saml_response=#{saml_response}"
+		Rails.logger.info "0.2 utils.sso_request ================================> session_prefix=#{session_prefix}"
+		Rails.logger.info "0.3 utils.sso_request ================================> options=#{options}"
+		Rails.logger.info "0.4 utils.sso_request ================================> session=#{session.inspect}"
+		sso_params=session[:sardegnapartecipa_spid_sso_params]#undefined method dig for nil class
+		Rails.logger.info "0.5 utils.sso_request ================================> sso_params=#{sso_params}"
         r = Decidim::Spid::SsoResponse.new(saml_response, session[:"#{session_prefix}sso_params"], options)
-        #Rails.logger.info "1 utils.sso_request ================================> r=#{r.inspect}"
+        Rails.logger.info "1 utils.sso_request ================================> r=#{r.inspect}"
 		response = r.response
-		#Rails.logger.info "2 utils.sso_request ================================> response=#{response.inspect}"
+		Rails.logger.info "2 utils.sso_request ================================> response=#{response.inspect}"
         valid = r.valid?
 		Rails.logger.info "3 utils.sso_request ================================> valid=#{valid}"
         if valid
@@ -45,5 +49,8 @@ Decidim::Spid::Utils.module_eval do
           end
         end
         [valid, msg, response]
+		rescue => e
+		  Rails.logger.error e.message
+          Rails.logger.error e.backtrace.join("\n")
       end
 end
