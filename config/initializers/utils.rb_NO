@@ -3,9 +3,9 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 #
-# Modificata per prevedere il che siano passati in login e logout ulteriori pasametri
+# Modificata per prevedere che siano passati in login e logout ulteriori pasametri
 # funzionali a far eseguire correttamente il logout su AM Sardegna IT
-require "awesome_print"
+
 
 Decidim::Spid::Utils.module_eval do
       def slo_saml(slo_params, options)

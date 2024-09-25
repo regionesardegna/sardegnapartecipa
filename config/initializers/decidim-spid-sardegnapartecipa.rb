@@ -11,8 +11,7 @@
 require "#{Rails.root}/lib/decidim/spid/validations.rb"
 require "#{Rails.root}/lib/decidim/spid/create_omniauth_spid_registration.rb"
 require "#{Rails.root}/lib/decidim/spid/authentication/authenticator.rb"
-#require "#{Rails.root}/lib/decidim/spid/controllers/decidim/spid/omniauth_callbacks_controller.rb"
-#require "#{Rails.root}/lib/decidim/spid/utils.rb"
+require "#{Rails.root}/lib/decidim/spid/utils.rb"
 
 
 if ENV['SPID_TENANT_NAME'].present?
