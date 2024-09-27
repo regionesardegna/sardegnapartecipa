@@ -1,11 +1,5 @@
-# Copyright (C) 2022 Formez PA
-# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
 # frozen_string_literal: true
 
-# Classe che verifica il contenuto dei dati dell'utente
 module Decidim
   module Spid
     module Authentication
@@ -13,16 +7,15 @@ module Decidim
         include ActiveModel::Validations
 
         def initialize(tenant, organization, oauth_hash)
-		  @tenant = tenant
+          @tenant = tenant
           @organization = organization
           @oauth_hash = oauth_hash
           @new_user = false
-		  
         end
 
         def verified_email
           @verified_email ||= begin
-                                oauth_data[:info][:email].downcase
+                                oauth_data[:info][:email].try(:downcase)
                               rescue
                                 nil
                               end
@@ -36,7 +29,7 @@ module Decidim
           {
             provider: oauth_data[:provider],
             uid: user_identifier,
-            name: existing_user.try(:name) || oauth_data[:info][:name],
+            name: existing_user.try(:name) || "#{oauth_data.dig(:info, :first_name)} #{oauth_data.dig(:info, :last_name)}",
             # nickname: oauth_data[:info][:nickname] || oauth_data[:info][:name],
             oauth_signature: user_signature,
             avatar_url: oauth_data[:info][:image],
@@ -66,6 +59,7 @@ module Decidim
             uid: user_identifier
           )
           @new_user = id ? id.user.blank? : true
+
           true
         end
 
@@ -92,6 +86,7 @@ module Decidim
             provider: oauth_data[:provider],
             uid: user_identifier
           )
+
           Decidim::ActionLogger.log(:registration, user, i, {})
 
           i
@@ -117,27 +112,46 @@ module Decidim
           }
           authorization.save!
 
-          authorization.grant! unless authorization.granted?
-          
-		  authorization
+          # Dipendenza decidim-minors_auth
+          #if user && user.respond_to?(:fiscal_code) && defined?(Decidim::MinorsAuth)
+          #  user.update(fiscal_code: user_identifier.try(:upcase))
+          #end
+
+          #tenant.run_authorization_handlers(user: user, document_number: user_identifier, document_type: :FEDERA)
+
+          #authorization.grant! unless authorization.granted?
+
+          #authorization
         end
 
-        def update_user!(user)
+        def update_user!(user, force= false)
           user_changed = false
-          Rails.logger.info "===========================================> user email=#{user.email.downcase} verified_email=#{verified_email}"
-          if verified_email.present? && (user.email.downcase != verified_email)
-             user_changed = true
-             user.email = verified_email
-	         #user.confirmed_at = nil
-             user.skip_reconfirmation!
-             Rails.logger.info "========================================> email modificata"
+          generated_password = SecureRandom.hex
+          user.password = generated_password
+          user.password_confirmation = generated_password
+          user.save
+
+          if (verified_email.present? && (user.email != verified_email)) || force
+            user_changed = true
+            if is_spid?
+              user.skip_reconfirmation!
+            else
+              user.confirmed_at = nil if verified_email.present? && (user.email != verified_email)
+              # user.resend_confirmation_instructions unless user.confirmed?
+            end
+            user.email = verified_email if verified_email.present?
           end
           # user.newsletter_notifications_at = Time.zone.now if user_newsletter_subscription?(user)
+          notification_email = user.email_changed?
           if user.valid?
-            user.save! if user_changed
+            if user_changed
+              if user.save! && is_spid? && notification_email
+                Decidim::Federa::UpdateEmailFederaJob.perform_later(user)
+              end
+            end
           else
             if (user.errors.details.all?{ |k,v| k == :email && v.flatten.map{ |k| k[:error] }.all?(:taken) } rescue false)
-              Rails.logger.info("decidim-module-spid-cie || L'utente #{user.id} ha un'altro account decidim con la stessa email dello SPID richiesto. Non aggiorno l'email.")
+              Rails.logger.info("decidim-module-federa || L'utente #{user.id} ha un'altro account decidim con la stessa email dello PUA richiesto. Non aggiorno l'email.")
               user.reload
             end
           end
@@ -180,6 +194,10 @@ module Decidim
           @person_identifier_digest ||= Digest::MD5.hexdigest(
             "#{tenant.name.upcase}:#{user_identifier}:#{Rails.application.secrets.secret_key_base}"
           )
+        end
+
+        def is_spid?
+          !("smartcard" == oauth_hash.dig(:extra, :raw_info, :authenticationMethod).try(:first).try(:downcase))
         end
       end
     end

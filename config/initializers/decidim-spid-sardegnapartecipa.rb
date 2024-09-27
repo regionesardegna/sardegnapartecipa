@@ -12,10 +12,12 @@ require "#{Rails.root}/lib/decidim/spid/validations.rb"
 require "#{Rails.root}/lib/decidim/spid/create_omniauth_spid_registration.rb"
 require "#{Rails.root}/lib/decidim/spid/authentication/authenticator.rb"
 require "#{Rails.root}/lib/decidim/spid/utils.rb"
+require "#{Rails.root}/lib/omniauth/strategies/spid_saml.rb"
+require "#{Rails.root}/lib/decidim/spid/models/certificate.rb"
 
 
 if ENV['SPID_TENANT_NAME'].present?
-  Decidim::Spid.configure do |config|
+  Decidim::Federa.configure do |config|
     # Definisce il nome del tenant. Solo lettere minuscole e underscores sono permessi.
     # Default: spid. Quando hai multipli tenant devi definire un nome univoco rispetto ai vari tenant.
     config.name = ENV['SPID_TENANT_NAME']
