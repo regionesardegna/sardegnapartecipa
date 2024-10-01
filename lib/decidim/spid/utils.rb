@@ -24,9 +24,22 @@ module Decidim
 		#sso_params=session[:"sardegnapartecipa_spid_sso_params"] #undefined method dig for nil class
 		Rails.logger.info "1 utils.sso_saml ================================> sso_params=#{sso_params}"
 		
-        session[:"#{session_prefix}sso_params"] = sso_params.merge(
+        #session[:"#{session_prefix}sso_params"] = sso_params.merge(
+        #  issue_instant: request.issue_instant,
+        #  uuid: request.uuid)
+		
+		sso_params.merge(
           issue_instant: request.issue_instant,
           uuid: request.uuid)
+		Rails.logger.info "sso_saml =========================> sso_params=#{sso_params.inspect}"
+		
+		sso_params.each {|k,v|
+			session[k] = v
+		}
+		session[:issue_instant] = request.issue_instant
+		session[:uuid] = request.uuid
+		Rails.logger.info "sso_saml =========================> session=#{session.inspect}"
+		
         request.to_saml
       end
 
@@ -37,19 +50,25 @@ module Decidim
                                                          idp_name_qualifier: session[:"#{session_prefix}idp_name_qualifier"],
                                                          name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
                                                        ))
-        session[:"#{session_prefix}slo_id"] = logout_request.uuid
+        #session[:"#{session_prefix}slo_id"] = logout_request.uuid
+		session[:slo_id] = logout_request.uuid
         logout_request.to_saml
       end
 
       def sso_request(saml_response, options)
-	    Rails.logger.info "0 utils.sso_request ================================>"
+	    #Rails.logger.info "0 utils.sso_request ================================>"
 		#Rails.logger.info "0.1 utils.sso_request ================================> saml_response=#{saml_response}"
 		#Rails.logger.info "0.2 utils.sso_request ================================> session_prefix=#{session_prefix}"
-		Rails.logger.info "0.3 utils.sso_request ================================> options=#{options}"
+		#Rails.logger.info "0.3 utils.sso_request ================================> options=#{options}"
 		#Rails.logger.info "0.4 utils.sso_request ================================> session=#{session.inspect}"
-		sso_params=session[:"sardegnapartecipa_spid_sso_params"]#undefined method dig for nil class
+		#sso_params=session[:"sardegnapartecipa_spid_sso_params"]#undefined method dig for nil class
 		#Rails.logger.info "0.5 utils.sso_request ================================> sso_params=#{sso_params}"
-        r = Decidim::Spid::SsoResponse.new(saml_response, session[:"#{session_prefix}sso_params"], options)
+        
+		Rails.logger.info "sso_request =========================> session=#{session.inspect}"
+		
+		
+		
+		r = Decidim::Spid::SsoResponse.new(saml_response, session[:"#{session_prefix}sso_params"], options)
         #Rails.logger.info "1 utils.sso_request ================================> r=#{r.inspect}"
 		response = r.response
 		#Rails.logger.info "2 utils.sso_request ================================> response=#{response.inspect}"

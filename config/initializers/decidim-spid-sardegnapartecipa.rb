@@ -17,7 +17,7 @@ require "#{Rails.root}/lib/decidim/spid/models/certificate.rb"
 
 
 if ENV['SPID_TENANT_NAME'].present?
-  Decidim::Federa.configure do |config|
+  Decidim::Spid.configure do |config|
     # Definisce il nome del tenant. Solo lettere minuscole e underscores sono permessi.
     # Default: spid. Quando hai multipli tenant devi definire un nome univoco rispetto ai vari tenant.
     config.name = ENV['SPID_TENANT_NAME']

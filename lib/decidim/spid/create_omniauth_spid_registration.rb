@@ -6,6 +6,7 @@
 # frozen_string_literal: true
 
 # commentata riga corrispondente allo skip_confirmation
+
 module Decidim
   module Spid
     class CreateOmniauthSpidRegistration < ::Decidim::CreateOmniauthRegistration
