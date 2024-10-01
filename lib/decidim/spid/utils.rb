@@ -28,17 +28,17 @@ module Decidim
         #  issue_instant: request.issue_instant,
         #  uuid: request.uuid)
 		
-		sso_params.merge(
-          issue_instant: request.issue_instant,
-          uuid: request.uuid)
-		Rails.logger.info "sso_saml =========================> sso_params=#{sso_params.inspect}"
+		#sso_params.merge(
+        #  issue_instant: request.issue_instant,
+        #  uuid: request.uuid)
+		#Rails.logger.info "sso_saml =========================> sso_params=#{sso_params.inspect}"
 		
 		sso_params.each {|k,v|
 			session[k] = v
 		}
 		session[:issue_instant] = request.issue_instant
 		session[:uuid] = request.uuid
-		Rails.logger.info "sso_saml =========================> session=#{session.inspect}"
+		#Rails.logger.info "sso_saml =========================> session=#{session.inspect}"
 		
         request.to_saml
       end
@@ -64,22 +64,36 @@ module Decidim
 		#sso_params=session[:"sardegnapartecipa_spid_sso_params"]#undefined method dig for nil class
 		#Rails.logger.info "0.5 utils.sso_request ================================> sso_params=#{sso_params}"
         
-		Rails.logger.info "sso_request =========================> session=#{session.inspect}"
+		#Rails.logger.info "sso_request =========================> session=#{session.inspect}"
 		
+		currsso_params = Hash.new
+		currsso_params[:"#{session_prefix}sso_params"] = Hash.new
 		
+		currsso_params[:"#{session_prefix}sso_params"]["sso"] = session[:sso]
+		currsso_params[:"#{session_prefix}sso_params"]["spid_level"] = session[:spid_level]
+		currsso_params[:"#{session_prefix}sso_params"]["host"] = session[:host]
+		currsso_params[:"#{session_prefix}sso_params"]["relay_state"] = session[:relay_state]
+		currsso_params[:"#{session_prefix}sso_params"]["issue_instant"] = session[:issue_instant]
+		currsso_params[:"#{session_prefix}sso_params"]["uuid"] = session[:uuid]
 		
-		r = Decidim::Spid::SsoResponse.new(saml_response, session[:"#{session_prefix}sso_params"], options)
+		Rails.logger.info "==================================> currsso_params[:{session_prefix}sso_params].inspect = " + currsso_params[:"#{session_prefix}sso_params"].inspect
+		
+		r = Decidim::Spid::SsoResponse.new(saml_response, currsso_params[:"#{session_prefix}sso_params"], options)
         #Rails.logger.info "1 utils.sso_request ================================> r=#{r.inspect}"
 		response = r.response
 		#Rails.logger.info "2 utils.sso_request ================================> response=#{response.inspect}"
         valid = r.valid?
 		Rails.logger.info "3 utils.sso_request ================================> valid=#{valid}"
         if valid
-          session[:"#{session_prefix}uid"] = response.attributes[options.uid_attribute] || response.name_id.try(:strip)
-          session[:"#{session_prefix}index"] = r.session_index
-          session[:"#{session_prefix}login_time"] = Time.now
-          session[:"#{session_prefix}idp_name_qualifier"] = response.send(:name_id_node).attributes.dig("NameQualifier").to_s
-          msg = 'decidim.spid.sso_request.success'
+          #session[:"#{session_prefix}uid"] = response.attributes[options.uid_attribute] || response.name_id.try(:strip)
+          #session[:"#{session_prefix}index"] = r.session_index
+          #session[:"#{session_prefix}login_time"] = Time.now
+          #session[:"#{session_prefix}idp_name_qualifier"] = response.send(:name_id_node).attributes.dig("NameQualifier").to_s
+          session[:uid] = response.attributes[options.uid_attribute] || response.name_id.try(:strip)
+		  session[:index] = r.session_index
+		  session[:login_time] = Time.now
+		  session[:idp_name_qualifier] = response.send(:name_id_node).attributes.dig("NameQualifier").to_s
+		  msg = 'decidim.spid.sso_request.success'
         else
           matches = nil
           #Rails.logger.info "4 utils.sso_request ================================> errors= #{r.errors.inspect}"
@@ -99,11 +113,15 @@ module Decidim
         response = Decidim::Spid::SloResponse.new(saml_response, session[:"#{session_prefix}sso_params"].merge(slo_id: session[:"#{session_prefix}slo_id"]), options)
         valid = response.valid?
         if valid
-          session.delete(:"#{session_prefix}sso_params")
-          session.delete(:"#{session_prefix}index")
-          session.delete(:"#{session_prefix}slo_id")
-          session.delete(:"#{session_prefix}relay_state")
-          session.delete(:"#{session_prefix}login_time")
+          #session.delete(:"#{session_prefix}sso_params")
+          #session.delete(:"#{session_prefix}index")
+          #session.delete(:"#{session_prefix}slo_id")
+          #session.delete(:"#{session_prefix}relay_state")
+          #session.delete(:"#{session_prefix}login_time")
+		  session.delete(:index)
+		  session.delete(:slo_id)
+		  session.delete(:relay_state)
+		  session.delete(:login_time)
           msg = 'decidim.spid.slo_request.success'
         else
           msg = 'decidim.spid.slo_request.failure'

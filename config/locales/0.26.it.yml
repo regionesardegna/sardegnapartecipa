@@ -1,4 +1,9 @@
 it:
+ layouts:
+  decidim:
+   system:
+    login_items:
+     logout: LOGOUT
  decidim:
   accessibility:
    front_page_link: LINK A FRONTPAGE
@@ -13,3 +18,13 @@ it:
    home:
     hero:
      participate_title: PARTECIPA
+  system:
+   titles:
+    decidim: DECIDIM
+   devise:
+    shared:
+     links:
+      log_in: LOGIN
+   organizations:
+    edit:
+     title: TITOLO
