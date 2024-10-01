@@ -34,6 +34,9 @@ module OneLogin
         end
 
         nameid = root.add_element "saml:NameID"
+		
+		Rails.logger.info "=================================> settings=#{settings.inspect}"
+		
         if settings.name_identifier_value
           nameid.attributes['NameQualifier'] = settings.idp_name_qualifier if settings.idp_name_qualifier
           nameid.attributes['SPNameQualifier'] = settings.sp_name_qualifier if settings.sp_name_qualifier
