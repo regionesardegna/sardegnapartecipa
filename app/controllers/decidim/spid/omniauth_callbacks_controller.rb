@@ -1,4 +1,4 @@
-# Copyright (C) 2022 Formez PA
+# Copyright (C) 2024 Sardegna IT
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
@@ -19,21 +19,15 @@ module Decidim
       def spid
         session["decidim-spid.signed_in"] = true
         session["decidim-spid.tenant"] = tenant.name
-        Rails.logger.info "===================================>0"
         authenticator.validate!
-        Rails.logger.info "===================================>0.1"
         if user_signed_in?
           authenticator.identify_user!(current_user)
-		  Rails.logger.info "===================================>1"
           # Aggiunge l'autorizzazione per l'utente
           return fail_authorize unless authorize_user(current_user)
-          Rails.logger.info "===================================>2"
           # Aggiorna le informazioni dell'utente
           authenticator.update_user!(current_user)
-          Rails.logger.info "===================================>3"
           Decidim::Spid::SpidJob.perform_later(current_user)
           flash[:notice] = t("authorizations.create.success", scope: "decidim.spid.verification")
-		  Rails.logger.info "===================================>4"
           return redirect_to(stored_location_for(resource || :user) || decidim.root_path)
         end
 
@@ -42,19 +36,23 @@ module Decidim
 
       rescue Decidim::Spid::Authentication::ValidationError => e1
         fail_authorize(e.validation_key)
-		Rails.logger.info "=======================================> VALIDATION ERROR"
-      rescue Decidim::Spid::Authentication::IdentityBoundToOtherUserError 
+		Rails.logger.error "OmniauthCallbacksController.spid ================================> " + e.message
+		Rails.logger.debug "OmniauthCallbacksController.spid =======================================> VALIDATION ERROR"
+      rescue Decidim::Spid::Authentication::IdentityBoundToOtherUserError => e2
         fail_authorize(:identity_bound_to_other_user)
-		Rails.logger.info "=======================================> IDENTITY BOUND TO OTHER USER ERROR"
-	  rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+		Rails.logger.error "OmniauthCallbacksController.spid ================================> " + e2.message
+		Rails.logger.error "OmniauthCallbacksController.spid =======================================> IDENTITY BOUND TO OTHER USER ERROR"
+	  rescue Exception => e3
+	    Rails.logger.error "OmniauthCallbacksController.spid ================================> " + e3.message
+		Rails.logger.error "OmniauthCallbacksController.spid =======================================> ERROR #{e2.message}"
       end
 
       def create
         form_params = user_params_from_oauth_hash || params.require(:user).permit!
         form_params.merge!(params.require(:user).permit!) if params.dig(:user).present?
-        origin = Base64.strict_decode64(session[:"#{session_prefix}sso_params"]["relay_state"]) rescue ''
-
+        #origin = Base64.strict_decode64(session[:"#{session_prefix}sso_params"]["relay_state"]) rescue ''
+        origin = Base64.strict_decode64(session["relay_state"]) rescue ''
+		
         invitation_token = invitation_token(origin)
         verified_e = verified_email
 
@@ -97,8 +95,6 @@ module Decidim
               set_flash_message :alert, :failure, kind: "SPID", reason: t("decidim.devise.omniauth_registrations.create.email_already_exists")
               return redirect_to after_omniauth_failure_path_for(resource_name)
             end
-            
-			Rails.logger.info "=======================================> 1"
 			
             # match l'utente dell'invitation token passato come relay_state in SPID Strategy,
             # associo l'identity SPID all'utente creato nell'invitation e aggiorno l'email dell'utente con quella dello SPID.
@@ -113,26 +109,20 @@ module Decidim
               user.accept_invitation!
             end
 
-            Rails.logger.info "=======================================> 2"
-
             if user.active_for_authentication?
-              
-			  Rails.logger.info "=======================================> 3"
 			  
 			  if existing_identity
                 Decidim::ActionLogger.log(:login, user, existing_identity, {})
               else
-                i = user.identities.find_by(uid: session["#{session_prefix}uid"]) rescue nil
+			    # modificata a seguuito modifiche su cookies v. anche /lib/decidim/utils.rb
+                # i = user.identities.find_by(uid: session["#{session_prefix}uid"]) rescue nil
+				i = user.identities.find_by(uid: session["uid"]) rescue nil
                 Decidim::ActionLogger.log(:registration, user, i, {})
               end
-			  
-			  Rails.logger.info "=======================================> 4"
 			  
               sign_in_and_redirect user, verified_email: verified_e, event: :authentication
               set_flash_message :notice, :success, kind: "SPID"
             else
-              
-			  Rails.logger.info "=======================================> 5"
 			  
 			  expire_data_after_sign_in!
               user.resend_confirmation_instructions unless user.confirmed?
@@ -141,15 +131,10 @@ module Decidim
             end
           end
 
-		  Rails.logger.info "=======================================> 6"
-
-
           on(:invalid) do
             set_flash_message :notice, :success, kind: "SPID"
             render :new
           end
-
-          Rails.logger.info "=======================================> 7"
 
           on(:error) do |user|
             set_flash_message :alert, :failure, kind: "SPID", reason: user.errors.full_messages.try(:first)
@@ -157,8 +142,8 @@ module Decidim
             render :new
           end
         end
-		rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+		rescue Exception => e
+		  Rails.logger.error "OmniauthCallbacksController.create =======================================> ERROR #{e.message}"
       end
 
       def failure
@@ -177,8 +162,8 @@ module Decidim
         set_flash_message! :alert, :failure, kind: "SPID", reason: failure_message
         redirect_to after_omniauth_failure_path_for(resource_name)
 		
-		rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+		rescue Exception => e
+		  Rails.logger.error "OmniauthCallbacksController.failure =======================================> ERROR #{e.message}"
       end
 
       def sign_in_and_redirect(resource_or_scope, *args)
@@ -189,8 +174,8 @@ module Decidim
         end
 
         super
-		rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+		rescue Exception => e
+		  Rails.logger.error "OmniauthCallbacksController.sign_in_and_redirect =======================================> ERROR #{e.message}"
       end
 
       def first_login_and_not_authorized?(_user)
@@ -202,8 +187,8 @@ module Decidim
       def failure_message
         error = request.respond_to?(:get_header) ? request.get_header("omniauth.error") : request.env["omniauth.error"]
         I18n.t(error) rescue nil
-		rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+		rescue Exception => e
+		  Rails.logger.error "OmniauthCallbacksController.failure_message =======================================> ERROR #{e.message}"
       end
 
       private
@@ -212,27 +197,27 @@ module Decidim
         authenticator.authorize_user!(user)
       rescue Decidim::Spid::Authentication::AuthorizationBoundToOtherUserError
         nil
-	  rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+	  rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.authorize_user =======================================> ERROR #{e.message}"
       end
 
       def fail_authorize(failure_message_key = :already_authorized)
         flash[:alert] = t("failure.#{failure_message_key}", scope: "decidim.spid.omniauth_callbacks")
         redirect_to stored_location_for(resource || :user) || decidim.root_path
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.fail_authorize =======================================> ERROR #{e.message}"
       end
 
       def omniauth_registrations_path(resource)
         decidim_spid.public_send("user_#{current_organization.enabled_omniauth_providers.dig(:spid, :tenant_name)}_omniauth_create_url")
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.omniauth_registrations_path =======================================> ERROR #{e.message}"
       end
 
       def user_params_from_oauth_hash
         authenticator.user_params_from_oauth_hash
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.user_params_from_oauth_hash =======================================> ERROR #{e.message}"
       end
 
       def authenticator
@@ -240,8 +225,8 @@ module Decidim
           current_organization,
           oauth_hash
         )
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.authenticator =======================================> ERROR #{e.message}"
       end
 
       def tenant
@@ -254,14 +239,14 @@ module Decidim
 
                       tenant
                     end
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.tenant =======================================> ERROR #{e.message}"
       end
 
       def session_prefix
         tenant.name + '_spid_'
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.session_prefix =======================================> ERROR #{e.message}"
       end
 
       def invitation_token(url)
@@ -270,14 +255,14 @@ module Decidim
         rescue
           nil
         end
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.invitation_token =======================================> ERROR #{e.message}"
       end
 
       def verified_email
         authenticator.verified_email
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.verified_email =======================================> ERROR #{e.message}"
       end
 
       def oauth_hash
@@ -285,8 +270,8 @@ module Decidim
         return {} unless raw_hash
 
         raw_hash.deep_symbolize_keys
-      rescue Exception => e2
-		Rails.logger.info "=======================================> ERROR #{e2.message}"
+      rescue Exception => e
+		Rails.logger.error "OmniauthCallbacksController.oauth_hash =======================================> ERROR #{e.message}"
       end
     end
   end

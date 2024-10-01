@@ -1,9 +1,13 @@
-# Copyright (C) 2023 Sardegna IT
+# Copyright (C) 2024 Sardegna IT
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 #
+
+# frozen_string_literal: true
+
 # Modificata per prevedere che siano passati in login e logout ulteriori pasametri funzionali a far eseguire correttamente il logout su AM Sardegna IT
+# modificato funzionamento dei cookies in funzione delle modifiche a 0.26 sui cookies vedi 
 
 module Decidim
   module Spid
@@ -14,33 +18,24 @@ module Decidim
       def metadata_xml(overrides = {})
         metadata = Decidim::Spid::Metadata.new
         metadata.to_xml(Decidim::Spid::Settings::Metadata.new(overrides))
+		rescue => e
+		  Rails.logger.error "Utils.metadata_xml ================================> " + e.message
+          Rails.logger.error "Utils.metadata_xml ================================> " + e.backtrace.join("\n")
       end
 
       def sso_saml(sso_params, options)
         request = Decidim::Spid::SsoRequest.new(sso_params, options)
         session[:"tenant-spid-name"] = options["name"]
-		#Rails.logger.info "0 utils.sso_saml ================================> sso_params=#{session[:"tenant-spid-name"]}"
-		
-		#sso_params=session[:"sardegnapartecipa_spid_sso_params"] #undefined method dig for nil class
-		Rails.logger.info "1 utils.sso_saml ================================> sso_params=#{sso_params}"
-		
-        #session[:"#{session_prefix}sso_params"] = sso_params.merge(
-        #  issue_instant: request.issue_instant,
-        #  uuid: request.uuid)
-		
-		#sso_params.merge(
-        #  issue_instant: request.issue_instant,
-        #  uuid: request.uuid)
-		#Rails.logger.info "sso_saml =========================> sso_params=#{sso_params.inspect}"
-		
+        
 		sso_params.each {|k,v|
 			session[k] = v
 		}
 		session[:issue_instant] = request.issue_instant
 		session[:uuid] = request.uuid
-		#Rails.logger.info "sso_saml =========================> session=#{session.inspect}"
-		
         request.to_saml
+		rescue => e
+		  Rails.logger.error "Utils.sso_saml ================================> " + e.message
+          Rails.logger.error "Utils.sso_saml ================================> " + e.backtrace.join("\n")
       end
 
       def slo_saml(slo_params, options)
@@ -50,45 +45,29 @@ module Decidim
                                                          idp_name_qualifier: session[:"#{session_prefix}idp_name_qualifier"],
                                                          name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
                                                        ))
-        #session[:"#{session_prefix}slo_id"] = logout_request.uuid
 		session[:slo_id] = logout_request.uuid
         logout_request.to_saml
+		rescue => e
+		  Rails.logger.error "Utils.slo_saml ================================> " + e.message
+
+ 	  Rails.logger.error "Utils.slo_saml ================================> " + e.backtrace.join("\n")
       end
 
       def sso_request(saml_response, options)
-	    #Rails.logger.info "0 utils.sso_request ================================>"
-		#Rails.logger.info "0.1 utils.sso_request ================================> saml_response=#{saml_response}"
-		#Rails.logger.info "0.2 utils.sso_request ================================> session_prefix=#{session_prefix}"
-		#Rails.logger.info "0.3 utils.sso_request ================================> options=#{options}"
-		#Rails.logger.info "0.4 utils.sso_request ================================> session=#{session.inspect}"
-		#sso_params=session[:"sardegnapartecipa_spid_sso_params"]#undefined method dig for nil class
-		#Rails.logger.info "0.5 utils.sso_request ================================> sso_params=#{sso_params}"
-        
-		#Rails.logger.info "sso_request =========================> session=#{session.inspect}"
-		
-		currsso_params = Hash.new
-		currsso_params[:"#{session_prefix}sso_params"] = Hash.new
-		
-		currsso_params[:"#{session_prefix}sso_params"]["sso"] = session[:sso]
-		currsso_params[:"#{session_prefix}sso_params"]["spid_level"] = session[:spid_level]
-		currsso_params[:"#{session_prefix}sso_params"]["host"] = session[:host]
-		currsso_params[:"#{session_prefix}sso_params"]["relay_state"] = session[:relay_state]
-		currsso_params[:"#{session_prefix}sso_params"]["issue_instant"] = session[:issue_instant]
-		currsso_params[:"#{session_prefix}sso_params"]["uuid"] = session[:uuid]
-		
-		Rails.logger.info "==================================> currsso_params[:{session_prefix}sso_params].inspect = " + currsso_params[:"#{session_prefix}sso_params"].inspect
-		
-		r = Decidim::Spid::SsoResponse.new(saml_response, currsso_params[:"#{session_prefix}sso_params"], options)
-        #Rails.logger.info "1 utils.sso_request ================================> r=#{r.inspect}"
+ 	    # modificato rispetto alla 0.25.2 modalità di passaggio dei parametri sso estratti da cookie
+		curr_sso_params = Hash.new
+		curr_sso_params[:"#{session_prefix}sso_params"] = Hash.new
+		curr_sso_params[:"#{session_prefix}sso_params"]["sso"] = session[:sso]
+		curr_sso_params[:"#{session_prefix}sso_params"]["spid_level"] = session[:spid_level]
+		curr_sso_params[:"#{session_prefix}sso_params"]["host"] = session[:host]
+		curr_sso_params[:"#{session_prefix}sso_params"]["relay_state"] = session[:relay_state]
+		curr_sso_params[:"#{session_prefix}sso_params"]["issue_instant"] = session[:issue_instant]
+		curr_sso_params[:"#{session_prefix}sso_params"]["uuid"] = session[:uuid]
+		r = Decidim::Spid::SsoResponse.new(saml_response, curr_sso_params[:"#{session_prefix}sso_params"], options)
 		response = r.response
-		#Rails.logger.info "2 utils.sso_request ================================> response=#{response.inspect}"
         valid = r.valid?
-		Rails.logger.info "3 utils.sso_request ================================> valid=#{valid}"
+		Rails.logger.info "Utils.sso_request ================================> valid=#{valid}"
         if valid
-          #session[:"#{session_prefix}uid"] = response.attributes[options.uid_attribute] || response.name_id.try(:strip)
-          #session[:"#{session_prefix}index"] = r.session_index
-          #session[:"#{session_prefix}login_time"] = Time.now
-          #session[:"#{session_prefix}idp_name_qualifier"] = response.send(:name_id_node).attributes.dig("NameQualifier").to_s
           session[:uid] = response.attributes[options.uid_attribute] || response.name_id.try(:strip)
 		  session[:index] = r.session_index
 		  session[:login_time] = Time.now
@@ -96,7 +75,6 @@ module Decidim
 		  msg = 'decidim.spid.sso_request.success'
         else
           matches = nil
-          #Rails.logger.info "4 utils.sso_request ================================> errors= #{r.errors.inspect}"
 		  if r.errors && r.errors.any?{ |a| matches = a.match(/The status code of the Response was not Success, was Responder => AuthnFailed -> ErrorCode nr(19|2[0-5])/) } && (error_code = matches.try(:[], 1)).present?
             msg = "decidim.spid.sso_request.failure_#{error_code}"
           else
@@ -105,19 +83,23 @@ module Decidim
         end
         [valid, msg, response]
 		rescue => e
-		  Rails.logger.error e.message
-          Rails.logger.error e.backtrace.join("\n")
+		  Rails.logger.error "Utils.sso_request ================================> " + e.message
+          Rails.logger.error "Utils.sso_request ================================> " + e.backtrace.join("\n")
       end
 	
 	  def slo_request(saml_response, options)
-        response = Decidim::Spid::SloResponse.new(saml_response, session[:"#{session_prefix}sso_params"].merge(slo_id: session[:"#{session_prefix}slo_id"]), options)
+	    # modificato rispetto alla 0.25.2 modalità di passaggio dei parametri sso estratti da cookie
+		curr_sso_params = Hash.new
+		curr_sso_params[:"#{session_prefix}sso_params"] = Hash.new
+		curr_sso_params[:"#{session_prefix}sso_params"]["sso"] = session[:sso]
+		curr_sso_params[:"#{session_prefix}sso_params"]["spid_level"] = session[:spid_level]
+		curr_sso_params[:"#{session_prefix}sso_params"]["host"] = session[:host]
+		curr_sso_params[:"#{session_prefix}sso_params"]["relay_state"] = session[:relay_state]
+		curr_sso_params[:"#{session_prefix}sso_params"]["issue_instant"] = session[:issue_instant]
+		curr_sso_params[:"#{session_prefix}sso_params"]["uuid"] = session[:uuid]
+        response = Decidim::Spid::SloResponse.new(saml_response, curr_sso_params[:"#{session_prefix}sso_params"].merge(slo_id: session[:slo_id]), options)
         valid = response.valid?
         if valid
-          #session.delete(:"#{session_prefix}sso_params")
-          #session.delete(:"#{session_prefix}index")
-          #session.delete(:"#{session_prefix}slo_id")
-          #session.delete(:"#{session_prefix}relay_state")
-          #session.delete(:"#{session_prefix}login_time")
 		  session.delete(:index)
 		  session.delete(:slo_id)
 		  session.delete(:relay_state)
@@ -127,21 +109,31 @@ module Decidim
           msg = 'decidim.spid.slo_request.failure'
         end
         [valid, msg]
+		rescue => e
+		  Rails.logger.error "Utils.slo_request ================================> " + e.message
+          Rails.logger.error "Utils.slo_request ================================> " + e.backtrace.join("\n")
       end
 
       def slo_params
         sso_params = {}
-        sso_params[:sso] = { idp: session[:"#{session_prefix}sso_params"].dig("sso", "idp") }
-        sso_params[:spid_level] = session[:"#{session_prefix}sso_params"]["spid_level"]
-        sso_params[:session_index] = session[:"#{session_prefix}index"]
-        sso_params[:relay_state] = Base64.strict_decode64(session[:"#{session_prefix}sso_params"]["relay_state"])
-        sso_params
+        #sso_params[:sso] = { idp: session[:"#{session_prefix}sso_params"].dig("sso", "idp") }
+        #sso_params[:spid_level] = session[:"#{session_prefix}sso_params"]["spid_level"]
+        #sso_params[:session_index] = session[:"#{session_prefix}index"]
+        #sso_params[:relay_state] = Base64.strict_decode64(session[:"#{session_prefix}sso_params"]["relay_state"])
+        sso_params[:sso] = { idp: session[:sso].dig("idp") }
+		sso_params[:spid_level] = session[:spid_level]
+		sso_params[:session_index] = session[:index]
+		sso_params[:relay_state] = Base64.strict_decode64(session["relay_state"])
+		sso_params
+		rescue => e
+		  Rails.logger.error "Utils.slo_params ================================> " + e.message
+          Rails.logger.error "Utils.slo_params ================================> " + e.backtrace.join("\n")
       end
 
       def session_prefix
         options["name"] + '_spid_'
       end
-
+	  
 	end
   end
 end
