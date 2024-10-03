@@ -22,7 +22,7 @@ module OmniAuth
       include Decidim::Spid::Utils
       def initialize(app, *args, &block)
         super
-        # Decidim::Spid::Utils.current_name = options[:name]
+        #Decidim::Spid::Utils.current_name = options[:name]
         options[:sp_name_qualifier] = options[:sp_entity_id] if options[:sp_name_qualifier].nil?
         options[:issuer] = options[:sp_entity_id]
 
@@ -204,8 +204,10 @@ module OmniAuth
 
       def handle_response(raw_response, opts, settings)
         valid, msg, r = sso_request(raw_response, options)
-        if valid
+        Rails.logger.info "SpidSaml.handle_response =================================> settings=#{settings}" 
+		if valid
           @name_id = r.name_id.try(:strip)
+		  Rails.logger.info "SpidSaml.handle_response =================================> @name_id=#{@name_id}" 
           @response_object = r
           r.attributes["fingerprint"] = r.settings.idp_cert_fingerprint if r.settings.idp_cert_fingerprint
           @attributes =  r.attributes

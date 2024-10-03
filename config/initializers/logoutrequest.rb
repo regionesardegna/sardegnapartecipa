@@ -34,7 +34,7 @@ module OneLogin
 
         nameid = root.add_element "saml:NameID"
 		
-		#Rails.logger.info "Logoutrequest.create_xml_document =================================> settings=#{settings.inspect}"
+		Rails.logger.info "Logoutrequest.create_xml_document =================================> settings=#{settings.inspect}"
 		Rails.logger.info "Logoutrequest.create_xml_document =================================> name_identifier_value=#{settings.name_identifier_value}" 
         
 		if settings.name_identifier_value 
