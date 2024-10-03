@@ -10,7 +10,6 @@ require 'onelogin/ruby-saml'
 # Only supports SAML 2.0
 module OneLogin
   module RubySaml
-
     class Logoutrequest
 
       def create_xml_document(settings)
@@ -34,7 +33,11 @@ module OneLogin
         end
 
         nameid = root.add_element "saml:NameID"
-        if settings.name_identifier_value
+		
+		#Rails.logger.info "Logoutrequest.create_xml_document =================================> settings=#{settings.inspect}"
+		Rails.logger.info "Logoutrequest.create_xml_document =================================> name_identifier_value=#{settings.name_identifier_value}" 
+        
+		if settings.name_identifier_value 
           nameid.attributes['NameQualifier'] = settings.idp_name_qualifier if settings.idp_name_qualifier
           nameid.attributes['SPNameQualifier'] = settings.sp_name_qualifier if settings.sp_name_qualifier
           nameid.attributes['Format'] = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified" 
