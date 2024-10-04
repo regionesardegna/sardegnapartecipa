@@ -16,6 +16,8 @@ gem 'decidim-proposal_moderation', git: 'https://github.com/dipartimentofunzione
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-term_customizer', branch: 'release/0.26-stable', git: 'https://github.com/mainio/decidim-module-term_customizer'
 gem 'decidim-survey_results', git: 'https://github.com/CodiTramuntana/decidim-module-survey_results', branch: 'release/0.26-stable'
+gem 'decidim-extra_user_fields', git: 'https://github.com/Jeanluc74/decidim-module-extra_user_fields.git', branch: 'release/0.26-stable'
+#gem 'decidim-extra_user_fields', git: 'https://github.com/PopulateTools/decidim-module-extra_user_fields.git', branch: 'release/0.26-stable'
 gem 'deface'
 gem 'delayed_job_active_record'
 gem 'figaro'
@@ -27,7 +29,7 @@ gem 'uglifier', '~> 4.1'
 gem 'mini_portile2', '~> 2.8.2'
 gem 'wicked_pdf', '~> 2.1'
 gem 'wkhtmltopdf-binary'
-gem 'ffi', '< 1.17.0'
+gem 'ffi', '< 1.17.0' 
 
 group :development, :test do
   gem 'byebug', '~> 11.0', platform: :mri

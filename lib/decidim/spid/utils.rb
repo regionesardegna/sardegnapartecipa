@@ -99,7 +99,7 @@ module Decidim
 		curr_sso_params[:"#{session_prefix}sso_params"]["uuid"] = session[:uuid]
 		
 		#Rails.logger.info "Utils.slo_request ================================> session[:name_id] = #{session[:name_id]}"
-		Rails.logger.info "Utils.slo_request ================================> saml_response = #{saml_response.inspect}"
+		#Rails.logger.info "Utils.slo_request ================================> saml_response = #{saml_response.inspect}"
 		
         response = Decidim::Spid::SloResponse.new(saml_response, curr_sso_params[:"#{session_prefix}sso_params"].merge(slo_id: session[:slo_id]), options)
         valid = response.valid?
@@ -130,8 +130,7 @@ module Decidim
 		sso_params[:spid_level] = session[:spid_level]
 		sso_params[:session_index] = session[:index]
 		sso_params[:relay_state] = Base64.strict_decode64(session["relay_state"])
-		Rails.logger.info "Utils.slo_request ================================> session[:name_id] = #{session[:name_id]}"
-		
+		#Rails.logger.info "Utils.slo_request ================================> session[:name_id] = #{session[:name_id]}"
 		
 		sso_params
 		rescue => e
