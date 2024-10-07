@@ -3,21 +3,29 @@ it:
   decidim:
    system:
     login_items:
-     logout: LOGOUT
+     logout: Logout
  decidim:
   accessibility:
-   front_page_link: LINK A FRONTPAGE
+   front_page_link: Link alla Home Page
   meetings:
    meetings:
     index:
-     see_all_withdrawn: VEDI TUTTI I RITIRATI
+     see_all_withdrawn: Vedi tutti i ritirati
     filters:
      type_values:
-      hybrid: IBRIDO
+      hybrid: ibrido
   pages:
    home:
     hero:
-     participate_title: PARTECIPA
+     participate_title: partecipa
+  participatory_processes:
+   pages:
+    home:
+     highlighted_processes:
+      active_processes: Processi attivi
+      see_all_processes: Vedi tutti i processi
+   show:
+    local_area: Area locale
   system:
    titles:
     decidim: DECIDIM

@@ -184,8 +184,8 @@ a img + .external-link-indicator {
 
 	.topbar__user__login a:hover, button:hover{
 		color: $par-white;
-		font-size: 12px;
-		font-weight: 600;
+		//font-size: 12px;
+		//font-weight: 600;
 		text-transform: uppercase;
 		font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 	}
@@ -1414,43 +1414,43 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
 
 //SOCIAL LOGIN
 
-.social-login-button{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+//.social-login-button{
+//  display:flex;
+//  justify-content:center;
+//  align-items:center;
+//}
 
-.spid-button-container{
-  height:auto;
-}
+//.spid-button-container{
+//  height:auto;
+//}
 
-.spid-button{
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
-}
+//.spid-button{
+// display:block;
+//  margin-left:auto;
+//  margin-right:auto;
+//}
 
-.spid-button-large-idp-list{
-  margin-left:18px;
-}
+//.spid-button-large-idp-list{
+//  margin-left:18px;
+//}
 
-.spid-button-mini-idp-list{
-  margin-left:10px;
-}
+//.spid-button-mini-idp-list{
+//margin-left:10px;
+//}
 
-.spid-idp-label{
-  box-sizing: initial;
-}
+//.spid-idp-label{
+//  box-sizing: initial;
+//}
 
-.italia-it-button-text{
-  padding: .95em 1em .85em;
-  padding-top: 0.95em;
-  padding-right: 2em;
-  padding-bottom: 0.85em;
-  padding-left: 2em;
-  font-size: 1.15em;
-  text-align: center;
-}
+//.italia-it-button-text{
+//  padding: .95em 1em .85em;
+//  padding-top: 0.95em;
+//  padding-right: 2em;
+//  padding-bottom: 0.85em;
+//  padding-left: 2em;
+//  font-size: 1.15em;
+//  text-align: center;
+//}
 
 //ASSEMBLIES
 
@@ -1465,14 +1465,6 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
 #assemblies-chart {
   display: none;
 }
-
-//.register__separator {
-//   display: none;
-//}
-
-//.button-spid{
-   //display: none;
-//}
 
 .omnipresent-banner {
   background-color: #9D1313;
@@ -1492,7 +1484,13 @@ input[readonly], textarea[readonly] {
 }
 
 .italia-it-button-text {
-  padding: 1em 2em .85em;
+  padding: 1em 1em .85em;
   font-size: 0.92em;
   text-align: center;
+}
+
+.italia-it-button-text:hover {
+  padding: 1em 1em .85em !important;
+  font-size: 0.92em !important;
+  text-align: center !important;
 }

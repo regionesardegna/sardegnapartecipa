@@ -1,24 +1,18 @@
+<%#
+Copyright (C) 2024 Sardegna IT
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+Override per reimpaginazione della pagina di login
+%>
 <% add_decidim_page_title(t("devise.sessions.new.sign_in")) %>
 
 <div class="wrapper">
   <div class="row collapse">
     <div class="row collapse">
       <div class="columns large-8 large-centered text-center page-title">
-        <h1><%= t("devise.sessions.new.sign_in") %></h1>
-        <!--% if current_organization.sign_up_enabled? %-->
-          <!--p-->
-            <!--%= t(".are_you_new?") %-->
-            <!--%= link_to t(".register"), new_user_registration_path %-->
-          <!--/p-->
-        <!--% elsif current_organization.sign_in_enabled? %-->
-          <!--p-->
-            <!--%= t(".sign_up_disabled") %-->
-          </p>
-        <!--% else %-->
-          <!--p-->
-            <!--%= t(".sign_in_disabled") %-->
-          <!--/p-->
-        <!--% end %-->
+        <h1><%= t("devise.sessions.new.sign_in") %></h1>        
       </div>
     </div>
     <% cache current_organization do %>
