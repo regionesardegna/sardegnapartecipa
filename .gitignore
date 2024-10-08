@@ -22,6 +22,7 @@
 
 # Ignore uploaded files in development
 /storage/*
+/storage_OLD
 !/storage/.keep
 
 /node_modules
