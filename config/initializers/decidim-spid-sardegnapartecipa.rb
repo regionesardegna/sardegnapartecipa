@@ -14,6 +14,8 @@ require "#{Rails.root}/lib/decidim/spid/authentication/authenticator.rb"
 require "#{Rails.root}/lib/decidim/spid/utils.rb"
 require "#{Rails.root}/lib/omniauth/strategies/spid_saml.rb"
 require "#{Rails.root}/lib/decidim/spid/models/certificate.rb"
+require "#{Rails.root}/lib/one_login/ruby_saml/logoutrequest.rb"
+
 
 
 if ENV['SPID_TENANT_NAME'].present?
