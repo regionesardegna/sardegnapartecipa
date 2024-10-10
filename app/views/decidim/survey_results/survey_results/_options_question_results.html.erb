@@ -16,9 +16,9 @@ Modificata per aggiungere le localizzazioni in italiano al posto di quelle stati
 
 <table>
   <thead>
-    <th><%= t(".table.answered.answered") %></th>
-    <th><%= t(".table.answered.percentage") %></th>
-    <th><%= t(".table.answered.quantity") %></th>
+    <th><%= t("decidim.survey_results.survey_results.answered_table.table.answered") %></th>
+    <th><%= t("decidim.survey_results.survey_results.answered_table.table.percentage") %></th>
+    <th><%= t("decidim.survey_results.survey_results.answered_table.table.quantity") %></th>
   </thead>
   <tbody>
     <% results.x_labels.zip(results.datasets.first[:data]).each do |label, count| %>
