@@ -17,8 +17,8 @@ module Decidim
         attribute :phone_number_pattern, String
         translatable_attribute :phone_number_placeholder, String
         # Block ExtraUserFields Attributes
-		attribute :name
-		attribute :surname
+		attribute :name, String
+		attribute :surname, String
         # EndBlock
 
         def map_model(model)

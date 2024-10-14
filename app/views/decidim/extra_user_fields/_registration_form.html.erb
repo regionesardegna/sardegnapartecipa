@@ -1,4 +1,8 @@
+BEFORE ENABLED
+
 <% if current_organization.extra_user_fields_enabled? %>
+
+  ENABLED=TRUE 
   <div id="card__extra_user_fields" class="form__wrapper form__wrapper-block">
     <h4 class="h4"><%= t(".signup.legend") %></h4>
 
@@ -27,16 +31,16 @@
     <% if current_organization.activated_extra_field?(:location) %>
       <%= f.text_field :location %>
     <% end %>
-	
-	<% if current_organization.activated_extra_field?(:name) %>
-      <%= f.text_field :name %>
+
+    <%# Block ExtraUserFields SignUpFormFields %>
+    
+    <% if current_organization.activated_extra_field?(:name) %>
+	  <%= f.text_field :name %>
     <% end %>
 
 	<% if current_organization.activated_extra_field?(:surname) %>
-      <%= f.text_field :surname %>
+	  <%= f.text_field :surname %>
     <% end %>
-
-    <%# Block ExtraUserFields SignUpFormFields %>
 
     <%# EndBlock %>
 

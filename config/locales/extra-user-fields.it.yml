@@ -51,6 +51,12 @@ it:
             postal_code:
               description: Questo campo è un campo stringa. Se selezionato l'utente dovrà inserire il codice postale.
               label: Abilita il campo codice postale
+            name:
+              description: Questo campo contiene il Nome dell'utente
+              label: Abilita il campo Nome
+            surname:
+              description: Questo campo contiene il Cognome dell'utente
+              label: Abilita il campo Cognome
           form:
             callout:
               help: Abilita la funzionalità dei campi extra custom.
