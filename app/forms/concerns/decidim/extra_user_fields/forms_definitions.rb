@@ -17,9 +17,7 @@ module Decidim
         attribute :postal_code, String
         attribute :date_of_birth, Decidim::Attributes::LocalizedDate
         attribute :gender, String
-        attribute :phone_number, String
-        attribute :location, String
-        
+        # Block ExtraUserFields
 		attribute :name, String
 		attribute :surname, String
         # EndBlock
@@ -30,18 +28,10 @@ module Decidim
         validates :postal_code, presence: true, if: :postal_code?
         validates :date_of_birth, presence: true, if: :date_of_birth?
         validates :gender, presence: true, inclusion: { in: Decidim::ExtraUserFields::Engine::DEFAULT_GENDER_OPTIONS.map(&:to_s) }, if: :gender?
-        validates :phone_number, presence: true, if: :phone_number?
-        validates(
-          :phone_number,
-          format: { with: ->(form) { Regexp.new(form.current_organization.extra_user_field_configuration(:phone_number)["pattern"]) } },
-          if: :phone_number_format?
-        )
-
-        validates :location, presence: true, if: :location?
-		
 		validates :name, presence: true, if: :name?
         validates :surname, presence: true, if: :surname?
-        # EndBlock
+        
+		# EndBlock
       end
 
       def map_model(model)
@@ -51,9 +41,6 @@ module Decidim
         self.postal_code = extended_data[:postal_code]
         self.date_of_birth = Date.parse(extended_data[:date_of_birth]) if extended_data[:date_of_birth].present?
         self.gender = extended_data[:gender]
-        self.phone_number = extended_data[:phone_number]
-        self.location = extended_data[:location]
-
        
         # Block ExtraUserFields MapModel
         self.name = extended_data[:name]
@@ -78,20 +65,6 @@ module Decidim
 
       def postal_code?
         extra_user_fields_enabled && current_organization.activated_extra_field?(:postal_code)
-      end
-
-      def phone_number?
-        extra_user_fields_enabled && current_organization.activated_extra_field?(:phone_number)
-      end
-
-      def phone_number_format?
-        return unless phone_number?
-
-        current_organization.extra_user_field_configuration(:phone_number)["pattern"].present?
-      end
-
-      def location?
-        extra_user_fields_enabled && current_organization.activated_extra_field?(:location)
       end
 
       def name?

@@ -11,11 +11,8 @@ module Decidim
         attribute :postal_code, Boolean
         attribute :date_of_birth, Boolean
         attribute :gender, Boolean
-        attribute :phone_number, Boolean
-        attribute :location, Boolean
 
-        attribute :phone_number_pattern, String
-        translatable_attribute :phone_number_placeholder, String
+       #translatable_attribute :phone_number_placeholder, String
         # Block ExtraUserFields Attributes
 		attribute :name, String
 		attribute :surname, String
@@ -27,10 +24,6 @@ module Decidim
           self.postal_code = model.extra_user_fields.dig("postal_code", "enabled")
           self.date_of_birth = model.extra_user_fields.dig("date_of_birth", "enabled")
           self.gender = model.extra_user_fields.dig("gender", "enabled")
-          self.phone_number = model.extra_user_fields.dig("phone_number", "enabled")
-          self.location = model.extra_user_fields.dig("location", "enabled")
-          self.phone_number_pattern = model.extra_user_fields.dig("phone_number", "pattern")
-          self.phone_number_placeholder = model.extra_user_fields.dig("phone_number", "placeholder")
           # Block ExtraUserFields MapModel
 		  self.name = model.extra_user_fields.dig("name", "enabled")
 		  self.surname = model.extra_user_fields.dig("surname", "enabled")

@@ -9,18 +9,6 @@
   <%= f.custom_country_select :country %>
 <% end %>
 
-<% if current_organization.activated_extra_field?(:postal_code) %>
-  <%= f.text_field :postal_code %>
-<% end %>
-
-<% if current_organization.activated_extra_field?(:phone_number) %>
-  <%= f.text_field :phone_number %>
-<% end %>
-
-<% if current_organization.activated_extra_field?(:location) %>
-  <%= f.text_field :location %>
-<% end %>
-
 <%# Block ExtraUserFields AccountFormFields %>
 
 <% if current_organization.activated_extra_field?(:name) %>

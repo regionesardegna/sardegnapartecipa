@@ -43,11 +43,9 @@ module Decidim
           postal_code: @form.postal_code,
           date_of_birth: @form.date_of_birth,
           gender: @form.gender,
-		  phone_number: @form.phone_number,
-          location: @form.location,
           # Block ExtraUserFields SaveInExtendedData
 		  name: @form.name,
-		  surname: @form.surname
+		  surname: @form.surname,
           # EndBlock
         )
       end

@@ -46,11 +46,9 @@ module Decidim
             "country" => { "enabled" => form.country.presence || false },
             "postal_code" => { "enabled" => form.postal_code.presence || false },
             "gender" => { "enabled" => form.gender.presence || false },
-			"phone_number" => { "enabled" => form.phone_number.presence || false },
-            "location" => { "enabled" => form.location.presence || false },
             # Block ExtraUserFields SaveFieldInConfig
-			"name" => { "name" => form.gender.presence || false },
-			"surname" => { "surname" => form.gender.presence || false }
+			"name" => { "enabled" => form.name.presence || false },
+			"surname" => { "enabled" => form.surname.presence || false }
             # EndBlock
           }
         end
