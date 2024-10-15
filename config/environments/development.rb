@@ -72,6 +72,11 @@ Rails.application.configure do
     tls: true
   }
    
+  # Use a different logger for distributed setups.
+  # require 'syslog/logger'
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, shift_age = 'daily')
+  config.logger.formatter = Logger::Formatter.new
+  
   config.action_mailer.default_url_options = { host: Rails.application.secrets.host, protocol: Rails.application.secrets.protocol }
   config.action_mailer.asset_host = Rails.application.secrets.protocol + '://' + Rails.application.secrets.host
  

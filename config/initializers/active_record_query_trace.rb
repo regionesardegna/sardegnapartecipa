@@ -6,3 +6,5 @@ if Rails.env.development?
   ActiveRecordQueryTrace.level = :full # default
   ActiveRecordQueryTrace.colorize = :light_purple
 end
+
+ActiveRecord::Base.logger = ActiveSupport::Logger.new(STDOUT)

@@ -46,10 +46,11 @@ module Decidim
             "country" => { "enabled" => form.country.presence || false },
             "postal_code" => { "enabled" => form.postal_code.presence || false },
             "gender" => { "enabled" => form.gender.presence || false },
-            # Block ExtraUserFields SaveFieldInConfig
-			"name" => { "enabled" => form.name.presence || false },
-			"surname" => { "enabled" => form.surname.presence || false }
-            # EndBlock
+			# Block ExtraUserFields SaveFieldInConfig
+			# valori forzati a booleani
+			"name" => { "enabled" => !!form.name.presence || false },
+			"surname" => { "enabled" => !!form.surname.presence || false },
+			# EndBlock
           }
         end
         # rubocop:enable Style/TrailingCommaInHashLiteral

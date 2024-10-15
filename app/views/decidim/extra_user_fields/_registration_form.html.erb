@@ -1,8 +1,4 @@
-BEFORE ENABLED
-
 <% if current_organization.extra_user_fields_enabled? %>
-
-  ENABLED=TRUE 
   <div id="card__extra_user_fields" class="form__wrapper form__wrapper-block">
     <h4 class="h4"><%= t(".signup.legend") %></h4>
 
@@ -23,15 +19,7 @@ BEFORE ENABLED
     <% if current_organization.activated_extra_field?(:postal_code) %>
       <%= f.text_field :postal_code %>
     <% end %>
-<%#
-    <!--% if current_organization.activated_extra_field?(:phone_number) %-->
-      <!--%= f.telephone_field :phone_number, placeholder: translated_attribute(f.object.phone_number_extra_user_field_placeholder), pattern: f.object.phone_number_extra_user_field_pattern %-->
-    <!--% end %-->
 
-    <!--% if current_organization.activated_extra_field?(:location) %-->
-      <!--%= f.text_field :location %-->
-    <!--% end %-->
-%>
     <%# Block ExtraUserFields SignUpFormFields %>
     
     <% if current_organization.activated_extra_field?(:name) %>
@@ -43,6 +31,5 @@ BEFORE ENABLED
     <% end %>
 
     <%# EndBlock %>
-
   </div>
 <% end %>

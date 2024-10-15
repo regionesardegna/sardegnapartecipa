@@ -9,6 +9,8 @@ it:
         location: Luogo
         phone_number: Numero di telefono
         postal_code: Codice postale
+        name: Nome
+        surname: Cognome
   decidim:
     admin:
       actions:
@@ -32,13 +34,13 @@ it:
               label: Abilita campo Paese
             date_of_birth:
               description: Questo campo è un campo data. Se selezionato l'utente dovrà registrarsi con la data di nascita usando un Date Picker.
-              label: Abilita il campo data di nascita
+              label: Abilita il campo Data di Nascita
             gender:
               description: Questo campo è una lista di generi. Se selezionata l'utente dovrà selezionare un genere.
-              label: Abilita il campo genere
+              label: Abilita il campo Genere
             location:
               description: Questo campo è un campo stringa. Se selezionato l'utente dovrà inserire il luogo. 
-              label: Abilita il campo luogo
+              label: Abilita il campo Luogo
             phone_number:
               description: Questo campo è un campo per inserimento del numero di telefono. Se selezionato l'utente lo dovrà inserire.
               label: Abilita il campo numero di telefono
@@ -47,10 +49,10 @@ it:
                 -]*[6-9][ -]*([0-9][ -]*){8}$</code> per validare questo formato del numero di telefono
                 +34999111222. You can review and check the regular expression <a href="https://rubular.com/r/dJZGjlLIadxElo"
                 target="_blank">qui</a>.
-              placeholder: Segnaposto del numero di telefono
+              placeholder: Segnaposto del Numero di Telefono
             postal_code:
               description: Questo campo è un campo stringa. Se selezionato l'utente dovrà inserire il codice postale.
-              label: Abilita il campo codice postale
+              label: Abilita il campo Codice Postale
             name:
               description: Questo campo contiene il Nome dell'utente
               label: Abilita il campo Nome
@@ -77,4 +79,4 @@ it:
         other: Altro
       registration_form:
         signup:
-          legend: Info
+          legend: Informazioni personali aggiuntive

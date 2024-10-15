@@ -52,38 +52,43 @@ Modificato per integrarsi nel footer secondo indicazioni Sardegna IT
 	});
 </script>	
 <script>
+	
 	window.addEventListener("scroll",function(){
 		let stickyHeader = document.getElementById("sticky-header");
 		let sticky = stickyHeader.offsetTop;
-
+		
 		if (document.body.clientWidth >= 640){
-			if(window.pageYOffset > sticky){
+			if(window.pageYOffset > sticky){	
+			    
 				stickyHeader.classList.add("sticky-header");
 				document.getElementById("menu-bar-logo").style.display="block";
 				document.getElementById("title-bar").style.display="none";
-				document.getElementById("img-user-icon").style.display="none";
-				document.getElementById("institutional-link").style.fontSize = "12px";
-				document.getElementById("img-gonfalone").setAttribute("style","height:24px");
+				if (document.getElementById("img-user-icon") !== null) document.getElementById("img-user-icon").style.display="none";
+				if (document.getElementById("institutional-link") !== null) document.getElementById("institutional-link").style.fontSize = "12px";
+				if (document.getElementById("img-gonfalone") !== null) document.getElementById("img-gonfalone").setAttribute("style","height:24px");
+				
 			} else {
+			    
 				stickyHeader.classList.remove("sticky-header");
-				document.getElementById("menu-bar-logo").style.display="none";
-				document.getElementById("title-bar").style.display="block";
-				document.getElementById("img-user-icon").style.display="inline-block";
-				document.getElementById("institutional-link").style.fontSize = "14px";
+				if (document.getElementById("menu-bar-logo") !== null) document.getElementById("menu-bar-logo").style.display="none";
+				if (document.getElementById("title-bar") !== null) document.getElementById("title-bar").style.display="block";
+				if (document.getElementById("img-user-icon") !== null) document.getElementById("img-user-icon").style.display="inline-block";
+				if (document.getElementById("institutional-link") !== null) document.getElementById("institutional-link").style.fontSize = "14px";
 				document.getElementById("img-gonfalone").setAttribute("style","height:28px");
 			}
 		}else{
-			
 			if(window.pageYOffset > sticky){
+				
 				stickyHeader.classList.add("sticky-header");
-				document.getElementById("top-header").setAttribute("style","height:28px");
-				document.getElementById("img-user-icon").style.display="none";
-				document.getElementById("img-gonfalone").setAttribute("style","height:24px");
+				if (document.getElementById("top-header") !== null) document.getElementById("top-header").setAttribute("style","height:28px");
+				if (document.getElementById("img-user-icon") !== null) document.getElementById("img-user-icon").style.display="none";
+				if (document.getElementById("img-gonfalone") !== null) document.getElementById("img-gonfalone").setAttribute("style","height:24px");
 			} else {
+				
 				stickyHeader.classList.remove("sticky-header");
-				document.getElementById("top-header").setAttribute("style","height:40px");
-				document.getElementById("img-user-icon").style.display="inline-block";
-				document.getElementById("img-gonfalone").setAttribute("style","height:28px");
+				if (document.getElementById("top-header") !== null) document.getElementById("top-header").setAttribute("style","height:40px");
+				if (document.getElementById("img-user-icon") !== null) document.getElementById("img-user-icon").style.display="inline-block";
+				if (document.getElementById("img-user-icon") !== null) document.getElementById("img-gonfalone").setAttribute("style","height:28px");
 			}
 		}
 	});
