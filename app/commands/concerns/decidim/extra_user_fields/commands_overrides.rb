@@ -44,7 +44,7 @@ module Decidim
           date_of_birth: @form.date_of_birth,
           gender: @form.gender,
           # Block ExtraUserFields SaveInExtendedData
-		  name: @form.name,
+		  personal_name: @form.personal_name,
 		  surname: @form.surname,
           # EndBlock
         )

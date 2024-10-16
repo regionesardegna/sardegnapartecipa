@@ -50,7 +50,7 @@ module Decidim
 		  #phone_number: @form.phone_number,
           #location: @form.location,
           # Block ExtraUserFields SaveInExtendedData
-		  name: @form.name,
+		  personal_name: @form.personal_name,
 		  surname: @form.surname,
           # EndBlock
         )

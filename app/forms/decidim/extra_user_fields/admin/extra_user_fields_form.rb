@@ -14,8 +14,8 @@ module Decidim
 
        #translatable_attribute :phone_number_placeholder, String
         # Block ExtraUserFields Attributes
-		attribute :name, String
-		attribute :surname, String
+		attribute :personal_name, Boolean
+		attribute :surname, Boolean
         # EndBlock
 
         def map_model(model)
@@ -25,7 +25,7 @@ module Decidim
           self.date_of_birth = model.extra_user_fields.dig("date_of_birth", "enabled")
           self.gender = model.extra_user_fields.dig("gender", "enabled")
           # Block ExtraUserFields MapModel
-		  self.name = model.extra_user_fields.dig("name", "enabled")
+		  self.personal_name = model.extra_user_fields.dig("personal_name", "enabled")
 		  self.surname = model.extra_user_fields.dig("surname", "enabled")
           # EndBlock
         end

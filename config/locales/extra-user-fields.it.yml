@@ -9,7 +9,7 @@ it:
         location: Luogo
         phone_number: Numero di telefono
         postal_code: Codice postale
-        name: Nome
+        personal_name: Nome
         surname: Cognome
   decidim:
     admin:
@@ -53,7 +53,7 @@ it:
             postal_code:
               description: Questo campo è un campo stringa. Se selezionato l'utente dovrà inserire il codice postale.
               label: Abilita il campo Codice Postale
-            name:
+            personal_name:
               description: Questo campo contiene il Nome dell'utente
               label: Abilita il campo Nome
             surname:

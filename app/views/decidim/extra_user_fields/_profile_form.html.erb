@@ -11,8 +11,8 @@
 
 <%# Block ExtraUserFields AccountFormFields %>
 
-<% if current_organization.activated_extra_field?(:name) %>
-  <%= f.text_field :name %>
+<% if current_organization.activated_extra_field?(:personal_name) %>
+  <%= f.text_field :personal_name %>
 <% end %>
 
 <% if current_organization.activated_extra_field?(:surname) %>

@@ -18,7 +18,7 @@ module Decidim
         attribute :date_of_birth, Decidim::Attributes::LocalizedDate
         attribute :gender, String
         # Block ExtraUserFields
-		attribute :name, String
+		attribute :personal_name, String
 		attribute :surname, String
         # EndBlock
 
@@ -28,7 +28,7 @@ module Decidim
         validates :postal_code, presence: true, if: :postal_code?
         validates :date_of_birth, presence: true, if: :date_of_birth?
         validates :gender, presence: true, inclusion: { in: Decidim::ExtraUserFields::Engine::DEFAULT_GENDER_OPTIONS.map(&:to_s) }, if: :gender?
-		validates :name, presence: true, if: :name?
+		validates :personal_name, presence: true, if: :personal_name?
         validates :surname, presence: true, if: :surname?
         
 		# EndBlock
@@ -43,7 +43,7 @@ module Decidim
         self.gender = extended_data[:gender]
        
         # Block ExtraUserFields MapModel
-        self.name = extended_data[:name]
+        self.personal_name = extended_data[:personal_name]
 		self.surname = extended_data[:surname]
         # EndBlock
       end
@@ -67,8 +67,8 @@ module Decidim
         extra_user_fields_enabled && current_organization.activated_extra_field?(:postal_code)
       end
 
-      def name?
-        extra_user_fields_enabled && current_organization.activated_extra_field?(:name)
+      def personal_name?
+        extra_user_fields_enabled && current_organization.activated_extra_field?(:personal_name)
       end
 
 	  def surname?

@@ -48,8 +48,8 @@ module Decidim
             "gender" => { "enabled" => form.gender.presence || false },
 			# Block ExtraUserFields SaveFieldInConfig
 			# valori forzati a booleani
-			"name" => { "enabled" => !!form.name.presence || false },
-			"surname" => { "enabled" => !!form.surname.presence || false },
+			"personal_name" => { "enabled" => form.personal_name.presence || false },
+			"surname" => { "enabled" => form.surname.presence || false },
 			# EndBlock
           }
         end
