@@ -1,0 +1,3 @@
+<!-- insert_before "erb:contains('f.text_field :name')" -->
+
+<%= render partial: "/decidim/extra_user_fields/profile_form", locals: { f: f } %>

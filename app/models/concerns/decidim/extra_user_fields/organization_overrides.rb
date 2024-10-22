@@ -8,11 +8,6 @@ module Decidim
 
       # If true display registration field in signup form
       def extra_user_fields_enabled?
-	    Rails.logger.info "=============================================================="
-		Rails.logger.info "extra_user_fields['enabled'].presence = #{extra_user_fields['enabled'].presence} at_least_one_extra_field? = #{at_least_one_extra_field?}"
-		Rails.logger.info "=============================================================="
-		Rails.logger.info "extra_user_fields = #{extra_user_fields.inspect}"
-		Rails.logger.info "=============================================================="
         extra_user_fields["enabled"].presence && at_least_one_extra_field?
       end
 
