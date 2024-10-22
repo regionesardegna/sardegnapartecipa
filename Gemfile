@@ -17,7 +17,7 @@ gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM
 gem 'decidim-term_customizer', branch: 'release/0.26-stable', git: 'https://github.com/mainio/decidim-module-term_customizer'
 gem 'decidim-survey_results', git: 'https://github.com/CodiTramuntana/decidim-module-survey_results', branch: 'release/0.26-stable'
 gem 'decidim-extra_user_fields', git: 'https://github.com/Jeanluc74/decidim-module-extra_user_fields.git', branch: 'release/0.26-stable'
-#gem 'decidim-extra_user_fields', git: 'https://github.com/PopulateTools/decidim-module-extra_user_fields.git', branch: 'release/0.26-stable'
+gem "decidim-friendly_signup", git: "https://github.com/OpenSourcePolitics/decidim-module-friendly_signup", branch: 'release/0.26-stable'
 gem 'deface'
 gem 'delayed_job_active_record'
 gem 'figaro'

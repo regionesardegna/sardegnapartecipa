@@ -20,6 +20,14 @@ GIT
       deface (~> 1.5)
 
 GIT
+  remote: https://github.com/OpenSourcePolitics/decidim-module-friendly_signup
+  revision: 455543991dbf98936c1653dfcb04ac95b464e5a9
+  branch: release/0.26-stable
+  specs:
+    decidim-friendly_signup (0.4.4)
+      decidim-core (~> 0.26.0)
+
+GIT
   remote: https://github.com/decidim/decidim
   revision: b07a4a4c43a224732352c3a93675cfb10e6a89df
   tag: v0.26.10
@@ -920,6 +928,7 @@ DEPENDENCIES
   decidim-decidim_awesome
   decidim-dev!
   decidim-extra_user_fields!
+  decidim-friendly_signup!
   decidim-privacy!
   decidim-proposal_moderation!
   decidim-spid-cie!

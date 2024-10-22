@@ -31,7 +31,7 @@ Modificata per eliminare la possibilità di registrazione con sottoscrizione new
   
   <div class="row">
     <div class="columns large-6 medium-10 medium-centered">
-      <%= decidim_form_for(@form, namespace: "registration", as: resource_name, url: registration_path(resource_name), html: { class: "register-form new_user", id: "register-form" }) do |f| %>
+      <%= decidim_form_for(@form, namespace: "registration", as: resource_name, url: registration_path(resource_name), html: { class: "register-form new_user#{friendly_override_activated?(:use_instant_validation) ? ' instant-validation' : ''}", id: "register-form" }, data: { "validation-url" => decidim_friendly_signup.validate_path }) do |f| %>
         <%= invisible_captcha %>
         <div class="card">
           <div style="margin-top:5px;margin-bottom:5px;text-align:center;"><%= t("devise.registrations.new.register_here") %></div>
@@ -39,18 +39,20 @@ Modificata per eliminare la possibilità di registrazione con sottoscrizione new
             <%= form_required_explanation %>
             <div class="user-person">
               <div class="field">
-                <%= f.text_field :name, help_text: t(".username_help") %>
+                <%= f.text_field :name, help_text: t(".username_help"), autocomplete: "off", data: { "instant-attribute" => "name", "instant-recheck" => "#registration_user_password" } %>
               </div>
             </div>
 
+           <% unless friendly_override_activated?(:hide_nickname) %>																	 
             <div class="user-nickname">
               <div class="field">
                 <%= f.text_field :nickname, help_text: t(".nickname_help", organization: current_organization.name), prefix: { value: "@", small: 1, large: 1 } %>
               </div>
             </div>
+		   <% end %>		 
 
             <div class="field">
-              <%= f.email_field :email %>
+              <%= f.email_field :email, autocomplete: "email", data: { "instant-attribute" => "email", "instant-recheck" => "#registration_user_password" } %>
             </div>
 
             <div class="field">
