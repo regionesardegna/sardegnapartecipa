@@ -3,9 +3,9 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
-# frozen_string_literal: true
-
 # Modificata per eliminare la skip_confirmation, in caso di mail diversa occorre che sia inibito l'accesso fino a conferma
+
+# frozen_string_literal: true
 
 module Decidim
   # A command with all the business logic to create a user from omniauth

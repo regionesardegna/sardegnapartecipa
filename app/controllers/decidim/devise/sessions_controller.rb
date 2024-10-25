@@ -4,6 +4,7 @@
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
 # Modificata per eseguire il logging degli accessi con form interno e tracciare l'ip del client
+# aggiunto include per FriendlySignup
 
 # frozen_string_literal: true
 
@@ -12,6 +13,7 @@ module Decidim
     # Custom Devise SessionsController to avoid namespace problems.
     class SessionsController < ::Devise::SessionsController
       include Decidim::DeviseControllers
+	  # aggiunto per FriendlySignup
 	  include Decidim::FriendlySignup::NeedsHeaderSnippets
 
       # rubocop: disable Rails/LexicallyScopedActionFilter
