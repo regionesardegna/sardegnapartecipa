@@ -44,6 +44,7 @@ module Decidim
 
         @user.tos_agreement = "1"
         @user.extended_data = extended_data
+		Rails.logger.info "OmniauthCommandsOverrides ==========================> extended_data=#{extended_data}"
         @user.save!
       end
 
