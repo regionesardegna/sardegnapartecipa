@@ -36,8 +36,10 @@ module Decidim
         validates :date_of_birth, presence: true, if: :date_of_birth?
         validates :gender, presence: true, inclusion: { in: Decidim::ExtraUserFields::Engine::DEFAULT_GENDER_OPTIONS.map(&:to_s) }, if: :gender?
 		validates :personal_name, presence: true, if: :personal_name?
+		validates_format_of :personal_name, :with => /\A[a-zA-Z']+\z/, if: :personal_name?
         validates :surname, presence: true, if: :surname?
-        
+        validates_format_of :surname, :with => /\A[a-zA-Z']+\z/, if: :surname?
+		
 		# EndBlock
       end
 
