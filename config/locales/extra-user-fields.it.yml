@@ -77,6 +77,11 @@ it:
         female: Femmina
         male: Maschio
         other: Altro
+      profile_form:
+       personal_name_help: Il Nome dell'utente, non visibile per gli altri utenti.
+       surname_help: Il Cognome dell'utente, non visibile per gli altri utenti.
       registration_form:
+        personal_name_help: Il Nome dell'utente, non visibile per gli altri utenti.
         signup:
           legend: Informazioni personali aggiuntive
+        surname_help: Il Cognome dell'utente, non visibile per gli altri utenti.

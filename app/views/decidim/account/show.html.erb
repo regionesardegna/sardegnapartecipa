@@ -23,8 +23,8 @@ Modificata per integrare le modifiche necessarie al modulo decidim-module-friend
     <div class="columns large-8 end">
       <%= form_required_explanation %>
 
-      <%= f.text_field :name %>
-      <%= f.text_field :nickname %>
+      <%= f.text_field :name, help_text: t(".name_help", organization: current_organization.name) %>
+      <%= f.text_field :nickname, help_text: t(".nickname_help", organization: current_organization.name) %>
       <%= f.email_field :email %>
       <%= f.url_field :personal_url %>
       <%= f.text_area :about, rows: 5 %>

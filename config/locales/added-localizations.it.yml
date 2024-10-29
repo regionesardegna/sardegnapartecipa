@@ -7,6 +7,10 @@ it:
             email:
               cant_recover_password_due_spid: Devi effettuare l'accesso tramite SPID o CIE
   decidim:
+    account:
+     show:
+      name_help: Nome "pubblico" che comparirà a firma di tutti i tuoi contributi e che sarà accessibile a tutti i navigatori, anche non iscritti alla piattaforma. Ti invitiamo a utilizzare un nome di fantasia per una maggiore tutela della riservatezza.
+      nickname_help: Nome generato dal sistema a partire dal Nome Utente, viene usato, quando previsto, per comunicare con l'utente
     admin:
       filters:
         spid_presence:

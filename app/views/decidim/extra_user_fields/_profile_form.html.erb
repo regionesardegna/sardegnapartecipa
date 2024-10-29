@@ -24,11 +24,11 @@ Inserita per aggiungere all'amministrazione il campo personal_name
 <%# Block ExtraUserFields AccountFormFields %>
 
 <% if current_organization.activated_extra_field?(:personal_name) %>
-  <%= f.text_field :personal_name %>
+  <%= f.text_field :personal_name, help_text: t(".personal_name_help", organization: current_organization.name) %>
 <% end %>
 
 <% if current_organization.activated_extra_field?(:surname) %>
-  <%= f.text_field :surname %>
+  <%= f.text_field :surname, help_text: t(".surname_help", organization: current_organization.name) %>
 <% end %>
 
 <%# EndBlock %>
