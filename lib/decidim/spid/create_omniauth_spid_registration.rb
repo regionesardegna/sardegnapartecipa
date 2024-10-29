@@ -1,11 +1,13 @@
-# Copyright (C) 2023 Sardegna IT
+# Copyright (C) 2024 Sardegna IT
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
 # frozen_string_literal: true
 
-# commentata riga corrispondente allo skip_confirmation
+# Commentata riga corrispondente allo skip_confirmation
+# integrato metodo extended_data originariamente contenuto in commands/concerns/decidim/omniauth_commands_overrides.rb 
+# serve a salvare i valori dei due campi opzionali Nome e Cognome all'interno del campo extended_data del User
 
 module Decidim
   module Spid
@@ -47,8 +49,24 @@ module Decidim
         end
 
         @user.tos_agreement = "1"
-        @user.save! && persisted && !@user.must_log_with_spid? && Decidim::Spid::SpidJob.perform_later(@user)
+		@user.extended_data = extended_data
+        @user.save! && persisted && !@user.must_log_with_spid? && Decidim::Spid::SpidJob.perform_later(@user)	   
       end
+	  
+	   # rubocop:disable Style/TrailingCommaInArguments
+      def extended_data
+        @extended_data ||= (@user&.extended_data || {}).merge(
+          country: @form.country,
+          postal_code: @form.postal_code,
+          date_of_birth: @form.date_of_birth,
+          gender: @form.gender,
+          # Block ExtraUserFields SaveInExtendedData
+		  personal_name: @form.personal_name,
+		  surname: @form.surname,
+          # EndBlock
+        )
+      end
+      # rubocop:enable Style/TrailingCommaInArguments
 
     end
 

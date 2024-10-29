@@ -111,17 +111,6 @@ module Decidim
             metadata: authorization_metadata
           }
           authorization.save!
-
-          # Dipendenza decidim-minors_auth
-          #if user && user.respond_to?(:fiscal_code) && defined?(Decidim::MinorsAuth)
-          #  user.update(fiscal_code: user_identifier.try(:upcase))
-          #end
-
-          #tenant.run_authorization_handlers(user: user, document_number: user_identifier, document_type: :FEDERA)
-
-          #authorization.grant! unless authorization.granted?
-
-          #authorization
         end
 
         def update_user!(user, force= false)
@@ -146,12 +135,12 @@ module Decidim
           if user.valid?
             if user_changed
               if user.save! && is_spid? && notification_email
-                Decidim::Federa::UpdateEmailFederaJob.perform_later(user)
+                Decidim::Spid::UpdateEmailSpidJob.perform_later(user)
               end
             end
           else
             if (user.errors.details.all?{ |k,v| k == :email && v.flatten.map{ |k| k[:error] }.all?(:taken) } rescue false)
-              Rails.logger.info("decidim-module-federa || L'utente #{user.id} ha un'altro account decidim con la stessa email dello PUA richiesto. Non aggiorno l'email.")
+              Rails.logger.info("decidim-module-spid || L'utente #{user.id} ha un'altro account decidim con la stessa email dello PUA richiesto. Non aggiorno l'email.")
               user.reload
             end
           end
@@ -170,6 +159,7 @@ module Decidim
         end
 
         def user_identifier
+          @user_identifier ||= oauth_data[:uid]
           @user_identifier ||= oauth_data[:uid]
         end
 

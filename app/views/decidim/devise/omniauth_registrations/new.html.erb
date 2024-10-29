@@ -34,12 +34,6 @@ e per integrare le modifiche necessarie al modulo decidim-module-friendly_signup
                 <%= f.text_field :name, help_text: t(".username_help") %>
               </div>
             </div>
-
-            <!--div class="user-person"-->
-              <!--div class="field"-->
-                <!--%= f.text_field :nickname, help_text: t(".nickname_help", organization: current_organization.name) %-->
-              <!--/div-->
-            <!--/div-->
 			
            <% unless friendly_override_activated?(:hide_nickname) %>																	 
             <div class="user-nickname">
@@ -48,10 +42,6 @@ e per integrare le modifiche necessarie al modulo decidim-module-friendly_signup
               </div>
             </div>
 		   <% end %>
-
-            <!--div class="field"-->
-              <!--%= f.email_field :email %-->
-            <!--/div-->
 			
 			<% param_email = params["user"]["email"].present? if params.present? && params["user"].present?%>
 			<%= f.email_field :email, readonly: session["decidim-spid.tenant"].present? && (f.object.email.present? && !param_email.present?)  %>

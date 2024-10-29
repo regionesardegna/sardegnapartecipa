@@ -90,12 +90,9 @@ module Decidim
           provider: @form.provider,
           uid: @form.uid
         )
-        
-		Rails.logger.info "OmniauthCallbacksController.create =================================> @form.inspect = #{@form.inspect}"
 		
         CreateOmniauthSpidRegistration.call(@form, verified_e) do
           on(:ok) do |user|
-		    Rails.logger.info "OmniauthCallbacksController.create =================================> user = #{user.inspect}"
             # Se l'identità SPID è già utilizzata da un altro account
             if invited_user.present? && invited_user.email != user.email
               set_flash_message :alert, :failure, kind: "SPID", reason: t("decidim.devise.omniauth_registrations.create.email_already_exists")
