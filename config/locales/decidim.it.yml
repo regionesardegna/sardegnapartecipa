@@ -1644,10 +1644,14 @@ it:
     fallback: non è valido
     name_included_in_password: è troppo simile al tuo nome
     not_enough_unique_characters: non ha abbastanza caratteri unici
-    password_not_allowed: non è permesso
+    password_not_allowed: non è permessa
     password_too_common: è troppo comune
-    password_too_long: è troppo lungo
-    password_too_short: è troppo corto
+    password_too_long: è troppo lunga
+    password_too_short: è troppo corta
+    no_capital_letters: deve contenere almeno una lettera maiuscola
+    no_lower_letters: deve contenere almeno una lettera minuscola
+    no_numbers: deve contenere almeno un numero
+    no_symbols: deve contenere almeno un carattere speciale !@#$%^&*()_+{}[]:;'"\/?><.,
   social_share_button:
     delicious: Delicious
     douban: Douban
