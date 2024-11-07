@@ -1,9 +1,23 @@
+# Copyright (C) 2024 Sardegna IT
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+# Modificata per integrare le nuove policies relative alla password in caso di registrazione su form
+# aggiunti i seguenti metodi :no_capital_letters?, :no_lower_letters?, :no_numbers?, :no_symbols?
+# in modo da rendere obbligatori almeno
+# 12 caratteri minimo
+# 1 maiuscola
+# 1 minuscola
+# 1 simbolo
+# 1 numero
+
 # frozen_string_literal: true
 
 # Class is used to verify that the user's password is strong enough
 class PasswordValidator < ActiveModel::EachValidator
   MINIMUM_LENGTH = 12 #originale 10
-  MAX_LENGTH = 25 #originale 256
+  MAX_LENGTH = 256
   MIN_UNIQUE_CHARACTERS = 5
   IGNORE_SIMILARITY_SHORTER_THAN = 4
   VALIDATION_METHODS = [
