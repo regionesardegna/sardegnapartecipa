@@ -1510,7 +1510,7 @@ it:
         update: Aggiornare
         we_need_your_current_password_to_confirm_your_changes: abbiamo bisogno della tua password corrente per confermare le tue modifiche
       new:
-        sign_up: Iscriviti
+        sign_up: Registrati
       signed_up: Benvenuto! Ti sei registrato con successo.
       signed_up_but_inactive: Ti sei registrato con successo. Tuttavia, non siamo riusciti ad accedere perché il tuo account non è ancora attivo.
       signed_up_but_locked: Ti sei registrato con successo. Tuttavia, non siamo riusciti ad accedere perché il tuo account è bloccato.
@@ -1531,7 +1531,7 @@ it:
         forgot_your_password: Hai dimenticato la password?
         sign_in: Accedi
         sign_in_with_provider: Accedi con %{provider}
-        sign_up: Iscriviti
+        sign_up: Registrati
       minimum_password_length:
         one: "(Minimo%{count} caratteri)"
         other: "(Minimo%{count} caratteri)"
