@@ -392,6 +392,8 @@ GEM
       decidim-core (>= 0.26.0, < 0.28)
       deface (>= 1.5)
       sassc (~> 2.3)
+    decidim-slider (0.0.3)
+      decidim-core (~> 0.26.0)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -892,6 +894,7 @@ DEPENDENCIES
   decidim-dev!
   decidim-privacy!
   decidim-proposal_moderation!
+  decidim-slider
   decidim-spid-cie!
   decidim-survey_results!
   decidim-templates!
