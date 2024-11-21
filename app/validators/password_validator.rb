@@ -161,6 +161,6 @@ class PasswordValidator < ActiveModel::EachValidator
   end
   
   def no_symbols?
-	value.scan(/[!@#$%^&*()_+{}\[\]:;'"\/\\?><.,]/).empty?
+	value.scan(/[!@#$%^&*()-_+{}\[\]:;'"\/\\?><.,]/).empty?
   end
 end

@@ -29,16 +29,16 @@ module Decidim
           # @user.name = form.name if form.invitation_token.present?
           @user.name = form.name
           @user.nickname = form.nickname
-          @user.password = generated_password
-          @user.password_confirmation = generated_password
+          @user.password = generated_password + "0A_a" #aggiunta stringa contenente tutte le tipologie di carattere da validare
+          @user.password_confirmation = generated_password + + "0A_a" #aggiunta stringa contenente tutte le tipologie di carattere da validare
         else
           @user.email = (verified_email || form.email)
           @user.name = form.name
           @user.nickname = form.normalized_nickname
           @user.newsletter_notifications_at = nil
           @user.email_on_notification = true
-          @user.password = generated_password
-          @user.password_confirmation = generated_password
+          @user.password = generated_password + "0A_a" #aggiunta stringa contenente tutte le tipologie di carattere da validare
+          @user.password_confirmation = generated_password + "0A_a" #aggiunta stringa contenente tutte le tipologie di carattere da validare
           if form.avatar_url.present?
             url = URI.parse(form.avatar_url)
             filename = File.basename(url.path)

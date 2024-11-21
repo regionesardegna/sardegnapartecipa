@@ -116,8 +116,8 @@ module Decidim
         def update_user!(user, force= false)
           user_changed = false
           generated_password = SecureRandom.hex
-          user.password = generated_password
-          user.password_confirmation = generated_password
+          user.password = generated_password + "0A_a" #aggiunta stringa contenente tutte le tipologie di carattere da validare
+          user.password_confirmation = generated_password + "0A_a" #aggiunta stringa contenente tutte le tipologie di carattere da validare
           user.save
 
           if (verified_email.present? && (user.email != verified_email)) || force
