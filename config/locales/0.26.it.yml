@@ -15,10 +15,6 @@ it:
     actions:
      accept: Accetta
      refuse: Rifiuta
-   organization_homepage:
-    edit:
-     active_content_blocks: Blocchi attivi
-     inactive_content_blocks: Blocchi non attivi
   blogs:
    models:
     post:
@@ -136,6 +132,11 @@ it:
     shared:
      links:
       log_in: Login
+      sign_in: Accedi
+      sign_up: Registrati
+      forgot_your_password?: Hai dimenticato la password?
+      did_not_receive_confirmation_instructions?: Non hai ricevuto le istruzioni di conferma?
+      did_not_receive_unlock_instructions?: Non hai ricevuto le istruzioni di sblocco?
    organizations:
     edit:
      title: Organizzazione
