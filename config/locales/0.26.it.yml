@@ -45,7 +45,7 @@ it:
     admin:
      component:
       actions:
-       answers_alert: Risposte
+       answers_alert: Attenzione: se pubblichi il componente tutte le risposte saranno cancellate
     settings:
      global:
       enable_results: Abilita risultati
