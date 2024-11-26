@@ -1,0 +1,1 @@
+#require "#{Rails.root}/lib/decidim/surveys/component.rb"

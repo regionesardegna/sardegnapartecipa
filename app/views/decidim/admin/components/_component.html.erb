@@ -1,0 +1,20 @@
+<% if user_role_config.component_is_accessible?(component.manifest_name) %>
+  <tr class="component-<%= component.id %>">
+    <td>
+      <%= link_to main_component_path(component), target: "_blank" do %>
+        <%= translated_attribute component.name %>
+      <% end %>
+    </td>
+    <td>
+      <%= t "decidim.components.#{component.manifest.name}.name" %>
+    </td>
+    <%= td_resource_scope_for(component.scope) %>
+    <td class="table-list__actions">
+      <% if lookup_context.find_all("decidim/#{component.manifest_name}/admin/component/_actions").any? %>
+        <%= render partial: "decidim/#{component.manifest_name}/admin/component/actions", locals: { component: component } %>
+      <% else %>
+        <%= render partial: "actions", locals: { component: component } %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>

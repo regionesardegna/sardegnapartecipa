@@ -41,11 +41,12 @@ it:
     settings:
      global:
       enable_results: Abilita risultati
+      send_confirmation_email: Invia un email con le risposte all'utente e agli Amministratori quando un questionario è stato completato
   surveys:
     admin:
      component:
       actions:
-       answers_alert: Attenzione: se pubblichi il componente tutte le risposte saranno cancellate
+       answers_alert: Attenzione se pubblichi il componente tutte le risposte saranno cancellate
     settings:
      global:
       enable_results: Abilita risultati
