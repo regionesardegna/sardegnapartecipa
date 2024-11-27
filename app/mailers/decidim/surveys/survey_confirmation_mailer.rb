@@ -5,13 +5,15 @@ module Decidim
     class SurveyConfirmationMailer < ApplicationMailer
       include TranslatableAttributes
       helper Decidim::SanitizeHelper
+	  
+	  layout "mailer"
 
       def confirmation(user, questionnaire, answers)
         return if answers.blank? || user.nil?
 
         with_user(user) do
           @user = user
-          @questionnaire_title = translated_attribute(questionnaire.title)
+		  @questionnaire_title = translated_attribute(questionnaire.title)
           @participatory_space_title = translated_attribute(questionnaire.questionnaire_for.component.participatory_space.title)
           @organization = user.organization
 
@@ -24,7 +26,7 @@ module Decidim
       private
 
       def add_file_with_answers(answers)
-        export_name = t("decidim.surveys.survey_confirmation_mailer.export_name")
+        export_name = t("decidim.surveys.survey_confirmation_mailer.export_name", questionnaire_title: @questionnaire_title, user_name: @user.name)
         serializer = Decidim::Forms::UserAnswersSerializer
 
         export_data = Decidim::Exporters::FormPDF.new(answers, serializer).export

@@ -2,6 +2,8 @@
 
 require "decidim/components/namer"
 
+
+
 Decidim.register_component(:surveys) do |component|
   component.engine = Decidim::Surveys::Engine
   component.admin_engine = Decidim::Surveys::AdminEngine

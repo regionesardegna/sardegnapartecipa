@@ -43,13 +43,19 @@ it:
       enable_results: Abilita risultati
       send_confirmation_email: Invia un email con le risposte all'utente e agli Amministratori quando un questionario è stato completato
   surveys:
-    admin:
-     component:
-      actions:
-       answers_alert: Attenzione se pubblichi il componente tutte le risposte saranno cancellate
-    settings:
-     global:
-      enable_results: Abilita risultati
+   survey_confirmation_mailer:
+    export_name: export-questionario-%{questionnaire_title}-%{user_name}
+    confirmation:
+     subject: Risposte al tuo questionario %{questionnaire_title}
+     greetings: Gentile %{user_name},
+     body:  in allegato, all'interno dell'archivio .ZIP, il file .PDF contenente le tue risposte alle domande del questionario "%{questionnaire_title}".
+   admin:
+    component:
+     actions:
+      answers_alert: Attenzione se pubblichi il componente tutte le risposte saranno cancellate
+   settings:
+    global:
+     enable_results: Abilita risultati
   filters:
    moderated_users:
     reports_reason_eq:
