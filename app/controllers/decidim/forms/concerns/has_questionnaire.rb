@@ -1,3 +1,10 @@
+# Copyright (C) 2024 Sardegna IT
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+# Modificato per gestire la notifica utente per le surveys
+
 # frozen_string_literal: true
 
 module Decidim
@@ -151,7 +158,7 @@ module Decidim
             component = @questionnaire.questionnaire_for.component
             answers = Decidim::Forms::QuestionnaireUserAnswers.for(@questionnaire)
             user_answers = answers.select { |a| a.first.session_token == session_token }
-
+			Rails.logger.info "=======================> USER ANSWERS NOT PRESENT" if !answers.present?
             Decidim::Surveys::ConfirmationDeliveryJob.perform_now(current_user, @questionnaire, user_answers) if component.manifest_name == "surveys" && answers.present?
           end
         end
