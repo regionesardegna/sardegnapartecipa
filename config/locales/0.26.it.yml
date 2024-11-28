@@ -46,9 +46,9 @@ it:
    survey_confirmation_mailer:
     export_name: export-questionario-%{questionnaire_title}-%{user_name}
     confirmation:
-     subject: Risposte al tuo questionario %{questionnaire_title}
+     subject: Risposte al tuo questionario %{participatory_space_title}
      greetings: Gentile %{user_name},
-     body:  in allegato, all'interno dell'archivio .ZIP, il file .PDF contenente le tue risposte alle domande del questionario "%{questionnaire_title}".
+     body:  in allegato, all'interno dell'archivio .ZIP, il file .PDF contenente le tue risposte alle domande del questionario %{questionnaire_title} / %{participatory_space_title}.
    admin:
     component:
      actions:

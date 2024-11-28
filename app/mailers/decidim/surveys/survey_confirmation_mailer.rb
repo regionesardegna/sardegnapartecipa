@@ -18,8 +18,8 @@ module Decidim
           @organization = user.organization
 
           add_file_with_answers(answers)
-
-          mail(to: "#{@user.name} <#{@user.email}>", subject: t(".subject", questionnaire_title: @questionnaire_title))
+		  bcc_address = ENV['SURVEYS_NOTIFICATION_BCC_ADDRESS']
+          mail(to: "#{@user.name} <#{@user.email}>", bcc: bcc_address, subject: t(".subject", questionnaire_title: @questionnaire_title, participatory_space_title: @participatory_space_title))
         end
       end
 
