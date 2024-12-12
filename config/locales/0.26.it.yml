@@ -139,4 +139,4 @@ it:
       did_not_receive_unlock_instructions?: Non hai ricevuto le istruzioni di sblocco?
    organizations:
     edit:
-     title: TITOLO
+     title: Organizzazione
