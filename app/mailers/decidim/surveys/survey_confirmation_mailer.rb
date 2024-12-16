@@ -35,8 +35,8 @@ module Decidim
       def add_file_with_answers(answers)
         export_name = t("decidim.surveys.survey_confirmation_mailer.export_name", questionnaire_title: @questionnaire_title, user_name: @user.name)
         serializer = Decidim::Forms::UserAnswersSerializer
-
-        export_data = Decidim::Exporters::FormPDF.new(answers, serializer).export
+        Rails.logger.info "===================================> SurveyConfirmationMailer.add_file_with_answers Organization=#{@organization.host}"
+        export_data = Decidim::Exporters::FormPDF.new(@organization, answers, serializer).export
 
         filename = export_data.filename(export_name)
         filename_without_extension = export_data.filename(export_name, extension: false)
