@@ -3,7 +3,7 @@
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
-# Aggiunto per gestire la notifica utente per le surveys
+# Modificato per gestire la notifica utente per le surveys
 
 # frozen_string_literal: true
 
@@ -23,7 +23,6 @@ module Decidim
 		  @questionnaire_title = translated_attribute(questionnaire.title)
           @participatory_space_title = translated_attribute(questionnaire.questionnaire_for.component.participatory_space.title)
           @organization = user.organization
-
           add_file_with_answers(answers)
 		  bcc_address = ENV['SURVEYS_NOTIFICATION_BCC_ADDRESS']
           mail(to: "#{@user.name} <#{@user.email}>", bcc: bcc_address, subject: t(".subject", questionnaire_title: @questionnaire_title, participatory_space_title: @participatory_space_title))
@@ -35,12 +34,9 @@ module Decidim
       def add_file_with_answers(answers)
         export_name = t("decidim.surveys.survey_confirmation_mailer.export_name", questionnaire_title: @questionnaire_title, user_name: @user.name)
         serializer = Decidim::Forms::UserAnswersSerializer
-        Rails.logger.info "===================================> SurveyConfirmationMailer.add_file_with_answers Organization=#{@organization.host}"
         export_data = Decidim::Exporters::FormPDF.new(@organization, answers, serializer).export
-
         filename = export_data.filename(export_name)
         filename_without_extension = export_data.filename(export_name, extension: false)
-
         attachments["#{filename_without_extension}.zip"] = FileZipper.new(filename, export_data.read).zip
       end
     end
