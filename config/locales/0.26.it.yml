@@ -15,6 +15,21 @@ it:
     actions:
      accept: Accetta
      refuse: Rifiuta
+   moderations:
+    index:
+     title: Moderazione
+  assemblies:
+   show:
+    indefinite_duration: Durata non definita
+   admin:
+    assembly_members:
+     index:
+      filter:
+       ceased: cessata
+       not_ceased: non cessata
+    assemblies:
+     form:
+      slug_help: 'gli URL slugs sono usati per generare gli URLs che puntano a questa assemblea. Accetta solo lettere, numeri e il trattino, e deve iniziare con una lettera. Esempio: %{url}'
   blogs:
    models:
     post:
@@ -28,6 +43,19 @@ it:
       workflow_choices:
        random: Casuale
    proposals:
+    admin:
+     imports:
+      label:
+       answers: Risposte
+       proposals: Proposte
+    proposals:
+      admin:
+       proposal_answers:
+        form:
+         answered: Risposta
+         not_answered: Non risposta
+      new:
+       title: Titolo
     settings:
      step:
       default_sort_order: Ordine di default
@@ -146,4 +174,4 @@ it:
       did_not_receive_unlock_instructions?: Non hai ricevuto le istruzioni di sblocco?
    organizations:
     edit:
-     title: TITOLO
+     title: Titolo
