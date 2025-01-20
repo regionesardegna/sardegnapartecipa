@@ -43,8 +43,7 @@ module Decidim
           raise ValidationError, "No SAML data provided" unless saml_attributes
 
           actual_attributes = saml_attributes
-          # actual_attributes = saml_attributes.attributes
-          # actual_attributes.delete("fingerprint")
+         
           raise ValidationError, "No SAML data provided" if actual_attributes.blank?
 
           data_blank = actual_attributes.all? { |_k, val| val.blank? }
@@ -126,11 +125,9 @@ module Decidim
               user.skip_reconfirmation!
             else
               user.confirmed_at = nil if verified_email.present? && (user.email != verified_email)
-              # user.resend_confirmation_instructions unless user.confirmed?
             end
             user.email = verified_email if verified_email.present?
           end
-          # user.newsletter_notifications_at = Time.zone.now if user_newsletter_subscription?(user)
           notification_email = user.email_changed?
           if user.valid?
             if user_changed

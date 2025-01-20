@@ -40,8 +40,6 @@ module Decidim
       def slo_saml(slo_params, options)
         logout_request = Decidim::Spid::SloRequest.new(slo_params,
                                                        options.merge(
-                                                         #name_identifier_value: session[:"#{session_prefix}uid"],
-                                                         #idp_name_qualifier: session[:"#{session_prefix}idp_name_qualifier"],
 														 name_identifier_value: session[:uid],
                                                          idp_name_qualifier: session[:idp_name_qualifier],
                                                          name_identifier_format: "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
@@ -98,9 +96,6 @@ module Decidim
 		curr_sso_params[:"#{session_prefix}sso_params"]["issue_instant"] = session[:issue_instant]
 		curr_sso_params[:"#{session_prefix}sso_params"]["uuid"] = session[:uuid]
 		
-		#Rails.logger.info "Utils.slo_request ================================> session[:name_id] = #{session[:name_id]}"
-		#Rails.logger.info "Utils.slo_request ================================> saml_response = #{saml_response.inspect}"
-		
         response = Decidim::Spid::SloResponse.new(saml_response, curr_sso_params[:"#{session_prefix}sso_params"].merge(slo_id: session[:slo_id]), options)
         valid = response.valid?
         if valid
@@ -121,17 +116,10 @@ module Decidim
 
       def slo_params
         sso_params = {}
-        #sso_params[:sso] = { idp: session[:"#{session_prefix}sso_params"].dig("sso", "idp") }
-        #sso_params[:spid_level] = session[:"#{session_prefix}sso_params"]["spid_level"]
-        #sso_params[:session_index] = session[:"#{session_prefix}index"]
-        #sso_params[:relay_state] = Base64.strict_decode64(session[:"#{session_prefix}sso_params"]["relay_state"])
-        #Rails.logger.info "Utils.slo_params ================================> session[:name_id] = #{session[:name_id]}"
 		sso_params[:sso] = { idp: session[:sso].dig("idp") }
 		sso_params[:spid_level] = session[:spid_level]
 		sso_params[:session_index] = session[:index]
 		sso_params[:relay_state] = Base64.strict_decode64(session["relay_state"])
-		#Rails.logger.info "Utils.slo_request ================================> session[:name_id] = #{session[:name_id]}"
-		
 		sso_params
 		rescue => e
 		  Rails.logger.error "Utils.slo_params ================================> " + e.message
