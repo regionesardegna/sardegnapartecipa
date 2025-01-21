@@ -72,7 +72,7 @@ it:
       send_confirmation_email: Invia un email con le risposte all'utente e agli Amministratori quando un questionario è stato completato
   surveys:
    survey_confirmation_mailer:
-    export_name: export-questionario-%{questionnaire_title}-%{user_name}
+    export_name: questionario-%{questionnaire_slug}
     confirmation:
      subject: Risposte al tuo questionario %{participatory_space_title}
      greetings: Gentile %{user_name},

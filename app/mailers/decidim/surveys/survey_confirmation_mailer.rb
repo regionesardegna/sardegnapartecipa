@@ -22,7 +22,8 @@ module Decidim
           @user = user
 		  @questionnaire_title = translated_attribute(questionnaire.title)
           @participatory_space_title = translated_attribute(questionnaire.questionnaire_for.component.participatory_space.title)
-          @organization = user.organization
+		  @questionnaire_slug = questionnaire.questionnaire_for.component.participatory_space.slug.to_s
+		  @organization = user.organization
           add_file_with_answers(answers)
 		  bcc_address = ENV['SURVEYS_NOTIFICATION_BCC_ADDRESS']
           mail(to: "#{@user.name} <#{@user.email}>", bcc: bcc_address, subject: t(".subject", questionnaire_title: @questionnaire_title, participatory_space_title: @participatory_space_title))
@@ -32,7 +33,7 @@ module Decidim
       private
 
       def add_file_with_answers(answers)
-        export_name = t("decidim.surveys.survey_confirmation_mailer.export_name", questionnaire_title: @questionnaire_title, user_name: @user.name)
+        export_name = t("decidim.surveys.survey_confirmation_mailer.export_name", questionnaire_slug: @questionnaire_slug)
         serializer = Decidim::Forms::UserAnswersSerializer
         export_data = Decidim::Exporters::FormPDF.new(@organization, answers, serializer).export
         filename = export_data.filename(export_name)
