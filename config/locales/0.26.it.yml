@@ -35,6 +35,12 @@ it:
     post:
      fields:
       title: Blog
+  devise:
+   registrations:
+    new:
+     sign_in: Login
+    create:
+     error: C'è stato un problema nella creazione del tuo account         
   components:
    budgets:
     settings:
@@ -146,6 +152,8 @@ it:
       reportable_id: id
   pages:
    home:
+    footer_sub_hero:
+     footer_sub_hero_body: Creiamo una più aperta, trasparente e collaborativa società.<br /> Registrati, partecipa e decidi.                
     hero:
      participate_title: partecipa
   participatory_processes:
@@ -160,6 +168,11 @@ it:
       see_all_processes: Vedi tutti i processi
    show:
     local_area: Area locale
+  proposals:
+   proposals:
+    participatory_texts:
+     index:
+      document_index: Indice documento          
   system:
    titles:
     decidim: Decidim
@@ -174,4 +187,4 @@ it:
       did_not_receive_unlock_instructions?: Non hai ricevuto le istruzioni di sblocco?
    organizations:
     edit:
-     title: Titolo
+     title: Organizzazione
