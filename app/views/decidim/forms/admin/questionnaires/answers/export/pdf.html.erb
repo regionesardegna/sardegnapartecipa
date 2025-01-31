@@ -6,7 +6,8 @@
 
 # Modificato per gestire la notifica utente per le surveys
 %>
-
+<% Rails.logger.debug "=============================================================" %>
+<% @saved_output = capture do %>
 <div class="questionnaire-answers">
   <div class="header">
    <th style="background-color: white;">
@@ -47,3 +48,7 @@
 
   <%= render partial: "decidim/forms/admin/questionnaires/answers/export/answer", collection: collection, locals: { questionnaire: questionnaire }, as: :participant %>
 </div>
+<% end %>
+<%= @saved_output %>
+<% Rails.logger.debug "Rendered output is: #{@saved_output}" %>
+<% Rails.logger.debug "=============================================================" %>
