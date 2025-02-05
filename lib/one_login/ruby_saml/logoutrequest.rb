@@ -33,8 +33,8 @@ module OneLogin
         end
 
         nameid = root.add_element "saml:NameID"
-        
-		if settings.name_identifier_value 
+		
+        if settings.name_identifier_value
           nameid.attributes['NameQualifier'] = settings.idp_name_qualifier if settings.idp_name_qualifier
           nameid.attributes['SPNameQualifier'] = settings.sp_name_qualifier if settings.sp_name_qualifier
           nameid.attributes['Format'] = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified" 
