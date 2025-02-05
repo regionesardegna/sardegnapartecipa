@@ -15,6 +15,10 @@ it:
     actions:
      accept: Accetta
      refuse: Rifiuta
+   organization_homepage:
+    edit:
+     active_content_blocks: Blocchi attivi
+     inactive_content_blocks: Blocchi inattivi
   blogs:
    models:
     post:
