@@ -1,4 +1,13 @@
 it:
+ activemodel:
+  attributes:
+   meeting_agenda:
+    title: Titolo
+    visible: Visibile
+   meeting_agenda_items:
+    description: Descrizione
+    duration: Durata
+    title: Titolo
  layouts:
   decidim:
    system:
@@ -136,7 +145,17 @@ it:
     active_content_blocks: Blocchi attivi
     inactive_content_blocks: Blocchi inattivi
   meetings:
+   admin:
+    agenda:
+     form:
+      add_agenda_item: Aggiungi ordine del giorno
+     agenda_item:
+      add_agenda_item_child: Aggiungi figlio dell'ordine del giorno
+      agenda_item_children: Oggetti figli dell'ordine del giorno
+      agenda_item_child: Oggetto figlio dell'ordine del giorno
    meetings:
+    show:
+     join: Registrati
     index:
      see_all_withdrawn: Vedi tutti i ritirati
     filters:
@@ -172,7 +191,7 @@ it:
    proposals:
     participatory_texts:
      index:
-      document_index: Indice documento          
+      document_index: Indice documento
   system:
    titles:
     decidim: Decidim
