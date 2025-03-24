@@ -150,9 +150,9 @@ it:
      form:
       add_agenda_item: Aggiungi ordine del giorno
      agenda_item:
-      add_agenda_item_child: Aggiungi figlio dell'ordine del giorno
-      agenda_item_children: Oggetti figli dell'ordine del giorno
-      agenda_item_child: Oggetto figlio dell'ordine del giorno
+      add_agenda_item_child: Aggiungi voce secondaria dell'ordine del giorno
+      agenda_item_children: Voci secondarie dell'ordine del giorno
+      agenda_item_child: Voce secondaria dell'ordine del giorno
    meetings:
     show:
      join: Registrati
