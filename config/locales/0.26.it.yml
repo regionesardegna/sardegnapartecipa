@@ -49,7 +49,7 @@ it:
     new:
      sign_in: Login
     create:
-     error: C'è stato un problema nella creazione del tuo account         
+     error: C'è stato un problema nella creazione del tuo account
   components:
    budgets:
     settings:
