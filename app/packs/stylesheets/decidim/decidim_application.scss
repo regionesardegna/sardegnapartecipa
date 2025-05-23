@@ -20,10 +20,35 @@ a {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
 .main-nav {
 	display: flex;
     align-items: center;
     justify-content: flex-start;
+=======
+.cookie-warning a{
+    color: $par-medium-green;
+    font-weight: 600;
+}
+
+.cookie-warning {
+    background: $par-white;
+    padding: .5em 1em;
+    text-align: center;
+}
+
+.main-nav__link a {
+    display: block;
+    padding: 1em 2em;
+    color: rgba(255, 255, 255, 1);
+}
+
+.main-nav__link a:hover {
+    display: block;
+    padding: 1em 2em;
+    color: rgba(255, 255, 255, 1);
+	  text-decoration: underline;
+>>>>>>> partecipa/bump_to_0.27
 }
 
 .section-heading::before {
@@ -38,7 +63,11 @@ a {
 
 profile-tabs.tabs .tabs-title a:focus, #profile-tabs.tabs .tabs-title a[aria-selected="true"] {
     background: transparent;
+<<<<<<< HEAD
     color: $par-deep-red;
+=======
+    color: $par-light-blue;
+>>>>>>> partecipa/bump_to_0.27
     font-weight: 600;
     border-bottom: 3px solid $par-medium-blue;
 }
@@ -49,9 +78,14 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
 }
 
 .callout.success, .callout.secondary{
+<<<<<<< HEAD
     border-color: --success;
 	border-left-color: --success;
     border-left: 8px solid var(--success);
+=======
+    border-color: #e8e8e8;
+    border-left: 7px solid var(--success);
+>>>>>>> partecipa/bump_to_0.27
     border-top: 3px solid var(--success);
     border-bottom: 3px solid var(--success);
     border-right: 3px solid var(--success);
@@ -61,7 +95,11 @@ title.is-active > [role="tab"], .side-panel__tabs .tabs-title.is-active > a {
     border-color: --alert;
     border-left-color: --alert;
     border-left: 8px solid var(--alert);
+<<<<<<< HEAD
     border-top: 3px solid var(--alert);
+=======
+	  border-top: 3px solid var(--alert);
+>>>>>>> partecipa/bump_to_0.27
     border-bottom: 3px solid var(--alert);
     border-right: 3px solid var(--alert);
 }
@@ -283,11 +321,27 @@ a img + .external-link-indicator {
 }
 
 .title-bar {
+<<<<<<< HEAD
     padding: 1rem 0.5rem;
     background: $par-white;
     color: #fff;
 }
 
+=======
+  padding: 1rem 0.5rem;
+  background: $par-blue;
+  color: #fff;
+}
+
+.help-text-big{
+  font-size: 1.1em !important;
+  font-style: italic;
+}
+
+
+//NAVBAR
+
+>>>>>>> partecipa/bump_to_0.27
 .navbar {
     background: $par-deep-red;
 	display: flex;
@@ -368,7 +422,7 @@ div.main-nav > div:nth-child(2){
       color: $par-deep-red;
       box-shadow: none;
       background: $par-white;
-	  margin-top: 8px;
+	    margin-top: 8px;
       outline-color: var(--highlight-alternative);
     }
   }
@@ -392,10 +446,10 @@ div.main-nav > div:nth-child(2){
     left: 0;
     right: 0;
   }
-  
+
   button{
     border-radius: 0 4 4 0;
-	width: 40px;
+    width: 40px;
   }
 
   form:first-child{
@@ -424,16 +478,26 @@ div.main-nav > div:nth-child(2){
       }
     }
   }
-  
+
   svg{
     color: $par-white;
     position: absolute;
+<<<<<<< HEAD
     top: 0.8rem; 
     left: 0.7rem;
+=======
+    top: 0.8rem;
+    left: 0.6rem;
+>>>>>>> partecipa/bump_to_0.27
     transform: none;
-								
+
     opacity: 1;
+<<<<<<< HEAD
   }				 
+=======
+  }
+
+>>>>>>> partecipa/bump_to_0.27
 }
 
 .main-nav__link--active a {
@@ -666,7 +730,7 @@ div.main-nav > div:nth-child(2){
 
 //BUTTON
 
-.button {
+.button{
     display: inline-block;
     vertical-align: middle;
     margin: 0 0 1rem 0;
@@ -692,6 +756,7 @@ div.main-nav > div:nth-child(2){
 }
 
 .button.hollow {
+<<<<<<< HEAD
     border: 1px solid $par-deep-red;
     color: $par-deep-red;
     background-color: #fff; 
@@ -709,6 +774,21 @@ div.main-nav > div:nth-child(2){
 
 .button.secondary {
     background-color: $par-medium-blue; 
+=======
+    border: 1px solid $par-medium-green;
+    color: $par-medium-green;
+    background-color: #fff;
+}
+
+.button.hollow:hover, .button.hollow:focus{
+    border: 1px solid $par-medium-green;
+	background-color: $par-medium-green;
+	color: #fff;
+}
+
+.button.secondary {
+    background-color: $par-medium-green;
+>>>>>>> partecipa/bump_to_0.27
     color: $par-white;
 }
 
@@ -719,10 +799,17 @@ div.main-nav > div:nth-child(2){
 }
 
 .button.secondary.hollow:hover, .button.secondary.hollow:focus{
+<<<<<<< HEAD
     border: 1px solid $par-deep-red; 
     color: $par-deep-red;
     background-color: $par-deep-red;
     color: #fff;
+=======
+    border: 1px solid $par-medium-green;
+    color: $par-medium-green;
+	  background-color: $par-medium-green;
+	  color: #fff;
+>>>>>>> partecipa/bump_to_0.27
 }
 
 .home-bullet__icon svg {
@@ -734,10 +821,23 @@ div.main-nav > div:nth-child(2){
 	text-transform: capitalize;
 }
 
+<<<<<<< HEAD
 .subhero-cta {
     margin-top: 2rem;
     color: $par-medium-blue;
     display: inline-block;
+=======
+.subhero-cta-new {
+   margin-top: 2rem;
+   display: inline-block !important;
+   text-transform: uppercase;
+
+   &:hover,
+   &:focus{
+     text-decoration: none !important;
+     color: white !important;
+   }
+>>>>>>> partecipa/bump_to_0.27
 }
 
 .inline-filters button.secondary[data-toggle], a.secondary, abbr.secondary, acronym.secondary, b.secondary, bdo.secondary, big.secondary, br.secondary, button.secondary, cite.secondary, code.secondary, dfn.secondary, em.secondary, i.secondary, img.secondary, input.secondary, kbd.secondary, label.secondary, map.secondary, object.secondary, q.secondary, samp.secondary, script.secondary, select.secondary, small.secondary, span.secondary, strong.secondary, sub.secondary, sup.secondary, textarea.secondary, time.secondary, tt.secondary, var.secondary {
@@ -1156,6 +1256,7 @@ div.main__footer__nav{
     background: $par-deep-red;
 }
 
+<<<<<<< HEAD
 .mini-footer a, .mini-footer a:focus, .mini-footer a:hover, .main-footer a, .main-footer a:focus, .main-footer a:hover {
 	color: $par-white; 
 }
@@ -1336,6 +1437,38 @@ div.main__footer__nav{
 		padding: 0.5rem;
 	}
 }
+=======
+.mini-footer a, .main-footer a {
+	color: $par-white;
+}
+
+.decidim-logo > a:nth-child(1) > span:nth-child(2){
+	font-size: 0.90rem;
+}
+
+.footer-logos{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+a img + .external-link-indicator {
+	display: none;
+}
+
+.footer-logo{
+	width: 200px !important;
+}
+
+.decidim-logo{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+
+>>>>>>> partecipa/bump_to_0.27
 //FIX CONTRAST
 
 .hero-heading {
@@ -1407,9 +1540,33 @@ h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h4 small, .h4 sma
     text-transform: capitalize;
 }
 
+<<<<<<< HEAD
 a.button.muted, a.muted, abbr.muted, acronym.muted, b.muted, bdo.muted, big.muted, br.muted, button.muted, cite.muted, code.muted, dfn.muted, em.muted, i.muted, img.muted, input.muted, kbd.muted, label.muted, map.muted, object.muted, q.muted, samp.muted, script.muted, select.muted, .inline-filters button.muted[data-toggle], small.muted,  
 strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.muted {
     color: white;
+=======
+a.muted, abbr.muted, acronym.muted, b.muted, bdo.muted, big.muted, br.muted, button.muted, cite.muted, code.muted, dfn.muted, em.muted, i.muted, img.muted, input.muted, kbd.muted, label.muted, map.muted, object.muted, q.muted, samp.muted, script.muted, select.muted, .inline-filters button.muted[data-toggle], small.muted, span.muted, strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.muted {
+    color: $par-dark-grey;
+}
+
+.process-header__hashtag a {
+    text-shadow: none;
+    background-color: #003183;
+    border-radius: 5px;
+    color: #fff;
+    padding: 0 0.4em 0.1em;
+    font-size: 1em; //mod_accessibility id 7 - Generale
+}
+
+// PROCESS PAGE
+
+.section-heading-process-grid{
+    width: 100%;
+}
+
+.process-grid-section{
+    margin-left: 15px;
+>>>>>>> partecipa/bump_to_0.27
 }
 
 //SOCIAL LOGIN
@@ -1442,6 +1599,7 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
   box-sizing: initial;
 }
 
+<<<<<<< HEAD
 .italia-it-button-text{
   padding: .95em 1em .85em;
   padding-top: 0.95em;
@@ -1453,6 +1611,18 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
 }
 
 
+=======
+.button--l .button--pua {
+  background-color: #06c;
+  border-color: #06c;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px;
+  text-align: center;
+  display: block;
+}
+
+>>>>>>> partecipa/bump_to_0.27
 //ASSEMBLIES
 
 .filters__section.scope_id_scopes_picker_filter {
@@ -1467,6 +1637,7 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
   display: none;
 }
 
+<<<<<<< HEAD
 //.register__separator {
 //   display: none;
 //}
@@ -1501,3 +1672,42 @@ input[readonly], textarea[readonly] {
 .italia-it-button-size-l, .italia-it-button-size-l:hover {
   font-size: 20px;
 }
+=======
+// colore delle label che avvertono che è presente un errore
+.is-invalid-label {
+  color: $par-darkorange; // colore delle label che avvertono che è presente un errore mod_accessibility
+}
+
+// colore scritte di errore nei form
+.form-error {
+  display: none;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: $par-darkorange; // colore delle label che avvertono che è presente un errore mod_accessibility
+}
+
+// colore del bordo dei campi contrassegnati con errore
+.is-invalid-input:not(:focus) {
+  border-color: $par-darkorange; // colore delle label che avvertono che è presente un errore mod_accessibility
+  background-color: #fdeeec;
+}
+
+// pagina Processi filtro aumentata saturazione di colore
+.order-by__tab {
+  color: #404040;
+}
+
+// Pagina risultati ricerca filtro attivo
+
+.order-by__tab.is-active {
+  color: $par-darkgreen !important;
+  text-decoration-color: $par-darkgreen !important;
+}
+
+.filters__section--general.no-results .section-title {
+  color: #404040;
+  text-decoration: none;
+}
+>>>>>>> partecipa/bump_to_0.27

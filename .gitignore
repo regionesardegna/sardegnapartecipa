@@ -4,8 +4,20 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+####### Ignore custom ########
+/app_BACKUP/*
+/app_NEW/*
+/lib_BACKUP/*
+public
+public/sw.js
+public/sw.js.map
+##############################
+
 # Ignore bundler config.
 /.bundle
+
+# Ignore idea
+/.idea
 
 # Ignore packages
 /packages

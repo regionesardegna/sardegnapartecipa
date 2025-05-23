@@ -10,3 +10,15 @@ it:
         ended_processes_label: "Processi Conclusi"
         upcoming_processes_label: "Processi Imminenti"
         groups_processes_label: "Gruppi di Processi"
+<<<<<<< HEAD
+=======
+        participate_button_text: "Partecipa"
+        browse_button_text: "Naviga"
+        participate_button_link_title: "Partecipa a"
+        browse_button_link_title: "Naviga su"
+      help_index_page:
+        more_button_link_title: "Leggi di più su"
+      proposals_index_page:
+        view_button_link_title: "Visualizza la proposta su"
+
+>>>>>>> partecipa/bump_to_0.27
