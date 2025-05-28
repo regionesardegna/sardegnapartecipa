@@ -5,11 +5,8 @@ Decidim.configure do |config|
   config.application_name = Rails.application.secrets.decidim[:application_name]
 
   # The email that will be used as sender in all emails from Decidim
-<<<<<<< HEAD
-  config.mailer_sender = ENV["SMTP_USERNAME"]
-=======
+
   config.mailer_sender = Rails.application.secrets.decidim[:mailer_sender]
->>>>>>> partecipa/bump_to_0.27
 
   # Sets the list of available locales for the whole application.
   #
@@ -35,15 +32,10 @@ Decidim.configure do |config|
   # more info.
   # config.content_processors = []
 
-  # Whether SSL should be enabled or not.
-<<<<<<< HEAD
-  config.force_ssl = true
-=======
   # if this var is not defined, it is decided automatically per-rails-environment
   config.force_ssl = Rails.application.secrets.decidim[:force_ssl].present? unless Rails.application.secrets.decidim[:force_ssl] == "auto"
   # or set it up manually and prevent any ENV manipulation:
   # config.force_ssl = true
->>>>>>> partecipa/bump_to_0.27
 
   # Enable the service worker. By default is disabled in development and enabled in the rest of environments
   config.service_worker_enabled = Rails.application.secrets.decidim[:service_worker_enabled].present?																											
@@ -159,19 +151,15 @@ Decidim.configure do |config|
   # end
 
   # Currency unit
-<<<<<<< HEAD
-  config.currency_unit = "€"
-=======
   config.currency_unit = Rails.application.secrets.decidim[:currency_unit] if Rails.application.secrets.decidim[:currency_unit].present?
->>>>>>> partecipa/bump_to_0.27
 
   # Workaround to enable SVG assets cors
-  config.cors_enabled = Rails.application.secrets.decidim[:cors_enabled].present?										
+  config.cors_enabled = Rails.application.secrets.decidim[:cors_enabled].present?
   # Defines the quality of image uploads after processing. Image uploads are
   # processed by Decidim, this value helps reduce the size of the files.
   config.image_uploader_quality = Rails.application.secrets.decidim[:image_uploader_quality].to_i
   config.maximum_attachment_size = Rails.application.secrets.decidim[:maximum_attachment_size].to_i.megabytes
-  config.maximum_avatar_size = Rails.application.secrets.decidim[:maximum_avatar_size].to_i.megabytes																											 
+  config.maximum_avatar_size = Rails.application.secrets.decidim[:maximum_avatar_size].to_i.megabytes
 
   # The number of reports which a resource can receive before hiding it
   config.max_reports_before_hiding = Rails.application.secrets.decidim[:max_reports_before_hiding].to_i
@@ -189,11 +177,7 @@ Decidim.configure do |config|
   # that an organization's administrator injects malicious scripts to spy on or
   # take over user accounts.
   #
-<<<<<<< HEAD
-  config.enable_html_header_snippets = true
-=======
   config.enable_html_header_snippets = Rails.application.secrets.decidim[:enable_html_header_snippets].present?
->>>>>>> partecipa/bump_to_0.27
 
    # Allow organizations admins to track newsletter links.
   config.track_newsletter_links = Rails.application.secrets.decidim[:track_newsletter_links].present? unless Rails.application.secrets.decidim[:track_newsletter_links] == "auto"
@@ -208,11 +192,7 @@ Decidim.configure do |config|
   config.throttling_period = Rails.application.secrets.decidim[:throttling_period].to_i.minutes
 
   # Time window were users can access the website even if their email is not confirmed.
-<<<<<<< HEAD
-  config.unconfirmed_access_for = 0.days
-=======
   config.unconfirmed_access_for = Rails.application.secrets.decidim[:unconfirmed_access_for].to_i.days
->>>>>>> partecipa/bump_to_0.27
 
   # A base path for the uploads. If set, make sure it ends in a slash.
   # Uploads will be set to `<base_path>/uploads/`. This can be useful if you
@@ -459,9 +439,6 @@ if Decidim.module_installed? :consultations
   end
 end
 
-<<<<<<< HEAD
-I18n.load_path += Dir.glob("config/locales/matomo/*.{rb,yml}")
-=======
 if Decidim.module_installed? :initiatives
   Decidim::Initiatives.configure do |config|
     unless Rails.application.secrets.dig(:decidim, :initiatives, :creation_enabled) == "auto"
@@ -501,7 +478,7 @@ if Decidim.module_installed? :elections
 end
 
 I18n.load_path += Dir.glob('config/locales/matomo/*.{rb,yml}')
->>>>>>> partecipa/bump_to_0.27
+
 Rails.application.config.i18n.available_locales = Decidim.available_locales
 Rails.application.config.i18n.default_locale = Decidim.default_locale
 

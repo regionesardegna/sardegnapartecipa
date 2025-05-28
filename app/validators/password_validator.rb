@@ -1,6 +1,11 @@
+# frozen_string_literal: true
+
 # Copyright (C) 2024 Sardegna IT
+#
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
 # Modificata per integrare le nuove policies relative alla password in caso di registrazione su form
@@ -12,14 +17,14 @@
 # 1 simbolo
 # 1 numero
 
-# frozen_string_literal: true
-
 # Class is used to verify that the user's password is strong enough
 class PasswordValidator < ActiveModel::EachValidator
   MINIMUM_LENGTH = 12 #originale 10
   MAX_LENGTH = 256
   MIN_UNIQUE_CHARACTERS = 5
   IGNORE_SIMILARITY_SHORTER_THAN = 4
+  ADMIN_MINIMUM_LENGTH = Decidim.config.admin_password_min_length
+  ADMIN_REPETITION_TIMES = Decidim.config.admin_password_repetition_times
   VALIDATION_METHODS = [
     :password_too_short?,
     :password_too_long?,
@@ -30,12 +35,17 @@ class PasswordValidator < ActiveModel::EachValidator
     :domain_included_in_password?,
     :password_too_common?,
     :blacklisted?,
-	:no_capital_letters?,
-	:no_lower_letters?,
-	:no_numbers?,
-	:no_symbols?
-  ].freeze
+    :password_repeated?,
+    :no_capital_letters?,
+    :no_lower_letters?,
+    :no_numbers?,
+    :no_symbols?].freeze
 
+  def self.minimum_length_for(record)
+    return ADMIN_MINIMUM_LENGTH if record.try(:admin?) && Decidim.config.admin_password_strong
+
+    MINIMUM_LENGTH
+  end
   # Check if user's password is strong enough
   #
   # record - Instance of a form (e.g. Decidim::RegistrationForm) or model
@@ -53,7 +63,7 @@ class PasswordValidator < ActiveModel::EachValidator
     return true if strong?
 
     @weak_password_reasons.each do |reason|
-      record.errors[attribute] << get_message(reason)
+      record.errors.add attribute, get_message(reason)
     end
 
     false
@@ -85,7 +95,7 @@ class PasswordValidator < ActiveModel::EachValidator
   end
 
   def password_too_short?
-    value.length < MINIMUM_LENGTH
+    value.length < self.class.minimum_length_for(record)
   end
 
   def password_too_long?
@@ -100,7 +110,7 @@ class PasswordValidator < ActiveModel::EachValidator
     return false if !record.respond_to?(:name) || record.name.blank?
     return true if value.include?(record.name.delete(" "))
 
-    record.name.split(" ").each do |part|
+    record.name.split.each do |part|
       next if part.length < IGNORE_SIMILARITY_SHORTER_THAN
 
       return true if value.include?(part)
@@ -148,8 +158,21 @@ class PasswordValidator < ActiveModel::EachValidator
     Decidim::CommonPasswords.instance.passwords.include?(value)
   end
   
+  def password_repeated?
+    return false unless Decidim.config.admin_password_strong
+    return false unless record.try(:admin?)
+    return false unless record.try(:encrypted_password_changed?)
+
+    [record.encrypted_password_was, *record.previous_passwords].compact_blank.take(ADMIN_REPETITION_TIMES).each do |encrypted_password|
+      return true if Devise::Encryptor.compare(Decidim::User, encrypted_password, value)
+    end
+
+    false
+                            
+  end
+  
   def no_capital_letters?
-	value.downcase == value
+    value.downcase == value
   end
   
   def no_lower_letters?
@@ -161,6 +184,6 @@ class PasswordValidator < ActiveModel::EachValidator
   end
   
   def no_symbols?
-	value.scan(/[!@#$%^&*()_+{}\[\]:;'"\/\\?><.,-]/).empty?
+    value.scan(/[!@#$%^&*()_+{}\[\]:;'"\/\\?><.,-]/).empty?
   end
 end

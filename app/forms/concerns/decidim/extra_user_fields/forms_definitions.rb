@@ -1,11 +1,14 @@
-# Copyright (C) 2024 Sardegna IT
+# frozen_string_literal: true
+
+# Copyright (C) 2025 Sardegna IT
+#
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
 # Modificato per aggiungere i campi nome e cognome tramite il modulo ExtraUserFields
-
-# frozen_string_literal: true
 
 require "active_support/concern"
 
@@ -25,8 +28,8 @@ module Decidim
         attribute :date_of_birth, Decidim::Attributes::LocalizedDate
         attribute :gender, String
         # Block ExtraUserFields
-		attribute :personal_name, String
-		attribute :surname, String
+        attribute :personal_name, String
+        attribute :surname, String
         # EndBlock
 
         # Block ExtraUserFields Validations
@@ -35,12 +38,12 @@ module Decidim
         validates :postal_code, presence: true, if: :postal_code?
         validates :date_of_birth, presence: true, if: :date_of_birth?
         validates :gender, presence: true, inclusion: { in: Decidim::ExtraUserFields::Engine::DEFAULT_GENDER_OPTIONS.map(&:to_s) }, if: :gender?
-		validates :personal_name, presence: true, if: :personal_name?
-		validates_format_of :personal_name, :with => /\A[a-zA-Z' ]+\z/, if: :personal_name?
+        validates :personal_name, presence: true, if: :personal_name?
+        validates_format_of :personal_name, :with => /\A[a-zA-Z' ]+\z/, if: :personal_name?
         validates :surname, presence: true, if: :surname?
         validates_format_of :surname, :with => /\A[a-zA-Z' ]+\z/, if: :surname?
-		
-		# EndBlock
+        
+        # EndBlock
       end
 
       def map_model(model)
@@ -53,7 +56,7 @@ module Decidim
        
         # Block ExtraUserFields MapModel
         self.personal_name = extended_data[:personal_name]
-		self.surname = extended_data[:surname]
+        self.surname = extended_data[:surname]
         # EndBlock
       end
 
@@ -80,7 +83,7 @@ module Decidim
         extra_user_fields_enabled && current_organization.activated_extra_field?(:personal_name)
       end
 
-	  def surname?
+      def surname?
         extra_user_fields_enabled && current_organization.activated_extra_field?(:surname)
       end
 

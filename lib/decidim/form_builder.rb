@@ -9,6 +9,7 @@
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 #
 # Modificata per aumentare le dimensioni del font del help contestuale nel form di registrazione, attraverso modifica della funzione error_and_help_text per inserire la classe css help-text-big
+
 require "foundation_rails_helper/form_builder"
 require_relative "../../app/helpers/decidim/sanitize_helper"
 

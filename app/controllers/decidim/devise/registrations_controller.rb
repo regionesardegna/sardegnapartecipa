@@ -1,11 +1,14 @@
-# Copyright (C) 2024 Sardegna IT
+# frozen_string_literal: true
+
+# Copyright (C) 2025 Sardegna IT
+#
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
 # Aggiunto include per FriendlySignup
-
-# frozen_string_literal: true
 
 module Decidim
   module Devise
@@ -15,9 +18,11 @@ module Decidim
       include FormFactory
       include Decidim::DeviseControllers
       include NeedsTosAccepted
-	  # aggiunto per integrare il modulo FriendlySignup
-	  include Decidim::FriendlySignup::NeedsHeaderSnippets
-	  include Decidim::FriendlySignup::RegistrationsRedirect
+     # aggiunto per integrare il modulo FriendlySignup
+     include Decidim::FriendlySignup::NeedsHeaderSnippets
+     include Decidim::FriendlySignup::RegistrationsRedirect
+
+     helper Decidim::PasswordsHelper
 
       before_action :check_sign_up_enabled
       before_action :configure_permitted_parameters
@@ -47,8 +52,7 @@ module Decidim
           end
 
           on(:invalid) do
-            @form.errors.add(:password, :password_blank) if params[:user][:password].blank?
-            flash.now[:alert] = @form.errors.full_messages.join(", ") if @form.errors.full_messages.any?
+            flash.now[:alert] = t("error", scope: "decidim.devise.registrations.create")
             render :new
           end
         end
@@ -68,6 +72,10 @@ module Decidim
       def build_resource(hash = nil)
         super(hash)
         resource.organization = current_organization
+      end
+      
+      def devise_mapping
+        ::Devise.mappings[:user]
       end
     end
   end

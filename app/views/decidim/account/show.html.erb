@@ -1,21 +1,21 @@
 <%#
-Copyright (C) 2024 Sardegna IT
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
-Modificata per integrare le modifiche necessarie al modulo decidim-module-friendly_signup, con il componente originale si determina un problema di visibilità di un metodo
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificata per integrare le modifiche necessarie al modulo decidim-module-friendly_signup, con il componente originale si determina un problema di visibilità di un metodo
 %>
 
 <% add_decidim_page_title(t("profile", scope: "layouts.decidim.user_menu")) %>
 <% content_for(:subtitle) { t("profile", scope: "layouts.decidim.user_menu") } %>
 
 <div class="row">
-  <%= decidim_form_for(@account, url: account_path, method: :put, html: { autocomplete: "off" }) do |f| %>
-    <input autocomplete="off" name="hidden" type="password" style="display:none;">
+  <%= decidim_form_for(@account, url: account_path, method: :put, html: { autocomplete: "on" }) do |f| %>
+    
     <div class="columns large-4">
       <%= f.upload :avatar %>
     </div>
@@ -23,10 +23,10 @@ Modificata per integrare le modifiche necessarie al modulo decidim-module-friend
     <div class="columns large-8 end">
       <%= form_required_explanation %>
 
-      <%= f.text_field :name, help_text: t(".name_help", organization: current_organization.name) %>
-      <%= f.text_field :nickname, help_text: t(".nickname_help", organization: current_organization.name) %>
-      <%= f.email_field :email %>
-      <%= f.url_field :personal_url %>
+      <%= f.text_field :name, autocomplete: "name", help_text: t(".name_help", organization: current_organization.name) %>
+      <%= f.text_field :nickname, autocomplete: "nickname", help_text: t(".nickname_help", organization: current_organization.name) %>
+      <%= f.email_field :email , disabled: current_user.unconfirmed_email.present?, autocomplete: "email" %>      
+      <%= f.url_field :personal_url, autocomplete: "url" %>
       <%= f.text_area :about, rows: 5 %>
 
       <%= f.collection_select(

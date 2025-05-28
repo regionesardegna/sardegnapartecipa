@@ -1,3 +1,14 @@
+<%#
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Inserita per il funzionamento del modulo decidim_extra_user_fields
+%>
 <p class="callout success"><%== t(".callout.help") %></p>
 <div class="card">
   <div class="card-section extra_user_fields">
@@ -22,7 +33,7 @@
     <%= render partial: "decidim/extra_user_fields/admin/extra_user_fields/fields/gender", locals: { form: form } %>
     <%# Block ExtraUserFields ExtraFields %>
     <%= render partial: "decidim/extra_user_fields/admin/extra_user_fields/fields/personal_name", locals: { form: form } %>
-	<%= render partial: "decidim/extra_user_fields/admin/extra_user_fields/fields/surname", locals: { form: form } %>
+    <%= render partial: "decidim/extra_user_fields/admin/extra_user_fields/fields/surname", locals: { form: form } %>
     <%# EndBlock %>
   </div>
 </div>

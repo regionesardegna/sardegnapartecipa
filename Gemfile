@@ -12,11 +12,13 @@ gem 'daemons'
 gem 'decidim', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-decidim_awesome'
 gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'bump_to_0.27'
-#####gem 'decidim-spid-cie', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie', branch: 'bump_to_0.27'
+gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.27'
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-term_customizer', branch: 'release/0.27-stable', git: 'https://github.com/mainio/decidim-module-term_customizer'
 gem 'decidim-survey_results', git: 'https://github.com/maintainer-partecipa/decidim-module-survey_results', branch: 'bump_to_0.27'
 gem 'decidim-cache_cleaner'
+gem 'decidim-friendly_signup', git: 'https://github.com/OpenSourcePolitics/decidim-module-friendly_signup', branch: 'main'
+gem 'decidim-extra_user_fields', git: 'https://github.com/PopulateTools/decidim-module-extra_user_fields.git', branch: 'release/0.27-stable'
 gem 'deface'
 gem 'delayed_job_active_record'
 gem 'figaro'
@@ -40,8 +42,8 @@ group :development, :test do
 
   gem 'decidim-dev', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
   gem 'simplecov', '~> 0.21.0'
-  gem "brakeman", "~> 5.2"
-  gem "parallel_tests", "~> 3.7"
+  gem 'brakeman', '~> 5.2'
+  gem 'parallel_tests', '~> 3.7'
 end
 
 group :development do

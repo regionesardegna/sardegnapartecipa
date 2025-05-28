@@ -1,38 +1,38 @@
 <%#
-Copyright (C) 2023 Sardegna IT
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
-Modificato per integrare la parte relativa al sottotitolo del processo
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificato per integrare la parte relativa al sottotitolo del processo
 %>
 <div class="process-header" style="background-image:url('<%= current_participatory_space.attached_uploader(:banner_image).path %>');">
   <div class="process-header__inner">
     <div class="process-header__container row collapse column">
-		<div class="process-header__inner_inner">
-		  <div class="columns process-header__info">
-			<div>
-				<div class="process-header__subtitle">
-					<h2 class="heading-small">
-					<%= translated_attribute(current_participatory_space.title) %>
-					</h2>
-					<% if current_participatory_space.hashtag.present? %>
-					  <span class="process-header__hashtag">
-						<%= link_to "##{decidim_html_escape(current_participatory_space.hashtag)}", "https://twitter.com/hashtag/#{decidim_html_escape(current_participatory_space.hashtag)}", target: "_blank" %>
-					  </span>
-					<% end %>			
-					<%= translated_attribute(current_participatory_space.subtitle) %>
-				</div>
-			  </h2>
-			</div>
-		  </div>
-		  <%= render partial: "layouts/decidim/process_header_steps", locals: { participatory_process: current_participatory_space } %>
-		</div>
-	</div>
-	</div>
+        <div class="process-header__inner_inner">
+          <div class="columns process-header__info">
+            <div>
+                <div class="process-header__subtitle">
+                    <h2 class="heading-small">
+                    <%= translated_attribute(current_participatory_space.title) %>
+                    </h2>
+                    <% if current_participatory_space.hashtag.present? %>
+                      <span class="process-header__hashtag">
+                        <%= link_to "##{decidim_html_escape(current_participatory_space.hashtag)}", "https://twitter.com/hashtag/#{decidim_html_escape(current_participatory_space.hashtag)}", target: "_blank" %>
+                      </span>
+                    <% end %>            
+                    <%= translated_attribute(current_participatory_space.subtitle) %>
+                </div>
+              </h2>
+            </div>
+          </div>
+          <%= render partial: "layouts/decidim/process_header_steps", locals: { participatory_process: current_participatory_space } %>
+        </div>
+    </div>
+    </div>
   </div>
   <%= render partial: "layouts/decidim/process_navigation", locals: { participatory_space: current_participatory_space } %>
 </div>

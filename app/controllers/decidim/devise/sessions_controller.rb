@@ -1,25 +1,48 @@
-# Copyright (C) 2023 Sardegna IT
+# frozen_string_literal: true
+
+# Copyright (C) 2025 Sardegna IT
+#
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
 # Modificata per eseguire il logging degli accessi con form interno e tracciare l'ip del client
 # aggiunto include per FriendlySignup
-
-# frozen_string_literal: true
 
 module Decidim
   module Devise
     # Custom Devise SessionsController to avoid namespace problems.
     class SessionsController < ::Devise::SessionsController
       include Decidim::DeviseControllers
-	  # aggiunto per FriendlySignup
-	  include Decidim::FriendlySignup::NeedsHeaderSnippets
+  
+     include Decidim::DeviseAuthenticationMethods
+  
+     # aggiunto per FriendlySignup
+     include Decidim::FriendlySignup::NeedsHeaderSnippets
 
       # rubocop: disable Rails/LexicallyScopedActionFilter
       before_action :check_sign_in_enabled, only: :create
       # rubocop: enable Rails/LexicallyScopedActionFilter
-
+      
+      def create
+        super do |user|
+          if user.admin?
+            # Check that the admin password passes the validation and clear the
+            # `password_updated_at` field when the password is weak to force a
+            # password update on the user.
+            #
+            # Handles a case when the user registers through the registration
+            # form and they are promoted to an admin after that. In this case,
+            # the newly promoted admin user would otherwise have to change their
+            # password straight away even if they originally registered with a
+            # strong password.
+            validator = PasswordValidator.new({ attributes: :password })
+            user.update!(password_updated_at: nil) unless validator.validate_each(user, :password, sign_in_params[:password])
+          end
+        end
+      end
       def destroy
         current_user.invalidate_all_sessions!
         Decidim::ActionLogger.log(:logout, current_user,  current_user, 1)
@@ -52,7 +75,7 @@ module Decidim
 
       def first_login_and_not_authorized?(user)
         user.is_a?(User) && user.sign_in_count == 1 && current_organization.available_authorizations.any? && user.verifiable?
-	  end
+      end
 
       def after_sign_out_path_for(user)
         request.referer || super

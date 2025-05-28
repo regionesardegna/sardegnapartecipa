@@ -1,4 +1,5 @@
-require "active_support/core_ext/integer/time"							  
+require "active_support/core_ext/integer/time"
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -30,7 +31,7 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
-  config.asset_host = ENV['RAILS_ASSET_HOST'] if ENV['RAILS_ASSET_HOST'].present?								  
+  config.asset_host = ENV['RAILS_ASSET_HOST'] if ENV['RAILS_ASSET_HOST'].present?
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
@@ -59,7 +60,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "decidim_0.27.9_development_app_production"
+  # config.active_job.queue_name_prefix = ""
 
   config.action_mailer.perform_caching = false
 
@@ -142,8 +143,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: Rails.application.secrets.host, protocol: Rails.application.secrets.protocol }
   config.action_mailer.asset_host = Rails.application.secrets.protocol + '://' + Rails.application.secrets.host
-<<<<<<< HEAD
+
   config.action_view.raise_on_missing_translations = false
-=======
->>>>>>> partecipa/bump_to_0.27
 end

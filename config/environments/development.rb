@@ -4,7 +4,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false					  
+  config.cache_classes = false
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -62,15 +62,8 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
   # Raises error for missing translations.
-<<<<<<< HEAD
-  config.action_view.raise_on_missing_translations = false
-=======
-  # config.i18n.raise_on_missing_translations = true
 
-  # Annotate rendered view with file names.
-  # config.action_view.annotate_rendered_view_with_filenames = true
-										   
->>>>>>> partecipa/bump_to_0.27
+  config.action_view.raise_on_missing_translations = false
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
@@ -97,14 +90,11 @@ Rails.application.configure do
   config.logger = ActiveSupport::Logger.new(config.paths['log'].first, shift_age = 'daily')
   config.logger.formatter = Logger::Formatter.new
   
-<<<<<<< HEAD
   config.action_mailer.default_url_options = { host: Rails.application.secrets.host, protocol: Rails.application.secrets.protocol }
   config.action_mailer.asset_host = Rails.application.secrets.protocol + '://' + Rails.application.secrets.host
- 
-=======
+
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
->>>>>>> partecipa/bump_to_0.27
   config.hosts << ENV['HOST']
 end

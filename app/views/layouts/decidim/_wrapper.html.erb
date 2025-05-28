@@ -1,13 +1,13 @@
 <%#
-Copyright (C) 2023 Sardegna IT
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
-Modificato per integrare i link Accedi e Registrati dentro la top_header
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificato per integrare i link Accedi e Registrati dentro la top_header
 %>
 <%
 if respond_to?(:current_component) && current_component && can_be_managed?(current_component)
@@ -42,36 +42,36 @@ end
         <!--separates the footer from the rest of the page,
              creates a sticky footer-->
         <!-- Topbar -->
-		<div>
-			<%= render partial: 'layouts/decidim/top_header' %>
-			<div class="title-bar" id="title-bar">
-				<div class="row column topbar">
-					<div class="logo-wrapper">
-						<%= render partial: "layouts/decidim/logo", locals: { organization: current_organization } %>
-						<%= link_to t("skip_button", scope: "decidim.accessibility"), url_for(anchor: "content"), class: "skip" %>
-						<% if current_organization.official_img_header.attached? %>
-							<%= link_to  current_organization.official_url, class: "logo-cityhall" do %>
-								<%= image_tag current_organization.attached_uploader(:official_img_header).path, alt: "Gonfalone Sardegna", 'aria-label': "Gonfalone Sardegna",  role: "img" %>
-							<% end %>
-						<% end %>
-					</div>
-					<%= render partial: "layouts/decidim/language_chooser" %>
-					<div class="hide-for-medium topbar__menu">
-						<button type="button" data-toggle="offCanvas" aria-label="<%= t("layouts.decidim.header.navigation") %>">
-							<%= icon "menu", aria_label: t("layouts.decidim.header.navigation"), role: "img" %>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="show-for-medium" data-set="nav-holder" id="menu-bar">
-				<div class="navbar js-append">
-					<div class="row column main-nav">
-						<a href="/"><%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, 'aria-label': current_organization.name, id: "menu-bar-logo", class: "menu-bar-logo", role: "img" %></a>
-						<%= main_menu.render %><%= render partial: "layouts/decidim/topbar_search"%>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div>
+            <%= render partial: 'layouts/decidim/top_header' %>
+            <div class="title-bar" id="title-bar">
+                <div class="row column topbar">
+                    <div class="logo-wrapper">
+                        <%= render partial: "layouts/decidim/logo", locals: { organization: current_organization } %>
+                        <%= link_to t("skip_button", scope: "decidim.accessibility"), url_for(anchor: "content"), class: "skip" %>
+                        <% if current_organization.official_img_header.attached? %>
+                            <%= link_to  current_organization.official_url, class: "logo-cityhall" do %>
+                                <%= image_tag current_organization.attached_uploader(:official_img_header).path, alt: "Gonfalone Sardegna", 'aria-label': "Gonfalone Sardegna",  role: "img" %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                    <%= render partial: "layouts/decidim/language_chooser" %>
+                    <div class="hide-for-medium topbar__menu">
+                        <button type="button" data-toggle="offCanvas" aria-label="<%= t("layouts.decidim.header.navigation") %>">
+                            <%= icon "menu", aria_label: t("layouts.decidim.header.navigation"), role: "img" %>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="show-for-medium" data-set="nav-holder" id="menu-bar">
+                <div class="navbar js-append">
+                    <div class="row column main-nav">
+                        <a href="/"><%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, 'aria-label': current_organization.name, id: "menu-bar-logo", class: "menu-bar-logo", role: "img" %></a>
+                        <%= main_menu.render %><%= render partial: "layouts/decidim/topbar_search"%>
+                    </div>
+                </div>
+            </div>
+        </div>
         <main id="content">
           <%= display_flash_messages %>
           <%= yield %>

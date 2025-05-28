@@ -8,13 +8,13 @@
 
 # frozen_string_literal: true
 
-require "#{Rails.root}/lib/decidim/spid/validations.rb"
-require "#{Rails.root}/lib/decidim/spid/create_omniauth_spid_registration.rb"
-require "#{Rails.root}/lib/decidim/spid/authentication/authenticator.rb"
-require "#{Rails.root}/lib/decidim/spid/utils.rb"
-require "#{Rails.root}/lib/omniauth/strategies/spid_saml.rb"
-require "#{Rails.root}/lib/decidim/spid/models/certificate.rb"
-require "#{Rails.root}/lib/one_login/ruby_saml/logoutrequest.rb"
+#require "#{Rails.root}/lib/decidim/spid/validations.rb"
+#require "#{Rails.root}/lib/decidim/spid/create_omniauth_spid_registration.rb"
+#require "#{Rails.root}/lib/decidim/spid/authentication/authenticator.rb"
+#require "#{Rails.root}/lib/decidim/spid/utils.rb"
+#require "#{Rails.root}/lib/omniauth/strategies/spid_saml.rb"
+#require "#{Rails.root}/lib/decidim/spid/models/certificate.rb"
+#require "#{Rails.root}/lib/one_login/ruby_saml/logoutrequest.rb"
 
 
 
@@ -172,7 +172,7 @@ end
 #
 # Modifiche per Matchare il binding urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT originariamente scritto minuscolo
 #
-
+=begin
 Decidim::Spid::Settings::Sso.class_eval do
 	  private
 
@@ -228,3 +228,4 @@ module OneLogin
     end
   end
 end
+=end

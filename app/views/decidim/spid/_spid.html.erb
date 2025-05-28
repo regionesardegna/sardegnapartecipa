@@ -1,9 +1,12 @@
 <%
-  # Copyright (C) 2022 Formez PA
+  # Copyright (C) 2025 Formez PA
+  #
   # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+  #
   # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+  #
   # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
+  #
   # Partial con il button SPID, modificato per customizzare il bottone Accedi con Spid, CIE, CNS in modo che porti unicamente al AM
 %>
 <%
@@ -15,14 +18,14 @@
 %>
 <div class="spid-selector-container">
   <div class="spid-selector">
-	<div style="height:auto;">
-		<%= button_to url, :method => :post, :class => "italia-it-button italia-it-button-size-#{size} button-spid", params: {"[sso]idp" => Decidim::Spid::Idp.all.first[0], "[sso]origin" => origin} do %>
-			<span class="italia-it-button-icon">
-				<%= image_pack_tag 'media/images/spid-ico-circle-bb.svg', onerror: "this.src='spid-ico-circle-bb.png'; this.onerror=null;", alt: "Spid Login" %>
-			</span>
-			<span class="italia-it-button-text">Entra con SPID, CIE o CNS</span>
-		<% end %>
-	</div>
+    <div style="height:auto;">
+        <%= button_to url, :method => :post, :class => "italia-it-button italia-it-button-size-#{size} button-spid", params: {"[sso]idp" => Decidim::Spid::Idp.all.first[0], "[sso]origin" => origin} do %>
+            <span class="italia-it-button-icon">
+                <%= image_pack_tag 'media/images/spid-ico-circle-bb.svg', onerror: "this.src='spid-ico-circle-bb.png'; this.onerror=null;", alt: "Spid Login" %>
+            </span>
+            <span class="italia-it-button-text">Entra con SPID, CIE o CNS</span>
+        <% end %>
+    </div>
   </div>
 </div>
 

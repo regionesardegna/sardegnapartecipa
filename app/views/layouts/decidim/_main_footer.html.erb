@@ -1,110 +1,75 @@
 <%#
-<<<<<<< HEAD
-Copyright (C) 2023 Sardegna IT
-=======
-Copyright (C) 2025 Formez PA
->>>>>>> partecipa/bump_to_0.27
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
-Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificato per rimuovere link a Open Data, integrato footer di Sardegna IT
 %>
 <div class="main-footer">
-<<<<<<< HEAD
   <div class="row">
-	  <% if current_organization.official_img_footer.attached? %>
-		<%= link_to current_organization.official_url, class: "main-footer__badge" do %>
-		  <%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, 'aria-label': current_organization.name, role: "img" %>
-		<% end %>
-	  <% end %>
+      <% if current_organization.official_img_footer.attached? %>
+        <%= link_to current_organization.official_url, class: "main-footer__badge" do %>
+          <%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, 'aria-label': current_organization.name, role: "img" %>
+        <% end %>
+      <% end %>
   </div>
   <div class="row footer_sar_it">
-	  <div class="col-lg-3 col-sm-6 first-col">
-		<h1 class="footer_header">Menu</h4>
-			<div class="footer_text">
-				<p><a href="/">HOME</a></p>
-				<p><a href="/processes">PROCESSI</a></p>
-				<p><a href="/pages">AIUTO</a></p>
-			</div>							
-	  </div>
-	  <div class="col-lg-3 col-sm-6">
-		<h1 class="footer_header">Sede</h4>
-			<div class="footer_text">
-				<p>Regione Autonoma della Sardegna - Presidenza Direzione generale della Presidenza</p>
-				<p>Viale Trento, 69 09123 - Cagliari</p>
-				<p>Telefono: 070/6062200 - Fax: 070/6062398</p>
-				<p>Email: pres.dirgen@regione.sardegna.it</p>
-				<p>&nbsp;</p>
-				<p>Servizio Comunicazione istituzionale</p>
-				<p>Viale Trento, 69 - 09123 Cagliari</p>
-				<p>Telefono 070/6062087</p>
-				<p>Email: pres.comunicazione@regione.sardegna.it</p>
-			</div>
-	  </div>
-	  <div class="col-lg-3 col-sm-6">
-		<h1 class="footer_header">Contatti</h4>
-			<div class="footer_text">
-				<p>E' disponibile un servizio di supporto utenti</p>
-				<p>che risponde all'indirizzo</p>
-				<p>sardegnapartecipa@regione.sardegna.it</p>
-			</div>
-	  </div>
-	  <div class="col-lg-3 col-sm-6 last-col" style="display:none">
-		<h1 class="footer_header">Seguici su</h4>
-		<%= render partial: "layouts/decidim/social_media_links" %>
-	  </div>
-=======
-  <% if current_organization.official_img_footer.attached? %>
-    <%= link_to current_organization.official_url, class: "main-footer__badge" do %>
-      <%= image_tag current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name %>
-    <% end %>
-  <% end %>
-  <div class="row">
-    <div class="medium-8 large-6 large-offset-3 column">
-      <nav class="main__footer__nav">
-        <ul class="footer-nav">
-          <% organization_pages = current_organization.static_pages_accessible_for(current_user) %>
-          <% if organization_pages.any? %>
-            <% current_organization.static_page_topics.where(show_in_footer: true).each do |page_topic| %>
-              <% topic_pages = page_topic.accessible_pages_for(current_user) %>
-              <% if topic_pages.any? %>
-                <li><%= link_to translated_attribute(page_topic.title), decidim.page_path(topic_pages.first) %></li>
-              <% end %>
-            <% end %>
-
-            <% organization_pages.where(show_in_footer: true).each do |page| %>
-              <li><%= link_to translated_attribute(page.title), decidim.page_path(page) %></li>
-            <% end %>
-          <% end %>
-          <li><a href="#" data-open="dc-modal">Configurazione cookies</a></li>
-          <li><a href="https://github.com/dipartimentofunzionepubblica/partecipa" target="_blank">Scarica da GitHub.com</a></li>
-        </ul>
-      </nav>
-    </div>
-    <%= render partial: "layouts/decidim/social_media_links" %>
->>>>>>> partecipa/bump_to_0.27
+      <div class="col-lg-3 col-sm-6 first-col">
+        <h1 class="footer_header">Menu</h4>
+            <div class="footer_text">
+                <p><a href="/">HOME</a></p>
+                <p><a href="/processes">PROCESSI</a></p>
+                <p><a href="/pages">AIUTO</a></p>
+            </div>                            
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <h1 class="footer_header">Sede</h4>
+            <div class="footer_text">
+                <p>Regione Autonoma della Sardegna - Presidenza Direzione generale della Presidenza</p>
+                <p>Viale Trento, 69 09123 - Cagliari</p>
+                <p>Telefono: 070/6062200 - Fax: 070/6062398</p>
+                <p>Email: pres.dirgen@regione.sardegna.it</p>
+                <p>&nbsp;</p>
+                <p>Servizio Comunicazione istituzionale</p>
+                <p>Viale Trento, 69 - 09123 Cagliari</p>
+                <p>Telefono 070/6062087</p>
+                <p>Email: pres.comunicazione@regione.sardegna.it</p>
+            </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <h1 class="footer_header">Contatti</h4>
+            <div class="footer_text">
+                <p>E' disponibile un servizio di supporto utenti</p>
+                <p>che risponde all'indirizzo</p>
+                <p>sardegnapartecipa@regione.sardegna.it</p>
+            </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 last-col" style="display:none">
+        <h1 class="footer_header">Seguici su</h4>
+        <%= render partial: "layouts/decidim/social_media_links" %>
+      </div>
   </div>
   <div class="row">
-	<div>
-		<%= external_icon "media/images/ue.svg", alt: "Logo Unione Europea", class: "footer_logo", 'aria-label': "Logo Unione Europea", role: "img", 'aria-hidden': true %>
-	 </div>
-	<div>
-		<%= external_icon "media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo", 'aria-label': "Logo Repubblica Italiana", role: "img", 'aria-hidden': true %>
-	</div>
-	<div>
-		<%= external_icon "media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo", 'aria-label': "Logo Regione Autonoma della Sardegna", role: "img", 'aria-hidden': true %>
-	</div>
-	<div>
-		<%= external_icon "media/images/por.svg", alt: "Logo POR FESR", class: "footer_logo", 'aria-label': "Logo POR", role: "img", 'aria-hidden': true %>
-	</div>
-	<div>
-		<a rel="partecipa"
-		 href="https://github.com/dipartimentofunzionepubblica/partecipa"
-		 target="_blank">
-		 <%= image_pack_tag("media/images/logo_partecipa.png", alt: "Logo ParteciPa", 'aria-label': "Logo ParteciPa", class: "footer_logo logo_partecipa", role: "img", 'aria-hidden': true) %></a>
-	</div>
+    <div>
+        <%= external_icon "media/images/ue.svg", alt: "Logo Unione Europea", class: "footer_logo", 'aria-label': "Logo Unione Europea", role: "img", 'aria-hidden': true %>
+     </div>
+    <div>
+        <%= external_icon "media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo", 'aria-label': "Logo Repubblica Italiana", role: "img", 'aria-hidden': true %>
+    </div>
+    <div>
+        <%= external_icon "media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo", 'aria-label': "Logo Regione Autonoma della Sardegna", role: "img", 'aria-hidden': true %>
+    </div>
+    <div>
+        <%= external_icon "media/images/por.svg", alt: "Logo POR FESR", class: "footer_logo", 'aria-label': "Logo POR", role: "img", 'aria-hidden': true %>
+    </div>
+    <div>
+        <a rel="partecipa"
+         href="https://github.com/dipartimentofunzionepubblica/partecipa"
+         target="_blank">
+         <%= image_pack_tag("media/images/logo_partecipa.png", alt: "Logo ParteciPa", 'aria-label': "Logo ParteciPa", class: "footer_logo logo_partecipa", role: "img", 'aria-hidden': true) %></a>
+    </div>
 </div>

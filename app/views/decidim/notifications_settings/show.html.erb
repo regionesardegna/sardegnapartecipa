@@ -1,13 +1,13 @@
 <%#
-Copyright (C) 2025 Formez PA
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
-Modificata per eliminare notifiche per newsletter
+# Copyright (C) 2025 Formez PA
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificata per eliminare notifiche per newsletter
 %>
 <% add_decidim_page_title(t("notifications_settings", scope: "layouts.decidim.user_profile")) %>
 <% content_for(:subtitle) { t("notifications_settings", scope: "layouts.decidim.user_profile") } %>
@@ -51,14 +51,8 @@ Modificata per eliminare notifiche per newsletter
       </label>
     </div>
 
-<<<<<<< HEAD
-    <% if current_user.moderator? %>
-      <p><strong><%= t(".administrators") %></strong></p>
-      <div class="switch tiny switch-with-label email_on_moderations">
-=======
     <% Decidim.notification_settings_registry.manifests.filter{ |a| a.settings_area == :administrators }.each do |manifest| %>
       <div class="switch tiny switch-with-label notification_settings">
->>>>>>> partecipa/bump_to_0.27
         <label>
           <%= f.check_box "notification_settings[#{manifest.name}]",
                           checked: ["1", true].include?(current_user.notification_settings.fetch(manifest.name.to_s, manifest.default_value)),
