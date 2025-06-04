@@ -12,7 +12,7 @@ gem 'daemons'
 gem 'decidim', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-decidim_awesome'
 gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'bump_to_0.27'
-gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.27'
+gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.27', ref: 'e813e27fa23812f8233dded78d1a675a0ac84659'
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-term_customizer', branch: 'release/0.27-stable', git: 'https://github.com/mainio/decidim-module-term_customizer'
 gem 'decidim-survey_results', git: 'https://github.com/maintainer-partecipa/decidim-module-survey_results', branch: 'bump_to_0.27'

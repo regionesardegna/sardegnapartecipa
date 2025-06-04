@@ -3,6 +3,7 @@
 # This migration comes from decidim_decidim_awesome (originally 20200403142257)
 
 class CreateDecidimAwesomeConfigConstraints < ActiveRecord::Migration[5.2]
+=begin
   def change
     create_table :decidim_awesome_config_constraints do |t|
       t.jsonb :settings
@@ -12,4 +13,5 @@ class CreateDecidimAwesomeConfigConstraints < ActiveRecord::Migration[5.2]
       t.index [:settings, :decidim_awesome_config_id], name: "index_decidim_awesome_settings_awesome_config", unique: true
     end
   end
+=end
 end

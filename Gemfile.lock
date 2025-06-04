@@ -237,6 +237,7 @@ GIT
 GIT
   remote: https://gitlab.com/glcorso/decidim-module-spid-cie
   revision: e813e27fa23812f8233dded78d1a675a0ac84659
+  ref: e813e27fa23812f8233dded78d1a675a0ac84659
   branch: release/0.27
   specs:
     decidim-spid-cie (0.27.0)
