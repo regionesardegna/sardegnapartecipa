@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Copyright (C) 2023 Sardegna IT
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
@@ -8,17 +10,9 @@
 #
 # Crea il metadata SP include alcune classi di cui è stato fatto overload
 
-# frozen_string_literal: true
-
-#require "#{Rails.root}/lib/decidim/spid/validations.rb"
-#require "#{Rails.root}/lib/decidim/spid/create_omniauth_spid_registration.rb"
-#require "#{Rails.root}/lib/decidim/spid/authentication/authenticator.rb"
-#require "#{Rails.root}/lib/decidim/spid/utils.rb"
-#require "#{Rails.root}/lib/omniauth/strategies/spid_saml.rb"
-#require "#{Rails.root}/lib/decidim/spid/models/certificate.rb"
-#require "#{Rails.root}/lib/one_login/ruby_saml/logoutrequest.rb"
-
-
+require "#{Rails.root}/lib/one_login/ruby_saml/utils.rb"
+require "#{Rails.root}/lib/decidim/spid_cie/response.rb"
+require "#{Rails.root}/lib/one_login/ruby_saml/logoutrequest.rb"
 
 if ENV['SPID_TENANT_NAME'].present?
   Decidim::Spid.configure do |config|
@@ -171,63 +165,3 @@ if ENV['SPID_TENANT_NAME'].present?
      ]
   end
 end
-#
-# Modifiche per Matchare il binding urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT originariamente scritto minuscolo
-#
-=begin
-Decidim::Spid::Settings::Sso.class_eval do
-	  private
-
-	  def self.saml_bindings
-		{
-		  redirect: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT'
-		}
-	  end
-end
-
-if RUBY_VERSION < '1.9'
-  require 'uuid'
-else
-  require 'securerandom'
-end
-
-require "openssl"
-
-module OneLogin
-  module RubySaml
-
-    # SAML2 Auxiliary class
-
-    class Utils
-      @@uuid_generator = UUID.new if RUBY_VERSION < '1.9'
-
-      BINDINGS.dup
-
-      BINDINGS = { :post => "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST".dup.freeze,
-                   :redirect => "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-REDIRECT".dup.freeze }.freeze
-      DSIG.dup
-	  DSIG = "http://www.w3.org/2000/09/xmldsig#".freeze
-      XENC.dup
-	  XENC = "http://www.w3.org/2001/04/xmlenc#".freeze
-      DURATION_FORMAT.dup
-	  DURATION_FORMAT = %r(^
-        (-?)P                       # 1: Duration sign
-        (?:
-          (?:(\d+)Y)?               # 2: Years
-          (?:(\d+)M)?               # 3: Months
-          (?:(\d+)D)?               # 4: Days
-          (?:T
-            (?:(\d+)H)?             # 5: Hours
-            (?:(\d+)M)?             # 6: Minutes
-            (?:(\d+(?:[.,]\d+)?)S)? # 7: Seconds
-          )?
-          |
-          (\d+)W                    # 8: Weeks
-        )
-      $)x.freeze
-      UUID_PREFIX = '_'
-
-    end
-  end
-end
-=end
