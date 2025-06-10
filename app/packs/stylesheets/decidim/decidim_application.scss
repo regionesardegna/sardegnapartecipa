@@ -871,6 +871,10 @@ $datetime-bg: var(--primary);
 
 // PROCESS HEADER
 
+.section-heading-process-grid{
+    width: 100%;
+}
+
 @media print, screen and (min-width: 40em){
     .process-header {
         height: 250px;

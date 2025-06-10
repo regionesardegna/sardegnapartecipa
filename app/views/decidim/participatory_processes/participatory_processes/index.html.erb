@@ -30,27 +30,8 @@
   %>
 
   <%= participatory_space_wrapper do %>
-    <% if promoted_collection.any? %>
-      <section id="highlighted-processes" class="row section" style="display:none">
-        <h1 class="section-heading"><%= t("participatory_processes.index.promoted_processes", scope: "layouts.decidim") %></h1>
-         <% promoted_collection.each do |promoted_item| %>
-          <%= render_highlighted_partial_for promoted_item %>
-        <% end %>
-      </section>
-    <% end %>
-
-<%= participatory_space_wrapper do %>
   
-  <div class="page-title-wrapper">
-    <h1 class="heading1 page-title">
-     <%= t("decidim.usability_mods.processes_index_page.processes_title") %>
-    </h1>
-    <p class="intro--text subheading1">
-      <%=t("decidim.usability_mods.processes_index_page.processes_subtitile") %>
-    </p>
-  </div>
-
-  <section id="processes-grid" class="section row collapse">
+    <section id="processes-grid" class="section row collapse">
     <div class="processes-grid-order-by">
       <%= render partial: "order_by_processes" %>
     </div>
@@ -89,8 +70,11 @@
          <%end%>
        </div>
       </div>
-  </section>
-<% end %>
+    </section>
+
+  <% end %>
+ </div>
+</div>
 
 <% content_for :js_content do %>
   <%= javascript_pack_tag "decidim_participatory_processes" %>
