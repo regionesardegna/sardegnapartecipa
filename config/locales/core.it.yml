@@ -1170,7 +1170,7 @@ it:
       no_notifications: Nessuna notifica.
       show:
         missing_event: Oops, la notifica appartiene ad un elemento che non è più disponibile. Puoi scartarla.
-        moderated: Content moderated
+        moderated: Contenuto moderato
     notifications_digest_mailer:
       header:
         daily: Daily Notification Digest
