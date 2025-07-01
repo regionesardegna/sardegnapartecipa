@@ -44,9 +44,12 @@
     window.addEventListener("scroll",function(){
        
        if(window.pageYOffset > 300) {
-         $('#back-to-top').attr('style', 'display: block');
+            if (document.body.clientWidth <= 640){
+                document.getElementById("back-to-top").setAttribute("style","bottom: 270px");
+            }
+            document.getElementById("back-to-top").style.display="block";
        } else {
-         $('#back-to-top').attr('style', 'display: none');
+            document.getElementById("back-to-top").style.display="none";
        }
        
        let sticky = document.getElementById("sticky-header").offsetTop;
