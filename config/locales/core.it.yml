@@ -1646,7 +1646,7 @@ it:
         new_password: Nuova password
         password_help: "%{minimun_characters} caratteri minimi, non deve essere troppo comune (ad esempio 123456) e deve essere diverso dal tuo nickname e dalla tua email."
         password_help_admin: "%{minimun_characters} caratteri minimi, non deve essere troppo comune (es. 123456), deve essere diverso dal tuo nickname e dalla tua email e deve essere diverso dalle vecchie password."
-        title: Password change
+        title: Cambio password
       new:
         forgot_your_password: Hai dimenticato la password?
         send_me_reset_password_instructions: Inviami le istruzioni per reimpostare la password
@@ -1731,10 +1731,10 @@ it:
       data_consent:
         details:
           columns:
-            description: Description
-            name: Name
-            service: Service
-            type: genere
+            description: Descrizione
+            name: Nome
+            service: Servizio
+            type: Genere
           items:
             _session_id:
               description: Consente ai siti web di ricordare l'utente all'interno di un sito web quando si sposta tra le sue pagine web.
