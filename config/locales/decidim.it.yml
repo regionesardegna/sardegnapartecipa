@@ -1117,7 +1117,7 @@ it:
           agreement: Accetto le condizioni
           legend: Accetta i termini e le condizioni d'uso
         refuse:
-          modal_body: Se rifiuti, non sarai in grado di utilizzare la piattaforma, puoi <a href="%{data_portability_path}">scaricare i tuoi dati</a> e / o <a href="%{delete_path}">cancellare il tuo account</a>.
+          modal_body: Se rifiuti, non sarai in grado di utilizzare la piattaforma, puoi scaricare i tuoi dati e / o <a href="%{delete_path}">cancellare il tuo account</a>.
           modal_btn_continue: Accetta i termini e continua
           modal_btn_exit: Lo esaminerò più tardi
           modal_button: Rifiuta i termini
