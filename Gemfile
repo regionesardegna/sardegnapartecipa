@@ -56,6 +56,7 @@ group :development do
   gem 'sql_tracker'
   gem 'awesome_print'
   gem 'xray-rails'
+  #gem 'decidim-design'
   #gem 'pry'
   #gem 'pry-byebug' # Integrates pry with byebug
   #gem 'pry-doc' # Provide MRI Core documentation
