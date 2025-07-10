@@ -415,7 +415,7 @@ GEM
       rspec (~> 3.0)
     decidim-cache_cleaner (1.0.4)
       decidim-core (~> 0.26)
-    decidim-decidim_awesome (0.10.2)
+    decidim-decidim_awesome (0.10.3)
       decidim-admin (>= 0.26.0, < 0.28)
       decidim-core (>= 0.26.0, < 0.28)
       deface (>= 1.5)
@@ -956,7 +956,7 @@ DEPENDENCIES
   daemons
   decidim!
   decidim-cache_cleaner
-  decidim-decidim_awesome (= 0.10.2)
+  decidim-decidim_awesome
   decidim-dev!
   decidim-extra_user_fields!
   decidim-friendly_signup!
