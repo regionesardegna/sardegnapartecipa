@@ -10,7 +10,7 @@ DECIDIM_VERSION = 'v0.27.9'
 gem 'bootsnap', '~> 1.4'
 gem 'daemons'
 gem 'decidim', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
-gem 'decidim-decidim_awesome', ref: 'b9aae42bc835485edec5887cb02062caaaf64ed1' #'= 0.10.3',
+gem 'decidim-decidim_awesome', '= 0.10.2'
 gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'bump_to_0.27'
 gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.27', ref: 'e813e27fa23812f8233dded78d1a675a0ac84659'
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
