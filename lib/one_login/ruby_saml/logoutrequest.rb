@@ -123,9 +123,13 @@ module OneLogin
         root.attributes['IssueInstant'] = time
         root.attributes['Version'] = "2.0"
         root.attributes['Destination'] = settings.idp_slo_service_url  unless settings.idp_slo_service_url.nil? or settings.idp_slo_service_url.empty?
-
+        
+        Rails.logger.info "=========================> settings=#{settings.inspect}"
         if settings.sp_entity_id
-          issuer = root.add_element "saml:Issuer"
+         issuer = root.add_element "saml:Issuer", {
+            'NameQualifier' => settings.issuer,
+            'Format' => 'urn:oasis:names:tc:SAML:2.0:nameid-format:entity'
+          }
           issuer.text = settings.sp_entity_id
         end
 
@@ -133,7 +137,7 @@ module OneLogin
         if settings.name_identifier_value
           nameid.attributes['NameQualifier'] = settings.idp_name_qualifier if settings.idp_name_qualifier
           nameid.attributes['SPNameQualifier'] = settings.sp_name_qualifier if settings.sp_name_qualifier
-		  nameid.attributes['Format'] = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+          nameid.attributes['Format'] = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
           #nameid.attributes['Format'] = settings.name_identifier_format if settings.name_identifier_format
           nameid.text = settings.name_identifier_value
         else
