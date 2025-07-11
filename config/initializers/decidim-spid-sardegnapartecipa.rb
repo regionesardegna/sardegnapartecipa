@@ -13,7 +13,6 @@
 require "#{Rails.root}/lib/one_login/ruby_saml/utils.rb"
 require "#{Rails.root}/lib/decidim/spid_cie/response.rb"
 require "#{Rails.root}/lib/one_login/ruby_saml/logoutrequest.rb"
-require "#{Rails.root}/lib/decidim/spid/models/settings/base.rb"
 
 if ENV['SPID_TENANT_NAME'].present?
   Decidim::Spid.configure do |config|
