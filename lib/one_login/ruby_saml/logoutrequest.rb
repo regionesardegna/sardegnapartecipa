@@ -132,11 +132,17 @@ module OneLogin
           }
           issuer.text = settings.sp_entity_id
         end
+		
+		
+		
+		Rails.logger.info "settings.idp_entity_id=#{settings.idp_entity_id}"
+		
 
         nameid = root.add_element "saml:NameID"
         if settings.name_identifier_value
-          nameid.attributes['NameQualifier'] = settings.idp_name_qualifier if settings.idp_name_qualifier
-          nameid.attributes['SPNameQualifier'] = settings.sp_name_qualifier if settings.sp_name_qualifier
+          #nameid.attributes['NameQualifier'] = settings.idp_name_qualifier if settings.idp_name_qualifier
+          nameid.attributes['NameQualifier'] = settings.idp_entity_id 
+          #nameid.attributes['SPNameQualifier'] = settings.sp_name_qualifier if settings.sp_name_qualifier
           nameid.attributes['Format'] = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
           #nameid.attributes['Format'] = settings.name_identifier_format if settings.name_identifier_format
           nameid.text = settings.name_identifier_value
@@ -145,12 +151,12 @@ module OneLogin
           nameid.text = OneLogin::RubySaml::Utils.uuid
           nameid.attributes['Format'] = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
         end
-
+=begin
         if settings.sessionindex
           sessionindex = root.add_element "samlp:SessionIndex"
           sessionindex.text = settings.sessionindex
         end
-
+=end
         request_doc
       end
 
