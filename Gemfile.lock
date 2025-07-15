@@ -236,8 +236,8 @@ GIT
 
 GIT
   remote: https://gitlab.com/glcorso/decidim-module-spid-cie
-  revision: e813e27fa23812f8233dded78d1a675a0ac84659
-  ref: e813e27fa23812f8233dded78d1a675a0ac84659
+  revision: c05a0e3eb03a525f69090ee392ddc2e4b4b7140f
+  ref: c05a0e3eb03a525f69090ee392ddc2e4b4b7140f
   branch: release/0.27
   specs:
     decidim-spid-cie (0.27.0)
@@ -330,7 +330,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    base64 (0.2.0)
+    base64 (0.3.0)
     batch-loader (1.5.0)
     bcrypt (3.1.20)
     better_html (1.0.16)
@@ -404,7 +404,7 @@ GEM
     crass (1.0.6)
     css_parser (1.21.1)
       addressable
-    csv (3.3.4)
+    csv (3.3.5)
     daemons (1.4.1)
     date (3.4.1)
     date_validator (0.12.0)
@@ -442,14 +442,14 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.13.0)
+    devise-i18n (1.14.0)
       devise (>= 4.9.0)
       rails-i18n
     devise_invitable (2.0.10)
       actionmailer (>= 5.0)
       devise (>= 4.6)
     diff-lcs (1.6.2)
-    diffy (3.4.3)
+    diffy (3.4.4)
     doc2text (0.4.7)
       nokogiri (>= 1.13.2, < 1.17.0)
       rubyzip (~> 2.3.0)
@@ -482,11 +482,11 @@ GEM
       railties (>= 3.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
-    faraday (2.13.1)
+    faraday (2.13.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
-    faraday-net_http (3.4.0)
+    faraday-net_http (3.4.1)
       net-http (>= 0.5.0)
     ffi (1.17.2)
     figaro (1.2.0)
@@ -501,7 +501,7 @@ GEM
       mime-types
     fog-local (0.9.0)
       fog-core (>= 1.27, < 3.0)
-    formatador (1.1.0)
+    formatador (1.1.1)
     gemoji (3.0.1)
     geocoder (1.8.5)
       base64 (>= 0.1.0)
@@ -553,8 +553,8 @@ GEM
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
     io-console (0.8.0)
-    json (2.12.1)
-    jwt (2.10.1)
+    json (2.12.2)
+    jwt (2.10.2)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -610,7 +610,7 @@ GEM
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
-    mime-types-data (3.2025.0520)
+    mime-types-data (3.2025.0708)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
@@ -642,7 +642,7 @@ GEM
       version_gem (~> 1.1)
     oauth-tty (1.0.5)
       version_gem (~> 1.1, >= 1.1.1)
-    oauth2 (2.0.11)
+    oauth2 (2.0.12)
       faraday (>= 0.17.3, < 4.0)
       jwt (>= 1.0, < 4.0)
       logger (~> 1.2)
@@ -706,7 +706,7 @@ GEM
     puma (5.6.9)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.16)
+    rack (2.2.17)
     rack-attack (6.7.0)
       rack (>= 1.0, < 4)
     rack-cors (1.1.1)
@@ -753,7 +753,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rainbow (3.1.1)
-    rake (13.2.1)
+    rake (13.3.0)
     ransack (2.4.2)
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
@@ -828,7 +828,7 @@ GEM
     ruby-saml (1.18.0)
       nokogiri (>= 1.13.10)
       rexml
-    ruby-vips (2.2.3)
+    ruby-vips (2.2.4)
       ffi (~> 1.12)
       logger
     rubyXL (3.4.33)
@@ -885,7 +885,7 @@ GEM
       unicode-display_width (>= 1.1.1, < 4)
     thor (1.3.2)
     thread_safe (0.3.6)
-    tilt (2.6.0)
+    tilt (2.6.1)
     timeout (0.4.3)
     tomlrb (2.0.3)
     trailblazer-option (0.1.2)
@@ -927,7 +927,7 @@ GEM
     webpush (1.1.0)
       hkdf (~> 0.2)
       jwt (~> 2.0)
-    websocket-driver (0.7.7)
+    websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)

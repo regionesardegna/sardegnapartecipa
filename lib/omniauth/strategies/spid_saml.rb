@@ -314,6 +314,7 @@ module OmniAuth
       end
 
       def other_phase_for_slo
+        Rails.logger.info "======================> other_phase_for_slo settings=#{settings}"
         path = request.params["RelayState"] rescue options["relay_state"]
         with_auth_settings do |settings|
           logout_response = ::Decidim::SpidCie::Logoutresponse.new(request.params["SAMLResponse"], settings, matches_request_id: session["saml_transaction_id"])
@@ -350,6 +351,7 @@ module OmniAuth
       end
 
       def other_phase_for_spslo
+        Rails.logger.info "======================> other_phase_for_spslo settings=#{settings}"
         with_auth_settings do |settings|
           redirect(generate_logout_request(settings))
         end
