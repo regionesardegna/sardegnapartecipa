@@ -124,7 +124,7 @@ module OneLogin
         root.attributes['Version'] = "2.0"
         root.attributes['Destination'] = settings.idp_slo_service_url  unless settings.idp_slo_service_url.nil? or settings.idp_slo_service_url.empty?
         
-        Rails.logger.info "=========================> settings=#{settings.inspect}"
+        
         if settings.sp_entity_id
          issuer = root.add_element "saml:Issuer", {
             'NameQualifier' => settings.issuer,
@@ -132,31 +132,30 @@ module OneLogin
           }
           issuer.text = settings.sp_entity_id
         end
-		
-		
-		
-		Rails.logger.info "settings.idp_entity_id=#{settings.idp_entity_id}"
-		
 
         nameid = root.add_element "saml:NameID"
         if settings.name_identifier_value
+          
+          # Commentata perché idp_name_qualifier non risultava essere valorizzato dal parser del IdpMetadata di RubySAML
           #nameid.attributes['NameQualifier'] = settings.idp_name_qualifier if settings.idp_name_qualifier
+          
+          # Inserita per valorizzare sempre il NameQualifier come l'entityId anziché con il idp_name_qualifier
           nameid.attributes['NameQualifier'] = settings.idp_entity_id 
+          
+          # Commentata perchè sp_name_qualifier in questo caso non è richiesto
           #nameid.attributes['SPNameQualifier'] = settings.sp_name_qualifier if settings.sp_name_qualifier
+          
           nameid.attributes['Format'] = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
           #nameid.attributes['Format'] = settings.name_identifier_format if settings.name_identifier_format
           nameid.text = settings.name_identifier_value
+          
+          # Eliminate righe per valorizzare il sessionId in questo caso non necessario
         else
           # If no NameID is present in the settings we generate one
           nameid.text = OneLogin::RubySaml::Utils.uuid
           nameid.attributes['Format'] = 'urn:oasis:names:tc:SAML:2.0:nameid-format:transient'
         end
-=begin
-        if settings.sessionindex
-          sessionindex = root.add_element "samlp:SessionIndex"
-          sessionindex.text = settings.sessionindex
-        end
-=end
+
         request_doc
       end
 
