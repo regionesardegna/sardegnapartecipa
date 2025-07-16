@@ -1,0 +1,20 @@
+<%#
+Copyright (C) 2025 Sardegna IT
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+Integrato header di Sardegna IT
+%>
+
+<div>
+<div class="top-header" id="top-header">
+    <%= link_to "https://www.regione.sardegna.it", id: "institutional-link", class: "institutional-link", aria: "Collegamento a sito esterno - Sito della Regione Sardegna - nuova finestra", title: "Regione Autonoma della Sardegna", target: "_blank" do %>
+        <%= image_pack_tag("media/images/ras_gonfalone-2021.svg", alt: "Gonfalone Sardegna", 'aria-label': "Gonfalone Sardegna",  class: "img-gonfalone", id: "img-gonfalone", role: "img") %>
+        <span class="institutional-link-text">Regione Autonoma della Sardegna</span>
+    <%end%>
+</div>
+</div>
