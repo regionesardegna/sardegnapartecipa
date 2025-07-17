@@ -1763,7 +1763,7 @@ it:
           description: Usiamo i cookies per garantire le funzionalità di base del sito web e migliorare l'esperienza online. Puoi configurare e accettare l'uso dei cookies, e modificare le tue opzioni di consenso, in qualsiasi momento.
           essential:
             description: Questi cookies abilitano funzionalità chiave del sito web e aiutano a mantenere la sicurezza. Sono automaticamente salvati nel browser e non possono esssere disabilitati.
-            title: Essential
+            title: Essenziali
           marketing:
             description: Questi cookies raccolgono informazioni sull'utilizzo del sito web e possono essere utilizzati per fornire marketing più personalizzato tra diversi siti web che usi.
             title: Marketing

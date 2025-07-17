@@ -369,9 +369,9 @@ it:
       pages:
         home:
           highlighted_assemblies:
-            active_assemblies: Active assemblies
+            active_assemblies: Assemblee attive
             assemblies_button_title: Link alla pagina delle Assemblee che le elenca tutte
-            see_all_assemblies: See all assemblies
+            see_all_assemblies: Vedi tutte le assemblee
         user_profile:
           member_of:
             member_of: Membro di
