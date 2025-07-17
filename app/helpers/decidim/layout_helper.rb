@@ -8,7 +8,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 #
-# Modificato per configurare il numero dei componenti di default del menù processi
+# Modificato per configurare il numero dei componenti di default del menù processi e per mostrare il title come tooltip in caso di external_icon
 
 module Decidim
   # View helpers related to the layout.
@@ -103,7 +103,11 @@ module Decidim
 
         attributes = { class: classes.join(" ") }.merge(options)
         asset = File.read(icon_path)
-        asset.gsub("<svg ", "<svg#{tag_builder.tag_options(attributes)} ").html_safe
+
+        # modificato per aggiungere il title alla fine della svg in modo da mostrare il tooltip
+        asset = asset.gsub("</svg>", "<title>#{options[:title]}</title></svg>").html_safe
+        asset = asset.gsub("<svg ", "<svg#{tag_builder.tag_options(attributes)} ").html_safe
+        
       else
         image_pack_tag(path, class: classes.join(" "), style: "display: none")
       end

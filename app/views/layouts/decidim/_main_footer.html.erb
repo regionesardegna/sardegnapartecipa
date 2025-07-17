@@ -12,8 +12,8 @@
 <div class="main-footer">
   <div class="row">
       <% if current_organization.official_img_footer.attached? %>
-        <%= link_to current_organization.official_url, class: "main-footer__badge" do %>
-          <%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: current_organization.name, 'aria-label': current_organization.name, role: "img" %>
+        <%= link_to current_organization.official_url, class: "main-footer__badge", alt: "home del sito SardegnaParteciPA", "aria-label": "home del sito SardegnaParteciPA", title: "home del sito SardegnaParteciPA" do %>
+          <%= image_tag  current_organization.attached_uploader(:official_img_footer).path, alt: "home del sito SardegnaParteciPA", 'aria-label': "home del sito SardegnaParteciPA", title: "home del sito SardegnaParteciPA", role: "img" %>
         <% end %>
       <% end %>
   </div>
@@ -58,20 +58,25 @@
   </div>
   <div class="row">
     <div>
-        <%= external_icon "media/images/ue.svg", alt: "Logo Unione Europea", class: "footer_logo", 'aria-label': "Logo Unione Europea", role: "img", 'aria-hidden': true %>
+        <%= external_icon "media/images/ue.svg", {title: "Logo Unione Europea. Fondo europeo di sviluppo regionale", alt: "Logo Unione Europea. Fondo europeo di sviluppo regionale", class: "footer_logo", 'aria-label': "Logo Unione Europea. Fondo europeo di sviluppo regionale", role: "img", 'aria-hidden': true} %>
      </div>
     <div>
-        <%= external_icon "media/images/ri.svg", alt: "Logo Repubblica Italiana", class: "footer_logo", 'aria-label': "Logo Repubblica Italiana", role: "img", 'aria-hidden': true %>
+        <%= external_icon "media/images/ri.svg", {title: "Logo della Repubblica Italiana", alt: "Logo della Repubblica Italiana", class: "footer_logo", 'aria-label': "Logo della Repubblica Italiana", role: "img", 'aria-hidden': true} %>
     </div>
     <div>
-        <%= external_icon "media/images/ras_footer.svg", alt: "Logo Regione Autonoma della Sardegna", class: "footer_logo", 'aria-label': "Logo Regione Autonoma della Sardegna", role: "img", 'aria-hidden': true %>
+        <%= link_to "https://www.regione.sardegna.it", alt: "vai al sito della Regione Autonoma della Sardegna", "aria-label": "vai al sito della Regione Autonoma della Sardegna", title: "vai al sito della Regione Autonoma della Sardegna" do %>
+           <%= external_icon "media/images/ras_footer.svg", {title: "vai al sito della Regione Autonoma della Sardegna", alt: "vai al sito della Regione Autonoma della Sardegna", class: "footer_logo", 'aria-label': "vai al sito della Regione Autonoma della Sardegna", role: "img", 'aria-hidden': true} %>
+        <%end%>
     </div>
     <div>
-        <%= external_icon "media/images/por.svg", alt: "Logo POR FESR", class: "footer_logo", 'aria-label': "Logo POR", role: "img", 'aria-hidden': true %>
+        <%= external_icon "media/images/por.svg", {title: "Logo POR FESR Sardegna 2014-2020", alt: "Logo POR FESR Sardegna 2014-2020", class: "footer_logo", 'aria-label': "Logo POR FESR Sardegna 2014-2020", role: "img", 'aria-hidden': true} %>
     </div>
     <div>
         <a rel="partecipa"
          href="https://github.com/dipartimentofunzionepubblica/partecipa"
+         title="Logo ParteciPa"
+         alt="Logo ParteciPa"
+         aria-label="Logo ParteciPa"
          target="_blank">
          <%= image_pack_tag("media/images/logo_partecipa.png", alt: "Logo ParteciPa", 'aria-label': "Logo ParteciPa", class: "footer_logo logo_partecipa", role: "img", 'aria-hidden': true) %></a>
     </div>
