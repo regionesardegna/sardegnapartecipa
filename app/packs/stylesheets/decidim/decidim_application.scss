@@ -145,16 +145,31 @@ $color-removal: #ffeef0 !default;
     float: left;
 }
 
-#img-gonfalone.institutional-link-text#institutional-link > .inline-block.mx-0\.5[data-external-link="true"] > .sr-only
-
-#img-gonfalone.institutional-link-text#institutional-link > .inline-block.mx-0\.5[data-external-link="true"]{
-    display: none;
-}
 
 // Fine Masthead
 
 
+// Home menu
+
+.home__menu {
+  --tw-bg-opacity: 1;
+  background-color: $par-medium-blue;
+  //background-color: rgb(var(--primary-rgb) / var(--tw-bg-opacity));
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+// Fine Home Menu
+
+
 // Footer
+
+
+@supports (color: rgb(0 0 0 / 0)) {
+  footer .main-footer {
+    background-color: $par-medium-blue;
+  }
+}
 
 .footer .main-footer__middle {
     align-items: left;
@@ -238,14 +253,21 @@ $color-removal: #ffeef0 !default;
     }
 }
 
+// Mini footer
+
+@supports (color: rgb(0 0 0 / 0)) {
+  footer .mini-footer {
+    //background-color: rgb(2 2 3 / var(--tw-bg-opacity));
+    display: none;
+  }
+}
+
 // Fine Footer
 
 // Immagine external link
 
-svg {
-  width: 1.0em;
-  height: 1.0em;
-  fill: #fff;
+[data-external-link="true"] {
+    display: none;
 }
 
 // Fine Immagine external link
@@ -265,6 +287,9 @@ svg {
 
 #form-search_topbar > button:nth-child(2) > svg:nth-child(1){
   fill: $par-medium-blue;
+  width: 1.0em;
+  height: 1.0em;
 }
+
 
 // Fine Searchbar
