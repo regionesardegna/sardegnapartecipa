@@ -293,3 +293,15 @@ $color-removal: #ffeef0 !default;
 
 
 // Fine Searchbar
+
+// Megamenu
+
+// nasconde le sezioni sottostanti del megamenù primo livello
+
+@media (min-width: 768px) {
+  header .menu-bar__main-dropdown__bottom {
+    display: none;
+  }
+}
+
+// Fine Megamenu
