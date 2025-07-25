@@ -4,15 +4,15 @@ source 'http://rubygems.org'
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = 'v0.28.6'
+DECIDIM_VERSION = 'release/0.28-stable'
 
 
 gem 'bootsnap', '~> 1.4'
 gem 'daemons'
-gem 'decidim', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
+gem 'decidim', git: 'http://github.com/decidim/decidim', branch: DECIDIM_VERSION
 #gem 'decidim-decidim_awesome'
 #gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'bump_to_0.27'
-gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.28'
+#gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.28'
 #gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 #gem 'decidim-term_customizer', branch: 'release/0.27-stable', git: 'https://github.com/mainio/decidim-module-term_customizer'
 #gem 'decidim-survey_results', git: 'https://github.com/maintainer-partecipa/decidim-module-survey_results', branch: 'bump_to_0.27'
@@ -28,14 +28,11 @@ gem 'pg'
 gem 'puma'
 gem 'rake'
 gem 'uglifier'
-#, '~> 4.1'
 gem 'mini_portile2'
-#, '~> 2.8.2'
 gem 'wicked_pdf'
-#, '~> 2.1'
 gem 'wkhtmltopdf-binary'
 gem 'concurrent-ruby'
-#, '1.3.4'
+
 
 group :development, :test do
   gem 'byebug', '~> 11.0', platform: :mri
@@ -46,23 +43,16 @@ group :development, :test do
 
   gem 'decidim-dev', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
   gem 'simplecov'
-  #, '~> 0.21.0'
   gem 'brakeman'
-  #, '~> 5.2'
   gem 'parallel_tests'
-  #, '~> 3.7'
 end
 
 group :development do
   gem 'letter_opener_web'
-  #, '~> 2.0'
   gem 'listen'
-  #, '~> 3.1'
   gem 'rubocop-faker'
   gem 'spring' 
-  #, '~> 4.0'
   gem 'spring-watcher-listen'
-  #, '~> 2.1'
   gem 'active_record_query_trace'
   gem 'sql_tracker'
   gem 'awesome_print'
