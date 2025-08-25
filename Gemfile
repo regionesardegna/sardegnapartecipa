@@ -4,9 +4,11 @@ source 'http://rubygems.org'
 
 ruby RUBY_VERSION
 
+
+
 DECIDIM_VERSION = 'release/0.28-stable'
 
-
+gem 'rails', '6.1.7.6'
 gem 'bootsnap', '~> 1.4'
 gem 'daemons'
 gem 'decidim', git: 'http://github.com/decidim/decidim', branch: DECIDIM_VERSION
@@ -25,7 +27,7 @@ gem 'figaro'
 gem 'foundation_rails_helper', git: 'http://github.com/sgruhier/foundation_rails_helper.git'
 #gem 'lograge'
 gem 'pg'
-gem 'puma'
+gem "puma", ">= 6.3.1"
 gem 'rake'
 gem 'uglifier'
 gem 'mini_portile2'
@@ -35,21 +37,21 @@ gem 'concurrent-ruby'
 
 
 group :development, :test do
-  gem 'byebug', '~> 11.0', platform: :mri
+  gem "byebug", "~> 11.0", platform: :mri
 
-  # Use latest simplecov from master until next version of simplecov is
-  # released (greather than 0.18.5)
-  # See https://github.com/decidim/decidim/issues/6230
+  gem "decidim-dev"
 
-  gem 'decidim-dev', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
-  gem 'simplecov'
-  gem 'brakeman'
-  gem 'parallel_tests'
+  gem "brakeman", "~> 5.4"
+  gem "net-imap", "~> 0.2.3"
+  gem "net-pop", "~> 0.1.1"
+  gem "net-smtp", "~> 0.3.1"
+  gem "parallel_tests", "~> 4.2"
 end
 
 group :development do
-  gem 'letter_opener_web'
-  gem 'listen'
+  gem "letter_opener_web", "~> 2.0"
+  gem "listen", "~> 3.1"
+  gem "web-console", "~> 4.2"
   gem 'rubocop-faker'
   gem 'spring' 
   gem 'spring-watcher-listen'
