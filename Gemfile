@@ -4,13 +4,15 @@ source 'http://rubygems.org'
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = 'v0.27.9'
+DECIDIM_VERSION = 'v0.27.10'
 
 
-gem 'bootsnap', '~> 1.4'
+gem 'bootsnap'
+#, '~> 1.4'
 gem 'daemons'
 gem 'decidim', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
-gem 'decidim-decidim_awesome', '= 0.10.2'
+gem 'decidim-decidim_awesome'
+#, '= 0.10.2'
 gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'bump_to_0.27'
 gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.27', ref: 'c05a0e3eb03a525f69090ee392ddc2e4b4b7140f'
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
@@ -27,11 +29,15 @@ gem 'lograge'
 gem 'pg'
 gem 'puma'
 gem 'rake'
-gem 'uglifier', '~> 4.1'
-gem 'mini_portile2', '~> 2.8.2'
-gem 'wicked_pdf', '~> 2.1'
+gem 'uglifier'
+#, '~> 4.1'
+gem 'mini_portile2'
+#, '~> 2.8.2'
+gem 'wicked_pdf'
+#, '~> 2.1'
 gem 'wkhtmltopdf-binary'
-gem 'concurrent-ruby', '1.3.4'
+gem 'concurrent-ruby'
+#, '1.2.3'
 
 group :development, :test do
   gem 'byebug', '~> 11.0', platform: :mri
