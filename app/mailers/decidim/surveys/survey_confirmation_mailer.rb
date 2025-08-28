@@ -10,7 +10,6 @@
 
 # Modificato per gestire la notifica utente per le surveys
 
-# DA VERIFICARE
 
 module Decidim
   module Surveys

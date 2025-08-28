@@ -41,6 +41,7 @@ module Decidim
             validator = PasswordValidator.new({ attributes: :password })
             user.update!(password_updated_at: nil) unless validator.validate_each(user, :password, sign_in_params[:password])
           end
+         
         end
       end
       def destroy

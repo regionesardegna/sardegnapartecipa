@@ -21,6 +21,18 @@
     </div>
 
     <div class="columns large-8 end">
+      <% if current_user.unconfirmed_email.present? %>
+        <div id="email-change-pending" class="callout secondary">
+          <p><strong><%= t("decidim.account.email_change.title") %></strong></p>
+          <p><%= t("decidim.account.email_change.body1", unconfirmed_email: current_user.unconfirmed_email) %></p>
+          <p>
+            <%== t(
+              "decidim.account.email_change.body2",
+              resend_link: link_to(t("decidim.account.email_change.send_again"), resend_confirmation_instructions_account_path, role: :button, method: :post, remote: true),
+              cancel_link: link_to(t("decidim.account.email_change.cancel"), cancel_email_change_account_path, role: :button, method: :post, remote: true)) %>
+          </p>
+        </div>
+      <% end %>
       <%= form_required_explanation %>
 
       <%= f.text_field :name, autocomplete: "name", help_text: t(".name_help", organization: current_organization.name) %>
