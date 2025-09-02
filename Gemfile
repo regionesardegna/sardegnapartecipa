@@ -8,8 +8,8 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = 'release/0.28-stable'
 
-gem 'rails', '6.1.7.6'
-gem 'bootsnap', '~> 1.4'
+#gem 'rails', '6.1.7.6'
+gem 'bootsnap', '~> 1.3'
 gem 'daemons'
 gem 'decidim', git: 'http://github.com/decidim/decidim', branch: DECIDIM_VERSION
 #gem 'decidim-decidim_awesome'
@@ -28,12 +28,12 @@ gem 'foundation_rails_helper', git: 'http://github.com/sgruhier/foundation_rails
 #gem 'lograge'
 gem 'pg'
 gem "puma", ">= 6.3.1"
-gem 'rake'
-gem 'uglifier'
-gem 'mini_portile2'
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
-gem 'concurrent-ruby'
+#gem 'rake'
+#gem 'uglifier'
+#gem 'mini_portile2'
+gem 'wicked_pdf', "~> 2.1"
+#gem 'wkhtmltopdf-binary'
+#gem 'concurrent-ruby'
 
 
 group :development, :test do
@@ -45,21 +45,21 @@ group :development, :test do
   gem "net-imap", "~> 0.2.3"
   gem "net-pop", "~> 0.1.1"
   gem "net-smtp", "~> 0.3.1"
-  gem "parallel_tests", "~> 4.2"
+  #gem "parallel_tests", "~> 4.2"
 end
 
 group :development do
   gem "letter_opener_web", "~> 2.0"
   gem "listen", "~> 3.1"
   gem "web-console", "~> 4.2"
-  gem 'rubocop-faker'
-  gem 'spring' 
-  gem 'spring-watcher-listen'
-  gem 'active_record_query_trace'
-  gem 'sql_tracker'
-  gem 'awesome_print'
-  gem 'pry'
-  gem 'pry-byebug' # Integrates pry with byebug
-  gem 'pry-doc' # Provide MRI Core documentation
-  gem 'pry-rails'
+  #gem 'rubocop-faker'
+  #gem 'spring' 
+  #gem 'spring-watcher-listen'
+  #gem 'active_record_query_trace'
+  #gem 'sql_tracker'
+  #gem 'awesome_print'
+  #gem 'pry'
+  #gem 'pry-byebug' # Integrates pry with byebug
+  #gem 'pry-doc' # Provide MRI Core documentation
+  #gem 'pry-rails'
 end
