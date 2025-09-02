@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-							  
- 
-																																														   
- 
-																																																												 
- 
-																																			   
- 
-																				   
+# Copyright (C) 2025 Formez PA
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+# Modificato per evitare di visualizzare un errore sulla registrazione delle icone in sviluppo
 
 module Decidim
   # View helpers related to the layout.
@@ -57,14 +57,8 @@ module Decidim
     #
     # Returns a String.
     def icon(name, options = {})
+      options[:ignore_missing]=true # riga aggiunta per evitare errore sulle icone in dev
       name = Decidim.icons.find(name)["icon"] unless options[:ignore_missing]
-						  
-
-												
-												  
-																					
-													   
-																					   
 
       default_html_properties = {
         "width" => "1em",
@@ -75,24 +69,11 @@ module Decidim
 
       html_properties = options.with_indifferent_access.transform_keys(&:dasherize).slice("width", "height", "aria-label", "role", "aria-hidden", "class", "style")
       html_properties = default_html_properties.merge(html_properties)
-																			  
-																				
-																			  
-																		
-																		  
-				  
-					
-											 
-											 
-		 
 
       href = Decidim.cors_enabled ? "" : asset_pack_path("media/images/remixicon.symbol.svg")
 
       content_tag :svg, html_properties do
-										 
         content_tag :use, nil, "href" => "#{href}#ri-#{name}"
-
-			 
       end
     end
 
@@ -124,7 +105,6 @@ module Decidim
       # non-nil because otherwise it will be set to the asset host at
       # ActionView::Helpers::AssetUrlHelper#compute_asset_host.
       img_path = asset_pack_path(path, host: "", protocol: :relative)
-				 
       path = Rails.public_path.join(img_path.sub(%r{^/}, ""))
       return unless File.exist?(path)
 
