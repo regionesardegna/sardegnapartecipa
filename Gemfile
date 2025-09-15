@@ -20,19 +20,19 @@ gem 'decidim-term_customizer', git: 'https://github.com/mainio/decidim-module-te
 #gem 'decidim-survey_results', git: 'https://github.com/maintainer-partecipa/decidim-module-survey_results', branch: 'bump_to_0.27'
 gem 'decidim-cache_cleaner'
 #gem 'decidim-friendly_signup', git: 'https://github.com/OpenSourcePolitics/decidim-module-friendly_signup', branch: 'main'
-#gem 'decidim-extra_user_fields', git: 'https://github.com/PopulateTools/decidim-module-extra_user_fields.git', branch: 'release/0.27-stable'
-#gem 'deface'
+gem 'decidim-extra_user_fields', git: 'https://github.com/PopulateTools/decidim-module-extra_user_fields.git', branch: 'release/0.28-stable'
+gem 'deface'
 gem 'delayed_job_active_record'
 gem 'figaro'
 gem 'foundation_rails_helper', git: 'http://github.com/sgruhier/foundation_rails_helper.git'
-#gem 'lograge'
+gem 'lograge'
 gem 'pg'
 gem "puma", ">= 6.3.1"
 #gem 'rake'
 #gem 'uglifier'
 #gem 'mini_portile2'
 gem 'wicked_pdf', "~> 2.1"
-#gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary'
 #gem 'concurrent-ruby'
 
 
