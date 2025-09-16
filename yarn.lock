@@ -1058,14 +1058,14 @@
   integrity sha512-+OJ9konv95ClSTOJCmMZqpd5+YGsB2S+x6w3E1oaM8UuR5j8nTNHYSz8c9BEPGDOCMQYIEEGlVPj/VY64iTbGw==
 
 "@decidim/browserslist-config@file:packages/browserslist-config":
-  version "0.27.9"
+  version "0.27.10"
 
 "@decidim/core@file:packages/core":
-  version "0.27.9"
+  version "0.27.10"
   dependencies:
     "@joeattardi/emoji-button" "^4.6.2"
     "@rails/activestorage" "^6.0.4"
-    "@tarekraafat/autocomplete.js" "^10.2.6"
+    "@tarekraafat/autocomplete.js" "10.2.7"
     "@zeitiger/appendaround" "^1.0.0"
     axios "^0.21.4"
     bootstrap-tagsinput "^0.7.1"
@@ -1119,7 +1119,7 @@
     axe-core "^4.1.4"
 
 "@decidim/elections@file:packages/elections":
-  version "0.27.9"
+  version "0.27.10"
   dependencies:
     "@decidim/decidim-bulletin_board" "0.23.0"
     "@decidim/voting_schemes-dummy" "0.23.0"
@@ -1146,7 +1146,7 @@
   integrity sha512-o5/UXRc6v0Cp2BG/MtNpVAEtyNO3VdfFjJSX75E5W7G2yIu7na+D1HZyHyqIk1rgHPqdJmdg0DT7JI16fDcbXQ==
 
 "@decidim/webpacker@file:packages/webpacker":
-  version "0.27.9"
+  version "0.27.10"
   dependencies:
     "@babel/core" "^7.15.5"
     "@babel/eslint-parser" "^7.16.5"
@@ -1513,10 +1513,10 @@
     magic-string "^0.25.0"
     string.prototype.matchall "^4.0.6"
 
-"@tarekraafat/autocomplete.js@^10.2.6":
-  version "10.2.9"
-  resolved "https://registry.npmjs.org/@tarekraafat/autocomplete.js/-/autocomplete.js-10.2.9.tgz"
-  integrity sha512-A7OP3iJDTWeO85M3Vxu391acu9SmDguormHpMZ13khuyM180dKl9O1gAXSDA322XwkYuUU1Ad7WchW1TQNNuDw==
+"@tarekraafat/autocomplete.js@10.2.7":
+  version "10.2.7"
+  resolved "https://registry.yarnpkg.com/@tarekraafat/autocomplete.js/-/autocomplete.js-10.2.7.tgz#dca809890cec322379a2b430632d46a14f9f2f91"
+  integrity sha512-iE+dnXI8/LrTaSORrnNdSyXg/bFCbCpz/R5GUdB3ioW+9PVEhglxNcSDQNeCXtrbRG0kOBFUd4unEiwcmqyn8A==
 
 "@types/eslint-scope@^3.7.3", "@types/eslint-scope@^3.7.7":
   version "3.7.7"
