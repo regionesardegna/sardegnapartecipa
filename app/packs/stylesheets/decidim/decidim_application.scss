@@ -305,3 +305,27 @@ $color-removal: #ffeef0 !default;
 }
 
 // Fine Megamenu
+
+footer .main-footer__down {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  border-top-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(2 2 3 / 1);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / 1);
+  background-color: $par-deep-red;
+}
+
+// Footer
+
+
+
+
+
+// Fine Footer
+
