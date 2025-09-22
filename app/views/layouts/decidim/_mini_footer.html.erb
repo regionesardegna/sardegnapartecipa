@@ -1,0 +1,89 @@
+<%#
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificato per integrarsi nel footer secondo indicazioni Sardegna IT
+%>
+<div class="mini-footer">
+  <div class="row">
+   <div class="column main__footer__nav">
+    <nav class="main__footer__nav">
+      <ul class="footer-nav">
+      <% organization_pages = current_organization.static_pages_accessible_for(current_user) %>
+      <% if organization_pages.any? %>
+        <% current_organization.static_page_topics.where(show_in_footer: true).each do |page_topic| %>
+        <% topic_pages = page_topic.accessible_pages_for(current_user) %>
+        <% if page_topic.pages.any? %>
+          <li><%= link_to translated_attribute(page_topic.title), decidim.page_path(page_topic.pages.first) %></li>
+        <% end %>
+      <% end %>
+      <% current_organization.static_pages.where(show_in_footer: true).each do |page| %>
+        <li><%= link_to translated_attribute(page.title), decidim.page_path(page) %></li>
+        <% end %>
+      <% end %>
+      <li><a href="https://form.agid.gov.it/view/0591d330-93b2-11f0-a525-e99ddc750c76" title="Dichiarazione di Accessibilità">Dichiarazione di Accessibilità</a></li>
+      <li class="footer_copyright">
+          © <%= Time.current.year %> Regione Autonoma della Sardegna
+      </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<a href="#top">
+    <div id="back-to-top">        
+        <%= external_icon "media/images/back-to-top.svg", class: "back-to-top-img", alt: "Torna su", 'aria-label': "Torna su", role: "img" %>    
+    </div>
+</a>
+<% content_for(:js_content) do %>
+  <script>
+    window.addEventListener("scroll",function(){
+       
+       if(window.pageYOffset > 300) {
+            if (document.body.clientWidth <= 640){
+                document.getElementById("back-to-top").setAttribute("style","bottom: 270px");
+            }
+            document.getElementById("back-to-top").style.display="block";
+       } else {
+            document.getElementById("back-to-top").style.display="none";
+       }
+       
+       let sticky = document.getElementById("sticky-header").offsetTop;
+       
+       if (document.body.clientWidth >= 640){
+          if(window.pageYOffset > sticky){
+             $('#sticky-header').addClass('sticky-header');
+             $('#menu-bar-logo').attr('style', 'display: block');
+             $('#title-bar').attr('style', 'display: none');
+             $('#img-user-icon').attr('style', 'display: none');
+             $('#institutional-link').attr('style', 'fontSize: 12px');
+             $('#img-gonfalone').attr('style', 'height: 24px');
+          }else{
+             $('#sticky-header').removeClass('sticky-header');
+             $('#menu-bar-logo').attr('style', 'display: none');
+             $('#title-bar').attr('style', 'display: block');
+             $('#img-user-icon').attr('style', 'display: inline-block');
+             $('#institutional-link').attr('style', 'fontSize: 14px');
+             $('#img-gonfalone').attr('style', 'height: 28px');
+          }
+       }else{
+          if(window.pageYOffset > sticky){
+             $('#sticky-header').addClass('sticky-header');
+             $('#top-header').attr('style', 'height: 28px');
+             $('#img-user-icon').attr('style', 'display: none');
+             $('#img-gonfalone').attr('style', 'height: 24px');
+          }else{
+             $('#sticky-header').removeClass('sticky-header');
+             $('#top-header').attr('style', 'height:40px');
+             $('#img-user-icon').attr('style', 'display: inline-block');
+             $('#img-gonfalone').attr('style', 'height: 28px');
+          }
+       }
+    });
+  </script>
+<% end %>

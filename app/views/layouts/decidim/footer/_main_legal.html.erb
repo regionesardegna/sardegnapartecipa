@@ -1,0 +1,24 @@
+<%#
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificato per gestire il link alla dichiarazione di accessibilità
+%>
+
+<ul class="flex flex-col md:flex-row gap-10 text-sm text-white [&_a]:underline">
+  <%= cell("decidim/footer_pages", :pages) %>
+  <li>
+    <%= link_to t("layouts.decidim.footer.terms_and_conditions"), decidim.page_path("terms-and-conditions") %>
+  </li>
+  <li>
+    <a href="#" data-dialog-open="dc-modal"><%= t("layouts.decidim.footer.data_consent_settings") %></a>
+  </li>
+  <li>
+    <a href="https://form.agid.gov.it/view/0591d330-93b2-11f0-a525-e99ddc750c76" title="Dichiarazione di Accessibilità">Dichiarazione di Accessibilità</a>
+  </li>
+</ul>
