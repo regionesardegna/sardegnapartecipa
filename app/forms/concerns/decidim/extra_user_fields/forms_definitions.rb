@@ -1,0 +1,97 @@
+# frozen_string_literal: true
+
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+
+# Modificato per aggiungere i campi nome e cognome tramite il modulo ExtraUserFields
+
+require "active_support/concern"
+
+module Decidim
+  module ExtraUserFields
+    # Extra user fields definitions for forms
+    module FormsDefinitions
+      extend ActiveSupport::Concern
+
+      included do
+        include ::Decidim::ExtraUserFields::ApplicationHelper
+
+        # Block ExtraUserFields Attributes
+
+        attribute :country, String
+        attribute :postal_code, String
+        attribute :date_of_birth, Decidim::Attributes::LocalizedDate
+        attribute :gender, String
+        # Block ExtraUserFields
+        attribute :personal_name, String
+        attribute :surname, String
+        # EndBlock
+
+        # Block ExtraUserFields Validations
+
+        validates :country, presence: true, if: :country?
+        validates :postal_code, presence: true, if: :postal_code?
+        validates :date_of_birth, presence: true, if: :date_of_birth?
+        validates :gender, presence: true, inclusion: { in: Decidim::ExtraUserFields::Engine::DEFAULT_GENDER_OPTIONS.map(&:to_s) }, if: :gender?
+        validates :personal_name, presence: true, if: :personal_name?
+        validates_format_of :personal_name, :with => /\A[a-zA-Z' ]+\z/, if: :personal_name?
+        validates :surname, presence: true, if: :surname?
+        validates_format_of :surname, :with => /\A[a-zA-Z' ]+\z/, if: :surname?
+        
+        # EndBlock
+      end
+
+      def map_model(model)
+        extended_data = model.extended_data.with_indifferent_access
+
+        self.country = extended_data[:country]
+        self.postal_code = extended_data[:postal_code]
+        self.date_of_birth = Date.parse(extended_data[:date_of_birth]) if extended_data[:date_of_birth].present?
+        self.gender = extended_data[:gender]
+       
+        # Block ExtraUserFields MapModel
+        self.personal_name = extended_data[:personal_name]
+        self.surname = extended_data[:surname]
+        # EndBlock
+      end
+
+      private
+
+      # Block ExtraUserFields EnableFieldMethod
+      def country?
+        extra_user_fields_enabled && current_organization.activated_extra_field?(:country)
+      end
+
+      def date_of_birth?
+        extra_user_fields_enabled && current_organization.activated_extra_field?(:date_of_birth)
+      end
+
+      def gender?
+        extra_user_fields_enabled && current_organization.activated_extra_field?(:gender)
+      end
+
+      def postal_code?
+        extra_user_fields_enabled && current_organization.activated_extra_field?(:postal_code)
+      end
+
+      def personal_name?
+        extra_user_fields_enabled && current_organization.activated_extra_field?(:personal_name)
+      end
+
+      def surname?
+        extra_user_fields_enabled && current_organization.activated_extra_field?(:surname)
+      end
+
+      # EndBlock
+
+      def extra_user_fields_enabled
+        @extra_user_fields_enabled ||= current_organization.extra_user_fields_enabled?
+      end
+    end
+  end
+end

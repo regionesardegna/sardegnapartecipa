@@ -1,0 +1,58 @@
+<%#
+# Copyright (C) 2025 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Inseriti campi opzionali Nome e Cognome nel form di registrazione
+%>
+<% if current_organization.extra_user_fields_enabled? %>
+    <% if current_organization.activated_extra_field?(:date_of_birth) %>
+        <div class="field">
+          <%= f.date_field :date_of_birth %>
+        </div>
+    <% end %>
+    
+    <% if current_organization.activated_extra_field?(:gender) %>
+        <div class="field">
+          <%= f.collection_select :gender, f.object.gender_options_for_select, :first, :last %>
+        </div>
+    <% end %>
+    
+    <% if current_organization.activated_extra_field?(:country) %>
+        <div class="field">
+          <%= f.label :country do %>
+            <%= f.custom_country_select :country %>
+          <% end %>
+        </div>
+    <% end %>
+    
+    <% if current_organization.activated_extra_field?(:postal_code) %>
+        <div class="field">
+          <%= f.text_field :postal_code %>
+        </div>
+    <% end %>
+    
+    
+    <%# Block ExtraUserFields SignUpFormFields %>
+    
+    <% if current_organization.activated_extra_field?(:personal_name) %>
+        <div class="field">
+          <%= f.text_field :personal_name, help_text: t(".personal_name_help", organization: current_organization.name), class: "input-group-field" %>
+        </div>
+    <% end %>
+
+    <% if current_organization.activated_extra_field?(:surname) %>
+        <div class="field">
+          <%= f.text_field :surname, help_text: t(".surname_help", organization: current_organization.name), class: "input-group-field" %>
+        </div>
+    <% end %>
+
+    <%# EndBlock %>      
+    
+    <%= append_javascript_pack_tag "decidim_extra_user_fields.js" %>
+    <%= append_stylesheet_pack_tag "decidim_extra_user_fields_css" %>
+<% end %>

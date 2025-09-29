@@ -1,0 +1,37 @@
+<%#
+# Copyright (C) 2024 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Inserita per aggiungere all'amministrazione il campo personal_name e surname
+%>
+
+<% if current_organization.activated_extra_field?(:date_of_birth) %>
+  <%= f.date_field :date_of_birth %>
+<% end %>
+<% if current_organization.activated_extra_field?(:gender) %>
+  <%= f.collection_select :gender, f.object.gender_options_for_select, :first, :last %>
+<% end %>
+
+<% if current_organization.activated_extra_field?(:country) %>
+  <%= f.custom_country_select :country %>
+<% end %>
+
+<% if current_organization.activated_extra_field?(:postal_code) %>
+  <%= f.text_field :postal_code %>
+<% end %>
+
+<%# Block ExtraUserFields AccountFormFields %>
+<% if current_organization.activated_extra_field?(:personal_name) %>
+  <%= f.text_field :personal_name, help_text: t(".personal_name_help", organization: current_organization.name) %>
+<% end %>
+
+<% if current_organization.activated_extra_field?(:surname) %>
+  <%= f.text_field :surname, help_text: t(".surname_help", organization: current_organization.name) %>
+<% end %>
+
+<%# EndBlock %>
