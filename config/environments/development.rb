@@ -36,7 +36,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -69,21 +69,23 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  #config.action_mailer.delivery_method = :letter_opener
+  
+  config.action_mailer.delivery_method = :smtp
+  
   config.action_mailer.perform_deliveries = true
   
-  #config.action_mailer.smtp_settings = {
-  #  address: Rails.application.secrets.smtp_address,
-  #  port: Rails.application.secrets.smtp_port,
-  #  authentication: Rails.application.secrets.smtp_authentication,
-  #  user_name: Rails.application.secrets.smtp_username,
-  #  password: Rails.application.secrets.smtp_password,
-  #  domain: Rails.application.secrets.smtp_domain,
-  #  enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
-  #  openssl_verify_mode: 'none',
-  #  ssl: true,
-  #  tls: true
-  #}
+  config.action_mailer.smtp_settings = {
+    address: Rails.application.secrets.smtp_address,
+    port: Rails.application.secrets.smtp_port,
+    authentication: Rails.application.secrets.smtp_authentication,
+    user_name: Rails.application.secrets.smtp_username,
+    password: Rails.application.secrets.smtp_password,
+    domain: Rails.application.secrets.smtp_domain,
+    enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
+    openssl_verify_mode: 'none',
+    ssl: true,
+    tls: true
+  }
    
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
@@ -96,9 +98,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   
-  
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
 
   config.hosts << ENV['HOST']
 end
