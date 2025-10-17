@@ -84,7 +84,7 @@ Rails.application.configure do
     enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
     openssl_verify_mode: 'none',
     ssl: true,
-    tls: true
+    tls: false
   }
    
   # Use a different logger for distributed setups.
