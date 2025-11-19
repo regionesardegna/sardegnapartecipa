@@ -16,9 +16,6 @@ module Decidim
       queue_as :default
 
       def perform(user, questionnaire, answers)
-	  
-	    Rails.logger.debug "========================> user=#{user.inspect} questionnaire=#{questionnaire.inspect} answers=#{answers.inspect}"
-	  
         SurveyConfirmationMailer.confirmation(user, questionnaire, answers).deliver_now
       end
     end
