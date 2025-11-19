@@ -19,9 +19,9 @@ module Decidim
     #
     class FormPDF < PDF
       # i18n-tasks-use t('decidim.admin.exports.formats.FormPDF')
-      def initialize(organization, answers, serializer)
+      def initialize(answers, serializer)
         super(answers, serializer)
-        @organization=organization
+        #@organization=organization
       end    
       
       def controller
@@ -38,7 +38,7 @@ module Decidim
 
       def locals
         {
-          organization: @organization,
+          #organization: @organization,
           questionnaire: collection.first.first.questionnaire,
           collection: collection.map { |answer| Decidim::Forms::Admin::QuestionnaireParticipantPresenter.new(participant: answer.first) }
         }
