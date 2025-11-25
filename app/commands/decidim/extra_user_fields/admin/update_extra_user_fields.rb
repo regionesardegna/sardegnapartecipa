@@ -56,6 +56,14 @@ module Decidim
             "country" => { "enabled" => form.country.presence || false },
             "postal_code" => { "enabled" => form.postal_code.presence || false },
             "gender" => { "enabled" => form.gender.presence || false },
+            "phone_number" => {
+              "enabled" => form.phone_number.presence || false,
+              "pattern" => form.phone_number_pattern.presence,
+              "placeholder" => form.phone_number_placeholder.presence
+            },
+            "location" => { "enabled" => form.location.presence || false },
+            "underage" => { "enabled" => form.underage || false },
+            "underage_limit" => form.underage_limit || Decidim::ExtraUserFields::Engine::DEFAULT_UNDERAGE_LIMIT
             # Block ExtraUserFields SaveFieldInConfig
             "personal_name" => { "enabled" => form.personal_name.presence || false },
             "surname" => { "enabled" => form.surname.presence || false },
