@@ -27,6 +27,8 @@ module Decidim
         attribute :underage, Boolean
         attribute :underage_limit, Integer
 
+		attribute :phone_number_pattern, String
+        translatable_attribute :phone_number_placeholder, String			
         # Block ExtraUserFields Attributes
         attribute :personal_name, Boolean
         attribute :surname, Boolean
@@ -43,6 +45,8 @@ module Decidim
           self.location = model.extra_user_fields.dig("location", "enabled")
           self.underage = model.extra_user_fields.dig("underage", "enabled")
           self.underage_limit = model.extra_user_fields.fetch("underage_limit", Decidim::ExtraUserFields::Engine::DEFAULT_UNDERAGE_LIMIT)
+		  self.phone_number_pattern = model.extra_user_fields.dig("phone_number", "pattern")
+          self.phone_number_placeholder = model.extra_user_fields.dig("phone_number", "placeholder")
         
           # Block ExtraUserFields MapModel
           self.personal_name = model.extra_user_fields.dig("personal_name", "enabled")
