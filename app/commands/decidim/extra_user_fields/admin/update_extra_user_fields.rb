@@ -63,7 +63,7 @@ module Decidim
             },
             "location" => { "enabled" => form.location.presence || false },
             "underage" => { "enabled" => form.underage || false },
-            "underage_limit" => form.underage_limit || Decidim::ExtraUserFields::Engine::DEFAULT_UNDERAGE_LIMIT
+            "underage_limit" => form.underage_limit || Decidim::ExtraUserFields::Engine::DEFAULT_UNDERAGE_LIMIT,
             # Block ExtraUserFields SaveFieldInConfig
             "personal_name" => { "enabled" => form.personal_name.presence || false },
             "surname" => { "enabled" => form.surname.presence || false },
