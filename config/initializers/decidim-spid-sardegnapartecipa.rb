@@ -119,6 +119,7 @@ if ENV['SPID_TENANT_NAME'].present?
        { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
        { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
        { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
+       { 'Location' => 'https://staging-sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' }
      ]
 
     # Per aggiungere più SingleLogoutService
@@ -126,7 +127,8 @@ if ENV['SPID_TENANT_NAME'].present?
      config.logout_services = [
        { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://sardegnapartecipa.regione.sardegna.it' },
        { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://demo.sardegnapartecipa.regione.sardegna' },
-       { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' }
+       { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' },
+       { 'Location' => 'https://staging-sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://staging-sardegnapartecipa.regione.sardegna.it' }
     ]
 
     # Per aggiungere più AssertionConsumerService

@@ -1158,7 +1158,7 @@ it:
           right_column: Colonna di destra
     core:
       actions:
-        login_before_access: Per favore, accedi con il tuo account prima di accedere.
+        login_before_access: Per favore, accedi con il tuo account per entrare nella piattaforma.
         unauthorized: Non sei autorizzato a eseguire questa azione.
       application_helper:
         filter_area_values:

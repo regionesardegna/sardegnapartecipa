@@ -452,12 +452,12 @@ it:
       index:
         title: Processi partecipativi
       last_activity:
-        new_participatory_process: 'New participatory process:'
+        new_participatory_process: 'Nuovo processo partecipativo:'
       pages:
         home:
           highlighted_processes:
-            active_spaces: Active processes
-            see_all_spaces: See all processes
+            active_spaces: Processi attivi
+            see_all_spaces: Vedi tutti i processi
       participatory_process_steps:
         index:
           back_to_process: Torna alla pagina di processo
@@ -465,15 +465,15 @@ it:
         description:
           area_name: Area
           data: Process data
-          developer_group: Promoter group
-          local_area: Organization Area
-          meta_scope: Scope
-          participatory_scope: What is decided
-          participatory_structure: How is it decided
-          target: Who participates
-          title: About this process
+          developer_group: Gruppo promotore
+          local_area: Area dell'Organizzazione
+          meta_scope: Ambito
+          participatory_scope: Cosa è deciso
+          participatory_structure: Come è deciso
+          target: Chi partecipa
+          title: A proposito di questo processo
         filters:
-          all_types: All types
+          all_types: Tutti i tipi
           counters:
             active:
               one: 1 processo attivo

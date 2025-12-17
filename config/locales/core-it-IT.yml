@@ -1736,7 +1736,7 @@ it:
         message: Your account has been locked due to an excessive amount of unsuccessful log in attempts.
         subject: Sblocca le istruzioni
     omniauth_callbacks:
-      failure: Impossibile autenticare da %{kind} perché "%{reason}".
+      failure: Impossibile autenticare da %{kind}, ri effettuare l'accesso.
       success: Autenticato con successo da account %{kind}.
     passwords:
       edit:
