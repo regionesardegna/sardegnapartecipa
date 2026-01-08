@@ -91,7 +91,9 @@ Rails.application.configure do
     :password       => Rails.application.secrets.smtp_password,
     :domain         => Rails.application.secrets.smtp_domain,
     :enable_starttls_auto => Rails.application.secrets.smtp_starttls_auto,
-    :openssl_verify_mode => 'none'
+    :openssl_verify_mode => 'none',
+    :open_timeout => 10, # Secondi per aprire la connessione
+    :read_timeout => 10  # Secondi per attendere la risposta
   }
 
   # Use a different logger for distributed setups.
