@@ -81,10 +81,7 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  #config.action_mailer.delivery_method = :smtp
-  
-  config.action_mailer.delivery_method = :sarda_smtp
-  
+  config.action_mailer.delivery_method = :smtp
   
   config.action_mailer.smtp_settings = {
     :address        => Rails.application.secrets.smtp_address,
@@ -94,11 +91,11 @@ Rails.application.configure do
     :password       => Rails.application.secrets.smtp_password,
     :domain         => Rails.application.secrets.smtp_domain,
     :enable_starttls_auto => Rails.application.secrets.smtp_starttls_auto,
-    :openssl_verify_mode => 'none',
-    :ssl => false,
-    :tls => false,
-    :open_timeout => 20, # Secondi per aprire la connessione
-    :read_timeout => 20  # Secondi per attendere la risposta
+    :openssl_verify_mode => Rails.application.secrets.smtp_openssl_verify_mode,
+    :ssl => Rails.application.secrets.smtp_ssl,
+    :tls => Rails.application.secrets.smtp_tls,
+    :open_timeout => Rails.application.secrets.smtp_open_timeout,
+    :read_timeout => Rails.application.secrets.smtp_read_timeout
   }
 
   # Use a different logger for distributed setups.
