@@ -57,9 +57,26 @@ Rails.application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   
-
-  # Suppress logger output for asset requests.
+  # Use default logging formatter so that PID and timestamp are not suppressed.
+  config.log_formatter = ::Logger::Formatter.new
   
+  # Mailer settings 
+  config.action_mailer.smtp_settings = {
+    :address        => Rails.application.secrets.smtp_address,
+    :port           => Rails.application.secrets.smtp_port,
+    :authentication => Rails.application.secrets.smtp_authentication,
+    :user_name      => Rails.application.secrets.smtp_username,
+    :password       => Rails.application.secrets.smtp_password,
+    :domain         => Rails.application.secrets.smtp_domain,
+    :enable_starttls_auto => Rails.application.secrets.smtp_starttls_auto,
+    :openssl_verify_mode => Rails.application.secrets.smtp_openssl_verify_mode,
+	:ssl => Rails.application.secrets.smtp_ssl,
+    :tls => Rails.application.secrets.smtp_tls,
+    :open_timeout => Rails.application.secrets.smtp_open_timeout,
+    :read_timeout => Rails.application.secrets.smtp_read_timeout
+  }  
+
+  # Suppress logger output for asset requests.  
 
   # Raises error for missing translations.
   config.i18n.raise_on_missing_translations = false
@@ -88,6 +105,5 @@ Rails.application.configure do
     config.middleware.use Rack::Deflater
   end
   
-  #config.hosts << ENV['HOST']
-  config.hosts << "dev-sardegnapartecipa.regione.sardegna"
+  config.hosts << ENV['HOST']
 end

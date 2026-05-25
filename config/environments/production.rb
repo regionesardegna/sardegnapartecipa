@@ -24,12 +24,6 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  # Compress CSS using a preprocessor.
-  # 
-
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  
-
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.asset_host = ENV['RAILS_ASSET_HOST'] if ENV['RAILS_ASSET_HOST'].present?
 
@@ -83,6 +77,8 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  # Mailer settings
   config.action_mailer.smtp_settings = {
     :address        => Rails.application.secrets.smtp_address,
     :port           => Rails.application.secrets.smtp_port,
@@ -91,9 +87,11 @@ Rails.application.configure do
     :password       => Rails.application.secrets.smtp_password,
     :domain         => Rails.application.secrets.smtp_domain,
     :enable_starttls_auto => Rails.application.secrets.smtp_starttls_auto,
-    :openssl_verify_mode => 'none',
-    :open_timeout => 10, # Secondi per aprire la connessione
-    :read_timeout => 10  # Secondi per attendere la risposta
+    :openssl_verify_mode => Rails.application.secrets.smtp_openssl_verify_mode,
+	:ssl => Rails.application.secrets.smtp_ssl,
+    :tls => Rails.application.secrets.smtp_tls,
+    :open_timeout => Rails.application.secrets.smtp_open_timeout,
+    :read_timeout => Rails.application.secrets.smtp_read_timeout
   }
 
   # Use a different logger for distributed setups.
