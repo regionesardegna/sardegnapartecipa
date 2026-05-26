@@ -34,8 +34,10 @@ $body-font-color: #3d393c;
 
 $primary: $par-medium-blue;
 $primary-rgb: $par-medium-blue-rgb;
-$secondary: $par-medium-blue;
-$secondary-rgb: $par-medium-blue-rgb;
+$secondary: $par-deep-red;
+$secondary-rgb: $par-deep-red-rgb;
+$tertiary: $par-medium-blue;
+$tertiary-rgb: $par-medium-blue-rgb;
 $success: #1f420d !default;
 $success-rgb: 31,66,13 !default;
 $warning: #ff7700 !default;
@@ -68,6 +70,8 @@ $color-removal: #ffeef0 !default;
   --primary-rgb: #{$primary-rgb};
   --secondary: #{$secondary};
   --secondary-rgb: #{$secondary-rgb};
+  --tertiary: #{$tertiary};
+  --tertiary-rgb: #{$tertiary-rgb};
   --success: #{$success};
   --success-rgb: #{$success-rgb};
   --warning: #{$warning};
@@ -116,7 +120,7 @@ $color-removal: #ffeef0 !default;
         font-weight: 600;
         color: #fff !important;
         margin-right: auto;
-        //font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 
@@ -147,6 +151,28 @@ $color-removal: #ffeef0 !default;
 
 
 // FINE MASTHEAD
+
+// MAIN BAR
+
+  // aumenta l'altezza della main bar
+
+  .main-bar {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center;
+    grid-gap: 1rem;
+    gap: 1rem;
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+
+  // la grandezza del logo
+
+  .header .main-bar__logo {
+    grid-column: span 2 / span 2;
+  }
+
+// FINE MAIN BAR
 
 // HOME MENU
 
@@ -270,9 +296,8 @@ $color-removal: #ffeef0 !default;
 // MINI FOOTER
 
 @supports (color: rgb(0 0 0 / 0)) {
-  footer .mini-footer {
-    //background-color: rgb(2 2 3 / var(--tw-bg-opacity));
-    display: none;
+  .mini-footer {
+    background-color: rgb(2 2 3 / var(--tw-bg-opacity));
   }
 }
 
@@ -390,3 +415,80 @@ $color-removal: #ffeef0 !default;
 }
 
 // FINE ASSEMBLEE IN HP
+
+// MENU CONTESTUALE A PARTIRE DAI PROCESSI E ASSEMBLEE
+
+  // elimina la parte sinistra del menù che contiene il claim
+  
+  .menu-bar__main-dropdown__bottom-left, .menu-bar__main-dropdown__top-left, .menu-bar__secondary-dropdown__left {
+    display: none !important;
+  }
+
+  // colore menu
+  
+  .menu-bar, .menu-bar__container, .home__menu{
+    background-color: rgb(var(--tertiary-rgb)) !important;
+  }
+  
+
+  // grandezza menù
+
+  @media (min-width: 1024px) {
+    .menu-bar__main-dropdown {
+      width: 640px !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .menu-bar__main-dropdown__menu {
+      width: 100% !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  // imposta il menù secondario con larghezza 300px
+  
+  .menu-bar__secondary-dropdown {
+    position: relative;
+    width: 300px !important;
+  }
+  
+  // il menù secondario ha sfondo bianco
+  
+  .menu-bar__secondary-dropdown__menu {
+    --tw-bg-opacity: 1;
+    background-color: white !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0px;
+    padding-bottom: 0.75rem;
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / 1);
+  }
+  
+  // il menù secondario ha carattere verde
+
+  .menu-bar__secondary-dropdown__menu a {
+    color: var(--secondary) !important;
+  }
+  
+  // il menù in pagina ha colore verde
+  
+  .participatory-space__nav-container {
+    margin-left: 0px;
+    width: 100%;
+    align-self: flex-start;
+    border-radius: 0.25rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(var(--secondary-rgb) / 1);
+    background-color: rgb(var(--secondary-rgb) / var(--tw-bg-opacity));
+    padding: 0.75rem;
+  }
+  
+  // imposta il menù secondario con larghezza 100%
+  
+  .menu-bar__secondary-dropdown nav {
+    width: 100% !important;
+  }
+  
+// FINE MENU CONTESTUALE A PARTIRE DAI PROCESSI E ASSEMBLEE
