@@ -88,7 +88,7 @@ $color-removal: #ffeef0 !default;
 }
 
 
-// Masthead
+// MASTHEAD
 
 .top-header{
       color: #fff;
@@ -146,10 +146,9 @@ $color-removal: #ffeef0 !default;
 }
 
 
-// Fine Masthead
+// FINE MASTHEAD
 
-
-// Home menu
+// HOME MENU
 
 .home__menu {
   --tw-bg-opacity: 1;
@@ -159,11 +158,9 @@ $color-removal: #ffeef0 !default;
   padding-bottom: 1rem;
 }
 
-// Fine Home Menu
+// FINE HOME MENU
 
-
-// Footer
-
+// FOOTER
 
 @supports (color: rgb(0 0 0 / 0)) {
   footer .main-footer {
@@ -185,6 +182,21 @@ $color-removal: #ffeef0 !default;
     margin-left: auto;
     padding-right: 1rem;
     padding-left: 1rem;
+}
+
+.main-footer__down {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  border-top-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(2 2 3 / 1);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / 1);
+  background-color: $par-deep-red;
 }
 
 @media (min-width: 1024px) {
@@ -253,7 +265,9 @@ $color-removal: #ffeef0 !default;
     }
 }
 
-// Mini footer
+// FINE FOOTER
+
+// MINI FOOTER
 
 @supports (color: rgb(0 0 0 / 0)) {
   footer .mini-footer {
@@ -262,17 +276,17 @@ $color-removal: #ffeef0 !default;
   }
 }
 
-// Fine Footer
+// FINE MINI FOOTER
 
-// Immagine external link
+// IMMAGINE EXTERNAL LINK
 
 [data-external-link="true"] {
     display: none;
 }
 
-// Fine Immagine external link
+// FINE IMMAGINE EXTERNAL LINK
 
-// Searchbar
+// SEARCHBAR
 
 .main-bar__search input[type="text"] {
   display: block;
@@ -291,10 +305,9 @@ $color-removal: #ffeef0 !default;
   height: 1.0em;
 }
 
+// FINE SEARCHBAR
 
-// Fine Searchbar
-
-// Megamenu
+// MEGAMENU
 
 // nasconde le sezioni sottostanti del megamenù primo livello
 
@@ -304,37 +317,76 @@ $color-removal: #ffeef0 !default;
   }
 }
 
-// Fine Megamenu
+// FINE MEGAMENU
 
-footer .main-footer__down {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  border-top-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(2 2 3 / 1);
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / 1);
-  background-color: $par-deep-red;
-}
-
-// Footer
-
-
-
-
-
-// Fine Footer
-
-// Dashboard
+// DASHBOARD
 
 .metric {
     border-color: rgb(243 244 247 / var(--tw-border-opacity));
 }
-  
-  
 
-// Fine Dashboard
+// FINE DASHBOARD
+
+// PROCESSI IN HP
+
+/* Sblocca il contenitore principale rimuovendo la griglia a colonne */
+#highlighted-processes .card__grid-home:has(> :only-child) {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Forza la card, il contenitore immagine e l'immagine al 100% di larghezza */
+#highlighted-processes .card__grid-home:has(> :only-child) .card__grid,
+#highlighted-processes .card__grid-home:has(> :only-child) .card__grid-img,
+#highlighted-processes .card__grid-home:has(> :only-child) .card__grid-img img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* DISATTIVA IL 21/9 SUL CONTENITORE IMMAGINE (Sia mobile che desktop) */
+#highlighted-processes .card__grid-home:has(> :only-child) .card__grid-img {
+  aspect-ratio: auto !important;
+}
+
+/* Regola l'altezza su desktop per evitare l'effetto gigantesco */
+@media (min-width: 768px) {
+  #highlighted-processes .card__grid-home:has(> :only-child) .card__grid-img img {
+    height: 250px !important;
+    object-fit: cover !important;
+  }
+}
+
+// FINE PROCESSI IN HP
+
+// ASSEMBLEE IN HP
+
+/* Sblocca il contenitore principale rimuovendo la griglia a colonne */
+#highlighted-assemblies .card__grid-home:has(> :only-child) {
+  display: block !important;
+  width: 100% !important;
+}
+
+/* Forza la card, il contenitore immagine e l'immagine al 100% di larghezza */
+#highlighted-assemblies .card__grid-home:has(> :only-child) .card__grid,
+#highlighted-assemblies .card__grid-home:has(> :only-child) .card__grid-img,
+#highlighted-assemblies .card__grid-home:has(> :only-child) .card__grid-img img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* DISATTIVA IL 21/9 SUL CONTENITORE IMMAGINE (Sia mobile che desktop) */
+#highlighted-assemblies .card__grid-home:has(> :only-child) .card__grid-img {
+  aspect-ratio: auto !important;
+}
+
+/* Regola l'altezza su desktop per evitare l'effetto gigantesco */
+@media (min-width: 768px) {
+  #highlighted-assemblies .card__grid-home:has(> :only-child) .card__grid-img img {
+    height: 250px !important;
+    object-fit: cover !important;
+  }
+}
+
+// FINE ASSEMBLEE IN HP
