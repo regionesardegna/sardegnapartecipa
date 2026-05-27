@@ -178,7 +178,7 @@ $color-removal: #ffeef0 !default;
 
 .home__menu {
   --tw-bg-opacity: 1;
-  background-color: $par-medium-blue;
+  background-color: var(--primary-rgb);
   //background-color: rgb(var(--primary-rgb) / var(--tw-bg-opacity));
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -297,7 +297,7 @@ $color-removal: #ffeef0 !default;
 
 @supports (color: rgb(0 0 0 / 0)) {
   .mini-footer {
-    background-color: rgb(2 2 3 / var(--tw-bg-opacity));
+    background-color: rgb(var(--primary-rgb)) !important;
   }
 }
 
