@@ -4,16 +4,14 @@ Rake::Task["decidim:content_blocks:initialize_default_content_blocks"].clear
 
 namespace :decidim do
   namespace :content_blocks do
-    desc "Initializes content blocks using the exact manifest names for Decidim 0.28"
+    desc "Initializes content blocks using native ActiveRecord for Decidim 0.28"
     task :initialize_default_content_blocks, [:space_id, :override, :custom_blocks, :include_components] => :environment do |_task, args|
       
       space_id = args[:space_id]&.to_i
       override_existing = args[:override].nil? ? true : args[:override] != "false"
       include_components = args[:include_components] == "true"
 
-      # ---------------------------------------------------------------------
-      # CONFIGURAZIONE CON I NOMI REALI DEI MANIFEST (DECIDIM 0.28)
-      # ---------------------------------------------------------------------
+      # Usiamo i manifest corretti emersi dal debug in console
       DEFAULT_BLOCKS = ["hero", "main_data", "extra_data", "related_documents"].freeze
       
       allowed_blocks = if args[:custom_blocks].present?
@@ -24,8 +22,8 @@ namespace :decidim do
       
       TARGET_SCOPE = "participatory_process_homepage"
 
-      puts "=== INIZIO RIGENERAZIONE CONTENT BLOCKS (MAPPATURA 0.28) ==="
-      puts "Blocchi che verranno inseriti: #{allowed_blocks.join(', ')}"
+      puts "=== INIZIO RIGENERAZIONE CONTENT BLOCKS (ActiveRecord Mode) ==="
+      puts "Blocchi target: #{allowed_blocks.join(', ')}"
 
       processes = if space_id.present?
                     Decidim::ParticipatoryProcess.where(id: space_id)
@@ -34,45 +32,47 @@ namespace :decidim do
                   end
 
       if processes.empty?
-        puts "Nessun processo trovato con i filtri forniti."
+        puts "Nessun processo trovato."
         next
       end
 
       processes.each do |process|
-        puts "Elaborazione Processo ID: #{process.id} - Titolo: #{process.title['it'] || process.title.values.first}"
+        puts "Elaborazione Processo ID: #{process.id} - #{process.slug}"
 
-        existing_blocks_count = Decidim::ContentBlock.where(
+        existing_blocks = Decidim::ContentBlock.where(
           scope_name: TARGET_SCOPE,
           scoped_resource_id: process.id
-        ).count
+        )
 
-        if existing_blocks_count > 0 && !override_existing
-          puts "   -> [SALTATO] Il processo ha già #{existing_blocks_count} blocchi esistenti."
+        if existing_blocks.any? && !override_existing
+          puts "   -> [SALTATO] Il processo ha già blocchi esistenti della homepage."
           next
         end
 
-        # Rimozione pulita dei vecchi blocchi (compresi quelli con i nomi errati)
-        if existing_blocks_count > 0
-          Decidim::ContentBlock.where(
-            decidim_organization_id: process.decidim_organization_id,
-            scope_name: TARGET_SCOPE,
-            scoped_resource_id: process.id
-          ).destroy_all
+        # Distruzione tramite ORM (invoca correttamente i callback di pulizia ed evita disallineamenti)
+        if existing_blocks.any?
+          existing_blocks.destroy_all
         end
 
-        # Inserimento SQL pulito con i manifest corretti e il cast jsonb
+        # Inserimento controllato tramite il modello Rails
         allowed_blocks.each_with_index do |block_name, index|
           weight = (index + 1) * 10
-          now = Time.current.to_s(:db)
-
-          query = <<-SQL
-            INSERT INTO decidim_content_blocks 
-            (decidim_organization_id, scope_name, scoped_resource_id, manifest_name, weight, settings, published_at, created_at, updated_at)
-            VALUES 
-            (#{process.decidim_organization_id}, '#{TARGET_SCOPE}', #{process.id}, '#{block_name}', #{weight}, '{}'::jsonb, '#{now}', '#{now}', '#{now}')
-          SQL
-
-          ActiveRecord::Base.connection.execute(query)
+          
+          begin
+            # create! costringe Rails e Decidim a pre-popolare i settings del manifest
+            Decidim::ContentBlock.create!(
+              decidim_organization_id: process.decidim_organization_id,
+              scope_name: TARGET_SCOPE,
+              scoped_resource_id: process.id,
+              manifest_name: block_name,
+              weight: weight,
+              published_at: Time.current,
+              settings: {}, 
+              images: {}
+            )
+          rescue => e
+            puts "   -> [ERRORE] Errore durante la creazione del blocco #{block_name}: #{e.message}"
+          end
         end
 
         if include_components
@@ -84,8 +84,9 @@ namespace :decidim do
           end
         end
 
+        # Verifica finale post-salvataggio
         creati = Decidim::ContentBlock.where(scoped_resource_id: process.id, scope_name: TARGET_SCOPE).order(:weight).map(&:manifest_name)
-        puts "   -> Blocchi registrati nell'Admin: #{creati.join(', ')}"
+        puts "   -> Blocchi registrati in sicurezza: #{creati.join(', ')}"
       end
 
       puts "=== FINE PROCESSO ==="
