@@ -4,16 +4,13 @@ Rake::Task["decidim:content_blocks:initialize_default_content_blocks"].clear
 
 namespace :decidim do
   namespace :content_blocks do
-    desc "Initializes content blocks writing directly via SQL to bypass gem manifest validations"
+    desc "Initializes content blocks by injecting clean JSON structures to prevent to_h string crashes"
     task :initialize_default_content_blocks, [:space_id, :override, :custom_blocks, :include_components] => :environment do |_task, args|
       
       space_id = args[:space_id]&.to_i
       override_existing = args[:override].nil? ? true : args[:override] != "false"
       include_components = args[:include_components] == "true"
 
-      # ---------------------------------------------------------------------
-      # CONFIGURAZIONE DEI BLOCCHI RICHIESTI
-      # ---------------------------------------------------------------------
       DEFAULT_BLOCKS = ["hero", "main_data", "timeline", "documents"].freeze
       
       allowed_blocks = if args[:custom_blocks].present?
@@ -24,8 +21,7 @@ namespace :decidim do
       
       TARGET_SCOPE = "participatory_process_homepage"
 
-      puts "=== INIZIO RIGENERAZIONE DIRETTA SQL CONTENT BLOCKS ==="
-      puts "Configurazione -> Override: #{override_existing} | Blocchi richiesti: #{allowed_blocks.join(', ')}"
+      puts "=== INIZIO RIGENERAZIONE CONTENT BLOCKS (FIX SETTINGS) ==="
 
       processes = if space_id.present?
                     Decidim::ParticipatoryProcess.where(id: space_id)
@@ -47,40 +43,37 @@ namespace :decidim do
         ).count
 
         if existing_blocks_count > 0 && !override_existing
-          puts "   -> [SALTATO] Il processo ha già #{existing_blocks_count} blocchi esistenti (override = false)."
+          puts "   -> [SALTATO] Il processo ha già #{existing_blocks_count} blocchi esistenti."
           next
         end
 
-        # 1. Pulizia preventiva sul database
+        # 1. Pulisce i vecchi record corrotti
         if existing_blocks_count > 0
-          deleted_count = Decidim::ContentBlock.where(
+          Decidim::ContentBlock.where(
             decidim_organization_id: process.decidim_organization_id,
             scope_name: TARGET_SCOPE,
             scoped_resource_id: process.id
-          ).destroy_all.count
-          puts "   -> Rimossi #{deleted_count} vecchi blocchi."
+          ).destroy_all
         end
 
-        # 2. Prepariamo l'array di hash per la scrittura diretta in SQL
-        blocks_to_insert = allowed_blocks.map.with_index do |block_name, index|
-          {
-            decidim_organization_id: process.decidim_organization_id,
-            scope_name: TARGET_SCOPE,
-            scoped_resource_id: process.id,
-            manifest_name: block_name,
-            weight: (index + 1) * 10,
-            published_at: Time.current,
-            created_at: Time.current,
-            updated_at: Time.current
-          }
+        # 2. Inserimento tramite SQL nativo standardizzato per evitare i filtri dei modelli
+        allowed_blocks.each_with_index do |block_name, index|
+          weight = (index + 1) * 10
+          now = Time.current.to_s(:db)
+
+          # Eseguiamo una query nativa. Usiamo lo sdoppiamento di apici o l'hash vuoto
+          # che Postgres digerisce come tipo JSON nativo.
+          query = <<-SQL
+            INSERT INTO decidim_content_blocks 
+            (decidim_organization_id, scope_name, scoped_resource_id, manifest_name, weight, settings, published_at, created_at, updated_at)
+            VALUES 
+            (#{process.decidim_organization_id}, '#{TARGET_SCOPE}', #{process.id}, '#{block_name}', #{weight}, '{}'::jsonb, '#{now}', '#{now}', '#{now}')
+          SQL
+
+          ActiveRecord::Base.connection.execute(query)
         end
 
-        # 3. Scrittura di massa a database bypassando i modelli ActiveRecord (Zero callback, zero crash)
-        if blocks_to_insert.any?
-          Decidim::ContentBlock.insert_all!(blocks_to_insert)
-        end
-
-        # 4. Gestione opzionale dei componenti (se richiesto dall'utente)
+        # 3. Componenti opzionali
         if include_components
           begin
             content_blocks_creator = Decidim::ContentBlocksCreator.new(process)
@@ -90,9 +83,8 @@ namespace :decidim do
           end
         end
 
-        # 5. Verifica finale leggendo l'esatto stato del database
         creati = Decidim::ContentBlock.where(scoped_resource_id: process.id, scope_name: TARGET_SCOPE).order(:weight).map(&:manifest_name)
-        puts "   -> Nuovi blocchi salvati a DB: #{creati.join(', ')}"
+        puts "   -> Nuovi blocchi salvati: #{creati.join(', ')}"
       end
 
       puts "=== FINE PROCESSO ==="
