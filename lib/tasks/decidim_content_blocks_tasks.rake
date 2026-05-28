@@ -4,14 +4,17 @@ Rake::Task["decidim:content_blocks:initialize_default_content_blocks"].clear
 
 namespace :decidim do
   namespace :content_blocks do
-    desc "Initializes content blocks by injecting clean JSON structures to prevent to_h string crashes"
+    desc "Initializes content blocks using the exact manifest names for Decidim 0.28"
     task :initialize_default_content_blocks, [:space_id, :override, :custom_blocks, :include_components] => :environment do |_task, args|
       
       space_id = args[:space_id]&.to_i
       override_existing = args[:override].nil? ? true : args[:override] != "false"
       include_components = args[:include_components] == "true"
 
-      DEFAULT_BLOCKS = ["hero", "main_data", "timeline", "documents"].freeze
+      # ---------------------------------------------------------------------
+      # CONFIGURAZIONE CON I NOMI REALI DEI MANIFEST (DECIDIM 0.28)
+      # ---------------------------------------------------------------------
+      DEFAULT_BLOCKS = ["hero", "main_data", "extra_data", "related_documents"].freeze
       
       allowed_blocks = if args[:custom_blocks].present?
                          args[:custom_blocks].split(";").map(&:strip)
@@ -21,7 +24,8 @@ namespace :decidim do
       
       TARGET_SCOPE = "participatory_process_homepage"
 
-      puts "=== INIZIO RIGENERAZIONE CONTENT BLOCKS (FIX SETTINGS) ==="
+      puts "=== INIZIO RIGENERAZIONE CONTENT BLOCKS (MAPPATURA 0.28) ==="
+      puts "Blocchi che verranno inseriti: #{allowed_blocks.join(', ')}"
 
       processes = if space_id.present?
                     Decidim::ParticipatoryProcess.where(id: space_id)
@@ -47,7 +51,7 @@ namespace :decidim do
           next
         end
 
-        # 1. Pulisce i vecchi record corrotti
+        # Rimozione pulita dei vecchi blocchi (compresi quelli con i nomi errati)
         if existing_blocks_count > 0
           Decidim::ContentBlock.where(
             decidim_organization_id: process.decidim_organization_id,
@@ -56,13 +60,11 @@ namespace :decidim do
           ).destroy_all
         end
 
-        # 2. Inserimento tramite SQL nativo standardizzato per evitare i filtri dei modelli
+        # Inserimento SQL pulito con i manifest corretti e il cast jsonb
         allowed_blocks.each_with_index do |block_name, index|
           weight = (index + 1) * 10
           now = Time.current.to_s(:db)
 
-          # Eseguiamo una query nativa. Usiamo lo sdoppiamento di apici o l'hash vuoto
-          # che Postgres digerisce come tipo JSON nativo.
           query = <<-SQL
             INSERT INTO decidim_content_blocks 
             (decidim_organization_id, scope_name, scoped_resource_id, manifest_name, weight, settings, published_at, created_at, updated_at)
@@ -73,7 +75,6 @@ namespace :decidim do
           ActiveRecord::Base.connection.execute(query)
         end
 
-        # 3. Componenti opzionali
         if include_components
           begin
             content_blocks_creator = Decidim::ContentBlocksCreator.new(process)
@@ -84,7 +85,7 @@ namespace :decidim do
         end
 
         creati = Decidim::ContentBlock.where(scoped_resource_id: process.id, scope_name: TARGET_SCOPE).order(:weight).map(&:manifest_name)
-        puts "   -> Nuovi blocchi salvati: #{creati.join(', ')}"
+        puts "   -> Blocchi registrati nell'Admin: #{creati.join(', ')}"
       end
 
       puts "=== FINE PROCESSO ==="
