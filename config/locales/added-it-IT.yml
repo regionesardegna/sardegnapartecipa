@@ -1,0 +1,19 @@
+it:
+  decidim:
+    pages:
+      home:
+        extended:
+          how_to_participate: "Come partecipare"
+          more_info: "Maggiori informazioni su %{resource_name}"
+          # 1. Sondaggi
+          surveys: "Sondaggi"
+          surveys_explanation: "Rispondere alle domande poste su un determinato argomento."
+          # 2. Proposte
+          proposals: "Proposte"
+          proposals_explanation: "Fare, sostenere o suggerire modifiche alle proposte per i temi in consultazione."
+          # 3. Testi
+          texts: "Testi"
+          texts_explanation: "Consultare, commentare e suggerire modifiche a documenti in consultazione."
+          # 4. Blog
+          blog: "Blog"
+          blog_explanation: "Discutere, condividere opinioni e informazioni sulla consultazione."

@@ -12,7 +12,7 @@ namespace :decidim do
       include_components = args[:include_components] == "true"
 
       # Usiamo i manifest corretti emersi dal debug in console
-      DEFAULT_BLOCKS = ["hero", "main_data", "extra_data", "related_documents"].freeze
+      DEFAULT_BLOCKS = ["hero", "main_data", "extra_data", "related_documents", "metadata"].freeze
       
       allowed_blocks = if args[:custom_blocks].present?
                          args[:custom_blocks].split(";").map(&:strip)
