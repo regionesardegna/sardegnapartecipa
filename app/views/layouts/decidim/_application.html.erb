@@ -1,3 +1,14 @@
+<%#
+# Copyright (C) 2026 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# DA RIVALUTARE INCLUSIONE
+%>
 <%= render partial: "layouts/decidim/meta_tags_config" %>
 <!DOCTYPE html>
 <html lang="<%= I18n.locale %>" class="no-js">
@@ -10,16 +21,15 @@
     <!--noindex--><!--googleoff: all-->
     <%= link_to t("skip_button", scope: "decidim.accessibility"), "#content", class: "layout-container__skip" %>
     <%= cell("decidim/data_consent", current_organization) %>
-    
-	<%= render partial: "layouts/decidim/masthead" %>
 	
     <%= render partial: "layouts/decidim/impersonation_warning" %>
     <%= render partial: "layouts/decidim/omnipresent_banner" %>
     <%= render partial: "layouts/decidim/timeout_modal" %>
     <%= render partial: "layouts/decidim/offline_banner" %>
     <!--googleon: all--><!--/noindex-->
-
+    
     <%= render "layouts/decidim/wrapper" do %>
+	  
       <%= cell "decidim/translation_bar", current_organization %>
 
       <%= yield %>

@@ -94,13 +94,37 @@ $color-removal: #ffeef0 !default;
 
 // MASTHEAD
 
-.top-header{
-      color: #fff;
-      line-height: 28px;
-      width: 100%;
-      justify-content: space-between;
-      align-items: center;
-      background-color: $par-medium-blue;
+/* 1. Mantiene la striscia blu estesa da un bordo all'altro dello schermo */
+.masthead-container {
+  background-color: #024261; /* Spostiamo il blu qui per farlo andare full-width */
+  width: 100%;
+}
+
+/* 2. Forza il contenuto interno a rientrare e allinearsi al layout di Decidim */
+.top-header {
+  color: #fff;
+  line-height: 28px;
+  width: 100%;
+  display: flex; /* Attiva il flexbox che avevi impostato */
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Regole fondamentali per il rientro nel layout */
+  max-width: 75rem;       /* La larghezza massima standard del layout di Decidim (1200px) */
+  margin-right: auto;     /* Centra il blocco nello schermo */
+  margin-left: auto;      /* Centra il blocco nello schermo */
+  padding-right: 1.25rem; /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
+  padding-left: 1.25rem;  /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
+  
+  background-color: transparent; /* Rimuoviamo il blu da qui per evitare l'effetto "tagliato" */
+}
+
+/* 3. Assicura che i link interni (testo e immagine) ereditino correttamente gli stili */
+.institutional-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
 }
 
 @media print, screen and (min-width: 40em){
@@ -116,11 +140,11 @@ $color-removal: #ffeef0 !default;
 }
 
 .institutional-link, .institutional-link:hover {
-        font-size: 14px;
-        font-weight: 600;
-        color: #fff !important;
-        margin-right: auto;
-        font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff !important;
+    margin-right: auto;
+    font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 
@@ -492,3 +516,48 @@ $color-removal: #ffeef0 !default;
   }
   
 // FINE MENU CONTESTUALE A PARTIRE DAI PROCESSI E ASSEMBLEE
+
+// STICKY HEADER 
+
+  /* Blocca l'intero header in primo piano assoluto */
+  .layout-container > header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+  
+    /* Forza l'header a stare sopra QUALSIASI elemento del body durante lo scroll */
+    z-index: 99999 !important; 
+  }
+
+  /* Rende i blocchi dell'header completamente coprenti (opachi) */
+  .masthead-container {
+    background-color: #024261 !important; /* La striscia blu della Regione */
+    position: relative;
+    z-index: 2;
+  }
+
+  #main-bar.main-bar__container,
+   .main-bar {
+    background-color: #ffffff !important; /* Copre i testi del body con uno sfondo bianco solido */
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Opzionale: aggiunge un'ombra sfumata sotto l'header per staccarlo nettamente dai testi che scorrono sotto */
+  .layout-container > header {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* 2. Risolve il testo mangiato spingendo giù l'intero blocco dei contenuti */
+  .layout-container {
+	/* Crea lo spazio necessario in cima alla pagina */
+	padding-top: 180px !important; /* Valore di partenza sicuro */
+   }
+
+  /* 3. Evita che i link interni della pagina (es. ancore) finiscano sotto l'header */
+  html {
+	scroll-padding-top: 180px !important;
+  }
+
+// FINE STICKY HEADER
