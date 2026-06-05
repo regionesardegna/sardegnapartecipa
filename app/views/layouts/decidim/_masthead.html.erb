@@ -7,7 +7,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
-Integrato header di Sardegna IT
+Masthead di Sardegna IT
 %>
 
 <div class="masthead-container row">
@@ -16,5 +16,29 @@ Integrato header di Sardegna IT
           <%= image_pack_tag("media/images/ras_gonfalone-2021.svg", alt: "Gonfalone Sardegna", 'aria-label': "Gonfalone Sardegna",  class: "img-gonfalone", id: "img-gonfalone", role: "img") %>
           <span class="institutional-link-text">Regione Autonoma della Sardegna</span>
       <%end%>
-    </div>
+	  <% if !current_user %>
+		  <div>
+			<%= link_to decidim.new_user_session_path, "aria-label": t("layouts.decidim.header.log_in") do %>			  
+			  <span class="login-link">
+			    <span class="login-link-text"><%= t("layouts.decidim.header.log_in") %></span><%= image_pack_tag "media/images/icon-login.svg", alt: "User", 'aria-label': "User", class: "img-user-icon", id: "img-user-icon", role: "img" %>
+			  </span>
+			<% end %>
+		  </div>
+		<% else %>
+		  <div class="main-bar__dropdown-container">
+			<button id="trigger-dropdown-account" class="main-bar__dropdown-trigger" data-component="dropdown" data-target="dropdown-menu-account">
+			  <% unread_data = current_user_unread_data %>
+			  <% if unread_data[:unread_items] %>
+				<%= content_tag :span, "", class: "main-bar__notification", data: unread_data %>
+			  <% end %>
+			  <%=current_user.name %>			  
+			</button>
+			<div id="dropdown-menu-account" aria-hidden="true">
+			  <ul class="dropdown dropdown__bottom main-bar__dropdown">
+				<%= render partial: "layouts/decidim/header/main_links_dropdown", locals: { unread_data: } %>
+			  </ul>
+			</div>
+		  </div>
+	   <% end %>
+	</div>
 </div>

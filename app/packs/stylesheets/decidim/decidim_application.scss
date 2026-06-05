@@ -96,7 +96,7 @@ $color-removal: #ffeef0 !default;
 
 /* 1. Mantiene la striscia blu estesa da un bordo all'altro dello schermo */
 .masthead-container {
-  background-color: #024261; /* Spostiamo il blu qui per farlo andare full-width */
+  background-color: var(--primary); /* Spostiamo il blu qui per farlo andare full-width */
   width: 100%;
 }
 
@@ -120,11 +120,27 @@ $color-removal: #ffeef0 !default;
 }
 
 /* 3. Assicura che i link interni (testo e immagine) ereditino correttamente gli stili */
-.institutional-link {
+.institutional-link, .login-link, .institutional-link:hover, .login-link:hover {
   display: flex;
   align-items: center;
-  color: #fff;
   text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff !important;
+  padding: 0 !important;
+  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: var(--primary) !important;
+}
+
+.institutional-link-text{
+   padding-left: 2px !important;
+   margin-right: auto;
+}
+
+.login-link-text{
+   margin-left: auto;
+   padding-right: 2px !important;
+   text-transform: uppercase;
 }
 
 @media print, screen and (min-width: 40em){
@@ -139,38 +155,30 @@ $color-removal: #ffeef0 !default;
     }
 }
 
-.institutional-link, .institutional-link:hover {
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff !important;
-    margin-right: auto;
-    font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-
 @media print, screen and (min-width: 25em) and (max-width: 39.99875em){
-    .institutional-link, .institutional-link:hover {
-        font-size: 12px;
+    .institutional-link, .institutional-link:hover, .login-link-text, .login-link-text:hover {
+        font-size: 12px !important;
     }
 }
 
 @media print, screen and (min-width: 40em){
-    .institutional-link, .institutional-link:hover {
-        font-size: 14px;
+    .institutional-link, .institutional-link:hover, .login-link-text, .login-link-text:hover {
+        font-size: 14px !important;
     }
     
-    .institutional-link:focus {
-        outline: dotted white 1px;
+    .institutional-link:focus, .login-link-text:focus {
+        outline: dotted white 1px !important;
     }
-}
-
-.institutional-link-text{
-    padding-left: 2px;
 }
 
 .img-gonfalone{
     height: 28px;
     float: left;
+}
+
+.img-user-icon{
+	height: 24px !important;
+	width: 24px !important;
 }
 
 
@@ -182,19 +190,42 @@ $color-removal: #ffeef0 !default;
 
   .main-bar {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     align-items: center;
     grid-gap: 1rem;
     gap: 1rem;
     padding-top: 2.5rem !important;
     padding-bottom: 2.5rem !important;
   }
-
-  // la grandezza del logo
-
-  .header .main-bar__logo {
-    grid-column: span 2 / span 2;
+  
+  @media (min-width: 1024px) {
+    header .main-bar {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
   }
+
+  @media print, screen and (min-width: 40em) {
+	.main-bar__logo { 
+		grid-column: auto !important;
+		img {
+			max-width: 100% !important;
+		}
+	}
+  }
+
+  @media print, screen and (min-width: 50em) {
+    .main-bar__logo { 
+	   grid-column: auto !important;
+	   img {
+			max-width: 200% !important;
+	   }
+    }
+  }
+  
+  .img-gonfalone-grande{
+    height: 70px;
+  }
+  
 
 // FINE MAIN BAR
 
