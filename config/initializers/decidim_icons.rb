@@ -19,4 +19,15 @@ Rails.application.config.to_prepare do
     category: "system", 
     description: "", 
   engine: :core)
+  Decidim.icons.register(
+    name: "survey-line", 
+	icon: "survey-line", 
+	category: "system", 
+	description: "", 
+  engine: :core)
+  Decidim.icons.register(name: "book-open-line",
+    icon: "book-open-line",
+	category: "system",
+	description: "",
+    engine: :core)
 end

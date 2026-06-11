@@ -20,7 +20,8 @@ Masthead di Sardegna IT
 		  <div>
 			<%= link_to decidim.new_user_session_path, "aria-label": t("layouts.decidim.header.log_in") do %>			  
 			  <span class="login-link">
-			    <span class="login-link-text"><%= t("layouts.decidim.header.log_in") %></span><%= image_pack_tag "media/images/icon-login.svg", alt: "User", 'aria-label': "User", class: "img-user-icon", id: "img-user-icon", role: "img" %>
+			    <span class="login-link-text"><%= t("layouts.decidim.header.log_in") %></span>
+				<%= image_pack_tag "media/images/icon-login.svg", alt: "User", 'aria-label': "User", class: "img-user-icon", id: "img-user-icon", role: "img" %>
 			  </span>
 			<% end %>
 		  </div>
