@@ -193,8 +193,6 @@ $color-removal: #ffeef0 !default;
     align-items: center;
     grid-gap: 1rem;
     gap: 1rem;
-    padding-top: 2.5rem !important;
-    padding-bottom: 2.5rem !important;
   }
   
   @media (min-width: 1024px) {
@@ -217,6 +215,7 @@ $color-removal: #ffeef0 !default;
 	   grid-column: auto !important;
 	   img {
 			max-width: 200% !important;
+			max-height: 85px;
 	   }
     }
   }
@@ -226,126 +225,131 @@ $color-removal: #ffeef0 !default;
   }
   
   /* 1. Il container del dropdown DEVE essere un'ancora relativa e stare sopra lo sfondo */
-.main-bar__dropdown-container {
-  position: relative !important;
-  z-index: 99999 !important; /* Più alto dello z-index 2 di #main-bar */
-}
+  .main-bar__dropdown-container {
+    position: relative !important;
+    z-index: 99999 !important; /* Più alto dello z-index 2 di #main-bar */
+  }
 
-/* 2. Il pulsante deve essere cliccabile e reattivo */
-.main-bar__dropdown-trigger {
-  position: relative !important;
-  z-index: 2 !important;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  color: white !important;
-  cursor: pointer !important; /* Aiuta a capire se è intercettato */
-}
+  /* 2. Il pulsante deve essere cliccabile e reattivo */
+  .main-bar__dropdown-trigger {
+    position: relative !important;
+    z-index: 2 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    color: white !important;
+    cursor: pointer !important; /* Aiuta a capire se è intercettato */
+  }
 
-/* 3. Gestione del DIV contenitore del menù */
-#dropdown-menu-account {
-  position: absolute !important;
-  top: 100%;
-  right: 0;
-  z-index: 99999 !important;
-}
+  /* 3. Gestione del DIV contenitore del menù */
+  #dropdown-menu-account {
+    position: absolute !important;
+    top: 100%;
+    right: 0;
+    z-index: 99999 !important;
+  }
 
-/* 4. Nascondi/Mostra basandoti SOLO sullo stato reale del JavaScript di Decidim */
-#dropdown-menu-account[aria-hidden="true"] {
-  display: none !important;
-}
+  /* 4. Nascondi/Mostra basandoti SOLO sullo stato reale del JavaScript di Decidim */
+  #dropdown-menu-account[aria-hidden="true"] {
+    display: none !important;
+  }
 
-#dropdown-menu-account[aria-hidden="false"] {
-  display: block !important;
-}
+  #dropdown-menu-account[aria-hidden="false"] {
+    display: block !important;
+  }
 
-/* 5. Ripristina lo stile originario dell'UL interno senza forzare la position */
-.dropdown__bottom {
-  display: block;
-  margin-top: 0.75rem;
-  --tw-translate-x: calc(var(--arrow-offset) - var(--arrow-visible-size));
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
+  /* 5. Ripristina lo stile originario dell'UL interno senza forzare la position */
+  .dropdown__bottom {
+    display: block;
+    margin-top: 0.75rem;
+    --tw-translate-x: calc(var(--arrow-offset) - var(--arrow-visible-size));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  }
 
-/* Sicurezza per l'overflow dei padri */
-.masthead-container,
-#main-bar.main-bar__container,
-.main-bar {
-  overflow: visible !important; 
-}  
+  /* Sicurezza per l'overflow dei padri */
+  .masthead-container,
+  #main-bar.main-bar__container,
+  .main-bar {
+    overflow: visible !important; 
+  }  
 
-/* 1. L'HEADER DIVENTA "STICKY" (Risolve il problema del testo tagliato) */
-.layout-container > header {
-  position: sticky !important;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50 !important; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  /* 1. L'HEADER DIVENTA "STICKY" (Risolve il problema del testo tagliato) */
+  .layout-container > header {
+    position: sticky !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50 !important; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
   
-  /* Permette ai menù spostati via JS di impilarsi sotto la barra bianca */
-  display: flex !important;
-  flex-direction: column !important;
-}
+    /* Permette ai menù spostati via JS di impilarsi sotto la barra bianca */
+    display: flex !important;
+    flex-direction: column !important;
+	background-color: white;
+  }
 
-.admin-bar__container {
-  overflow: visible !important;
-  --tw-bg-opacity: 1;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  z-index: auto !important; /* Lasciamo che ereditino lo z-index 50 del padre globale */
-  background-color: white !important;
-}
+  .admin-bar__container {
+    overflow: visible !important;
+    --tw-bg-opacity: 1;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    z-index: auto !important; /* Lasciamo che ereditino lo z-index 50 del padre globale */
+    background-color: white !important;
+  }
 
-#main-bar.main-bar__container,
-.main-bar {
-  background-color: #ffffff !important; /* Riga bianca */
-}
+  #main-bar.main-bar__container,
+  .main-bar {
+    background-color: #ffffff !important; /* Riga bianca */
+  }
 
-/* Stile per i menù portati dentro l'header */
-.layout-container > header .main-nav,
-.layout-container > header .breadcrumb,
-.layout-container > header .process-header__container {
-  background-color: #ffffff !important;
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  /* Assicura che si impili correttamente se aveva posizionamenti strani */
-  position: relative !important; 
-}
+  /* Stile per i menù portati dentro l'header */
+  .layout-container > header .main-nav,
+  .layout-container > header .breadcrumb,
+  .layout-container > header .process-header__container {
+    background-color: #ffffff !important;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* Assicura che si impili correttamente se aveva posizionamenti strani */
+    position: relative !important; 
+  }
 
-.layout-container > header #home__menu{
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  /* Assicura che si impili correttamente se aveva posizionamenti strani */
-  position: relative !important; 
-}
+  .layout-container > header #home__menu{
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* Assicura che si impili correttamente se aveva posizionamenti strani */
+    position: relative !important; 
+  }
 
-/* 2. RIMUOVI I VECCHI PADDING (Il browser ora fa tutto da solo) */
-.layout-container {
-  padding-top: 0 !important; /* Essenziale azzerarlo! */
-}
-html {
-  /* Mantieni questo solo per far scorrere correttamente le ancore interne dei link */
-  scroll-padding-top: 200px !important; 
-}
+  /* 2. RIMUOVI I VECCHI PADDING (Il browser ora fa tutto da solo) */
+  .layout-container {
+    padding-top: 0 !important; /* Essenziale azzerarlo! */ 
+  }
+  html {
+    /* Mantieni questo solo per far scorrere correttamente le ancore interne dei link */
+   scroll-padding-top: 200px !important; 
+  }
 
-/* 3. NOTIFICHE FLASH (Le rimettiamo nel flusso, si impileranno DA SOLE sotto l'header) */
-.flash,
-.flash-messages-container,
-[data-flash-messages] {
-  position: relative !important;
-  top: 0 !important;
-  width: 100% !important;
-  z-index: 49 !important;
-  margin-bottom: 1rem;
-  box-shadow: none !important;
-}  
+  /* 3. NOTIFICHE FLASH (Le rimettiamo nel flusso, si impileranno DA SOLE sotto l'header) */
+  .flash,
+  .flash-messages-container,
+  [data-flash-messages] {
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 49 !important;
+    margin-bottom: 1rem;
+    box-shadow: none !important;
+  }  
+  
+  div.layout-container header div.container{
+    background-color: white;
+  }
   
 // FINE MAIN BAR
 
@@ -422,8 +426,18 @@ html {
     padding-bottom: 1.5rem;
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / 1);
-  background-color: $par-deep-red;
+    background-color: $par-deep-red;
+	max-width: 100% !important;
+	width: 100% !important;
 }
+
+@media (min-width: 1024px) {
+  footer .main-footer__down {
+    padding-right: 5.5rem;
+    padding-left: 5.5rem;
+  }
+}
+
 
 @media (min-width: 1024px) {
     footer .main-footer__middle {
