@@ -11,31 +11,45 @@ You should have received a copy of the GNU Affero General Public License along w
 %>
 <div class="mini-footer">
    <div class="mini-footer__content">
-    
-    <div>
-    <a class="flex gap-1 hover:opacity-50" rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" data-external-link="text-only">
-      <span class="sr-only"><%= t("layouts.decidim.footer.cc_by_license") %></span>
-      <%= icon "creative-commons-line", class: "w-6 h-6 fill-current" %>
-      <%= icon "creative-commons-by-line", class: "w-6 h-6 fill-current" %>
-      <%= icon "creative-commons-sa-line", class: "w-6 h-6 fill-current" %>
-    </a>
-    </div>
 
-    <div class="text-xs mt-2 [&_a]:underline">
-        <%= t("layouts.decidim.footer.made_with_open_source").html_safe %>
-    </div>
-    
-    
-    <div>
-	  © 2026 Regione Autonoma della Sardegna
-      <a rel="partecipa"
-         href="https://github.com/dipartimentofunzionepubblica/partecipa"
-         title="Logo ParteciPa"
-         alt="Logo ParteciPa"
-         aria-label="Logo ParteciPa"
-         target="_blank">
-         <%= image_pack_tag("media/images/logo_partecipa.png", class: "footer_logo logo_partecipa", alt: "Logo ParteciPa", 'aria-label': "Logo ParteciPa", role: "img", 'aria-hidden': true) %></a>
-    </div>
+      <!-- COLONNA 1 (SINISTRA): Licenza CC -->
+      <div class="footer-column-left">	
+         <a class="flex gap-1 hover:opacity-50" rel="license noopener noreferrer" href="http://creativecommons.org" target="_blank" data-external-link="text-only">
+            <span class="sr-only"><%= t("layouts.decidim.footer.cc_by_license") %></span>
+            <%= icon "creative-commons-line", class: "w-6 h-6 fill-current" %>
+            <%= icon "creative-commons-by-line", class: "w-6 h-6 fill-current" %>
+            <%= icon "creative-commons-sa-line", class: "w-6 h-6 fill-current" %>
+         </a>
+      </div>
 
+      <!-- COLONNA 2 (CENTRO): Testo Software Libero -->
+      <div class="footer-column-center text-xs mt-2 [&_a]:underline">
+         <%= t("layouts.decidim.footer.made_with_open_source").html_safe %>
+      </div>
+    
+      <!-- COLONNA 3 (DESTRA): Copyright + Logo perfettamente incolonnati -->
+      <div class="footer-column-right">  
+         <!-- Il copyright ora vive qui, sopra il logo -->
+         <div class="copyright">
+            <span class="copyright-text">© 2026 Regione Autonoma della Sardegna</span>
+         </div>
+
+         <!-- Il logo ParteciPa subito sotto -->
+         <a rel="partecipa"
+            href="https://github.com"
+            title="Logo ParteciPa"
+            alt="Logo ParteciPa"
+            aria-label="Logo ParteciPa"
+            target="_blank">
+            <%= image_pack_tag("media/images/logo_partecipa.png", class: "footer_logo logo_partecipa", alt: "Logo ParteciPa", 'aria-label': "Logo ParteciPa", role: "img", 'aria-hidden': true) %>
+         </a>
+      </div>
+	
    </div>
 </div>
+
+<a href="#top">
+    <div id="back-to-top">		
+        <%= external_icon "media/images/back-to-top.svg", class: "back-to-top-img", alt: "Torna su", 'aria-label': "Torna su", role: "img" %>    
+	</div>
+</a>

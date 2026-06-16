@@ -143,18 +143,6 @@ $color-removal: #ffeef0 !default;
    text-transform: uppercase;
 }
 
-@media print, screen and (min-width: 40em){
-    .top-header{
-      height: 28px;
-    }
-}
-
-@media print, screen and (max-width: 39.99875em){
-    .top-header{
-      height: 40px;
-    }
-}
-
 @media print, screen and (min-width: 25em) and (max-width: 39.99875em){
     .institutional-link, .institutional-link:hover, .login-link-text, .login-link-text:hover {
         font-size: 12px !important;
@@ -171,14 +159,27 @@ $color-removal: #ffeef0 !default;
     }
 }
 
-.img-gonfalone{
-    height: 28px;
-    float: left;
+/* --- STATO DI DEFAUT (Non Sticky) --- */
+#top-header { height: 40px; transition: height 0.2s; }
+#img-user-icon { display: inline-block; height: 24px !important; width: 24px !important; }
+#img-gonfalone { height: 28px; transition: height 0.2s; float: left; }
+#institutional-link { font-size: 14px; }
+#img-gonfalone-grande{ height: 70px; }
+
+/* --- STATO STICKY (Comune a tutte le risoluzioni) --- */
+.page-is-sticky #img-user-icon { display: none; }
+.page-is-sticky #img-gonfalone { height: 24px; }
+
+
+/* Specifiche per Mobile (< 640px) quando è Sticky */
+@media (max-width: 639px) {
+    .page-is-sticky #top-header { height: 28px; }
+	#img-gonfalone-grande { display: none; }
 }
 
-.img-user-icon{
-	height: 24px !important;
-	width: 24px !important;
+/* Specifiche per Desktop (>= 640px) quando è Sticky */
+@media (min-width: 640px) {
+    .page-is-sticky #institutional-link { font-size: 12px; }
 }
 
 // FINE MASTHEAD
@@ -218,10 +219,6 @@ $color-removal: #ffeef0 !default;
 			max-height: 85px;
 	   }
     }
-  }
-  
-  .img-gonfalone-grande{
-    height: 70px;
   }
   
   /* 1. Il container del dropdown DEVE essere un'ancora relativa e stare sopra lo sfondo */
@@ -438,7 +435,6 @@ $color-removal: #ffeef0 !default;
   }
 }
 
-
 @media (min-width: 1024px) {
     footer .main-footer__middle {
       padding-right: 5.5rem;
@@ -505,6 +501,45 @@ $color-removal: #ffeef0 !default;
     }
 }
 
+@media (min-width: 40em){
+	.footer_sar_it{
+		display:flex;
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 39.99875em){
+	.footer_sar_it{
+		display:flex;
+		margin-top: 30px;
+		flex-direction: column;
+	}
+}
+
+.footer_header{
+	  color: #fff;
+	  font-size: .850em;
+	  font-weight: 700;
+	  margin: 0;
+	  padding: 0 0 16px 0;
+	  border-bottom: 1px solid #fff;
+	  line-height: 1em;
+	  text-transform: uppercase;
+	  vertical-align: middle;
+	  font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.footer_text{
+	font-size: 12px;
+	padding-top: 15px;
+}
+
+@media (min-width: 1024px) {
+  .main-footer__top {
+    flex-direction: column !important;
+  }
+}
+
 // FINE FOOTER
 
 // MINI FOOTER
@@ -513,6 +548,106 @@ $color-removal: #ffeef0 !default;
   .mini-footer {
     background-color: rgb(var(--primary-rgb)) !important;
   }
+}
+
+@supports (color: rgb(0 0 0 / 0)) {
+  .mini-footer {
+    background-color: rgb(var(--primary-rgb)) !important;
+  }
+}
+
+@supports (color: rgb(0 0 0 / 0)) {
+  .mini-footer {
+    background-color: rgb(var(--primary-rgb)) !important;
+  }
+}
+
+@supports (color: rgb(0 0 0 / 0)) {
+  .mini-footer {
+    background-color: rgb(var(--primary-rgb)) !important;
+  }
+}
+
+/* 1. Sostituiamo il flex con una griglia simmetrica a 3 colonne */
+.mini-footer__content {
+  display: grid;
+  /* Creiamo 3 colonne: le due laterali speculari (1fr) e quella centrale che si adatta (auto) */
+  grid-template-columns: 1fr auto 1fr; 
+  align-items: flex-end;         /* Allinea la base degli elementi */
+  width: 100%;
+}
+
+/* 2. Allineamento della colonna di sinistra */
+.footer-column-left {
+  grid-column: 1;
+  justify-self: start;           /* Incollata al bordo sinistro */
+}
+
+/* 3. Allineamento della colonna centrale (ORA PERFETTAMENTE CENTRATA) */
+.footer-column-center {
+  grid-column: 2;
+  justify-self: center;          /* Centrata geometricamente rispetto allo schermo */
+  text-align: center;            /* Centra il testo all'interno del suo div */
+}
+
+/* 4. Allineamento della colonna di destra (Mantiene la tua struttura perfetta) */
+.footer-column-right {
+  grid-column: 3;
+  justify-self: end;             /* Incollata al bordo destro */
+  display: flex;
+  flex-direction: column;   
+  align-items: flex-end;    
+  gap: 0.5rem;              
+}
+
+/* 5. Il tuo stile originale per il logo */
+.footer_logo {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 160px;
+    height: 95px;
+} 
+
+@media (min-width: 40em) {
+    .logo_partecipa {
+      padding-top: 25px;
+      height: auto !important;
+    }
+}
+ 
+
+@media (min-width: 40em) {
+    .logo_partecipa {
+      padding-top: 25px;
+      height: auto !important;
+    }
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 100px;
+    right: 0px;
+    display: none;
+    padding: 10px;
+    z-index: 99;
+}
+
+/* Applica il cambio direttamente al PATH, non all'SVG generico */
+#back-to-top svg path {
+    fill: #9B0E0E !important; /* Forza il rosso di base */
+    stroke: #9B0E0E;
+    transition: fill 0.1s ease, stroke 0.1s ease;
+}
+
+/* Quando si attiva l'overlap nel footer */
+#back-to-top.invertito svg path {
+    fill: #024261 !important; /* Forza il blu di contrasto */
+    stroke: #024261;
+}
+
+.back-to-top-img {
+    width: 55px !important;
+    height: 55px !important;
 }
 
 // FINE MINI FOOTER
