@@ -35,4 +35,9 @@ Rails.application.config.to_prepare do
     category: "system", 
     description: "", 
     engine: :core)
+  Decidim.icons.register(name: "bank-line", 
+    icon: "bank-line", 
+	category: "system", 
+	description: "", 
+	engine: :core)
 end

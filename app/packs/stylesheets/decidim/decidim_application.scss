@@ -331,6 +331,13 @@ $color-removal: #ffeef0 !default;
     z-index: auto !important; /* Lasciamo che ereditino lo z-index 50 del padre globale */
     background-color: white !important;
   }
+  
+  @media (max-width: 39.99875em){  
+    .admin-bar__button:not([class*="button__text"]) {
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+    }
+  }
 
   #main-bar.main-bar__container,
   .main-bar {
@@ -656,13 +663,26 @@ $color-removal: #ffeef0 !default;
     }
 }
 
-#back-to-top {
-    position: fixed;
-    bottom: 50px;
-    right: 0px;
-    display: none;
-    padding: 10px;
-    z-index: 99;
+@media (min-width: 40em) {
+	#back-to-top {
+		position: fixed;
+		bottom: 20px !important;
+		right: 0px;
+		display: none;
+		padding: 10px;
+		z-index: 99;
+	}
+}
+
+@media (max-width: 39.99875em) {
+	#back-to-top {
+		position: fixed;
+		bottom: 60px !important;
+		right: 0px;
+		display: none;
+		padding: 10px;
+		z-index: 99;
+	}
 }
 
 /* 1. Applica solo il cambio colore e le transizioni al PATH */

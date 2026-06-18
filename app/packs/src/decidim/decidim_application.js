@@ -4,83 +4,72 @@
 // Load images
 require.context("../../images", true)
 
-window.addEventListener("scroll",function(){	   
-	// Selezioniamo l'elemento una sola volta per migliorare le prestazioni
-	const $backToTop = $('#back-to-top');
+// Definizione variabili all'esterno
+const $window = $(window);
+const $body = $('body');
+const $backToTop = $('#back-to-top');
+const $stickyHeader = $("#sticky-header");
 
-	if ($(window).scrollTop() > 300) {
-		
-		// Gestione della posizione su mobile
-		if ($(window).width() <= 640) {
-			$backToTop.css('bottom', '270px');
-		} else {
-			$backToTop.css('bottom', ''); // Resetta il bottom su desktop (usa il valore del CSS)
-		}
+// Calcola l'offset solo se l'elemento esiste
+const stickyOffset = $stickyHeader.length ? $stickyHeader.offset().top : 0;
 
-		$backToTop.fadeIn(200); // Mostra con una leggera sfumatura
-	} else {
-		$backToTop.fadeOut(200); // Nasconde con una leggera sfumatura
-	}
-	
-	if ($backToTop.is(':visible')) {
-		const btnTop = $backToTop.offset().top;
-		let overlap = false;
+$window.on('scroll', function() {
+    // 1. Gestione Back to Top
+    if ($backToTop.length) {
+        if ($window.scrollTop() > 300) {
+            if ($window.width() <= 640) {
+                $backToTop.css('bottom', '270px');
+            } else {
+                $backToTop.css('bottom', '');
+            }
+            $backToTop.fadeIn(200);
+            
+            // Logica inversione colore
+            const btnTop = $backToTop.offset().top;
+            let overlap = false;
+            $('.main-footer__down').each(function() {
+                const secTop = $(this).offset().top;
+                const secBottom = secTop + $(this).outerHeight();
+                if (btnTop >= secTop && btnTop <= secBottom) {
+                    overlap = true;
+                    return false;
+                }
+            });
+            $backToTop.toggleClass('invertito', overlap);
+        } else {
+            $backToTop.fadeOut(200);
+        }
+    }
 
-		// Cicla su tutte le sezioni che hanno lo sfondo problematico
-		$('.main-footer__down').each(function() {
-			const secTop = $(this).offset().top;
-			const secBottom = secTop + $(this).outerHeight();
-
-			// Controlla se il bottone è dentro la sezione
-			if (btnTop >= secTop && btnTop <= secBottom) {
-				overlap = true;
-				return false; // Interrompe il ciclo .each() appena trova una corrispondenza
-			}
-		});
-
-		// Aggiunge o toglie la classe in base all'intersezione
-		$backToTop.toggleClass('invertito', overlap);
-	}
-		
-	const $window = $(window);
-	const $body = $('body');
-	// Calcoliamo l'offset una sola volta all'avvio
-	const stickyOffset = $("#sticky-header").offset().top; 
-
-	$window.on('scroll', function() {
-		// Applica o rimuove la classe in base allo scroll (restituisce true o false)
-		const isSticky = $window.scrollTop() > stickyOffset;
-		$body.toggleClass('page-is-sticky', isSticky);
-	});
-
+    // 2. Gestione Sticky Header
+    if ($stickyHeader.length) {
+        const isSticky = $window.scrollTop() > stickyOffset;
+        $body.toggleClass('page-is-sticky', isSticky);
+    }
 });
 
-// Funzione che sposta i menù
-function riposizionaMenuDecidim() {
+function repositionDecidimMenu() {
   const header = document.querySelector(".layout-container > header");
   if (!header) return;
 
-  // Riconosce la Home Page anche con le lingue
   const isHomePage = document.body.classList.contains("page-home") || 
                      window.location.pathname === "/" || 
                      /^\/[a-z]{2}\/?$/.test(window.location.pathname);
   
   if (isHomePage) {
-    // AGGIORNAMENTO: Cerca #home__menu (o .main-nav per sicurezza)
     const globalMenu = document.querySelector("#home__menu, .main-nav"); 
-    
-    // Sposta solo se non è già stato spostato
     if (globalMenu && !header.contains(globalMenu)) {
       header.appendChild(globalMenu);
     }
   } else {
     const contextNav = document.querySelector(".process-header__container, .breadcrumb, .nav-container");
-    if (contextNav && !header.contains(contextNav)) {
+    // Controllo extra: assicuriamoci che non sia l'elemento del menu home
+    if (contextNav && !header.contains(contextNav) && !contextNav.id?.includes('home__menu')) {
       header.appendChild(contextNav);
     }
   }
 }
 
-document.addEventListener("DOMContentLoaded", riposizionaMenuDecidim);
-document.addEventListener("turbolinks:load", riposizionaMenuDecidim);
-window.addEventListener("load", riposizionaMenuDecidim);
+document.addEventListener("DOMContentLoaded", repositionDecidimMenu);
+document.addEventListener("turbolinks:load", repositionDecidimMenu);
+window.addEventListener("load", repositionDecidimMenu);

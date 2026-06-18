@@ -8,7 +8,7 @@
       <%= link_to "PROCESSI", decidim_participatory_processes.participatory_processes_path, class: "hover:underline text-white opacity-90 block" %>
     </p>
     <p>
-      <%= link_to "ASSEMBLEE", decidim_assemblies.assemblies_path, class: "hover:underline text-white opacity-90 block" %>
+      <%= link_to "ASSEMBLEE", decidim_assemblies.assemblies_path, class: "hover:underline text-white opacity-90 block" if mobile_assemblies_active? %>
     </p>
     <p>
       <%= link_to "AIUTO", decidim.pages_path, class: "hover:underline text-white opacity-90 block" %>
@@ -16,7 +16,7 @@
 	<p>
 	</p>
 	<p>
-      <!--%= link_to "CONFIGURAZIONE COOKIES", #{"decidim.root_path#"}, class: "hover:underline text-white opacity-90 block" %-->
+      <%= link_to "CONFIGURAZIONE COOKIES", "#", class: "hover:underline text-white opacity-90 block" %>
     </p>
   </div>
 </nav>

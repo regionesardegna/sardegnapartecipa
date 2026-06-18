@@ -9,7 +9,7 @@ DECIDIM_VERSION = 'release/0.28-stable'
 gem 'decidim', git: 'http://github.com/decidim/decidim', branch: DECIDIM_VERSION
 gem 'decidim-decidim_awesome'
 gem 'decidim-privacy', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-privacy', branch: 'release/0.28'
-gem 'decidim-spid-cie', git: 'https://gitlab.com/glcorso/decidim-module-spid-cie', branch: 'release/0.28'
+gem 'decidim-spid-cie', git: 'https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie', branch: 'release/0.28'
 gem 'decidim-templates', git: 'https://github.com/decidim/decidim', tag: DECIDIM_VERSION
 gem 'decidim-term_customizer', git: 'https://github.com/mainio/decidim-module-term_customizer'
 gem 'decidim-cache_cleaner'
@@ -25,6 +25,7 @@ gem 'delayed_job_active_record'
 gem 'foundation_rails_helper', git: 'http://github.com/sgruhier/foundation_rails_helper.git'
 gem 'deface'
 gem 'wkhtmltopdf-binary'
+gem 'i18n', '~> 1.14.0'
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
