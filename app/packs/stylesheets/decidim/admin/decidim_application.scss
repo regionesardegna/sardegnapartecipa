@@ -1,0 +1,16 @@
+// app/packs/stylesheets/_admin_overrides.scss
+
+// Fix per il riempimento bianco generale e per l'editor toolbar
+.editor-toolbar-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: currentColor !important;
+}
+
+// Opzionale ma consigliato: confinare l'override generale delle SVG solo all'admin
+// per evitare di rompere altre icone impreviste
+.layout-admin {
+  svg {
+    fill: currentColor !important;
+  }
+}

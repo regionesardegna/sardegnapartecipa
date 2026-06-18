@@ -27,19 +27,33 @@ Masthead di Sardegna IT
 		  </div>
 		<% else %>
 		  <div class="main-bar__dropdown-container">
-			<button id="trigger-dropdown-account" class="main-bar__dropdown-trigger" data-component="dropdown" data-target="dropdown-menu-account">
+		  <%# Lasciamo il bottone con le sole classi native per non rompere gli stati di Decidim %>
+		  <button id="trigger-dropdown-account" class="main-bar__dropdown-trigger" data-component="dropdown" data-target="dropdown-menu-account">
+			
+			<%# CREIAMO UN CONTENITORE INTERNO: Forza il layout orizzontale, centra gli elementi e imposta il testo bianco %>
+			<div class="flex items-center justify-between gap-1.5 text-white">
+			  
 			  <% unread_data = current_user_unread_data %>
 			  <% if unread_data[:unread_items] %>
 				<%= content_tag :span, "", class: "main-bar__notification", data: unread_data %>
 			  <% end %>
-			  <%=current_user.name %>			  
-			</button>
-			<div id="dropdown-menu-account" aria-hidden="true">
-			  <ul class="dropdown dropdown__bottom main-bar__dropdown">
-				<%= render partial: "layouts/decidim/header/main_links_dropdown", locals: { unread_data: } %>
-			  </ul>
+			  
+			  <%# Il nome utente rimane bloccato in linea %>
+			  <span class="inline-block whitespace-nowrap text-white"><%= current_user.name %></span>
+			  
+			  <%# L'icona ora è protetta dentro il flex, forzata con il punto esclamativo per ignorare i CSS del click %>
+			  <%= icon "arrow-down-s-fill", class: "!inline-block w-5 h-5 text-white fill-current flex-shrink-0" %>
+		
 			</div>
+
+		  </button>
+		  <div id="dropdown-menu-account" aria-hidden="true">
+			<ul class="dropdown dropdown__bottom main-bar__dropdown">
+			  <%= render partial: "layouts/decidim/header/main_links_dropdown", locals: { unread_data: } %>
+			</ul>
 		  </div>
+		</div>
+
 	   <% end %>
 	</div>
 </div>
