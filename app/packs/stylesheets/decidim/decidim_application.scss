@@ -158,6 +158,10 @@ $color-removal: #ffeef0 !default;
     }
 }
 
+// FINE MASTHEAD
+
+// STICKY HEADER
+
 /* --- STATO DI DEFAUT (Non Sticky) --- */
 #top-header { height: 40px; transition: height 0.2s; }
 #img-user-icon { display: inline-block; height: 24px !important; width: 24px !important; }
@@ -216,7 +220,7 @@ $color-removal: #ffeef0 !default;
   border: solid 1px #505050 !important;
 }
 
-// FINE MASTHEAD
+// FINE STICKY HEADER
 
 // MAIN BAR
 
@@ -393,6 +397,7 @@ $color-removal: #ffeef0 !default;
 
 // HOME MENU
 
+/*
 .home__menu {
   --tw-bg-opacity: 1;
   background-color: var(--primary-rgb);
@@ -406,7 +411,38 @@ $color-removal: #ffeef0 !default;
   justify-content: left;
   padding-left: 6rem;
 }
+*/
 
+/* 1. Gestisce lo sfondo rosso a tutta larghezza (100%) dello schermo */
+.home__menu {
+  width: 100% !important;
+  max-width: 100% !important;
+  //margin: 0 !important;
+  //padding: 0 !important;
+  display: block !important;
+}
+
+/* 2. Replica la gabbia esatta del masthead della Regione sul contenitore reale */
+.home__menu .home__menu__container {
+  max-width: 75rem !important; 
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0.625rem !important; 
+  padding-right: 0.625rem !important;
+  width: 100% !important;
+  
+  /* Forza il comportamento flex e allinea i blocchi a sinistra */
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+/* 3. Allineamento millimetrico del testo (Annulla il padding sinistro solo sul primo link) */
+//.home__menu .home__menu-element:first-child .home__menu-element--link {
+  //padding-left: 0 !important;
+//}
+
+/* 4. Le tue classi esistenti (invariate, raggruppate per pulizia) */
 .home__menu-element--link {
   width: 100%;
   padding-top: 1px;
@@ -922,15 +958,11 @@ $color-removal: #ffeef0 !default;
   
 // FINE MENU CONTESTUALE A PARTIRE DAI PROCESSI E ASSEMBLEE
 
+// SVG
+
 // Importante: elimina uno stile che impostava a bianco il colore fill di tutte le SVG rompendo icone e pulsanti
 
 svg {
-  fill: currentColor !important;
-}
-
-.editor-toolbar-icon {
-  height: 1.25rem;
-  width: 1.25rem;
   fill: currentColor !important;
 }
 
@@ -941,3 +973,124 @@ svg {
   right: 0.5rem;
   top: 1.4rem;
 }
+
+// FINE SVG
+
+// HAMBURGER ICON
+
+// aumenta le dimensioni
+
+.main-bar__links-mobile__trigger svg {
+  height: 2rem !important;
+  width: 2rem !important;
+  fill: currentColor;
+}
+
+/* Si applica solo in modalità mobile (sotto i 1024px, coerente con lg:hidden) */
+@media (max-width: 1023px) {
+  
+  /* Forziamo il contenitore principale a comportarsi come una riga flex */
+  .main-bar {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  /* Spostiamo l'intero blocco mobile (hamburger) a sinistra (ordine -1) */
+  .lg\:hidden {
+    order: -1 !important;
+  }
+
+  /* Il logo si sposterà automaticamente a destra (ordine di default 0) */
+  .main-bar__logo {
+    order: 0 !important;
+  }
+}
+
+// FINE HAMBURGER ICON
+
+
+/* Ripristina lo sfondo a tutta larghezza (100%) per i colori della Regione */
+.masthead-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Applica il vincolo di larghezza e l'allineamento solo all'interno del testo */
+.masthead-container .top-header.columns {
+  /* Forza la stessa identica gabbia di allineamento di main-bar e menu */
+  max-width: 75rem !important; 
+  margin-left: auto !important;
+  margin-right: auto !important;
+  
+  /* Allineamento millimetrico identico agli altri blocchi */
+  padding-left: 0.625rem !important; 
+  padding-right: 0.625rem !important;
+  width: 100% !important;
+  float: none !important; /* Rimuove comportamenti float nativi di Foundation */
+  
+  /* Gestione flessibile degli elementi interni (Testo a sinistra, Accedi a destra) */
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* Rimuove margini extra dal link che falsano l'allineamento iniziale */
+#institutional-link {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+/* 1. Assicura che la fascia esterna occupi il 100% dello schermo */
+.main-bar__container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 2. Trasforma la main-bar nella gabbia identica al masthead e al menu */
+.main-bar {
+  max-width: 75rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  
+  /* Stesso identico cuscinetto laterale degli altri blocchi */
+  padding-left: 0.625rem !important;
+  padding-right: 0.625rem !important;
+  width: 100% !important;
+
+  /* Mantiene l'allineamento orizzontale degli elementi interni */
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* 3. Resetta eventuali margini interni del logo che potrebbero spostarlo */
+.main-bar__logo {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.main-bar__logo a {
+  display: inline-block !important;
+}
+
+/* 4. Mantiene la corretta priorità per il mobile (hamburger a sinistra) se necessario */
+@media (max-width: 1023px) {
+  .lg\:hidden {
+    order: -1 !important;
+  }
+  .main-bar__logo {
+    order: 0 !important;
+  }
+}
+
+
