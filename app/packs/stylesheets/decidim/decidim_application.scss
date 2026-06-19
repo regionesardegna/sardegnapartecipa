@@ -1159,3 +1159,14 @@ svg {
 
 // FINE HAMBURGER ICON
 
+
+
+// Quando il menu mobile è attivo, nasconde la bottombar mobile di Decidim
+body.mobile-menu-open {
+  .button-nav-mobile, 
+  .mobile-nav,
+  [data-component="mobile-nav"],
+  .main-bar__links-mobile  { 
+    display: none !important; 
+  }
+}

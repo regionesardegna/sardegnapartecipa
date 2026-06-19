@@ -70,6 +70,32 @@ function repositionDecidimMenu() {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenu = document.getElementById("dropdown-menu-main-mobile");
+  
+  if (mobileMenu) {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === "aria-hidden") {
+          const isMenuHidden = mobileMenu.getAttribute("aria-hidden") === "true";
+          
+          if (!isMenuHidden) {
+            // Il menu mobile si è aperto -> aggiunge la classe al body
+            document.body.classList.add("mobile-menu-open");
+          } else {
+            // Il menu mobile si è chiuso -> rimuove la classe dal body
+            document.body.classList.remove("mobile-menu-open");
+          }
+        }
+      });
+    });
+
+    // Inizia ad osservare i cambiamenti di attributi sul menu mobile
+    observer.observe(mobileMenu, { attributes: true });
+  }
+});
+
+
 document.addEventListener("DOMContentLoaded", repositionDecidimMenu);
 document.addEventListener("turbolinks:load", repositionDecidimMenu);
 window.addEventListener("load", repositionDecidimMenu);
