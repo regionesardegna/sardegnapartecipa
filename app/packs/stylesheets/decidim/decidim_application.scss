@@ -1174,3 +1174,70 @@ body.mobile-menu-open {
 .main-bar__links-mobile {
   border: solid 1px #505050 !important;
 }
+
+/* ==========================================================================
+   SOLUZIONE DEFINITIVA MENU BAR (TESTO CENTRATO + ICONE ANCORATE A DESTRA)
+   ========================================================================== */
+
+/* 1. Il contenitore principale definisce l'altezza e la gabbia di allineamento */
+.menu-bar {
+  max-width: 75rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0.625rem !important;
+  padding-right: 0.625rem !important;
+  width: 100% !important;
+  
+  /* ABILITA IL FLEXBOX PER CENTRARE IL TESTO VERTICALMENTE */
+  display: flex !important;
+  align-items: center !important; 
+  justify-content: flex-start !important;
+  
+  /* Punto di riferimento per l'ancoraggio assoluto delle icone */
+  position: relative !important; 
+}
+
+/* 2. Il blocco del breadcrumb nativo gestisce solo il testo in modo compatto */
+.menu-bar__breadcrumb-desktop {
+  display: flex !important;
+  align-items: center !important; /* Centra verticalmente testo, casetta e "/" */
+  width: auto !important;
+  max-width: calc(100% - 8rem) !important; /* Impedisce al testo di toccare le icone a destra */
+}
+
+/* 3. Sblocchiamo le icone e le inchiodiamo a destra in modo indipendente */
+.header-actions-right {
+  display: flex !important;
+  align-items: center !important;
+  //gap: 1.25rem !important; /* Spazio tra Cerca e Aiuto */
+  
+  /* ESTRAZIONE DAL FLUSSO INFICIATO DAL DROPDOWN */
+  position: absolute !important;
+  right: 0.625rem !important; /* Perfettamente a filo con il padding destro della gabbia */
+  
+  /* CENTRATURA VERTICALE MATEMATICA RISPETTO ALLA BARRA */
+  top: 50% !important;
+  transform: translateY(-50%) !important; 
+  
+  z-index: 99 !important; /* Rimane sopra lo sfondo ma non interferisce con i click */
+}
+
+/* 4. Reset grafico dei pulsanti delle icone */
+.header-action-btn {
+  font-size: 1.4rem !important;
+  display: flex !important;
+  align-items: center !important;
+  color: #1a1a1a !important; /* Colore scuro standard per la barra bianca */
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7 !important;
+  }
+
+  svg {
+    fill: white !important;
+    height: 1.5rem;
+  }
+}
+
+

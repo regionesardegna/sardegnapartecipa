@@ -40,4 +40,14 @@ Rails.application.config.to_prepare do
 	category: "system", 
 	description: "", 
 	engine: :core)
+  Decidim.icons.register(name: "ri-search-line", 
+    icon: "ri-search-line", 
+	category: "system", 
+	description: "", 
+    engine: :core)
+  Decidim.icons.register(name: "ri-question-line", 
+    icon: "ri-question-line", 
+	category: "system", 
+	description: "", 
+    engine: :core)
 end
