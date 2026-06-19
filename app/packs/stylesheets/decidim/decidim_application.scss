@@ -158,6 +158,41 @@ $color-removal: #ffeef0 !default;
     }
 }
 
+/* Ripristina lo sfondo a tutta larghezza (100%) per i colori della Regione */
+.masthead-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Applica il vincolo di larghezza e l'allineamento solo all'interno del testo */
+.masthead-container .top-header.columns {
+  /* Forza la stessa identica gabbia di allineamento di main-bar e menu */
+  max-width: 75rem !important; 
+  margin-left: auto !important;
+  margin-right: auto !important;
+  
+  /* Allineamento millimetrico identico agli altri blocchi */
+  padding-left: 0.625rem !important; 
+  padding-right: 0.625rem !important;
+  width: 100% !important;
+  float: none !important; /* Rimuove comportamenti float nativi di Foundation */
+  
+  /* Gestione flessibile degli elementi interni (Testo a sinistra, Accedi a destra) */
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+/* Rimuove margini extra dal link che falsano l'allineamento iniziale */
+#institutional-link {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
 // FINE MASTHEAD
 
 // STICKY HEADER
@@ -393,6 +428,53 @@ $color-removal: #ffeef0 !default;
     background-color: white;
   }
   
+  /* 1. Assicura che la fascia esterna occupi il 100% dello schermo */
+  .main-bar__container {
+	  width: 100% !important;
+	  max-width: 100% !important;
+	  margin: 0 !important;
+	  padding: 0 !important;
+   }
+
+   /* 2. Trasforma la main-bar nella gabbia identica al masthead e al menu */
+   .main-bar {
+	  max-width: 75rem !important;
+	  margin-left: auto !important;
+	  margin-right: auto !important;
+	  
+	  /* Stesso identico cuscinetto laterale degli altri blocchi */
+	  padding-left: 0.625rem !important;
+	  padding-right: 0.625rem !important;
+	  width: 100% !important;
+
+	  /* Mantiene l'allineamento orizzontale degli elementi interni */
+	  display: flex !important;
+	  flex-direction: row !important;
+	  justify-content: space-between !important;
+	  align-items: center !important;
+   }
+
+   /* 3. Resetta eventuali margini interni del logo che potrebbero spostarlo */
+   .main-bar__logo {
+	  margin-left: 0 !important;
+	  padding-left: 0 !important;
+   }
+
+   .main-bar__logo a {
+	  display: inline-block !important;
+   }
+
+   /* 4. Mantiene la corretta priorità per il mobile (hamburger a sinistra) se necessario */
+   @media (max-width: 1023px) {
+	  .lg\:hidden {
+		order: -1 !important;
+    }
+	
+	.main-bar__logo {
+		order: 0 !important;
+	}
+   }
+  
 // FINE MAIN BAR
 
 // HOME MENU
@@ -417,8 +499,6 @@ $color-removal: #ffeef0 !default;
 .home__menu {
   width: 100% !important;
   max-width: 100% !important;
-  //margin: 0 !important;
-  //padding: 0 !important;
   display: block !important;
 }
 
@@ -747,6 +827,74 @@ $color-removal: #ffeef0 !default;
     outline-offset: -5px; /* Porta l'outline dentro di 3px */
 }
 
+/* 1. Gestisce lo sfondo del footer a tutta larghezza */
+.mini-footer {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 1.5rem 0 !important; /* Spazio verticale sopra e sotto il footer */
+}
+
+/* 2. Trasforma il contenitore nella griglia simmetrica da 75rem */
+.mini-footer .mini-footer__content {
+  max-width: 75rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0.625rem !important;
+  padding-right: 0.625rem !important;
+  width: 100% !important;
+
+  /* Forza la griglia a tre colonne perfettamente uguali */
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  align-items: center !important; /* Centra verticalmente i contenuti diversi */
+}
+
+/* COLONNA 1: Sinistra */
+.footer-column-left {
+  grid-column: 1 !important;
+  display: flex !important;
+  justify-content: flex-start !important; /* Forza il contenuto a sinistra */
+  text-align: left !important;
+}
+
+/* COLONNA 2: Centro */
+.footer-column-center {
+  grid-column: 2 !important;
+  display: flex !important;
+  justify-content: center !important; /* Forza il blocco al centro */
+  text-align: center !important;      /* Forza il testo interno al centro */
+  margin-top: 0 !important;           /* Resetta il margine superiore nativo */
+}
+
+/* COLONNA 3: Destra */
+.footer-column-right {
+  grid-column: 3 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-end !important; /* Allinea testo e logo a filo destro */
+  text-align: right !important;      /* Forza il testo interno a destra */
+  gap: 0.5rem !important;
+}
+
+/* Ottimizzazione responsive per smartphone */
+@media (max-width: 768px) {
+  .mini-footer .mini-footer__content {
+    grid-template-columns: 1fr !important; /* Diventa una colonna singola su mobile */
+    gap: 1.5rem !important;
+  }
+  
+  .footer-column-left, 
+  .footer-column-center, 
+  .footer-column-right {
+    grid-column: 1 !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+}
+
 // FINE MINI FOOTER
 
 // IMMAGINE EXTERNAL LINK
@@ -1010,87 +1158,4 @@ svg {
 }
 
 // FINE HAMBURGER ICON
-
-
-/* Ripristina lo sfondo a tutta larghezza (100%) per i colori della Regione */
-.masthead-container {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Applica il vincolo di larghezza e l'allineamento solo all'interno del testo */
-.masthead-container .top-header.columns {
-  /* Forza la stessa identica gabbia di allineamento di main-bar e menu */
-  max-width: 75rem !important; 
-  margin-left: auto !important;
-  margin-right: auto !important;
-  
-  /* Allineamento millimetrico identico agli altri blocchi */
-  padding-left: 0.625rem !important; 
-  padding-right: 0.625rem !important;
-  width: 100% !important;
-  float: none !important; /* Rimuove comportamenti float nativi di Foundation */
-  
-  /* Gestione flessibile degli elementi interni (Testo a sinistra, Accedi a destra) */
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-}
-
-/* Rimuove margini extra dal link che falsano l'allineamento iniziale */
-#institutional-link {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-}
-
-/* 1. Assicura che la fascia esterna occupi il 100% dello schermo */
-.main-bar__container {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* 2. Trasforma la main-bar nella gabbia identica al masthead e al menu */
-.main-bar {
-  max-width: 75rem !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  
-  /* Stesso identico cuscinetto laterale degli altri blocchi */
-  padding-left: 0.625rem !important;
-  padding-right: 0.625rem !important;
-  width: 100% !important;
-
-  /* Mantiene l'allineamento orizzontale degli elementi interni */
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-}
-
-/* 3. Resetta eventuali margini interni del logo che potrebbero spostarlo */
-.main-bar__logo {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
-}
-
-.main-bar__logo a {
-  display: inline-block !important;
-}
-
-/* 4. Mantiene la corretta priorità per il mobile (hamburger a sinistra) se necessario */
-@media (max-width: 1023px) {
-  .lg\:hidden {
-    order: -1 !important;
-  }
-  .main-bar__logo {
-    order: 0 !important;
-  }
-}
-
 
