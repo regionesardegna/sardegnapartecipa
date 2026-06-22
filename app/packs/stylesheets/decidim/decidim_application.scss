@@ -1175,9 +1175,9 @@ body.mobile-menu-open {
   border: solid 1px #505050 !important;
 }
 
-/* ==========================================================================
-   SOLUZIONE DEFINITIVA MENU BAR (TESTO CENTRATO + ICONE ANCORATE A DESTRA)
-   ========================================================================== */
+
+// MENU BAR (TESTO CENTRATO + ICONE ANCORATE A DESTRA)
+  
 
 /* 1. Il contenitore principale definisce l'altezza e la gabbia di allineamento */
 .menu-bar {
@@ -1209,7 +1209,6 @@ body.mobile-menu-open {
 .header-actions-right {
   display: flex !important;
   align-items: center !important;
-  //gap: 1.25rem !important; /* Spazio tra Cerca e Aiuto */
   
   /* ESTRAZIONE DAL FLUSSO INFICIATO DAL DROPDOWN */
   position: absolute !important;
@@ -1227,7 +1226,7 @@ body.mobile-menu-open {
   font-size: 1.4rem !important;
   display: flex !important;
   align-items: center !important;
-  color: #1a1a1a !important; /* Colore scuro standard per la barra bianca */
+  color: white !important;
   transition: opacity 0.2s ease;
 
   &:hover {
@@ -1240,4 +1239,35 @@ body.mobile-menu-open {
   }
 }
 
+// FINE MENU BAR (TESTO CENTRATO + ICONE ANCORATE A DESTRA)
 
+
+// SPOSTAMENTO ICONE NELLA HOME MENU
+
+.home__menu .header-actions-right {
+  /* 1. Rimuoviamo il posizionamento assoluto ereditato dalla menu-bar */
+  position: static !important;
+  transform: none !important;
+  
+  /* 2. Sfruttiamo il Flexbox: spingiamo le icone all'estrema destra 
+        del flusso interno del container (rispetta il max-width di 75rem) */
+  margin-left: auto !important;
+}
+
+// FINE SPOSTAMENTO ICONE NELLA HOME MENU
+
+// SEGUI
+
+.menu-bar__actions {
+  /* Spinge l'elemento a destra nel flusso */
+  margin-left: auto !important;
+  
+  /* Crea lo spazio esatto a destra per NON toccare le icone assolute */
+  padding-right: 1.3rem; 
+  
+  /* Allineamento interno al pulsante */
+  display: flex !important;
+  align-items: center !important;
+}
+
+// FINE SEGUI

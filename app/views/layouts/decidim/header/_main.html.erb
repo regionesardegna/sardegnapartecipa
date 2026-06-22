@@ -1,25 +1,20 @@
 <%#
-Copyright (C) 2026 Sardegna IT
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
-
-Integrato per modificare secondo header Sardegna IT
+# Copyright (C) 2026 Sardegna IT
+# 
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+# 
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+# 
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Integrato per modificare secondo header Sardegna IT
 %>
+
 <div id="main-bar" class="main-bar__container">
   <div class="main-bar">
     <div class="main-bar__logo">
       <%= render partial: "layouts/decidim/logo", locals: { organization: current_organization } %>
     </div>
-    <!--div class="main-bar__search"-->
-      <!--%= render partial: "layouts/decidim/header/main_search" %-->
-    <!--/div-->
-    <!--div class="main-bar__links-desktop"-->
-      <!--%= render partial: "layouts/decidim/header/main_links_desktop" %-->
-    <!--/div-->
 
     <div class="lg:hidden">
       <%# Main dropdown mobile %>
