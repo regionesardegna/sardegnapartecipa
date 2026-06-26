@@ -517,12 +517,6 @@ $color-removal: #ffeef0 !default;
   align-items: center !important;
 }
 
-/* 3. Allineamento millimetrico del testo (Annulla il padding sinistro solo sul primo link) */
-//.home__menu .home__menu-element:first-child .home__menu-element--link {
-  //padding-left: 0 !important;
-//}
-
-/* 4. Le tue classi esistenti (invariate, raggruppate per pulizia) */
 .home__menu-element--link {
   width: 100%;
   padding-top: 1px;
@@ -1263,7 +1257,7 @@ body.mobile-menu-open {
   margin-left: auto !important;
   
   /* Crea lo spazio esatto a destra per NON toccare le icone assolute */
-  padding-right: 1.3rem; 
+  padding-left: 1.3rem; 
   
   /* Allineamento interno al pulsante */
   display: flex !important;
@@ -1271,3 +1265,63 @@ body.mobile-menu-open {
 }
 
 // FINE SEGUI
+
+// disattiva i breadcrumb quando non richiesti
+
+@media (max-width: 767px) {
+    .custom-desktop-breadcrumb { display: none !important; }
+}
+
+@media (min-width: 768px) {
+    .custom-mobile-breadcrumb { display: none !important; }
+}
+
+// costringe l'ultimo elemento del drop down trigger mobile ad occupare tutto lo spazio disponibile per evitare un comportamento sbagliato sul menù
+
+@media (max-width: 767px) {
+  /* 1. Forza la menu-bar e i suoi figli diretti ad azzerare i padding verticali 
+        che allontanano il trigger dal menu sottostante */
+  header .menu-bar,
+  header .menu-bar__breadcrumb-mobile {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    height: 3.5rem !important; /* Inserisci qui l'altezza esatta in pixel o rem della tua menu-bar mobile (es. 56px = 3.5rem) */
+  }
+
+  /* 2. Il trigger deve estendersi per tutta l'altezza della barra */
+  header .menu-bar__breadcrumb-mobile__dropdown-trigger {
+    position: relative !important;
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important; /* Prende tutta l'altezza della barra */
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-right: 3rem !important;
+    margin: 0 !important;
+  }
+
+  /* 3. Il bottone dell'hover ora coprirà al 100% sia la larghezza che l'altezza massima,
+        toccando fisicamente l'inizio del pannello del menu secondario */
+  header #secondary-dropdown-trigger-mobile {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    padding-right: 1rem !important;
+    background: transparent !important;
+    z-index: 10 !important;
+  }
+
+  /* 4. Opzionale: Assicurati che il menu a tendina sia attaccato al millimetro 
+        sotto la barra senza margini superiori */
+  header #secondary-dropdown-menu-mobile {
+    margin-top: 0 !important;
+    top: 100% !important;
+  }
+}
+

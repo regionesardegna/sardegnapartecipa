@@ -501,4 +501,13 @@ Rails.application.config.i18n.default_locale = Decidim.default_locale
 Decidim.register_assets_path File.expand_path("app/packs", Rails.application.root)
 
 # Scandenza link allegati
-Rails.application.config.active_storage.service_urls_expire_in = 10.years						 
+Rails.application.config.active_storage.service_urls_expire_in = 10.years		
+
+# config/initializers/decidim.rb
+Rails.application.config.to_prepare do
+  Decidim.content_blocks.for(:participatory_process_homepage).each do |block|
+    if block.name == :main_data
+      block.cell = "custom_main_data"
+    end
+  end
+end				 
