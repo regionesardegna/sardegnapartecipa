@@ -40,10 +40,10 @@ $tertiary: $par-medium-blue;
 $tertiary-rgb: $par-medium-blue-rgb;
 $success: #1f420d !default;
 $success-rgb: 31,66,13 !default;
-$warning: #ff7700 !default;
-$warning-rgb: 255,119,0 !default;
-$alert: #c92004 !default;
-$alert-rgb: 201,32,4 !default;
+$warning: #CC334D !default; // #ff7700 !default;
+$warning-rgb: 204,51,77 !default;
+$alert:  #5C7183 !default; // #c92004 !default;
+$alert-rgb: 92,113,131 !default;
 
 $highlight: #be6400 !default;
 $highlight-rgb: 190,100,0 !default;
@@ -802,12 +802,6 @@ $color-removal: #ffeef0 !default;
     transition: fill 0.05s ease, stroke 0.05s ease;
 }
 
-/* Quando si attiva l'overlap nel footer */
-#back-to-top.invertito svg path {
-    fill: var(--primary) !important; 
-    stroke: var(--primary);
-}
-
 /* 2. Applica bordi e forme all'elemento <svg> generico */
 .back-to-top-img {
     width: 55px !important;
@@ -1276,7 +1270,7 @@ body.mobile-menu-open {
     .custom-mobile-breadcrumb { display: none !important; }
 }
 
-// costringe l'ultimo elemento del drop down trigger mobile ad occupare tutto lo spazio disponibile per evitare un comportamento sbagliato sul menù
+// costringe l'ultimo elemento del dropdown trigger mobile ad occupare tutto lo spazio disponibile per evitare un comportamento sbagliato sul menù
 
 @media (max-width: 767px) {
   /* 1. Forza la menu-bar e i suoi figli diretti ad azzerare i padding verticali 
@@ -1317,7 +1311,7 @@ body.mobile-menu-open {
     z-index: 10 !important;
   }
 
-  /* 4. Opzionale: Assicurati che il menu a tendina sia attaccato al millimetro 
+  /* 4. Menu a tendina sia attaccato al millimetro 
         sotto la barra senza margini superiori */
   header #secondary-dropdown-menu-mobile {
     margin-top: 0 !important;
@@ -1325,3 +1319,11 @@ body.mobile-menu-open {
   }
 }
 
+@media (max-width: 39.9988em) {
+  .admin-bar__button:not([class*="button__text"]) {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+  }
+}

@@ -25,6 +25,7 @@ $window.on('scroll', function() {
             $backToTop.fadeIn(200);
             
             // Logica inversione colore
+			/*
             const btnTop = $backToTop.offset().top;
             let overlap = false;
             $('.main-footer__down').each(function() {
@@ -36,6 +37,7 @@ $window.on('scroll', function() {
                 }
             });
             $backToTop.toggleClass('invertito', overlap);
+			*/
         } else {
             $backToTop.fadeOut(200);
         }
