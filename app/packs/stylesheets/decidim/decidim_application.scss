@@ -1319,11 +1319,35 @@ body.mobile-menu-open {
   }
 }
 
+// sposta il bottone Modifica in linea con Cruscotto Amministratori (Admin Dashboard) su Mobile
+
 @media (max-width: 39.9988em) {
   .admin-bar__button:not([class*="button__text"]) {
     padding-top: 0.25rem !important;
     padding-bottom: 0.25rem !important;
 	padding-left: 0 !important;
 	padding-right: 0 !important;
+  }
+}
+
+
+// modifica colore grigio delle icone nel menù
+
+.dropdown__item > svg {
+  height: 1rem;
+  width: 1rem;
+  flex: none;
+  fill: currentColor;
+  color: #505050;
+}
+
+// aggiusta il menù a tendina per evitare che sbordi a destra
+
+@media (max-width: 767px) {
+  #dropdown-menu-account {
+    position: absolute !important;
+    right: 0 !important;
+    left: auto !important;
+    transform: translateX(-50px) !important;
   }
 }
