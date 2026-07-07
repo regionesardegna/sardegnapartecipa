@@ -7,11 +7,18 @@
 #
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 #
-# Modificata per mostrare le icone Cerca e Aiuto a destra
+# Modificata per mostrare le icone Cerca e Aiuto a destra e aggiungere il logo in modalità sticky
 %>
 
 <section id="home__menu" class="home__menu">
   <div class="home__menu__container">
+    
+	<% if current_organization.official_img_footer.attached? %>
+      <%= link_to(current_organization.official_url, id: "sticky-logo-home") do %>
+	 	<%= image_tag current_organization.attached_uploader(:official_img_footer).url, alt: current_organization.name %>
+	  <% end %>
+    <% end %>
+  
     <% menu_items.each do |item| %>
       <div class="home__menu-element">
         <%= link_to item.url, class: "button button__text home__menu-element--link" do %>

@@ -100,7 +100,7 @@ $color-removal: #ffeef0 !default;
 }
 
 /* 2. Forza il contenuto interno a rientrare e allinearsi al layout di Decidim */
-.top-header {
+.masthead {
   color: #fff;
   line-height: 28px;
   width: 100%;
@@ -167,7 +167,7 @@ $color-removal: #ffeef0 !default;
 }
 
 /* Applica il vincolo di larghezza e l'allineamento solo all'interno del testo */
-.masthead-container .top-header.columns {
+.masthead-container .masthead.columns {
   /* Forza la stessa identica gabbia di allineamento di main-bar e menu */
   max-width: 75rem !important; 
   margin-left: auto !important;
@@ -197,27 +197,38 @@ $color-removal: #ffeef0 !default;
 
 // STICKY HEADER
 
-/* --- STATO DI DEFAUT (Non Sticky) --- */
-#top-header { height: 40px; transition: height 0.2s; }
+/* --- STATO DI DEFAULT (Non Sticky) --- */
+#masthead { height: 40px; transition: height 0.2s; }
 #img-user-icon { display: inline-block; height: 24px !important; width: 24px !important; }
 #img-gonfalone { height: 28px; transition: height 0.2s; float: left; }
 #institutional-link { font-size: 14px; }
 #img-gonfalone-grande{ height: 70px; }
+#main-bar { display: block !important; }
+#sticky-logo, #sticky-logo-home { display: none !important; }
+
 
 /* --- STATO STICKY (Comune a tutte le risoluzioni) --- */
 .page-is-sticky #img-user-icon { display: none; }
 .page-is-sticky #img-gonfalone { height: 24px; }
-
+//.page-is-sticky #masthead-container { border-bottom: none; width: 100%; }
+.page-is-sticky #menu-bar { border-top: none; }
+.page-is-sticky #home__menu { border-top: none; }
 
 /* Specifiche per Mobile (< 640px) quando è Sticky */
 @media (max-width: 639px) {
-    .page-is-sticky #top-header { height: 28px; }
+    .page-is-sticky #masthead { height: 28px; }
 	#img-gonfalone-grande { display: none; }
 }
 
 /* Specifiche per Desktop (>= 640px) quando è Sticky */
 @media (min-width: 640px) {
     .page-is-sticky #institutional-link { font-size: 12px; }
+	.page-is-sticky #main-bar { display: none !important; }
+	.page-is-sticky #sticky-logo, .page-is-sticky #sticky-logo-home { display: block !important; }
+	.page-is-sticky #home-icon { display: none !important; }
+	//.page-is-sticky #masthead-container { border-bottom: 4px solid white; width: 100%; }
+	.page-is-sticky #menu-bar { border-top: 4px solid white; }
+    .page-is-sticky #home__menu { border-top: 4px solid white; }
 }
 
 .dropdown__bottom::before {
@@ -253,6 +264,15 @@ $color-removal: #ffeef0 !default;
   content: '';
   content: var(--tw-content);
   border: solid 1px #505050 !important;
+}
+
+#sticky-logo img{
+  height: 2em;
+}
+
+#sticky-logo-home img {
+  height: 2em;
+  margin-right: 1.5em !important;
 }
 
 // FINE STICKY HEADER

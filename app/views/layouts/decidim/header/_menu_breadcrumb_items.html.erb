@@ -7,7 +7,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 #
-# Modificata per trimmare il nome Processo
+# Modificata per inserire un trim alle diverse voci del breadcrumb
 %>
 
 <% breadcrumb_items.each_with_index do |item, i| %>
@@ -18,8 +18,9 @@
   <% if item[:dropdown_cell].present? %>
     <div class="relative">
       <div class="menu-bar__breadcrumb-desktop__dropdown-wrapper" <%== 'aria-current="page"' if item[:active] %> onmouseenter="document.getElementById('secondary-dropdown-menu-<%= i %>').classList.remove('no-animation')">
-        <%= link_to item[:url], class: "menu-bar__breadcrumb-desktop__dropdown-trigger", onmouseenter: "document.getElementById('secondary-dropdown-summary-#{i}').click()" do %>
-          <%= item_label.truncate_words(6, omission: "...") %>
+        <% limit = Rails.application.secrets.dig(:decidim, :breadcrumb_truncate_after_words) %>
+		<%= link_to item[:url], class: "menu-bar__breadcrumb-desktop__dropdown-trigger", onmouseenter: "document.getElementById('secondary-dropdown-summary-#{i}').click()" do %>
+          <%= item_label.truncate_words(limit, omission: "...") %>
         <% end %>
         <button id="secondary-dropdown-summary-<%= i %>"
           class="menu-bar__breadcrumb-desktop__dropdown-trigger"
