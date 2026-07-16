@@ -109,13 +109,13 @@ $color-removal: #ffeef0 !default;
   align-items: center;
   
   /* Regole fondamentali per il rientro nel layout */
-  max-width: 75rem;       /* La larghezza massima standard del layout di Decidim (1200px) */
+  //max-width: 75rem;       /* La larghezza massima standard del layout di Decidim (1200px) */
   margin-right: auto;     /* Centra il blocco nello schermo */
   margin-left: auto;      /* Centra il blocco nello schermo */
-  padding-right: 1.25rem; /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
-  padding-left: 1.25rem;  /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
+  //padding-right: 2rem; /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
+  //padding-left: 2rem;  /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
   
-  background-color: transparent; /* Rimuoviamo il blu da qui per evitare l'effetto "tagliato" */
+  background-color: var(--primary) !important; /* Rimuoviamo il blu da qui per evitare l'effetto "tagliato" */
 }
 
 /* 3. Assicura che i link interni (testo e immagine) ereditino correttamente gli stili */
@@ -158,18 +158,24 @@ $color-removal: #ffeef0 !default;
     }
 }
 
+/* Rende trasparente il container interno solo nel masthead */
+.masthead-container .container {
+  background-color: transparent !important;
+}
+
 /* Ripristina lo sfondo a tutta larghezza (100%) per i colori della Regione */
 .masthead-container {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
+  background-color: var(--primary) !important;
 }
 
 /* Applica il vincolo di larghezza e l'allineamento solo all'interno del testo */
 .masthead-container .masthead.columns {
   /* Forza la stessa identica gabbia di allineamento di main-bar e menu */
-  max-width: 75rem !important; 
+  //max-width: 75rem !important; 
   margin-left: auto !important;
   margin-right: auto !important;
   
@@ -183,6 +189,7 @@ $color-removal: #ffeef0 !default;
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
+  
 }
 
 /* Rimuove margini extra dal link che falsano l'allineamento iniziale */
@@ -210,7 +217,6 @@ $color-removal: #ffeef0 !default;
 /* --- STATO STICKY (Comune a tutte le risoluzioni) --- */
 .page-is-sticky #img-user-icon { display: none; }
 .page-is-sticky #img-gonfalone { height: 24px; }
-//.page-is-sticky #masthead-container { border-bottom: none; width: 100%; }
 .page-is-sticky #menu-bar { border-top: none; }
 .page-is-sticky #home__menu { border-top: none; }
 
@@ -226,7 +232,6 @@ $color-removal: #ffeef0 !default;
 	.page-is-sticky #main-bar { display: none !important; }
 	.page-is-sticky #sticky-logo, .page-is-sticky #sticky-logo-home { display: block !important; }
 	.page-is-sticky #home-icon { display: none !important; }
-	//.page-is-sticky #masthead-container { border-bottom: 4px solid white; width: 100%; }
 	.page-is-sticky #menu-bar { border-top: 4px solid white; }
     .page-is-sticky #home__menu { border-top: 4px solid white; }
 }
@@ -287,6 +292,7 @@ $color-removal: #ffeef0 !default;
     align-items: center;
     grid-gap: 1rem;
     gap: 1rem;
+	max-width: none !important;
   }
   
   @media (min-width: 1024px) {
@@ -458,7 +464,7 @@ $color-removal: #ffeef0 !default;
 
    /* 2. Trasforma la main-bar nella gabbia identica al masthead e al menu */
    .main-bar {
-	  max-width: 75rem !important;
+	  //max-width: 75rem !important;
 	  margin-left: auto !important;
 	  margin-right: auto !important;
 	  
@@ -499,22 +505,6 @@ $color-removal: #ffeef0 !default;
 
 // HOME MENU
 
-/*
-.home__menu {
-  --tw-bg-opacity: 1;
-  background-color: var(--primary-rgb);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.home__menu__container {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  padding-left: 6rem;
-}
-*/
-
 /* 1. Gestisce lo sfondo rosso a tutta larghezza (100%) dello schermo */
 .home__menu {
   width: 100% !important;
@@ -524,17 +514,26 @@ $color-removal: #ffeef0 !default;
 
 /* 2. Replica la gabbia esatta del masthead della Regione sul contenitore reale */
 .home__menu .home__menu__container {
-  max-width: 75rem !important; 
+  //max-width: 75rem !important; 
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 0.625rem !important; 
-  padding-right: 0.625rem !important;
+  //padding-left: 0.625rem !important; 
+  //padding-right: 0.625rem !important;
   width: 100% !important;
   
   /* Forza il comportamento flex e allinea i blocchi a sinistra */
   display: flex !important;
   justify-content: flex-start !important;
   align-items: center !important;
+}
+
+.home__menu .container,
+.home__menu .home__menu__container {
+  background-color: transparent !important;
+}
+
+.home__menu {
+  background-color: var(--secondary) !important; 
 }
 
 .home__menu-element--link {
@@ -563,6 +562,7 @@ $color-removal: #ffeef0 !default;
 @supports (color: rgb(0 0 0 / 0)) {
   footer .main-footer {
     background-color: $par-medium-blue;
+	padding-top: 2rem;
   }
 }
 
@@ -578,8 +578,8 @@ $color-removal: #ffeef0 !default;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    //padding-right: 1rem;
+    //padding-left: 1rem;
 }
 
 .main-footer__down {
@@ -601,15 +601,15 @@ $color-removal: #ffeef0 !default;
 
 @media (min-width: 1024px) {
   footer .main-footer__down {
-    padding-right: 5.5rem;
-    padding-left: 5.5rem;
+    padding-right: 0 !important; //5.5rem;
+    padding-left: 0 !important; //5.5rem;
   }
 }
 
 @media (min-width: 1024px) {
     footer .main-footer__middle {
-      padding-right: 5.5rem;
-      padding-left: 5.5rem;
+      padding-right: 0 !important; //5.5rem;
+      padding-left: 0 !important; //5.5rem;
     }
 }
 
@@ -620,6 +620,7 @@ $color-removal: #ffeef0 !default;
        flex-direction: row; 
        align-items: center; 
        justify-content: space-between;
+	   padding-bottom: 2rem;
     }
 }
 
@@ -708,6 +709,7 @@ $color-removal: #ffeef0 !default;
 @media (min-width: 1024px) {
   .main-footer__top {
     flex-direction: column !important;
+	padding: 0 !important;
   }
 }
 
@@ -1019,6 +1021,24 @@ $color-removal: #ffeef0 !default;
 // FINE ASSEMBLEE IN HP
 
 // MENU CONTESTUALE A PARTIRE DAI PROCESSI E ASSEMBLEE
+
+  .menu-bar__container .container,
+  .menu-bar__container .menu-bar {
+    background-color: transparent !important;
+  }
+  
+  /* 2. Ripristina il corretto allineamento verticale dei breadcrumbs */
+  .menu-bar__container .container {
+    display: flex;
+    align-items: center;
+    min-height: 2.5rem; /* Regola l'altezza minima se necessario per uniformarla */
+  }
+
+  /* 3. Gestisci lo sfondo a larghezza intera della barra dei breadcrumbs */
+  .menu-bar__container {
+    background-color: #f4f4f4; /* Grigio chiaro standard, cambialo con var(--secondary) o altro se vuoi personalizzarlo */
+    border-bottom: 1px solid #e5e7eb; /* Opzionale: un leggero separatore inferiore */
+  }
   
   // border grigio in entrambi i menù a tendina
   
@@ -1189,11 +1209,14 @@ body.mobile-menu-open {
 
 /* 1. Il contenitore principale definisce l'altezza e la gabbia di allineamento */
 .menu-bar {
-  max-width: 75rem !important;
+  //max-width: 75rem !important;
   margin-left: auto !important;
   margin-right: auto !important;
-  padding-left: 0.625rem !important;
-  padding-right: 0.625rem !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  //padding-left: 0.625rem !important;
+  //padding-right: 0.625rem !important;
+  padding-top: 10px !important;
   width: 100% !important;
   
   /* ABILITA IL FLEXBOX PER CENTRARE IL TESTO VERTICALMENTE */
@@ -1203,6 +1226,7 @@ body.mobile-menu-open {
   
   /* Punto di riferimento per l'ancoraggio assoluto delle icone */
   position: relative !important; 
+  
 }
 
 /* 2. Il blocco del breadcrumb nativo gestisce solo il testo in modo compatto */
@@ -1217,16 +1241,13 @@ body.mobile-menu-open {
 .header-actions-right {
   display: flex !important;
   align-items: center !important;
-  
-  /* ESTRAZIONE DAL FLUSSO INFICIATO DAL DROPDOWN */
   position: absolute !important;
   right: 0.625rem !important; /* Perfettamente a filo con il padding destro della gabbia */
-  
-  /* CENTRATURA VERTICALE MATEMATICA RISPETTO ALLA BARRA */
   top: 50% !important;
   transform: translateY(-50%) !important; 
-  
   z-index: 99 !important; /* Rimane sopra lo sfondo ma non interferisce con i click */
+  padding-top: 10px;
+  padding-right: 0 !important;
 }
 
 /* 4. Reset grafico dei pulsanti delle icone */
@@ -1236,6 +1257,7 @@ body.mobile-menu-open {
   align-items: center !important;
   color: white !important;
   transition: opacity 0.2s ease;
+  padding: 0 0.5rem; 
 
   &:hover {
     opacity: 0.7 !important;

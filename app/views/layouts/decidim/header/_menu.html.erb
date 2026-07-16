@@ -12,9 +12,11 @@
 %>
 
 <div id="menu-bar" class="menu-bar__container">
-  <div class="menu-bar">
+  
+  <!-- 1. LIVELLO GRIGLIA: Gestisce solo larghezza, allineamento e centratura col resto del sito -->
+  <div class="container mx-auto px-4 lg:px-8">
 
-    <%# Desktop: Nascondi via CSS inline sotto i 768px (standard md di Tailwind) %>
+  <div class="menu-bar">
 
     <div class="menu-bar__breadcrumb-desktop custom-desktop-breadcrumb">
       <%= render partial: "layouts/decidim/header/menu_breadcrumb_desktop" %>
@@ -24,5 +26,6 @@
       <%= render partial: "layouts/decidim/header/menu_breadcrumb_mobile_tablet" %>
     </div>
 
+   </div>
   </div>
 </div>

@@ -11,7 +11,11 @@
 %>
 
 <section id="home__menu" class="home__menu">
-  <div class="home__menu__container">
+  <!-- 1. LIVELLO GRIGLIA: Gestisce solo larghezza, allineamento e centratura col resto del sito -->
+  <div class="container mx-auto px-4 lg:px-8">
+  
+   <!-- AGGIUNTO: container mx-auto px-4 lg:px-8 per l'allineamento perfetto -->
+   <div class="home__menu__container">
     
 	<% if current_organization.official_img_footer.attached? %>
       <%= link_to(current_organization.official_url, id: "sticky-logo-home") do %>
@@ -27,5 +31,6 @@
       </div>
     <% end %>
 	<%= controller.view_context.render partial: "layouts/decidim/header/menu_actions_right" %>
+   </div>
   </div>
 </section>
