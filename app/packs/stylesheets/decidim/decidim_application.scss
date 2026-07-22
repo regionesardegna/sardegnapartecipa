@@ -713,6 +713,13 @@ $color-removal: #ffeef0 !default;
   }
 }
 
+// border sopra e sotto la banda rossa del footer
+
+.main-footer__down {
+    border-bottom: 3px solid white;
+    border-top: 3px solid white;
+}
+
 // FINE FOOTER
 
 // MINI FOOTER
@@ -1187,8 +1194,6 @@ svg {
 
 // FINE HAMBURGER ICON
 
-
-
 // Quando il menu mobile è attivo, nasconde la bottombar mobile di Decidim
 body.mobile-menu-open {
   .button-nav-mobile, 
@@ -1392,4 +1397,26 @@ body.mobile-menu-open {
     left: auto !important;
     transform: translateX(-50px) !important;
   }
+}
+
+/* Aggiornamento accessibilità: porta i font extra-small da 13px a 14px */
+.text-xs, 
+.button__pill--count,
+.input-character-counter__text,
+.filter-help,
+.card__calendar-month,
+.card__calendar-year,
+.endorsers-list__counter,
+.author__avatar-counter,
+.notification__button,
+.profile__actions-secondary,
+.conversation__message-sender,
+.conversation__message-time,
+.cookies__category-panel__td,
+.participatory-space__block-reference,
+.conversation__modal [role="listbox"] small, 
+.conversation__modal-results small,
+.decidim_awesome-custom_fields .proposal_custom_field label .tooltip-element::before {
+    font-size: 0.875rem !important; /* Corrisponde a 14px */
+    line-height: 1.125rem !important; /* Corrisponde a 18px */
 }
