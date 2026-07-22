@@ -109,11 +109,8 @@ $color-removal: #ffeef0 !default;
   align-items: center;
   
   /* Regole fondamentali per il rientro nel layout */
-  //max-width: 75rem;       /* La larghezza massima standard del layout di Decidim (1200px) */
   margin-right: auto;     /* Centra il blocco nello schermo */
   margin-left: auto;      /* Centra il blocco nello schermo */
-  //padding-right: 2rem; /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
-  //padding-left: 2rem;  /* Margine di sicurezza interno per schermi piccoli/mobile (20px) */
   
   background-color: var(--primary) !important; /* Rimuoviamo il blu da qui per evitare l'effetto "tagliato" */
 }
@@ -175,7 +172,6 @@ $color-removal: #ffeef0 !default;
 /* Applica il vincolo di larghezza e l'allineamento solo all'interno del testo */
 .masthead-container .masthead.columns {
   /* Forza la stessa identica gabbia di allineamento di main-bar e menu */
-  //max-width: 75rem !important; 
   margin-left: auto !important;
   margin-right: auto !important;
   
@@ -464,7 +460,6 @@ $color-removal: #ffeef0 !default;
 
    /* 2. Trasforma la main-bar nella gabbia identica al masthead e al menu */
    .main-bar {
-	  //max-width: 75rem !important;
 	  margin-left: auto !important;
 	  margin-right: auto !important;
 	  
@@ -514,11 +509,8 @@ $color-removal: #ffeef0 !default;
 
 /* 2. Replica la gabbia esatta del masthead della Regione sul contenitore reale */
 .home__menu .home__menu__container {
-  //max-width: 75rem !important; 
   margin-left: auto !important;
   margin-right: auto !important;
-  //padding-left: 0.625rem !important; 
-  //padding-right: 0.625rem !important;
   width: 100% !important;
   
   /* Forza il comportamento flex e allinea i blocchi a sinistra */
@@ -578,18 +570,15 @@ $color-removal: #ffeef0 !default;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    //padding-right: 1rem;
-    //padding-left: 1rem;
 }
+
+// border bianco sopra e sotto la banda rossa del footer
 
 .main-footer__down {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 1.5rem;
-    border-top-width: 1px;
-    --tw-border-opacity: 1;
-    border-color: rgb(2 2 3 / 1);
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     --tw-text-opacity: 1;
@@ -597,19 +586,21 @@ $color-removal: #ffeef0 !default;
     background-color: $par-deep-red;
 	max-width: 100% !important;
 	width: 100% !important;
+	border-bottom: 3px solid white !important;
+    border-top: 3px solid white !important;
 }
 
 @media (min-width: 1024px) {
   footer .main-footer__down {
-    padding-right: 0 !important; //5.5rem;
-    padding-left: 0 !important; //5.5rem;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
   }
 }
 
 @media (min-width: 1024px) {
     footer .main-footer__middle {
-      padding-right: 0 !important; //5.5rem;
-      padding-left: 0 !important; //5.5rem;
+      padding-right: 0 !important;
+      padding-left: 0 !important;
     }
 }
 
@@ -711,13 +702,6 @@ $color-removal: #ffeef0 !default;
     flex-direction: column !important;
 	padding: 0 !important;
   }
-}
-
-// border sopra e sotto la banda rossa del footer
-
-.main-footer__down {
-    border-bottom: 3px solid white;
-    border-top: 3px solid white;
 }
 
 // FINE FOOTER
@@ -1219,8 +1203,6 @@ body.mobile-menu-open {
   margin-right: auto !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
-  //padding-left: 0.625rem !important;
-  //padding-right: 0.625rem !important;
   padding-top: 10px !important;
   width: 100% !important;
   

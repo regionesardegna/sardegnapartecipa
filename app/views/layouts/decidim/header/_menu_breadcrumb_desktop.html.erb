@@ -9,7 +9,7 @@
   
   <% if current_organization.official_img_footer.attached? %>
     <%= link_to(current_organization.official_url, id: "sticky-logo") do %>
-      <%= image_tag current_organization.attached_uploader(:official_img_footer).url, alt: current_organization.name, aria: { label: current_organization.name, hidden: false }, role: "img" %>
+      <%= image_tag current_organization.attached_uploader(:official_img_footer).url, alt: current_organization.name, aria_label: current_organization.name, aria_hidden: "false", role: "img" %>
     <% end %>
   <% end %>
   
