@@ -37,12 +37,32 @@ module Decidim
       end
 
       def locals
+        # In Decidim 0.28, 'collection' contiene direttamente gli oggetti Answer.
+        # Estraiamo in sicurezza il primo oggetto per risalire al questionario comune.
+        first_answer = collection.respond_to?(:first) ? collection.first : nil
+        
+        # Gestiamo il caso in cui la collection sia un array piana di risposte
+        resolved_questionnaire = if first_answer.respond_to?(:questionnaire)
+                                   first_answer.questionnaire
+                                 elsif first_answer.is_a?(Array)
+                                   first_answer.first&.respond_to?(:questionnaire) ? first_answer.first.questionnaire : nil
+                                 else
+                                   nil
+                                 end
+
         {
           organization: @organization,
-          questionnaire: collection.first.first.questionnaire,
-          collection: collection.map { |answer| Decidim::Forms::Admin::QuestionnaireParticipantPresenter.new(participant: answer.first) }
+          questionnaire: resolved_questionnaire,
+          # Mappiamo ogni singola risposta direttamente nel presenter ministeriale della 0.28
+          collection: collection.map { |answer| 
+            # Se per qualche motivo l'elemento è ancora un array prendiamo il primo, altrimenti l'oggetto stesso
+            actual_answer = answer.is_a?(Array) ? answer.first : answer
+            Decidim::Forms::Admin::QuestionnaireParticipantPresenter.new(participant: actual_answer) 
+          }
         }
       end
+
+
     end
   end
 end
