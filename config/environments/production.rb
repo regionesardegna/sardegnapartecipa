@@ -103,6 +103,11 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+  
+  # Use a different logger for distributed setups.
+  # require 'syslog/logger'
+  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, shift_age = 'daily')
+  config.logger.formatter = Logger::Formatter.new
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
@@ -127,4 +132,14 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+  
+  # 1. Crea un logger dedicato (su file o STDOUT)
+  saml_logger = Logger.new('log/saml_debug.log') # oppure Logger.new(STDOUT)
+
+  # 2. Imposta il livello su DEBUG
+  saml_logger.level = Logger::DEBUG
+
+  # 3. Assegna il logger alla libreria ruby-saml
+  OneLogin::RubySaml::Logging.logger = saml_logger
+  
 end
