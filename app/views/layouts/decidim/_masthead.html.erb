@@ -15,7 +15,7 @@
 		<div class="masthead" id="masthead">
 		  <%= link_to "https://www.regione.sardegna.it", id: "institutional-link", class: "institutional-link", aria: "Collegamento a sito esterno - Sito della Regione Sardegna - nuova finestra", title: "Regione Autonoma della Sardegna", target: "_blank" do %>
 			  <%= image_pack_tag("media/images/ras_gonfalone-2021.svg", alt: "Gonfalone Sardegna", 'aria-label': "Gonfalone Sardegna",  class: "img-gonfalone", id: "img-gonfalone", role: "img") %>
-			  <span class="institutional-link-text">Regione Autonoma della Sardegna</span>
+			  <span class="institutional-link-text"><%= t("layouts.decidim.masthead.region_name") %></span>
 		  <%end%>
 		  <% if !current_user %>
 			  <div>

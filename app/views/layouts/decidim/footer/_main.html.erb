@@ -34,10 +34,10 @@
   <div class="main-footer__down">
 	<!-- AGGIUNTO: Contenitore anche qui per allineare i loghi -->
     <div class="container mx-auto px-4 lg:px-8">
-		<nav class="md:w-1/2 lg:w-auto" role="navigation" aria-label="Legal">
+		<nav class="md:w-1/2 lg:w-auto" role="navigation" aria-label="<%= t("layouts.decidim.footer.main.legal_aria_label") %>">
 		  <%= render partial: "layouts/decidim/footer/main_legal" %>
 		</nav>
-		<nav class="max-w-fit w-full md:w-auto md:ml-auto" role="navigation" aria-label="Social media">
+		<nav class="max-w-fit w-full md:w-auto md:ml-auto" role="navigation" aria-label="<%= t("layouts.decidim.footer.main.social_aria_label") %>">
 		  <%= render partial: "layouts/decidim/footer/main_social_media_links" %>
 		</nav>
     </div>

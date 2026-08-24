@@ -10,8 +10,8 @@
 # Modificato per gestire il link alla dichiarazione di accessibilità
 %>
 
-<nav role="navigation" aria-label="Sardegna ParteciPA">
-  <h1 class="footer_header">MENU</h2>
+<nav role="navigation" aria-label="<%= t("layouts.decidim.footer.main_links.nav_aria_label") %>">
+  <h1 class="footer_header"><%= t("layouts.decidim.footer.main_links.menu_header") %></h2>
   <div class="footer_text">
     <p>
       <%= link_to "HOME", decidim.root_path, class: "hover:underline text-white opacity-90 block" %>
@@ -28,26 +28,26 @@
   </div>
 </nav>
 
-<nav role="navigation" aria-label="SEDE">
-  <h1 class="footer_header">SEDE</h1>
+<nav role="navigation" aria-label="<%= t("layouts.decidim.footer.main_links.headquarters_aria_label") %>">
+  <h1 class="footer_header"><%= t("layouts.decidim.footer.main_links.headquarters_header") %></h1>
 		<div class="footer_text">
-			<p>Regione Autonoma della Sardegna - Presidenza Direzione generale della Presidenza</p>
-			<p>Viale Trento, 69 09123 - Cagliari</p>
-			<p>Telefono: 070/6062200 - Fax: 070/6062398</p>
-			<p>Email: pres.dirgen@regione.sardegna.it</p>
+			<p><%= t("layouts.decidim.footer.main_links.headquarters_line1") %></p>
+			<p><%= t("layouts.decidim.footer.main_links.headquarters_line2") %></p>
+			<p><%= t("layouts.decidim.footer.main_links.headquarters_line3") %></p>
+			<p><%= t("layouts.decidim.footer.main_links.headquarters_line4") %></p>
 			<p>&nbsp;</p>
-			<p>Servizio Comunicazione istituzionale</p>
-			<p>Viale Trento, 69 - 09123 Cagliari</p>
-			<p>Telefono 070/6062087</p>
-			<p>Email: pres.comunicazione@regione.sardegna.it</p>
+			<p><%= t("layouts.decidim.footer.main_links.department_line1") %></p>
+			<p><%= t("layouts.decidim.footer.main_links.department_line2") %></p>
+			<p><%= t("layouts.decidim.footer.main_links.department_line3") %></p>
+			<p><%= t("layouts.decidim.footer.main_links.department_line4") %></p>
 		</div>
   </ul>
 </nav>
 
 <nav role="navigation" aria-label=CONTATTI>
-  <h1 class="footer_header">CONTATTI</h1>
+  <h1 class="footer_header"><%= t("layouts.decidim.footer.main_links.contacts_header") %></h1>
 	<div class="footer_text">
-		<p>E' disponibile un servizio di supporto utenti</p>
+		<p><%= t("layouts.decidim.footer.main_links.support_notice") %></p>
 		<p>che risponde all'indirizzo</p>
 		<p>sardegnapartecipa@regione.sardegna.it</p>
 	</div>

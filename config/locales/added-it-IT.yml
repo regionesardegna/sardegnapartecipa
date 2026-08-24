@@ -1,4 +1,37 @@
 it:
+  layouts:
+    decidim:
+      masthead:
+        region_name: "Regione Autonoma della Sardegna"
+      header:
+        menu_actions_right:
+          search: "Cerca"
+          help: "Aiuto"
+      footer:
+        main:
+          legal_aria_label: "Legal"
+          social_aria_label: "Social media"
+        main_links:
+          nav_aria_label: "Sardegna ParteciPA"
+          menu_header: "MENU"
+          headquarters_aria_label: "SEDE"
+          headquarters_header: "SEDE"
+          headquarters_line1: "Regione Autonoma della Sardegna - Presidenza Direzione generale della Presidenza"
+          headquarters_line2: "Viale Trento, 69 09123 - Cagliari"
+          headquarters_line3: "Telefono: 070/6062200 - Fax: 070/6062398"
+          headquarters_line4: "Email: pres.dirgen@regione.sardegna.it"
+          department_line1: "Servizio Comunicazione istituzionale"
+          department_line2: "Viale Trento, 69 - 09123 Cagliari"
+          department_line3: "Telefono 070/6062087"
+          department_line4: "Email: pres.comunicazione@regione.sardegna.it"
+          contacts_header: "CONTATTI"
+          support_notice: "E' disponibile un servizio di supporto utenti"
+        main_legal:
+          accessibility_declaration: "Dichiarazione di Accessibilità"
+        mini:
+          logo_title: "Logo ParteciPa"
+          logo_alt: "Logo ParteciPa"
+          logo_aria_label: "Logo ParteciPa"
   decidim:
     pages:
       home:
@@ -17,3 +50,5 @@ it:
           # 4. Blog
           blog: "Blog"
           blog_explanation: "Discutere, condividere opinioni e informazioni sulla consultazione."
+    spid:
+      login_button: "Entra con SPID, CIE o CNS"
