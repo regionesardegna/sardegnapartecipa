@@ -2,10 +2,10 @@
   "name": "partecipa",
   "private": true,
   "dependencies": {
-    "@decidim/browserslist-config": "file:packages/browserslist-config",
-    "@decidim/core": "file:packages/core",
-    "@decidim/elections": "file:packages/elections",
-    "@decidim/webpacker": "file:packages/webpacker",
+    "@decidim/browserslist-config": "0.27.10",
+    "@decidim/core": "0.27.10",
+    "@decidim/elections": "0.27.10",
+    "@decidim/webpacker": "0.27.10",
     "@rails/actioncable": "^6.1.710",
     "@rails/webpacker": "^6.0.0-rc.6",
     "@tarekraafat/autocomplete.js": "^10.2.9",
@@ -22,6 +22,7 @@
     "jsrender": "^1.0.16",
     "leaflet.featuregroup.subgroup": "^1.0.2",
     "marked": "^5.1.2",
+    "postcss-import": "^16.2.0",
     "sass-loader": "10.0.4",
     "select2": "^4.1.0-rc.0"
   },
