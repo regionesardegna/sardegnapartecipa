@@ -52,3 +52,8 @@ it:
           blog_explanation: "Discutere, condividere opinioni e informazioni sulla consultazione."
     spid:
       login_button: "Entra con SPID, CIE o CNS"
+  password_validator:
+    no_capital_letters: "deve contenere almeno una lettera maiuscola"
+    no_symbols: "deve contenere almeno un simbolo speciale (!@#$%^&*)"
+    no_numbers: "deve contenere almeno un numero"
+    no_lower_letters: "deve contenere almeno una lettera minuscola"
