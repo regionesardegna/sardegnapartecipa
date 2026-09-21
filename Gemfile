@@ -6,7 +6,6 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = 'v0.27.10'
 
-
 gem 'bootsnap'
 gem 'daemons'
 gem 'decidim', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
@@ -43,7 +42,8 @@ group :development, :test do
   gem 'decidim-dev', git: 'http://github.com/decidim/decidim', tag: DECIDIM_VERSION
   gem 'simplecov', '~> 0.21.0'
   gem 'brakeman', '~> 5.2'
-  gem 'parallel_tests', '~> 3.7'
+  
+  
 end
 
 group :development do
@@ -56,9 +56,13 @@ group :development do
   gem 'sql_tracker'
   gem 'awesome_print'
   gem 'xray-rails'
-  #gem 'decidim-design'
-  #gem 'pry'
-  #gem 'pry-byebug' # Integrates pry with byebug
-  #gem 'pry-doc' # Provide MRI Core documentation
-  #gem 'pry-rails'
+end
+
+group :test do
+  gem 'parallel_tests', '~> 3.7'
+  gem 'rspec-rails', '~> 4.0'
+  gem 'capybara'
+  gem 'webdrivers', '~> 5.3'
+  gem 'rack_session_access'
+  gem 'factory_bot_rails'
 end
