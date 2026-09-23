@@ -28,6 +28,7 @@ gem 'wkhtmltopdf-binary'
 gem 'i18n', '~> 1.14.0'
 
 group :development, :test do
+  gem "rspec-rails", "~> 6.1"
   gem "byebug", "~> 11.0", platform: :mri
   gem "decidim-dev"
   gem "brakeman", "~> 5.4"

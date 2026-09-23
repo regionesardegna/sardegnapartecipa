@@ -937,6 +937,7 @@ DEPENDENCIES
   net-smtp (~> 0.3.1)
   pg
   puma (>= 6.3.1)
+  rspec-rails (~> 6.1)
   web-console (~> 4.2)
   wicked_pdf (~> 2.1)
   wkhtmltopdf-binary
