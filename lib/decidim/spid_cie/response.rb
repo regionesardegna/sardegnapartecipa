@@ -8,7 +8,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 #
-# Modificate validazioni su format_issuers e assertion_name_id
+# Modificate validazioni su format_issuers e assertion_name_id, rimossa validazione su check_attributes_presence per compatibilità con CNS
 
 require "onelogin/ruby-saml/response"
 
@@ -58,8 +58,7 @@ module Decidim
           :assertion_subject_confirmation,
           :assertion_conditions_empty,
           :assertion_authncontext,
-          :check_authn_context_class_ref,
-          :check_attributes_presence
+          :check_authn_context_class_ref
         ]
 
         if collect_errors
@@ -220,13 +219,6 @@ module Decidim
         return true if (ref.present? && level.present? && settings.authn_context && settings.authn_context.match(auth) && level.to_i >= settings.try(:spid_level) || settings.try(:cie_level) rescue false)
 
         append_error("Assertion AuthContextClassRef non sufficiente")
-        false
-      end
-
-      def check_attributes_presence
-        return true if attributes.attributes.all? { |k, v| v.present? }
-
-        append_error("AttributeStatement AttributeStatement non specificato")
         false
       end
 
