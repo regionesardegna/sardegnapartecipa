@@ -7,6 +7,7 @@ require_relative '../config/environment'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'wisper/rspec/matchers'
 
 # Load Decidim core & component factories
 require 'decidim/core/test/factories'
@@ -52,4 +53,5 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.include FactoryBot::Syntax::Methods
+  config.include Wisper::RSpec::BroadcastMatcher
 end
