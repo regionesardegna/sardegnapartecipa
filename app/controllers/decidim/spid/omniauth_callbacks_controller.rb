@@ -146,7 +146,7 @@ module Decidim
           else
             Rails.logger.error "⚠️ [SPID CONTROLLER] Utente NON attivo per autenticazione (non confermato?)."
             expire_data_after_sign_in!
-            user.resend_confirmation_instructions unless user.confirmed?
+            user.resend_confirmation_instructions unless user.confirmed? || user.previously_new_record?
             redirect_to decidim.root_path
             flash[:notice] = t("devise.registrations.signed_up_but_unconfirmed")
           end

@@ -54,14 +54,8 @@ module Decidim
           @user.skip_confirmation! if verified_email
         end
 
-        # Assegnazione esplicita dei campi personal_name e surname provenienti da extra_user_fields
-        if form.respond_to?(:personal_name) && form.personal_name.present?
-          @user.personal_name = form.personal_name if @user.respond_to?(:personal_name=)
-        end
-
-        if form.respond_to?(:surname) && form.surname.present?
-          @user.surname = form.surname if @user.respond_to?(:surname=)
-        end
+        # Memorizzazione di tutti i campi estesi (personal_name, surname e campi configurabili) in extended_data
+        @user.extended_data = extended_data
 
         @user.tos_agreement = "1"
         @user.save! && persisted && !@user.must_log_with_spid? && Decidim::Spid::SpidJob.perform_later(@user)
@@ -74,6 +68,21 @@ module Decidim
 		Rails.logger.debug "📜 STACKTRACE:\n#{e.backtrace.first(15).join("\n")}"
 		raise e # Rilancia l'eccezione per far scattare la transazione SQL (ROLLBACK) e il rescue nel metodo call
 	  end
+
+      def extended_data
+        (@user&.extended_data || {}).merge(
+          country: form.try(:country),
+          postal_code: form.try(:postal_code),
+          date_of_birth: form.try(:date_of_birth),
+          gender: form.try(:gender),
+          phone_number: form.try(:phone_number),
+          location: form.try(:location),
+          underage: form.try(:underage),
+          statutory_representative_email: form.try(:statutory_representative_email),
+          personal_name: form.try(:personal_name),
+          surname: form.try(:surname)
+        ).compact
+      end
 
     end
   end

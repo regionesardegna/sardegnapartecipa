@@ -2,6 +2,7 @@
 
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+ENV['HTTP_PORT'] ||= '80'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -54,4 +55,10 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include Wisper::RSpec::BroadcastMatcher
+  config.include ActiveJob::TestHelper
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.before(:each) do
+    ActiveJob::Base.queue_adapter = :test
+  end
 end

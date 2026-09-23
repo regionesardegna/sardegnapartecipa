@@ -8,13 +8,7 @@ module Decidim
     module OmniauthCommandsOverrides
       extend ActiveSupport::Concern
 
-      # frozen_string_literal: true
-
-Rails.application.config.to_prepare do
-  if defined?(Decidim::ExtraUserFields::OmniauthCommandsOverrides)
-    Decidim::ExtraUserFields::OmniauthCommandsOverrides.module_eval do
-   
-	def call
+      def call
         return broadcast(:invalid) if same_email_representative?
 
         verify_oauth_signature!
@@ -89,24 +83,11 @@ Rails.application.config.to_prepare do
           phone_number: form.phone_number,
           location: form.location,
           underage: form.underage,
-          statutory_representative_email: form.statutory_representative_email
-        )
+          statutory_representative_email: form.statutory_representative_email,
+          personal_name: form.try(:personal_name),
+          surname: form.try(:surname)
+        ).compact
       end
-
-      def send_email_to_statutory_representative
-        return if form.statutory_representative_email.blank? || form.underage != "1"
-
-        Decidim::ExtraUserFields::StatutoryRepresentativeMailer.inform(@user).deliver_later
-      end
-
-      def same_email_representative?
-        return false if form.statutory_representative_email.blank?
-
-        form.statutory_representative_email == form.email
-      end
-    end
-  end
-end
 
       def send_email_to_statutory_representative
         return if form.statutory_representative_email.blank? || form.underage != "1"
