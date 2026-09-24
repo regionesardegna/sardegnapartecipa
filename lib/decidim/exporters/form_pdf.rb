@@ -8,7 +8,7 @@
 #
 # You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 
-# Modificato per gestire la notifica utente per le surveys
+# Modificato per gestire la notifica utente per le surveys, eliminata la organization che generava un errore su 0.27.10
 
 require "wicked_pdf"
 
@@ -19,9 +19,8 @@ module Decidim
     #
     class FormPDF < PDF
       # i18n-tasks-use t('decidim.admin.exports.formats.FormPDF')
-      def initialize(organization, answers, serializer)
+      def initialize(answers, serializer)
         super(answers, serializer)
-        @organization=organization
       end    
       
       def controller
@@ -38,7 +37,6 @@ module Decidim
 
       def locals
         {
-          organization: @organization,
           questionnaire: collection.first.first.questionnaire,
           collection: collection.map { |answer| Decidim::Forms::Admin::QuestionnaireParticipantPresenter.new(participant: answer.first) }
         }

@@ -1,1 +1,0 @@
-require "#{Rails.root}/lib/decidim/exporters/form_pdf.rb"

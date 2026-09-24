@@ -49,7 +49,7 @@ Rails.application.configure do
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
-  config.log_level = %w(debug info warn error fatal).include?(ENV['RAILS_LOG_LEVEL']) ? ENV['RAILS_LOG_LEVEL'] : :info
+  config.log_level = %w(debug info warn error fatal).include?(ENV['RAILS_LOG_LEVEL']) ? ENV['RAILS_LOG_LEVEL'] : :debug
 
 
   # Prepend all log lines with the following tags.
@@ -81,7 +81,8 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  config.action_mailer.delivery_method = :smtp
+  
   config.action_mailer.smtp_settings = {
     :address        => Rails.application.secrets.smtp_address,
     :port           => Rails.application.secrets.smtp_port,
@@ -90,19 +91,16 @@ Rails.application.configure do
     :password       => Rails.application.secrets.smtp_password,
     :domain         => Rails.application.secrets.smtp_domain,
     :enable_starttls_auto => Rails.application.secrets.smtp_starttls_auto,
-    :openssl_verify_mode => 'none',
-    :ssl => true,
-    :tls => true
+    :openssl_verify_mode => Rails.application.secrets.smtp_openssl_verify_mode,
+    :ssl => Rails.application.secrets.smtp_ssl,
+    :tls => Rails.application.secrets.smtp_tls,
+    :open_timeout => Rails.application.secrets.smtp_open_timeout,
+    :read_timeout => Rails.application.secrets.smtp_read_timeout
   }
 
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
-  
-  # Use a different logger for distributed setups.
-  # require 'syslog/logger'
-  config.logger = ActiveSupport::Logger.new(config.paths['log'].first, shift_age = 'daily')
-  config.logger.formatter = Logger::Formatter.new
   
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)

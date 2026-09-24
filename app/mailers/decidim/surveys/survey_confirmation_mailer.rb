@@ -39,7 +39,7 @@ module Decidim
       def add_file_with_answers(answers)
         export_name = t("decidim.surveys.survey_confirmation_mailer.export_name", questionnaire_slug: @questionnaire_slug)
         serializer = Decidim::Forms::UserAnswersSerializer
-        export_data = Decidim::Exporters::FormPDF.new(@organization, answers, serializer).export
+        export_data = Decidim::Exporters::FormPDF.new( answers, serializer).export
         filename = export_data.filename(export_name)
         filename_without_extension = export_data.filename(export_name, extension: false)
         attachments["#{filename_without_extension}.zip"] = FileZipper.new(filename, export_data.read).zip

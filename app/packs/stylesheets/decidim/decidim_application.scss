@@ -1177,6 +1177,10 @@ div.main__footer__nav{
       font-family: "Titillium Web","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+.decidim-logo > a:nth-child(1) > span:nth-child(2){
+	font-size: 0.90rem;
+}
+
 @media (min-width: 40em){
   .col-lg-3, .col-sm-6 {
      padding-right: 14px !important;
@@ -1340,6 +1344,7 @@ div.main__footer__nav{
         padding: 0.5rem;
     }
 }
+
 //FIX CONTRAST
 
 .hero-heading {
@@ -1470,14 +1475,6 @@ strong.muted, sub.muted, sup.muted, textarea.muted, time.muted, tt.muted, var.mu
 #assemblies-chart {
   display: none;
 }
-
-//.register__separator {
-//   display: none;
-//}
-
-//.button-spid{
-   //display: none;
-//}
 
 .omnipresent-banner {
   background-color: #9D1313;
