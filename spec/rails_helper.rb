@@ -60,5 +60,10 @@ RSpec.configure do |config|
 
   config.before(:each) do
     ActiveJob::Base.queue_adapter = :test
+    Warden.test_mode!
+  end
+
+  config.after(:each) do
+    Warden.test_reset!
   end
 end

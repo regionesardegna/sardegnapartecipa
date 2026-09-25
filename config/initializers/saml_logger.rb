@@ -24,5 +24,5 @@ class SamlResponseLogger
 end
 
 # Inserisci in cima alla chain di Rails
-Rails.application.config.middleware.unshift SamlResponseLogger
+Rails.application.config.middleware.unshift SamlResponseLogger unless Rails.env.test?
 
