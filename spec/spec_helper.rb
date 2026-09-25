@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Imposta il livello di verbosità a nil per disabilitare i warning di Ruby
+$VERBOSE = nil
+
 RSpec.configure do |config|
   config.color = true
   config.expect_with :rspec do |expectations|

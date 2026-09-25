@@ -57,6 +57,7 @@ RSpec.configure do |config|
   config.include Wisper::RSpec::BroadcastMatcher
   config.include ActiveJob::TestHelper
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   config.before(:each) do
     ActiveJob::Base.queue_adapter = :test
