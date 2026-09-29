@@ -1068,6 +1068,7 @@ $color-removal: #ffeef0 !default;
   @media (min-width: 1024px) {
     .menu-bar__main-dropdown {
       width: 640px !important;
+	  margin-top: 12px;
     }
   }
 
@@ -1075,6 +1076,7 @@ $color-removal: #ffeef0 !default;
     .menu-bar__main-dropdown__menu {
       width: 100% !important;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+	  margin-top: 12px;
     }
   }
   
@@ -1126,6 +1128,12 @@ $color-removal: #ffeef0 !default;
 // FINE MENU CONTESTUALE A PARTIRE DAI PROCESSI E ASSEMBLEE
 
 // SVG
+
+svg {
+  width: 1.3em;
+  height: 1.3em;
+  fill: #fff;
+}
 
 // Importante: elimina uno stile che impostava a bianco il colore fill di tutte le SVG rompendo icone e pulsanti
 
