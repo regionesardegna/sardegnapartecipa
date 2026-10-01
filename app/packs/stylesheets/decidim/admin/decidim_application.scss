@@ -14,3 +14,22 @@
     fill: currentColor !important;
   }
 }
+
+/* Ripristino del layout dei grafici nelle metriche della dashboard */
+.metric__container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(530px, 1fr)) !important;
+  gap: 2rem !important;
+}
+
+.metric__container .metric {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  min-height: 400px !important; /* Allinea l'altezza a quella degli SVG */
+  overflow: hidden;
+}
+
+.metric svg{
+  fill: #505050 !important;
+}
