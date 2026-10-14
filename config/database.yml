@@ -26,10 +26,14 @@ default: &default
   port: <%= ENV.fetch("DATABASE_PORT") { "5432" } %>
   username: <%= ENV.fetch("DATABASE_USERNAME") { "" } %>
   password: <%= ENV.fetch("DATABASE_PASSWORD") { "" } %>
+  keepalives_idle: 60
+  keepalives_interval: 10
+  keepalives_count: 5
+  reconnect: true
 
 development:
   <<: *default
-  database: decidim_app_dev
+  database: sardegna_partecipa_dev
   #url: <%= ENV['DATABASE_URL'] %>
 
   # The specified database role being used to connect to postgres.
@@ -64,7 +68,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: decidim_app_test
+  database: sardegna_partecipa_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
