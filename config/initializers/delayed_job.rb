@@ -1,3 +1,6 @@
+Delayed::Worker.lifecycle.before(:perform) do |worker, job|
+  ActiveRecord::Base.clear_active_connections!
+end
 Delayed::Worker.destroy_failed_jobs = true
 Delayed::Worker.sleep_delay = 30
 Delayed::Worker.max_attempts = 3
