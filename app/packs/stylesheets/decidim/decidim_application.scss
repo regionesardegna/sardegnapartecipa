@@ -1410,3 +1410,25 @@ body.mobile-menu-open {
     font-size: 0.875rem !important; /* Corrisponde a 14px */
     line-height: 1.125rem !important; /* Corrisponde a 18px */
 }
+
+// LANDING PAGE PROCESSI
+
+// header processi
+
+   .participatory-space__hero {
+     /* Azzurro #034261 con cui mantengo opacità 0.8*/
+	 background-color: rgba(3, 66, 97, 0.8) !important;
+     
+     /* Reset dei filtri che rendevano tutto grigio */
+     --tw-backdrop-brightness: brightness(100%);
+     backdrop-filter: blur(2px); /* Opzionale: sfoca leggermente l'immagine dietro */
+     
+     /* Miscela il colore con l'immagine di fondo per profondità */
+     background-blend-mode: multiply;
+   }
+   
+   .author__avatar{
+     display: none !important;
+   }
+
+// FINE LANDING PAGE PROCESSI
