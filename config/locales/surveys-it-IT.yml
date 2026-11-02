@@ -58,18 +58,19 @@ it:
           actions:
             answers_alert: Se pubblichi il componente, tutti i risultati saranno rimossi.
         exports:
-          survey_user_answers: Risposte dei partecipanti al sondaggio
+          survey_user_answers: Risposte al sondaggio
         surveys:
           update:
             invalid: Ci sono stati degli errori durante il salvataggio del sondaggio.
             success: Sondaggio salvato correttamente.
       last_activity:
-        new_survey: 'New survey:'
+        new_survey: 'Nuovo questionario:'
       survey_confirmation_mailer:
         confirmation:
+          greetings: Salve
           body: Hai risposto con successo al sondaggio %{questionnaire_title} in %{participatory_space}
-          subject: Conferma alle risposte al questionario %{questionnaire_title}
-        export_name: Risposte degli utenti al questionario
+          subject: Risposte al questionario %{questionnaire_title}
+        export_name: Risposte al questionario
       surveys:
         answer:
           invalid: Ci sono stati errori nel rispondere al sondaggio.

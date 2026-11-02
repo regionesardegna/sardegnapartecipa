@@ -57,11 +57,11 @@
                     <table>
                       <tr>
                         <th>
-						  <% if @organization.logo.present? %>
-							<%= link_to @organization.official_url do %>
-								<%= image_tag @organization.logo.url, alt: "", style: "max-height: 25px", class: "float-right" %> %>
-							<% end %>
-						  <% end %>
+			  <% if @organization.logo.present? %>
+				<%= link_to @organization.official_url do %>
+					<%= image_tag @organization.logo.url, alt: "", style: "max-height: 25px", class: "float-right" %>
+				<% end %>
+			  <% end %>
                         </th>
                       </tr>
                     </table>
