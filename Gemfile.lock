@@ -924,6 +924,7 @@ DEPENDENCIES
   decidim-term_customizer!
   deface
   delayed_job_active_record
+  factory_bot_rails
   figaro
   foundation_rails_helper!
   html_tokenizer

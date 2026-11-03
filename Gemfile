@@ -37,6 +37,7 @@ group :development, :test do
   gem "net-smtp", "~> 0.3.1"
   gem "i18n-tasks"
   gem "html_tokenizer"
+  gem "factory_bot_rails"
 end
 
 group :development do

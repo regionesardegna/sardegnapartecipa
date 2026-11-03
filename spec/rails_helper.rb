@@ -48,6 +48,9 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 RSpec.configure do |config|
+  # Permette di chiamare direttamente create(:user) anziché FactoryBot.create(:user)
+  config.include FactoryBot::Syntax::Methods
+
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 

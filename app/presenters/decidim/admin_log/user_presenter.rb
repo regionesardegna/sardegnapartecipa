@@ -60,7 +60,7 @@ module Decidim
       end
 
       def ip
-        action_log.extra.dig("user", "ip") || ""
+        action_log.extra&.dig("user", "ip") || ""
       end
 
       # Overwrite the changeset for officia<lization and block actions.
