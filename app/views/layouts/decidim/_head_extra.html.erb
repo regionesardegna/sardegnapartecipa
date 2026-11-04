@@ -17,6 +17,7 @@
 #Just copy your own version of the file under: `app/views/layouts/decidim/_head_extra.html.erb`
 %>
 <a name="top"></a>
+<% if ENV["MATOMO_URL"].present? && ENV["MATOMO_ID"].present? %>
 <!-- Start Matomo Code -->
 <script>
   var _paq = window._paq = window._paq || [];
@@ -32,3 +33,4 @@
   })();
 </script>
 <!-- End Matomo Code -->
+<% end %>
