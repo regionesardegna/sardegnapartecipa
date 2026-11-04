@@ -1,0 +1,37 @@
+<%#
+# Copyright (C) 2026 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
+#
+# Modificato per rendere possibile visualizzare come HTML la localizzazione layouts.decidim.data_consent.dialog.description
+%>
+
+<div id="dc-dialog-wrapper" class="cookies__container" data-nosnippet role="region" hidden>
+  <div class="cookies">
+    <div class="cookies__left">
+      <div>
+        <div class="h5">
+          <%= t("layouts.decidim.data_consent.dialog.title").html_safe %>
+        </div>
+        <p>
+          <%= t("layouts.decidim.data_consent.dialog.description") %>
+        </p>
+      </div>
+    </div>
+    <div class="cookies__right">
+      <button id="dc-dialog-accept" class="button button__sm button__secondary">
+        <%= t("layouts.decidim.data_consent.dialog.accept_all") %>
+      </button>
+      <button id="dc-dialog-reject" class="button button__sm button__transparent-secondary">
+        <%= t("layouts.decidim.data_consent.dialog.accept_only_essential") %>
+      </button>
+      <button id="dc-dialog-settings" class="button button__sm button__transparent-secondary" data-dialog-open="dc-modal">
+        <%= t("layouts.decidim.data_consent.dialog.settings") %>
+      </button>
+    </div>
+  </div>
+</div>

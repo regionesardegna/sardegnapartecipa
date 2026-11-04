@@ -434,7 +434,7 @@ $color-removal: #ffeef0 !default;
    scroll-padding-top: 200px !important; 
   }
 
-  /* 3. NOTIFICHE FLASH (Le rimettiamo nel flusso, si impileranno DA SOLE sotto l'header) */
+  /* 3. NOTIFICHE FLASH  */
   .flash,
   .flash-messages-container,
   [data-flash-messages] {
@@ -747,7 +747,7 @@ $color-removal: #ffeef0 !default;
   justify-self: start;           /* Incollata al bordo sinistro */
 }
 
-/* 3. Allineamento della colonna centrale (ORA PERFETTAMENTE CENTRATA) */
+/* 3. Allineamento della colonna centrale */
 .footer-column-center {
   grid-column: 2;
   justify-self: center;          /* Centrata geometricamente rispetto allo schermo */
@@ -1187,6 +1187,7 @@ svg {
 // FINE HAMBURGER ICON
 
 // Quando il menu mobile è attivo, nasconde la bottombar mobile di Decidim
+
 body.mobile-menu-open {
   .button-nav-mobile, 
   .mobile-nav,
@@ -1203,7 +1204,6 @@ body.mobile-menu-open {
 
 // MENU BAR (TESTO CENTRATO + ICONE ANCORATE A DESTRA)
   
-
 /* 1. Il contenitore principale definisce l'altezza e la gabbia di allineamento */
 .menu-bar {
   //max-width: 75rem !important;
@@ -1265,7 +1265,6 @@ body.mobile-menu-open {
 }
 
 // FINE MENU BAR (TESTO CENTRATO + ICONE ANCORATE A DESTRA)
-
 
 // SPOSTAMENTO ICONE NELLA HOME MENU
 
@@ -1366,7 +1365,6 @@ body.mobile-menu-open {
 	padding-right: 0 !important;
   }
 }
-
 
 // modifica colore grigio delle icone nel menù
 
