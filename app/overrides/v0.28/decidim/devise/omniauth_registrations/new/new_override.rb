@@ -1,4 +1,4 @@
-<%#
+
 # Copyright (C) 2026 Sardegna IT
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
@@ -9,7 +9,7 @@
 #
 # Viene forzato in fase di registrazione l'utente a conservare l'email proveniente da SPID, nel caso di email presente o presente tra i parametri (caso di validazione errata che va gestito)
 # Aggiunto campo per la gestione omniauth in caso di errori di validazioni
-%>
+
 
 Deface::Override.new(
   virtual_path: "decidim/devise/omniauth_registrations/new",

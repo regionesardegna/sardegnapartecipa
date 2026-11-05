@@ -1824,7 +1824,7 @@ it:
           accept_only_essential: Accetta solo essenziali
           #description: Utilizziamo i cookie sul nostro sito web per migliorare le prestazioni e i contenuti del sito. I cookie ci consentono di fornire un'esperienza utente più personalizzata e l'integrazione con i canali social.
           description: "Questo sito utilizza cookie tecnici necessari al funzionamento sempre attivi e, previo consenso, cookie di preferenza, analytics e marketing. Puoi accettarli, rifiutarli o personalizzare le tue scelte. Maggiori informazioni sono disponibili nella <b><a href=\"https://sardegnapartecipa.regione.sardegna.it/pages/cookie_policy\">Cookie Policy</a></b> e la <b><a href=\"https://sardegnapartecipa.regione.sardegna.it/pages/privacy\">Privacy Policy</a></b> del sito. Le preferenze possono essere sempre modificate tramite \"Impostazioni cookie\" nel footer."
-          settings: Impostazioni
+          settings: Personalizza #Impostazioni
           title: Informazioni sui cookie utilizzati sul sito web
         modal:
           accept_all: Accetta tutti
