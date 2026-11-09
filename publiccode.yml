@@ -1,0 +1,69 @@
+# This repository adheres to the publiccode.yml standard by including this
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+name: Sardegna ParteciPA
+url: 'https://github.com/regionesardegna/sardegnapartecipa'
+softwareType: addon
+developmentStatus: stable
+platforms:
+  - web
+categories:
+  - digital-citizenship
+
+description:
+  it:
+    genericName: Piattaforma per la partecipazione
+    shortDescription: >-
+      Sardegna ParteciPA è un fork di Decidim, la piattaforma spagnola di democrazia partecipativa.
+    longDescription: |
+      Sardegna ParteciPA è un fork di Decidim, la piattaforma spagnola di democrazia partecipativa.
+
+      Sardegna ParteciPA usa il core di Decidim e personalizza o integra solo i seguenti aspetti:
+
+      - Utilizzo del Sistema Pubblico di Identità Digitale (SPID), della Carta di Identità Elettronica (CIE) e della Carta Nazionale dei Servizi (CNS) attraverso la gem `decidim-spid-cie` con l'apposito middleware open source (https://github.com/dipartimentofunzionepubblica/decidim-module-spid-cie);
+      - Aspetto grafico ridefinito via SCSS e templates;
+      - Modifiche sul profilo dell’utente per soddisfare le indicazioni del GDPR con l'apposito modulo open-source (https://github.com/dipartimentofunzionepubblica/decidim-module-privacy);
+      - Integrazione di moduli community: [Term-Customizer](https://github.com/mainio/decidim-module-term_customizer) e [Decidim-Awesome](https://github.com/Platoniq/decidim-module-decidim_awesome).
+    features:
+      - partecipazione democratica
+      - testo partecipativo
+      - processo partecipativo
+    screenshots: []
+
+legal:
+  license: AGPL-3.0-or-later
+
+maintenance:
+  contacts:
+    - name: Emanuel Cocco
+      email: emcocco@regione.sardegna.it
+      type: internal
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - it
+
+dependsOn:
+  open:
+    - name: Decidim
+      optional: false
+    - name: Decidim-spid-cie
+      optional: false
+
+it:
+  countryExtensionVersion: '0.2'
+  riuso:
+    codiceIPA: r_sardeg
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: true
+    misureMinimeSicurezza: false
+    modelloInteroperabilita: false
+  piattaforme:
+    spid: true
+    cie: true
+    anpr: false
+    pagopa: false

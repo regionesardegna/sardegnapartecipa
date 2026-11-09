@@ -14,7 +14,6 @@ require "#{Rails.root}/lib/one_login/ruby_saml/utils.rb"
 require "#{Rails.root}/lib/decidim/spid_cie/response.rb"
 require "#{Rails.root}/lib/one_login/ruby_saml/logoutrequest.rb"
 
-
 if ENV['SPID_TENANT_NAME'].present?
   Decidim::Spid.configure do |config|
 	
@@ -52,10 +51,10 @@ if ENV['SPID_TENANT_NAME'].present?
     ]
 
     # Percorso relativo alla root dell'app della chiave privata
-    config.private_key_path = ENV['SPID_PRIVATE_KEY'] #"lib/.keys/private_key_prod.pem"
+    config.private_key_path = ENV['SPID_PRIVATE_KEY'] 
 
     # Percorso relativo alla root dell"app del certificato
-    config.certificate_path = ENV['SPID_CERTIFICATE'] #"lib/.keys/certificate_prod.pem"
+    config.certificate_path = ENV['SPID_CERTIFICATE'] 
 
     # Percorso relativo alla root dell'app del nuovo certificato
     config.new_certificate_path = nil
@@ -117,20 +116,20 @@ if ENV['SPID_TENANT_NAME'].present?
     # In caso di di metadata esistente e con servizi multupli utilizzare le seguenti configurazioni
 
     # Per aggiungere più AssertionConsumerService
-     config.consumer_services = [
-       { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
-       { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
-       { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' },
-       { 'Location' => 'https://staging-sardegnapartecipa.regione.sardegna.it/spid/samlsso', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' }
+	config.consumer_services = [
+       { 'Location' => ENV['SPID_ACS_LOCATION_PROD'], 'Binding' => ENV['SPID_ACS_BINDING_PROD'] },
+       { 'Location' => ENV['SPID_ACS_LOCATION_DEMO'], 'Binding' => ENV['SPID_ACS_BINDING_DEMO'] },
+       { 'Location' => ENV['SPID_ACS_LOCATION_DEV'], 'Binding' => ENV['SPID_ACS_BINDING_DEV'] },
+       { 'Location' => ENV['SPID_ACS_LOCATION_STAGING'], 'Binding' => ENV['SPID_ACS_BINDING_STAGING'] }
      ]
 
     # Per aggiungere più SingleLogoutService
     # ResponseLocation opzionale
-     config.logout_services = [
-       { 'Location' => 'https://sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://sardegnapartecipa.regione.sardegna.it' },
-       { 'Location' => 'https://demo.sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://demo.sardegnapartecipa.regione.sardegna' },
-       { 'Location' => 'https://dev-sardegnapartecipa.regione.sardegna/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://dev-sardegnapartecipa.regione.sardegna' },
-       { 'Location' => 'https://staging-sardegnapartecipa.regione.sardegna.it/spid/samlslo', 'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', 'ResponseLocation' => 'https://staging-sardegnapartecipa.regione.sardegna.it' }
+    config.logout_services = [
+       { 'Location' => ENV['SPID_SLO_LOCATION_PROD'], 'Binding' => ENV['SPID_SLO_BINDING_PROD'], 'ResponseLocation' => ENV['SPID_SLO_RESPONSE_LOC_PROD'] },
+       { 'Location' => ENV['SPID_SLO_LOCATION_DEMO'], 'Binding' => ENV['SPID_SLO_BINDING_DEMO'], 'ResponseLocation' => ENV['SPID_SLO_RESPONSE_LOC_DEMO'] },
+       { 'Location' => ENV['SPID_SLO_LOCATION_DEV'], 'Binding' => ENV['SPID_SLO_BINDING_DEV'], 'ResponseLocation' => ENV['SPID_SLO_RESPONSE_LOC_DEV'] },
+       { 'Location' => ENV['SPID_SLO_LOCATION_STAGING'], 'Binding' => ENV['SPID_SLO_BINDING_STAGING'], 'ResponseLocation' => ENV['SPID_SLO_RESPONSE_LOC_STAGING'] }
     ]
 
     # Per aggiungere più AssertionConsumerService
