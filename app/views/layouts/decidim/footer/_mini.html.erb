@@ -35,15 +35,15 @@
             <span class="copyright-text">© 2026 Regione Autonoma della Sardegna</span>
          </div>
 
-         <!-- Il logo ParteciPa subito sotto -->
-         <a rel="partecipa"
-            href="https://github.com"
-            title="<%= t("layouts.decidim.footer.mini.logo_title") %>"
-            alt="<%= t("layouts.decidim.footer.mini.logo_alt") %>"
-            aria-label="<%= t("layouts.decidim.footer.mini.logo_aria_label") %>"
-            target="_blank">
-            <%= image_pack_tag("media/images/logo_partecipa.png", class: "footer_logo logo_partecipa", alt: "Logo ParteciPa", 'aria-label': "Logo ParteciPa", role: "img", 'aria-hidden': true) %>
-         </a>
+         <!-- Il logo SardegnaParteciPA subito sotto -->
+		 <%= link_to t("layouts.decidim.footer.mini.logo_link") do %>
+			<%= image_tag current_organization.attached_uploader(:official_img_footer).url, 
+			title: t("layouts.decidim.footer.mini.logo_title"), 
+			alt: t("layouts.decidim.footer.mini.logo_alt"), 
+			aria: { label: t("layouts.decidim.footer.mini.logo_aria_label") }, 
+			class: "footer_logo logo_partecipa",
+			role: "img" %>
+		 <% end %>
       </div>
 	
    </div>

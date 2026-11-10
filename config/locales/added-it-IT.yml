@@ -29,9 +29,10 @@ it:
         main_legal:
           accessibility_declaration: "Dichiarazione di Accessibilità"
         mini:
-          logo_title: "Logo ParteciPa"
-          logo_alt: "Logo ParteciPa"
-          logo_aria_label: "Logo ParteciPa"
+          logo_link: "https://github.com/regionesardegna/sardegnapartecipa"
+          logo_title: "Logo Sardegna ParteciPA"
+          logo_alt: "Logo Sardegna ParteciPA"
+          logo_aria_label: "Logo Sardegna ParteciPA"
   decidim:
     pages:
       home:
