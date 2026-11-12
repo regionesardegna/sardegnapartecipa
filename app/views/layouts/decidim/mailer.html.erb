@@ -73,8 +73,17 @@
                           </tr>
                         </table>
                       </th>
-                      <th class="small-3 large-3 last columns decidim-bar" >
-                      </th>
+                      <th class="small-3 large-3 last columns decidim-bar" style="background-color: white">
+						<table>
+						  <tr>
+							<th>
+								<%= link_to @organization.official_url do %>
+								  <%= image_pack_tag("media/images/ras_gonfalone-2021-grande.svg", alt: "Gonfalone Sardegna", 'aria-label': "Gonfalone Sardegna", id: "img-gonfalone-mail", role: "img", style: "max-height:45px; margin-right:20px", class: "float-right") %>
+								<% end %>
+							</th>
+						  </tr>
+						</table>
+					  </th>
                       <th class="expander"></th>
                     </tr>
                   </table>

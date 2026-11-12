@@ -67,8 +67,8 @@ it:
         new_survey: 'Nuovo questionario:'
       survey_confirmation_mailer:
         confirmation:
-          greetings: Salve
-          body: Hai risposto con successo al sondaggio %{questionnaire_title} in %{participatory_space}
+          greetings: Gentile %{recipient},
+          body: in allegato, all'interno dell'archivio .ZIP, il file .PDF contenente le tue risposte alle domande del questionario %{questionnaire_title} / %{participatory_space}
           subject: Risposte al questionario %{questionnaire_title}
         export_name: Risposte al questionario
       surveys:
