@@ -39,7 +39,7 @@ module Decidim
         CreateRegistration.call(@form) do
           on(:ok) do |user|
             if user.active_for_authentication?
-			  Decidim::ActionLogger.log(:registration, user, user, 1)
+              Decidim::ActionLogger.log(:registration, user, user, 1, { user: { ip: request.remote_ip } })
               set_flash_message! :notice, :signed_up
               sign_up(:user, user)
               respond_with user, location: after_sign_up_path_for(user)

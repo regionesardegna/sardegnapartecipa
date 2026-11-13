@@ -7,8 +7,8 @@ RSpec.describe "Log amministrativo di autenticazione utente da form", type: :req
 
   let(:password) { "Decidim123456!" }
   
-  # Forziamo sign_in_enabled: true per superare il check_sign_in_enabled del controller
-  let!(:organization) { create(:organization, host: "test.host", sign_in_enabled: true) }
+  # Impostiamo users_registration_mode: :enabled per garantire sign_in_enabled? del controller
+  let!(:organization) { create(:organization, host: "test.host", users_registration_mode: :enabled) }
   
   let!(:user) do
     create(

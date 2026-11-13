@@ -1,35 +1,71 @@
-require "spec_helper"
+# frozen_string_literal: true
+
+require "rails_helper"
 
 module Decidim
-  describe CreateUser do
-    let(:organization) { create(:organization) }
-    let(:user_ip) { "203.0.113.195" }
+  describe CreateRegistration do
+    describe "call" do
+      let(:organization) { create(:organization) }
 
-    let(:form) do
-      RegistrationForm.new(
-        email: "user@example.org",
-        name: "User Name",
-        nickname: "username",
-        password: "password123456_",
-        password_confirmation: "password123456_",
-        tos_agreement: "1"
-      ).with_context(
-        current_organization: organization,
-        user_ip: user_ip
-      )
-    end
+      let(:name) { "User Name" }
+      let(:email) { "user@example.org" }
+      let(:password) { 'Test12345!@#' }
+      let(:tos_agreement) { "1" }
 
-    subject { described_class.new(form) }
+      let(:current_locale) { "it" }
 
-    it "registra l'utente e traccia l'IP nell'ActionLog" do
-      expect { subject.call }.to change(Decidim::ActionLog, :count).by(1)
+      let(:form_params) do
+        {
+          "user" => {
+            "name" => name,
+            "email" => email,
+            "password" => password,
+            "tos_agreement" => tos_agreement
+          }
+        }
+      end
 
-      log = Decidim::ActionLog.last
-      created_user = Decidim::User.find_by(email: "user@example.org")
+      let(:form) do
+        RegistrationForm.from_params(
+          form_params,
+          current_locale:
+        ).with_context(
+          current_organization: organization
+        )
+      end
 
-      expect(log.user).to eq(created_user)
-      expect(log.action).to eq("create")
-      expect(log.extra.dig("user", "ip")).to eq(user_ip)
+      let(:command) { described_class.new(form) }
+
+      context "quando il form non è valido" do
+        before do
+          allow(form).to receive(:invalid?).and_return(true)
+        end
+
+        it "broadcasta :invalid" do
+          expect { command.call }.to broadcast(:invalid)
+        end
+
+        it "non crea un utente" do
+          expect {
+            command.call
+          }.not_to change(Decidim::User, :count)
+        end
+      end
+
+      context "quando il form è valido" do
+        it "broadcasta :ok" do
+          expect { command.call }.to broadcast(:ok)
+        end
+
+        it "crea un nuovo utente" do
+          expect { command.call }.to change(Decidim::User, :count).by(1)
+
+          created_user = Decidim::User.find_by(email: email)
+          expect(created_user).to be_present
+          expect(created_user.name).to eq(name)
+          expect(created_user.organization).to eq(organization)
+        end
+      end
     end
   end
 end
