@@ -2,6 +2,7 @@
 
 require "rails_helper"
 require "zip"
+require "cgi"
 
 describe Decidim::Surveys::SurveyConfirmationMailer, type: :mailer do
   let(:logo) { double("Logo", attached?: false, url: "http://logo.it") }
@@ -67,6 +68,29 @@ describe Decidim::Surveys::SurveyConfirmationMailer, type: :mailer do
         expect(pdf_content).to include("Questionario")
         expect(pdf_content).to include("Domanda 1")
         expect(pdf_content).to include("Risposta 1")
+      end
+    end
+
+    context "con le traduzioni italiane reali" do
+      before do
+        allow(I18n).to receive(:t).and_call_original
+        allow(I18n).to receive(:translate).and_call_original
+        allow_any_instance_of(described_class).to receive(:add_file_with_answers)
+      end
+
+      it "renderizza il saluto e il testo tradotti senza allegato" do
+        I18n.with_locale(:it) do
+          messaggio = mail
+          parte_html = messaggio.html_part || (messaggio if messaggio.mime_type == "text/html")
+
+          expect(messaggio.subject).to eq("Risposte al questionario Questionnaire")
+          expect(messaggio.attachments).to be_empty
+          expect(parte_html).not_to be_nil
+
+          html = CGI.unescapeHTML(parte_html.body.decoded)
+          expect(html).to include("Gentile Test,")
+          expect(html).to include("in allegato, all'interno dell'archivio .ZIP, il file .PDF contenente le tue risposte alle domande del questionario Questionnaire / Space")
+        end
       end
     end
   end
