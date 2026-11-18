@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require "#{Rails.root}/lib/decidim/map/provider/dynamic_map/stadia.rb"
+require "#{Rails.root}/lib/decidim/map/provider/static_map/stadia.rb"
+require "#{Rails.root}/lib/decidim/map/provider/geocoding/stadia.rb"
+require "#{Rails.root}/lib/decidim/map/provider/autocomplete/stadia.rb"
+
 Decidim.configure do |config|
   # The name of the application
   config.application_name = Rails.application.secrets.decidim[:application_name]
@@ -100,6 +105,27 @@ Decidim.configure do |config|
   #   static: { url: "https://staticmap.example.org/" },
   #   geocoding: { host: "nominatim.example.org", use_https: true }
   # }
+  
+  config.maps = {
+    provider: :stadia,
+    api_key: Rails.application.secrets.dig(:maps, :api_key).presence || ENV["STADIA_MAPS_API_KEY"],
+    dynamic: {
+      style: "alidade_smooth"
+    },
+    static: {
+      style: "alidade_smooth"
+    },
+    geocoding: {},
+    autocomplete: {}
+  }
+
+  config.content_security_policies_extra = {
+    "img-src" => ["https://tiles.stadiamaps.com"],
+    "connect-src" => ["https://tiles.stadiamaps.com", "https://api.stadiamaps.com"]
+  }
+  
+  
+  
 
   # Geocoder configurations if you want to customize the default geocoding
   # settings. The maps configuration will manage which geocoding service to use,
