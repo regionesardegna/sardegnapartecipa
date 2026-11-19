@@ -7,8 +7,8 @@ require "tmpdir"
 RSpec.describe "Stadia Maps frontend autocomplete", type: :system do
   include Warden::Test::Helpers
 
-  let(:organization) { create(:organization, host: "127.0.0.1") }
-  let(:user) { create(:user, :admin, :confirmed, organization: organization) }
+  let(:organization) { create(:organization, host: "127.0.0.1", default_locale: :it, available_locales: [:it]) }
+  let(:user) { create(:user, :admin, :confirmed, organization: organization, locale: :it) }
   let(:participatory_process) { create(:participatory_process, organization: organization) }
   let(:component) { create(:meeting_component, participatory_space: participatory_process) }
   let(:chrome_profile_dir) { Dir.mktmpdir("chrome-profile") }

@@ -116,6 +116,37 @@ RSpec.describe "Stadia Maps provider" do
         api_key: api_key
       )
     end
+
+    describe "il builder" do
+      let(:template) { double }
+      let(:builder) { provider.create_builder(template) }
+
+      it "carica il pack e serializza api_key in camelCase nel campo" do
+        expect(template).to receive(:append_javascript_pack_tag).with("decidim_geocoding_provider_stadia")
+        expect(template).to receive(:text_field) do |_object_name, _method, options|
+          expect(JSON.parse(options.fetch("data-decidim-geocoding"))).to eq(
+            "url" => "https://api.stadiamaps.com/geocoding/v1/autocomplete",
+            "apiKey" => api_key
+          )
+        end
+
+        builder.geocoding_field(:meeting, :address)
+      end
+
+      it "serializza l'endpoint senza apiKey quando la chiave non è configurata" do
+        provider_without_key = described_class.new(organization: organization, config: {})
+        builder_without_key = provider_without_key.create_builder(template)
+
+        allow(template).to receive(:append_javascript_pack_tag)
+        expect(template).to receive(:text_field) do |_object_name, _method, options|
+          expect(JSON.parse(options.fetch("data-decidim-geocoding"))).to eq(
+            "url" => "https://api.stadiamaps.com/geocoding/v1/autocomplete"
+          )
+        end
+
+        builder_without_key.geocoding_field(:meeting, :address)
+      end
+    end
   end
 
   describe "risoluzione tramite Decidim::Map" do
