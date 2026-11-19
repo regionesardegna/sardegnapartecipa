@@ -21,8 +21,8 @@ $(() => {
 
       currentSuggestionQuery = setTimeout(() => {
         const params = new URLSearchParams({ text: query });
-        if (config.api_key) {
-          params.append("api_key", config.api_key);
+        if (config.apiKey) {
+          params.append("api_key", config.apiKey);
         }
         if (language) {
           params.append("lang", language);

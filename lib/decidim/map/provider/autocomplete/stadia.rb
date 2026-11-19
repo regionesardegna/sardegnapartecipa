@@ -17,6 +17,12 @@ module Decidim
     module Provider
       module Autocomplete
         class Stadia < Decidim::Map::Autocomplete
+          class Builder < Decidim::Map::Autocomplete::Builder
+            def append_assets
+              template.append_javascript_pack_tag("decidim_geocoding_provider_stadia")
+            end
+          end
+
           def builder_options
             super.merge(
               url: configuration[:url] || "https://api.stadiamaps.com/geocoding/v1/autocomplete",
