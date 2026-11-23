@@ -42,36 +42,31 @@ RSpec.describe "Stadia Maps provider" do
     let(:latitude) { 41.8933 }
     let(:longitude) { 12.4829 }
 
-    it "costruisce l'URL statico con parametri center, size, markers e api_key" do
-      generated_url = provider.url(
-        latitude: latitude,
-        longitude: longitude,
-        options: { width: 300, height: 200, zoom: 16 }
-      )
-      uri = URI.parse(generated_url)
-      params = Rack::Utils.parse_query(uri.query)
+    it "costruisce l'URL statico con parametri center, size, m e api_key" do
+	  url = provider.url(latitude: latitude, longitude: longitude, options: { zoom: 16, width: 300, height: 200 })
+	  uri = URI.parse(url)
+	  params = Rack::Utils.parse_query(uri.query)
 
-      expect("#{uri.scheme}://#{uri.host}#{uri.path}").to eq(
-        "https://static.stadiamaps.com/static/alidade_smooth.png"
-      )
-      expect(params).to eq(
-        "center" => "41.8933,12.4829",
-        "zoom" => "16",
-        "size" => "300x200",
-        "markers" => "41.8933,12.4829",
-        "api_key" => api_key
-      )
-    end
+	  expect(uri.host).to eq("tiles.stadiamaps.com")
+	  expect(uri.path).to eq("/static/alidade_smooth.png")
+	  expect(params).to eq(
+		"center" => "41.8933,12.4829",
+		"zoom" => "16",
+		"size" => "300x200",
+		"m" => "41.8933,12.4829",
+		"api_key" => api_key
+	  )
+	end
 
     it "scarica i byte dell'immagine PNG tramite #image_data" do
-      fake_png = "\x89PNG\r\n\x1a\nfake-image-bytes".b
+	  fake_png = "\x89PNG\r\n\x1a\nfake-binary-content".b
 
-      stub_request(:get, %r{\Ahttps://static\.stadiamaps\.com/static/alidade_smooth\.png})
-        .with(query: hash_including("api_key" => api_key, "center" => "41.8933,12.4829"))
-        .to_return(status: 200, body: fake_png, headers: { "Content-Type" => "image/png" })
+	  stub_request(:get, %r{\Ahttps://tiles\.stadiamaps\.com/static/alidade_smooth\.png})
+		.with(query: hash_including("api_key" => "test-stadia-api-key", "center" => "41.8933,12.4829", "m" => "41.8933,12.4829"))
+		.to_return(status: 200, body: fake_png, headers: { "Content-Type" => "image/png" })
 
-      expect(provider.image_data(latitude: latitude, longitude: longitude)).to eq(fake_png)
-    end
+	  expect(provider.image_data(latitude: latitude, longitude: longitude)).to eq(fake_png)
+	end
   end
 
   describe Decidim::Map::Provider::Geocoding::Stadia do
