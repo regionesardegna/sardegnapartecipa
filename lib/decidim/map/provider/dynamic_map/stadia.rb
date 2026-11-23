@@ -10,8 +10,6 @@
 #
 # Integrazione per Stadia Maps - Mappe dinamiche
 
-# frozen_string_literal: true
-
 module Decidim
   module Map
     module Provider

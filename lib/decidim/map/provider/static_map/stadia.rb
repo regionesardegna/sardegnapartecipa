@@ -10,8 +10,6 @@
 #
 # Integrazione per Stadia Maps - Mappe statiche
 
-# frozen_string_literal: true
-
 module Decidim
   module Map
     module Provider
@@ -33,7 +31,7 @@ module Decidim
               center: "#{latitude},#{longitude}",
               zoom: options[:zoom] || 15,
               size: "#{width}x#{height}",
-              markers: "#{latitude},#{longitude}"
+              m: "#{latitude},#{longitude}"
             }
             params[:api_key] = configuration[:api_key] if configuration[:api_key].present?
             params
@@ -45,7 +43,7 @@ module Decidim
             return configuration[:url] if configuration[:url].present?
 
             style = configuration.fetch(:style, "alidade_smooth")
-            "https://static.stadiamaps.com/static/#{style}.png"
+            "https://tiles.stadiamaps.com/static/#{style}.png"
           end
         end
       end
