@@ -27,7 +27,7 @@ export default class AutoSelectOptionsFromUrl {
     const select = this.$select;
     const params = this.sourceToParams(this.$source);
     // Linea modificata
-    const url = this.$source.data("url").split("?")[0]
+    const url = (this.$source.data("url") || "").split("?")[0];
 
     $.getJSON(url, params, function (data) {
       select.find("option:not([value=''])").remove();
@@ -46,4 +46,4 @@ export default class AutoSelectOptionsFromUrl {
     });
   }
 }
-/* eslint-disable no-ternary, no-plusplus, require-jsdoc */
+

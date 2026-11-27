@@ -39,7 +39,7 @@ class DisplayCondition {
 
     let multipleInput = [];
 
-    $conditionWrapperField.find(".radio-button-collection, .check-box-collection").find(".collection-input").each((idx, el) => {
+    $conditionWrapperField.find(".js-radio-button-collection, .js-check-box-collection").find(".js-collection-input").each((idx, el) => {
       const $input = $(el).find("input[name$=\\[body\\]]");
       const checked = $input.is(":checked");
 
@@ -63,7 +63,7 @@ class DisplayCondition {
       return $textInput;
     }
 
-    return $conditionWrapperField.find(".collection-input").find("input:not([type='hidden'])");
+    return $conditionWrapperField.find(".js-collection-input").find("input:not([type='hidden'])");
   }
 
   checkAnsweredCondition(value) {
@@ -200,34 +200,36 @@ class DisplayConditionsComponent {
       this.wrapperField.fadeOut();
     }
     else {
-      this.wrapperField.hide();     
+      this.wrapperField.hide();
     }
-  
+
     this.clearInputValues();
-    this.wrapperField.find("input, textarea").prop("disabled", "disabled");    
+    this.wrapperField.find("input, textarea").prop("disabled", "disabled");
   }
 
   clearInputValues() {
-  if(this.wrapperField.find("textarea, input[type='text']:not([name$=\\[custom_body\\]])").length) {      
-    this.wrapperField.find("textarea, input[type='text']:not([name$=\\[custom_body\\]])").val("");       
-    this.wrapperField.find("textarea, input[type='text']:not([name$=\\[custom_body\\]])").change();
-  }
-      
-  if (this.wrapperField.find(".radio-button-collection, .check-box-collection").find(".collection-input")) {
-    this.wrapperField.find(".radio-button-collection, .check-box-collection").find(".collection-input").each((idx, el) => {
-      
-      if($(el).find("input[type=radio][name$=\\[body\\]]").is(":checked")){          
-        $(el).find("input[type=radio][name$=\\[body\\]]").prop('checked', false); 
-        $(el).find("input[type=radio][name$=\\[body\\]]").change(); 
-                                             
-      } else if ($(el).find("input[type=checkbox][name$=\\[body\\]]").is(":checked")){                       
-        $(el).find("input[type=checkbox][name$=\\[body\\]]").click();
-        $(el).find("input[type=checkbox][name$=\\[body\\]]").change();        
-      }              
-    });
-  }
- }
+    const $textInputs = this.wrapperField.find("textarea, input[type='text']:not([name$=\\[custom_body\\]])");
+    if ($textInputs.length) {
+      $textInputs.val("");
+      $textInputs.change();
+    }
 
+    const $collectionInputs = this.wrapperField.find(".js-radio-button-collection, .js-check-box-collection").find(".js-collection-input");
+    if ($collectionInputs.length) {
+      $collectionInputs.each((idx, el) => {
+        const $radio = $(el).find("input[type=radio][name$=\\[body\\]]");
+        const $checkbox = $(el).find("input[type=checkbox][name$=\\[body\\]]");
+
+        if ($radio.is(":checked")) {
+          $radio.prop("checked", false);
+          $radio.change();
+        } else if ($checkbox.is(":checked")) {
+          $checkbox.click();
+          $checkbox.change();
+        }
+      });
+    }
+  }
 }
 
 export default function createDisplayConditions(options) {
