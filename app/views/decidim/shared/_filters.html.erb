@@ -5,7 +5,12 @@
 # 
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 #
-# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/> <%= t("decidim.overrides.decidim.shared._filters._modificata_per_impos") %> <% filter_sections = [] unless local_assigns.has_key?(:filter_sections) %>
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/> 
+#
+# Modificata per mostrare le icone Cerca e Aiuto a destra e aggiungere il logo in modalità sticky
+%>
+
+<% filter_sections = [] unless local_assigns.has_key?(:filter_sections) %>
 <% search_label = t("decidim.searches.filters.search") unless local_assigns.has_key?(:search_label) %>
 
 <% if filter_sections.present? || local_assigns.has_key?(:search_variable) %>

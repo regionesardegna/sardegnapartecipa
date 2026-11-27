@@ -1,0 +1,66 @@
+<%#
+# Copyright (C) 2026 Sardegna IT
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, version 3.
+# 
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/> 
+#
+# Modificata per risolvere problema su Ransack 
+%>
+
+<% if controller_name == "logs" %>
+  <div class="filters__section mb-4">
+    <%= form_with url: decidim_admin.logs_path, method: :get, local: true, class: "form form-defaults" do %>
+      <div class="card">
+        <div class="card-section p-4">
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+            <div>
+              <label class="block text-sm font-semibold mb-1" for="q_spid_operation">SPID / AM</label>
+              <%= select_tag "q[spid_operation]",
+                             options_for_select([["Tutti", ""], ["Solo operazioni SPID", "true"]], params.dig(:q, :spid_operation)),
+                             id: "q_spid_operation",
+                             class: "w-full" %>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1" for="q_cie_operation">CIE</label>
+              <%= select_tag "q[cie_operation]",
+                             options_for_select([["Tutti", ""], ["Solo operazioni CIE", "true"]], params.dig(:q, :cie_operation)),
+                             id: "q_cie_operation",
+                             class: "w-full" %>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1" for="q_action_type">Tipo evento</label>
+              <%= select_tag "q[action_type]",
+                             options_for_select([
+                               ["Tutti gli eventi", ""],
+                               ["Registrazione", "registration"],
+                               ["Login", "login"],
+                               ["Logout", "logout"]
+                             ], params.dig(:q, :action_type)),
+                             id: "q_action_type",
+                             class: "w-full" %>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1" for="q_from"><%= I18n.t("decidim.admin.filters.logs.from.label", default: "Data da") %></label>
+              <%= date_field_tag "q[from]", params.dig(:q, :from), id: "q_from", class: "w-full" %>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold mb-1" for="q_to"><%= I18n.t("decidim.admin.filters.logs.to.label", default: "Data a") %></label>
+              <%= date_field_tag "q[to]", params.dig(:q, :to), id: "q_to", class: "w-full" %>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mt-4">
+            <button type="submit" class="button button__sm button__secondary">
+              <%= t("filter_label", scope: "decidim.admin.filters", default: "Filtra") %>
+            </button>
+            <% if params[:q].present? %>
+              <%= link_to "Azzera filtri", decidim_admin.logs_path, class: "button button__sm button__transparent-secondary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
