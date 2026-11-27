@@ -278,6 +278,7 @@ OMNIAUTH_GOOGLE_CLIENT_ID: # Stringa, Client ID per OmniAuth Google
 
 BREADCRUMB_TRUNCATE_AFTER_WORDS: # Intero, troncamento breadcrumb dopo N parole
 SURVEYS_NOTIFICATION_BCC_ADDRESS: # Stringa, indirizzo email BCC per notifiche dei sondaggi agli amministratori
+RACK_ATTACK_SAFELIST_IPS: # Stringa, lista di IP in whitelist di Rack-Attack, separati da virgola, verificare la documentazione della gem Rack-Attack https://github.com/rack/rack-attack
 
 ```
 

@@ -20,22 +20,27 @@ OneLogin::RubySaml::Logging.logger = SAML_LOGGER if defined?(OneLogin::RubySaml:
 Rails.application.config.after_initialize do
   OmniAuth.config.logger = SAML_LOGGER
   OneLogin::RubySaml::Logging.logger = SAML_LOGGER if defined?(OneLogin::RubySaml::Logging)
-end
 
-# 3. Tracciamento errori di validazione SAML / OmniAuth su log dedicato
-OmniAuth.config.on_failure = proc do |env|
-  exception = env["omniauth.error"]
-  error_type = env["omniauth.error.type"]
+  # 3. Tracciamento errori di validazione SAML / OmniAuth su log dedicato
+  previous_on_failure = OmniAuth.config.on_failure
+  OmniAuth.config.on_failure = proc do |env|
+    exception = env["omniauth.error"]
+    error_type = env["omniauth.error.type"]
 
-  SAML_LOGGER.error("=" * 60)
-  SAML_LOGGER.error("[OMNIAUTH / SAML FAILURE] Type: #{error_type.inspect} | Class: #{exception&.class}")
-  SAML_LOGGER.error("Messaggio: #{exception&.message}")
-  if exception.is_a?(OneLogin::RubySaml::ValidationError)
-    SAML_LOGGER.error("Backtrace:\n#{exception.backtrace&.first(5)&.join("\n")}")
+    SAML_LOGGER.error("=" * 60)
+    SAML_LOGGER.error("[OMNIAUTH / SAML FAILURE] Type: #{error_type.inspect} | Class: #{exception&.class}")
+    SAML_LOGGER.error("Messaggio: #{exception&.message}")
+    if exception.is_a?(OneLogin::RubySaml::ValidationError)
+      SAML_LOGGER.error("Backtrace:\n#{exception.backtrace&.first(5)&.join("\n")}")
+    end
+    SAML_LOGGER.error("=" * 60)
+
+    if previous_on_failure
+      previous_on_failure.call(env)
+    else
+      OmniAuth::FailureEndpoint.call(env)
+    end
   end
-  SAML_LOGGER.error("=" * 60)
-
-  OmniAuth::FailureEndpoint.call(env)
 end
 
 # 4. Middleware Rack per catturare SAMLRequest (uscita) e SAMLResponse (ingresso)
